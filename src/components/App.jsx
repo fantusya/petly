@@ -1,16 +1,15 @@
+import { Box } from './Box/Box';
+import { GlobalStyle } from 'globalStyles/globalStyle';
+import FontStyles from 'globalStyles/fontStyles';
+
+import Example from './Example';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Box as="section" pt={5}>
+      <Example />
+      <FontStyles />
+      <GlobalStyle />
+    </Box>
   );
 };
