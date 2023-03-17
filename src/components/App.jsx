@@ -4,6 +4,8 @@
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
 
+import Example from './Example';
+
 export const App = () => {
   return (
     <>
@@ -31,7 +33,7 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" replace />}></Route>
         </Route>
       </Routes> */}
-
+      <Example />
       <FontStyles />
       <GlobalStyle />
     </>
