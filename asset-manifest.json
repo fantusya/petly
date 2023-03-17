@@ -1,13 +1,23 @@
 {
   "files": {
-    "main.css": "/petly/static/css/main.7acaea2f.css",
-    "main.js": "/petly/static/js/main.07d3183d.js",
+    "main.css": "/petly/static/css/main.c3d5249d.css",
+    "main.js": "/petly/static/js/main.e26c4705.js",
+    "static/media/manrope-v13-latin-700.woff": "/petly/static/media/manrope-v13-latin-700.12905788f876fb01b91f.woff",
+    "static/media/manrope-v13-latin-regular.woff": "/petly/static/media/manrope-v13-latin-regular.d099ceeb4963e67cab6c.woff",
+    "static/media/manrope-v13-latin-500.woff": "/petly/static/media/manrope-v13-latin-500.92b1c2e13f62cf6d3e12.woff",
+    "static/media/manrope-v13-latin-700.woff2": "/petly/static/media/manrope-v13-latin-700.19fa7bed40332c82ef91.woff2",
+    "static/media/manrope-v13-latin-regular.woff2": "/petly/static/media/manrope-v13-latin-regular.2cfae0fb4662deefa552.woff2",
+    "static/media/manrope-v13-latin-500.woff2": "/petly/static/media/manrope-v13-latin-500.41f498090b8ee0ff9a31.woff2",
+    "static/media/poppins-v20-latin-regular.woff": "/petly/static/media/poppins-v20-latin-regular.f61407da33b59324fbef.woff",
+    "static/media/poppins-v20-latin-700.woff": "/petly/static/media/poppins-v20-latin-700.c54a52658bf21b37083d.woff",
+    "static/media/poppins-v20-latin-regular.woff2": "/petly/static/media/poppins-v20-latin-regular.405055dd680fa1dcdfa2.woff2",
+    "static/media/poppins-v20-latin-700.woff2": "/petly/static/media/poppins-v20-latin-700.d86662fe776dae29ea78.woff2",
     "index.html": "/petly/index.html",
-    "main.7acaea2f.css.map": "/petly/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/petly/static/js/main.07d3183d.js.map"
+    "main.c3d5249d.css.map": "/petly/static/css/main.c3d5249d.css.map",
+    "main.e26c4705.js.map": "/petly/static/js/main.e26c4705.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.c3d5249d.css",
+    "static/js/main.e26c4705.js"
   ]
 }
