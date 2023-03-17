@@ -19,28 +19,31 @@ const UserPage = lazy(() => import('pages/UserPage'));
 export const App = () => {
   return (
     <>
-      <Routes>
-        {/* <Route path="/" element={<SharedLayout />}> */}
-        <Route index element={<HomePage />} />
-        <Route path="news" element={<NewsPage />} />
-        <Route path="notices/:categoryName" element={<NoticesPage />} />
-        <Route path="friends" element={<OurFriendsPage />} />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute redirectTo="/user" component={<RegisterPage />} />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
-          }
-        />
-        <PrivateRoute redirectTo="/login" component={<UserPage />} />
-        <Route path="*" element={<Navigate to="/" replace />}></Route>
-        {/* </Route> */}
-      </Routes>
+      {/* <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="news" element={<NewsPage />} />
+          <Route path="notices/:categoryName" element={<NoticesPage />} />
+          <Route path="friends" element={<OurFriendsPage />} />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute
+                redirectTo="/user"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+            }
+          />
+          <PrivateRoute redirectTo="/login" component={<UserPage />} />
+          <Route path="*" element={<Navigate to="/" replace />}></Route>
+        </Route>
+      </Routes> */}
       <Example />
       <FontStyles />
       <GlobalStyle />
