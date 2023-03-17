@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/175.ef4fa6d2.chunk.js","mappings":"mLAAO,IAIP,EAJyB,WAExB,C","sources":["pages/LoginPage/LoginPage.jsx"],"sourcesContent":["export const LoginPage = () => {\n  return;\n};\n\nexport default LoginPage;\n"],"names":[],"sourceRoot":""}
