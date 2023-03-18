@@ -28,3 +28,18 @@ export const Avatar = styled.div`
 
   background-color: ${p => p.theme.colors.background};
 `;
+
+export const EditPhotoButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 24px 36px auto;
+  border: none;
+
+  font-family: ${p => p.theme.fonts.text};
+  font-size: ${p => p.theme.fontSizes[0]};
+  line-height: 1.3;
+  color: ${p => p.theme.colors.text};
+
+  background-color: transparent;
+`;

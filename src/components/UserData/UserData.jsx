@@ -1,5 +1,5 @@
 import { Container } from 'globalStyles/globalStyle';
-import { UserText, Section, Avatar } from './UserData.styled';
+import { UserText, Section, Avatar, EditPhotoButton } from './UserData.styled';
 
 export const UserData = () => {
   return (
@@ -8,6 +8,7 @@ export const UserData = () => {
 
       <Section>
         <Avatar></Avatar>
+        <EditPhotoButton>Edit photo</EditPhotoButton>
       </Section>
     </Container>
   );

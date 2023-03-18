@@ -33,13 +33,18 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
+  width: 100%;
+  max-width: 480px;
+
   padding: 0 20px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: ${p => p.theme.breakpoints[1]};
     padding: 0 ${p => p.theme.space[5]}px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: ${p => p.theme.breakpoints[2]};
     padding: 0 ${p => p.theme.space[4]}px;
   }
 `;
