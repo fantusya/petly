@@ -1,7 +1,8 @@
-// import { lazy } from 'react';
-// import { Route, Routes, Navigate } from 'react-router-dom';
+import { lazy } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
+import SharedLayout from 'components/SharedLayout';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
@@ -14,14 +15,14 @@ import Example from './Example';
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 // const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
-// const UserPage = lazy(() => import('pages/UserPage'));
+const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
+          {/* <Route index element={<HomePage />} />
           <Route path="news" element={<NewsPage />} />
           <Route path="notices/:categoryName" element={<NoticesPage />} />
           <Route path="friends" element={<OurFriendsPage />} />
@@ -40,10 +41,12 @@ export const App = () => {
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           />
-          <PrivateRoute redirectTo="/login" component={<UserPage />} />
+          <PrivateRoute redirectTo="/login" component={<UserPage />} /> */}
+
+          <Route path="user" element={<UserPage />} />
           <Route path="*" element={<Navigate to="/" replace />}></Route>
         </Route>
-      </Routes> */}
+      </Routes>
       <Example />
       <FontStyles />
       <GlobalStyle />

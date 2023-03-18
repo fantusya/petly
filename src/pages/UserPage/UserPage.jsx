@@ -1,5 +1,7 @@
+import UserData from 'components/UserData';
+
 export const UserPage = () => {
-  return;
+  return <UserData />;
 };
 
 export default UserPage;
