@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const UserText = styled.p`
-  padding-top: 61px;
+export const UserTitle = styled.h2`
   margin-bottom: 18px;
 
   font-family: ${p => p.theme.fonts.textMedium};
@@ -10,7 +9,7 @@ export const UserText = styled.p`
   color: ${p => p.theme.colors.black};
 `;
 
-export const Section = styled.section`
+export const UserSection = styled.div`
   padding: 20px 12px 20px 16px;
 
   border-radius: ${p => p.theme.radii.small};
@@ -19,20 +18,21 @@ export const Section = styled.section`
   background-color: ${p => p.theme.colors.white};
 `;
 
-export const Avatar = styled.div`
+export const UserPhoto = styled.div`
   width: 233px;
   height: 233px;
-  margin: 0 auto 12px auto;
+  margin: 0 auto 12px;
   border-radius: ${p => p.theme.radii.circular};
   box-shadow: ${p => p.theme.shadows.avatar};
 
   background-color: ${p => p.theme.colors.background};
 `;
 
-export const EditPhotoButton = styled.button`
+export const UserPhotoButton = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
+  height: 22px;
   margin: 0 24px 36px auto;
   border: none;
 
@@ -42,4 +42,8 @@ export const EditPhotoButton = styled.button`
   color: ${p => p.theme.colors.text};
 
   background-color: transparent;
+`;
+
+export const UserDataList = styled.ul`
+  margin-bottom: 44px;
 `;

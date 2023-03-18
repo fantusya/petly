@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: ${p => p.theme.lineHeights.text};
     letter-spacing: ${p => p.theme.letterSpacing.text};
 
-    background-color: ${p => p.theme.shadows.background};
+    background-color: ${p => p.theme.colors.background};
   }
 
   code {

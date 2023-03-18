@@ -1,15 +1,37 @@
 import { Container } from 'globalStyles/globalStyle';
-import { UserText, Section, Avatar, EditPhotoButton } from './UserData.styled';
+import { Box } from 'components/Box/Box';
+import {
+  UserTitle,
+  UserSection,
+  UserPhoto,
+  UserPhotoButton,
+  UserDataList,
+} from './UserData.styled';
+import UserDataItem from 'components/UserDataItem';
+import Logout from 'components/Logout';
 
 export const UserData = () => {
   return (
     <Container>
-      <UserText>My information:</UserText>
+      <Box pt="61px" as="section">
+        <UserTitle>My information:</UserTitle>
 
-      <Section>
-        <Avatar></Avatar>
-        <EditPhotoButton>Edit photo</EditPhotoButton>
-      </Section>
+        <UserSection>
+          <UserPhoto>
+            <svg></svg>
+          </UserPhoto>
+          <UserPhotoButton>
+            <svg></svg>
+            Edit photo
+          </UserPhotoButton>
+
+          <UserDataList>
+            <UserDataItem></UserDataItem>
+          </UserDataList>
+
+          <Logout />
+        </UserSection>
+      </Box>
     </Container>
   );
 };
