@@ -34,23 +34,18 @@ export const LoginPage = () => {
       >
         <Form autoComplete="on">
           <label htmlFor="email">Email</label>
-          <Field
-            type="email"
-            name="email"
-            placeholder="Please, enter your Email"
-            required
-          />
+          <Field type="email" name="email" placeholder="Email" required />
           <Error name="email" component="div" />
 
           <label htmlFor="password">Password</label>
           <Field
             type="password"
             name="password"
-            placeholder="Please, enter your Password"
+            placeholder="Password"
             required
           />
           <ErrorMessage name="password" component="div" />
-          <button type="submit">Log in</button>
+          <button type="submit">Login</button>
         </Form>
       </Formik>
     </div>
