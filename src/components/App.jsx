@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 
 import useFetchingData from 'hooks/useFetchingData';
 
-// import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
+import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
@@ -15,15 +15,13 @@ import { ROUTES, ROUTES_CATEGORY_NAMES, ROUTES_PARAMS } from 'constants/routes';
 import FontStyles from 'globalStyles/fontStyles';
 
 import Example from './Example';
-import SharedLayout from 'components/SharedLayout/SharedLayout';
 
-
-// const HomePage = lazy(() => import('pages/HomePage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
-// const NewsPage = lazy(() => import('pages/NewsPage'));
-// const NoticesPage = lazy(() => import('pages/NoticesPage'));
-// const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
-// const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const HomePage = lazy(() => import('pages/HomePage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
+const NoticesPage = lazy(() => import('pages/NoticesPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
@@ -36,11 +34,9 @@ export const App = () => {
     <>
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
-          {/* <Route index element={<HomePage />} />
-          
+          <Route index element={<HomePage />} />
           <Route path={ROUTES.news} element={<NewsPage />} />
-          
-           <Route path={`${ROUTES.notices}`}>
+          <Route path={`${ROUTES.notices}`}>
             <Route
               index
               element={
@@ -52,9 +48,7 @@ export const App = () => {
               element={<NoticesPage />}
             />
           </Route>
-          
           <Route path={ROUTES.friends} element={<OurFriendsPage />} />
-          
           <Route
             path={ROUTES.register}
             element={
@@ -64,27 +58,26 @@ export const App = () => {
               />
             }
           />
-          
           <Route
             path={ROUTES.login}
             element={
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           />
-          
           <Route
             path={ROUTES.user}
             element={
-             <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
 
-          // MUST BE COMMENTED LATER
+          {/* // MUST BE COMMENTED LATER */}
+
           <Route path="user" element={<UserPage />} />
-          
-          <Route path="*" element={<Navigate to={ROUTES.home} replace />}></Route>
-      </Routes> 
-      
+          <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
+        </Route>
+      </Routes>
+
       <Example />
       <FontStyles />
       <GlobalStyle />
