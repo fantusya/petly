@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/petly/static/css/main.c3d5249d.css",
-    "main.js": "/petly/static/js/main.54946b5f.js",
+    "main.js": "/petly/static/js/main.c0303904.js",
     "static/js/696.805cb52a.chunk.js": "/petly/static/js/696.805cb52a.chunk.js",
     "static/media/manrope-v13-latin-700.woff": "/petly/static/media/manrope-v13-latin-700.12905788f876fb01b91f.woff",
     "static/media/manrope-v13-latin-regular.woff": "/petly/static/media/manrope-v13-latin-regular.d099ceeb4963e67cab6c.woff",
@@ -15,11 +15,11 @@
     "static/media/poppins-v20-latin-700.woff2": "/petly/static/media/poppins-v20-latin-700.d86662fe776dae29ea78.woff2",
     "index.html": "/petly/index.html",
     "main.c3d5249d.css.map": "/petly/static/css/main.c3d5249d.css.map",
-    "main.54946b5f.js.map": "/petly/static/js/main.54946b5f.js.map",
+    "main.c0303904.js.map": "/petly/static/js/main.c0303904.js.map",
     "696.805cb52a.chunk.js.map": "/petly/static/js/696.805cb52a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.54946b5f.js"
+    "static/js/main.c0303904.js"
   ]
 }
