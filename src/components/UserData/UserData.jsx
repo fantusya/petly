@@ -17,9 +17,15 @@ export const UserData = () => {
         <UserTitle>My information:</UserTitle>
 
         <UserSection>
-          <UserPhoto>{/* <svg></svg> */}</UserPhoto>
+          <UserPhoto>
+            <svg>
+              <use></use>
+            </svg>
+          </UserPhoto>
           <UserPhotoButton>
-            {/* <svg></svg> */}
+            <svg width="20" height="20">
+              <use></use>
+            </svg>
             Edit photo
           </UserPhotoButton>
 
