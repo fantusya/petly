@@ -12,16 +12,20 @@ import Logout from 'components/Logout';
 
 export const UserData = () => {
   return (
-    <Container>
-      <Box pt="61px" as="section">
+    <Box pt="61px" as="section">
+      <Container>
         <UserTitle>My information:</UserTitle>
 
         <UserSection>
           <UserPhoto>
-            <svg></svg>
+            <svg>
+              <use></use>
+            </svg>
           </UserPhoto>
           <UserPhotoButton>
-            <svg></svg>
+            <svg width="20" height="20">
+              <use></use>
+            </svg>
             Edit photo
           </UserPhotoButton>
 
@@ -31,8 +35,8 @@ export const UserData = () => {
 
           <Logout />
         </UserSection>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 

@@ -31,19 +31,19 @@ export const UserPhoto = styled.div`
 export const UserPhotoButton = styled.button`
   display: flex;
   align-items: center;
-  gap: 5px;
-  height: 22px;
+  gap: 4px;
   margin: 0 24px 36px auto;
   border: none;
+  cursor: pointer;
 
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[0]};
-  line-height: 1.3;
+  line-height: ${p => p.theme.lineHeights.logo};
   color: ${p => p.theme.colors.text};
 
-  background-color: transparent;
+  background-color: ${p => p.theme.colors.transparent};
 `;
 
 export const UserDataList = styled.ul`
-  margin-bottom: 44px;
+  margin-bottom: 42px;
 `;
