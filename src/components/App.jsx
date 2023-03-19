@@ -2,6 +2,8 @@ import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
+import useFetchingData from 'hooks/useFetchingData';
+
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 
@@ -19,6 +21,11 @@ import Example from './Example';
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
+  // const { status, results } = useFetchingData('api/friends');
+  // const { status, results } = useFetchingData('api/news');
+  useFetchingData(1, 'api/friends');
+  // useFetchingData('api/news');
+
   return (
     <>
       <Routes>
