@@ -33,6 +33,9 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
+  /* outline: 1px solid red; */
+
+  width: ${p => p.theme.breakpoints[0]};
   padding: 0 20px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {

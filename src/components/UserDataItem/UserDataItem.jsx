@@ -14,7 +14,7 @@ export const UserDataItem = () => {
         <InfoForm>
           <InfoField>
             <InfoProp>Name:</InfoProp>
-            <InfoInput type="text" name="email" placeholder="Anna" />
+            <InfoInput type="text" name="name" placeholder="Anna" />
           </InfoField>
           <InfoButton type="submit">
             <svg></svg>
