@@ -9,9 +9,7 @@ export const UserDataItem = () => {
           Anna
           <input type="text" name="email"></input>
         </label>
-        <InfoButton>
-          <svg></svg>
-        </InfoButton>
+        <InfoButton>{/* <svg></svg> */}</InfoButton>
       </InfoItem>
       <InfoItem>
         <p>Email:</p>
@@ -19,9 +17,7 @@ export const UserDataItem = () => {
           anna00@gmail.com
           <input type="email" name="email"></input>
         </label>
-        <InfoButton>
-          <svg></svg>
-        </InfoButton>
+        <InfoButton>{/* <svg></svg> */}</InfoButton>
       </InfoItem>
     </>
   );
