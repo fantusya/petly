@@ -1,15 +1,25 @@
 import Logo from 'components/Logo';
-import { HeaderElement } from 'components/Header/Header.styled';
 import { Navigation } from 'components/Navigation/Navigation';
-import NavigationContainer from 'components/NavigationContainer';
+import { Container } from 'globalStyles/globalStyle';
+import { ReactComponent as BurgerIcon } from 'images/svg/burger.svg';
+import {
+  HeaderElement,
+  HeaderNav,
+  BurgerBtn,
+} from 'components/Header/Header.styled';
 
 export const Header = () => {
   return (
     <HeaderElement>
-      <NavigationContainer>
-        <Logo />
-        <Navigation />
-      </NavigationContainer>
+      <Container header>
+        <HeaderNav>
+          <Logo />
+          <Navigation />
+          <BurgerBtn>
+            <BurgerIcon />
+          </BurgerBtn>
+        </HeaderNav>
+      </Container>
     </HeaderElement>
   );
 };

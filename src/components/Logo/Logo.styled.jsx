@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const LogoImg = styled.img`
   width: 82px;
+  display: block;
 
   // @media (min-width: ${p => p.theme.breakpoints[1]}) {
   //     width: 94px;

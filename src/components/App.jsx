@@ -10,15 +10,13 @@ import SharedLayout from 'components/SharedLayout';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 
-import { ROUTES, ROUTES_CATEGORY_NAMES, ROUTES_PARAMS } from 'constants/routes';
+import { ROUTES } from 'constants/routes';
 
 import FontStyles from 'globalStyles/fontStyles';
 
 import Example from './Example';
-import SharedLayout from 'components/SharedLayout/SharedLayout';
 
-
-// const HomePage = lazy(() => import('pages/HomePage'));
+const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
 // const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
@@ -36,11 +34,9 @@ export const App = () => {
     <>
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
-          {/* <Route index element={<HomePage />} />
-          
-          <Route path={ROUTES.news} element={<NewsPage />} />
-          
-           <Route path={`${ROUTES.notices}`}>
+          <Route index element={<HomePage />} />
+          {/* <Route path={ROUTES.news} element={<NewsPage />} /> */}
+          {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
               element={
@@ -51,11 +47,9 @@ export const App = () => {
               path={`:${ROUTES_PARAMS.categoryName}`}
               element={<NoticesPage />}
             />
-          </Route>
-          
-          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
-          
-          <Route
+          </Route> */}
+          {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
+          {/* <Route
             path={ROUTES.register}
             element={
               <RestrictedRoute
@@ -63,28 +57,27 @@ export const App = () => {
                 component={<RegisterPage />}
               />
             }
-          />
-          
-          <Route
+          /> */}
+          {/* <Route
             path={ROUTES.login}
             element={
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
-          />
-          
-          <Route
+          /> */}
+          {/* <Route
             path={ROUTES.user}
             element={
-             <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
-          />
+          /> */}
 
-          // MUST BE COMMENTED LATER
+          {/* // MUST BE COMMENTED LATER */}
+
           <Route path="user" element={<UserPage />} />
-          
-          <Route path="*" element={<Navigate to={ROUTES.home} replace />}></Route>
-      </Routes> 
-      
+          <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
+        </Route>
+      </Routes>
+
       <Example />
       <FontStyles />
       <GlobalStyle />
