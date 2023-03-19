@@ -1,7 +1,12 @@
 import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
+import { Toaster } from 'react-hot-toast';
+
+import useFetchingData from 'hooks/useFetchingData';
+
+// import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
+import SharedLayout from 'components/SharedLayout';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 
@@ -12,50 +17,30 @@ import FontStyles from 'globalStyles/fontStyles';
 import Example from './Example';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 
-const HomePage = lazy(() => import('pages/HomePage'));
-const LoginPage = lazy(() => import('pages/LoginPage'));
-const NewsPage = lazy(() => import('pages/NewsPage'));
-const NoticesPage = lazy(() => import('pages/NoticesPage'));
-const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage'));
+
+// const HomePage = lazy(() => import('pages/HomePage'));
+// const LoginPage = lazy(() => import('pages/LoginPage'));
+// const NewsPage = lazy(() => import('pages/NewsPage'));
+// const NoticesPage = lazy(() => import('pages/NoticesPage'));
+// const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+// const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
+  // const { status, results } = useFetchingData('api/friends');
+  // const { status, results } = useFetchingData('api/news');
+  useFetchingData(1, 'api/friends');
+  // useFetchingData('api/news');
+
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="news" element={<NewsPage />} />
-          <Route path="notices/:categoryName" element={<NoticesPage />} />
-          <Route path="friends" element={<OurFriendsPage />} />
-          <Route
-            path="register"
-            element={
-              <RestrictedRoute
-                redirectTo="/user"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
-            }
-          />
-          <PrivateRoute redirectTo="/login" component={<UserPage />} />
-          <Route path="*" element={<Navigate to="/" replace />}></Route>
-        </Route>
-      </Routes> */}
-
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-
+          {/* <Route index element={<HomePage />} />
+          
           <Route path={ROUTES.news} element={<NewsPage />} />
-
-          <Route path={`${ROUTES.notices}`}>
+          
+           <Route path={`${ROUTES.notices}`}>
             <Route
               index
               element={
@@ -67,41 +52,43 @@ export const App = () => {
               element={<NoticesPage />}
             />
           </Route>
-
+          
           <Route path={ROUTES.friends} element={<OurFriendsPage />} />
-
+          
           <Route
             path={ROUTES.register}
             element={
-              //<RestrictedRoute>
-              <RegisterPage />
-              //</RestrictedRoute>
+              <RestrictedRoute
+                redirectTo="/user"
+                component={<RegisterPage />}
+              />
             }
           />
-
+          
           <Route
             path={ROUTES.login}
             element={
-              // <RestrictedRoute>
-              <LoginPage />
-              // </RestrictedRoute>
+              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           />
-
+          
           <Route
             path={ROUTES.user}
             element={
-              //<PrivateRoute>
-              <UserPage />
-              // </PrivateRoute>
+             <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
-        </Route>
-        <Route path="*" element={<Navigate to={ROUTES.home} />} />
-      </Routes>
+
+          // MUST BE COMMENTED LATER
+          <Route path="user" element={<UserPage />} />
+          
+          <Route path="*" element={<Navigate to={ROUTES.home} replace />}></Route>
+      </Routes> 
+      
       <Example />
       <FontStyles />
       <GlobalStyle />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };
