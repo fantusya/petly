@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/petly/static/css/main.c3d5249d.css",
-    "main.js": "/petly/static/js/main.b9a78f12.js",
+    "main.js": "/petly/static/js/main.f819b97c.js",
     "static/js/35.ac414bb2.chunk.js": "/petly/static/js/35.ac414bb2.chunk.js",
-    "static/js/696.805cb52a.chunk.js": "/petly/static/js/696.805cb52a.chunk.js",
+    "static/js/696.eb3e6802.chunk.js": "/petly/static/js/696.eb3e6802.chunk.js",
     "static/media/manrope-v13-latin-700.woff": "/petly/static/media/manrope-v13-latin-700.12905788f876fb01b91f.woff",
     "static/media/manrope-v13-latin-regular.woff": "/petly/static/media/manrope-v13-latin-regular.d099ceeb4963e67cab6c.woff",
     "static/media/manrope-v13-latin-500.woff": "/petly/static/media/manrope-v13-latin-500.92b1c2e13f62cf6d3e12.woff",
@@ -17,12 +17,12 @@
     "index.html": "/petly/index.html",
     "static/media/burger.svg": "/petly/static/media/burger.bc50d14435a09d11fb3798d752330a17.svg",
     "main.c3d5249d.css.map": "/petly/static/css/main.c3d5249d.css.map",
-    "main.b9a78f12.js.map": "/petly/static/js/main.b9a78f12.js.map",
+    "main.f819b97c.js.map": "/petly/static/js/main.f819b97c.js.map",
     "35.ac414bb2.chunk.js.map": "/petly/static/js/35.ac414bb2.chunk.js.map",
-    "696.805cb52a.chunk.js.map": "/petly/static/js/696.805cb52a.chunk.js.map"
+    "696.eb3e6802.chunk.js.map": "/petly/static/js/696.eb3e6802.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.b9a78f12.js"
+    "static/js/main.f819b97c.js"
   ]
 }
