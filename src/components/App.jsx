@@ -47,6 +47,7 @@ export const App = () => {
               path={`:${ROUTES_PARAMS.categoryName}`}
               element={<NoticesPage />}
             />
+
           </Route> */}
           {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
           {/* <Route
