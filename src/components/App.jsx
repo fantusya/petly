@@ -7,6 +7,7 @@ import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
 
 import Example from './Example';
+import RegisterPage from 'pages/RegisterPage';
 
 // const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -47,6 +48,7 @@ export const App = () => {
       <Example />
       <FontStyles />
       <GlobalStyle />
+      <RegisterPage />
     </>
   );
 };
