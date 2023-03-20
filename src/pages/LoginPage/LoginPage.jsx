@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { schema } from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
@@ -18,7 +18,7 @@ export const LoginPage = () => {
   return (
     <Box as="section">
       <Container>
-        <h2>Login</h2>
+        <h1>Login</h1>
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={handleSubmit}
