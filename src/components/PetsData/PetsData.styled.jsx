@@ -5,7 +5,7 @@ export const Title = styled.h2`
 
   color: ${p => p.theme.colors.black};
 
-  font-family: ${p => p.theme.fonts.text};
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: ${p => p.theme.lineHeights.text};
@@ -13,7 +13,9 @@ export const Title = styled.h2`
 `;
 
 export const Button = styled.button`
-  margin-left: ${p => p.theme.space[4]}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: ${p => p.theme.space[5] + 8}px;
   height: ${p => p.theme.space[5] + 8}px;

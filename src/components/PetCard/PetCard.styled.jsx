@@ -33,17 +33,8 @@ export const PetInfo = styled.p`
 `;
 
 export const PetTitle = styled.span`
-  font-weight: ${p => p.theme.fontWeights.bold};
-`;
-
-export const Comment = styled.p`
-  margin-bottom: ${p => p.theme.space[0]}px;
-
-  font-family: ${p => p.theme.fonts.text};
-  font-size: ${p => p.theme.fontSizes[2]};
+  font-family: ${p => p.theme.fonts.textMedium};
   font-weight: ${p => p.theme.fontWeights.medium};
-  line-height: ${p => p.theme.lineHeights.text};
-  letter-spacing: ${p => p.theme.letterSpacing.text};
 `;
 
 export const BtnDelete = styled.button`
@@ -56,7 +47,7 @@ export const BtnDelete = styled.button`
 
   border: ${p => p.theme.borders.none};
 
-  color: rgba(17, 17, 17, 0.6);
+  color: ${p => p.theme.colors.hintTxt};
   background-color: ${p => p.theme.colors.transparent};
 
   cursor: pointer;
@@ -64,7 +55,7 @@ export const BtnDelete = styled.button`
   transition: color ${p => p.theme.transition.accent};
 
   &:hover,
-  focus {
+  &:focus {
     color: ${p => p.theme.colors.accent};
   }
 `;

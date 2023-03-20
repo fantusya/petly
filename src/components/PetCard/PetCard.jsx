@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { MdDeleteForever } from 'react-icons/md';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import { Box } from 'components/Box/Box';
@@ -7,14 +8,13 @@ import {
   Image,
   PetInfo,
   PetTitle,
-  Comment,
   BtnDelete,
 } from './PetCard.styled';
 
 export const PetCard = () => {
   return (
     <CardWrapper>
-      <Box border="1px solid transparent">
+      <Box border={normal} borderColor={transparent}>
         <Image src={DEFAULT_IMAGE} alt="My pet" width={240} />
       </Box>
 
@@ -31,11 +31,11 @@ export const PetCard = () => {
           <PetTitle>Breed: </PetTitle>
           Persian cat
         </PetInfo>
-        <Comment>
+        <PetInfo>
           <PetTitle>Comments: </PetTitle>
           Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet,
           consectetur Lorem ipsum dolor sit amet, consectetur.
-        </Comment>
+        </PetInfo>
 
         <BtnDelete type="button">
           <MdDeleteForever size={20} />
