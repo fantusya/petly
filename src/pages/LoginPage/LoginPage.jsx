@@ -16,8 +16,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <Box>
+    <Box as="section">
       <Container>
+        <h2>Login</h2>
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={handleSubmit}
@@ -39,11 +40,11 @@ export const LoginPage = () => {
             <button type="submit">Login</button>
           </Form>
         </Formik>
-        <RouteFormLoginRegister />
-        {/* <p>
-          <span>Don't have an account?</span>
-          <link to="/register" text={'Register'} />
-        </p> */}
+        <RouteFormLoginRegister
+          link="/register"
+          question="Don't have an account?"
+          pageName="Register"
+        />
       </Container>
     </Box>
   );

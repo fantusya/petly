@@ -1,19 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const RouteFormLoginRegister = () => {
-  const location = useLocation();
-
-  if (location === '/Login')
-    return (
-      <p>
-        <span>Don't have an account?</span>
-        <Link to="/register">Register</Link>
-      </p>
-    );
+const RouteFormLoginRegister = ({ link, question, pageName }) => {
   return (
     <p>
-      <span>Don't have an account?</span>
-      <Link to="/login">Login</Link>
+      <span>{question}</span>
+      <Link to={link}>{pageName}</Link>
     </p>
   );
 };
