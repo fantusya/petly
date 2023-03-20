@@ -4,13 +4,13 @@ import {
   Wrapper,
   ItemLabel,
   ItemContent,
-  NoticeContent,
+  ItemRecords,
   ItemTitle,
-  NoticeContentItem,
-  Button,
-  TrashIcon,
-  FavoriteIcon,
-  FavoriteButton,
+  ItemСharacteristic,
+  NoticeButton,
+  DeleteIcon,
+  AddFavoriteIcon,
+  AddFavoriteButton,
 } from './NoticeCategoryItem.styled';
 
 export const NoticeCategoryItem = () => {
@@ -29,31 +29,31 @@ export const NoticeCategoryItem = () => {
           pr="12px"
         >
           <ItemLabel>Sell</ItemLabel>
-          <FavoriteButton>
-            <FavoriteIcon />
-          </FavoriteButton>
+          <AddFavoriteButton>
+            <AddFavoriteIcon />
+          </AddFavoriteButton>
         </Box>
       </Wrapper>
       <ItemContent isLogged={isLogged}>
         <ItemTitle>Cute dog looking for a home</ItemTitle>
-        <NoticeContent isLogged={isLogged}>
+        <ItemRecords isLogged={isLogged}>
           <Box as="ul" display="inline-block" width="30%">
-            <NoticeContentItem>Breed:</NoticeContentItem>
-            <NoticeContentItem>Place:</NoticeContentItem>
-            <NoticeContentItem>Age:</NoticeContentItem>
+            <ItemСharacteristic>Breed:</ItemСharacteristic>
+            <ItemСharacteristic>Place:</ItemСharacteristic>
+            <ItemСharacteristic>Age:</ItemСharacteristic>
           </Box>
           <Box as="ul" display="inline-block">
-            <NoticeContentItem>Pomeranian</NoticeContentItem>
-            <NoticeContentItem>Lviv</NoticeContentItem>
-            <NoticeContentItem>one year</NoticeContentItem>
+            <ItemСharacteristic>Pomeranian</ItemСharacteristic>
+            <ItemСharacteristic>Lviv</ItemСharacteristic>
+            <ItemСharacteristic>one year</ItemСharacteristic>
           </Box>
-        </NoticeContent>
+        </ItemRecords>
         <Box display="flex" flexDirection="column" alignItems="center">
-          <Button isLogged={isLogged}>Learn more</Button>
+          <NoticeButton isLogged={isLogged}>Learn more</NoticeButton>
           {isLogged && (
-            <Button>
-              Delete <TrashIcon />
-            </Button>
+            <NoticeButton>
+              Delete <DeleteIcon />
+            </NoticeButton>
           )}
         </Box>
       </ItemContent>

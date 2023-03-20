@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from 'components/Box/Box';
-import { ReactComponent as Trash } from '../../assets/trash.svg';
-import { ReactComponent as Heart } from '../../assets/heart.svg';
+import { ReactComponent as Trash } from '../../images/svg/trash.svg';
+import { ReactComponent as Heart } from '../../images/svg/heart.svg';
 
 export const NoticesItem = styled.li`
   width: 280px;
@@ -10,6 +10,8 @@ export const NoticesItem = styled.li`
   border-radius: 0px 0px 20px 20px;
 
   background-color: ${p => p.theme.colors.white};
+
+  font-family: ${p => p.theme.fonts.text};
 
   cursor: default;
 
@@ -72,7 +74,7 @@ export const ItemTitle = styled(Box)`
   letter-spacing: ${p => p.theme.letterSpacing.title};
 `;
 
-export const NoticeContent = styled(Box)`
+export const ItemRecords = styled(Box)`
   margin-bottom: ${props => (props.isLogged ? '20px' : '50px')};
 
   color: ${p => p.theme.colors.text};
@@ -82,13 +84,13 @@ export const NoticeContent = styled(Box)`
   line-height: ${p => p.theme.lineHeights.text};
 `;
 
-export const NoticeContentItem = styled.li`
+export const ItemСharacteristic = styled.li`
   &:not(:last-child) {
     margin-bottom: 8px;
   }
 `;
 
-export const TrashIcon = styled(Trash)`
+export const DeleteIcon = styled(Trash)`
   width: 16px;
   height: 18px;
   margin-left: 15px;
@@ -98,7 +100,7 @@ export const TrashIcon = styled(Trash)`
   }
 `;
 
-export const Button = styled.button`
+export const NoticeButton = styled.button`
   width: 100%;
   height: 38px;
   margin-bottom: ${props => (props.isLogged ? '12px' : '0px')};
@@ -124,7 +126,7 @@ export const Button = styled.button`
     color: ${p => p.theme.colors.accentBtn};
     border: 2px solid ${p => p.theme.colors.accentBtn};
 
-    ${TrashIcon} path {
+    ${DeleteIcon} path {
       fill: ${p => p.theme.colors.accentBtn};
       transition: ${p => p.theme.transition.main};
     }
@@ -138,12 +140,12 @@ export const Button = styled.button`
   }
 `;
 
-export const FavoriteIcon = styled(Heart)`
+export const AddFavoriteIcon = styled(Heart)`
   width: 24px;
   height: 22px;
 `;
 
-export const FavoriteButton = styled.button`
+export const AddFavoriteButton = styled.button`
   width: 44px;
   height: 44px;
 

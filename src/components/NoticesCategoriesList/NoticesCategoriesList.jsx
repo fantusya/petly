@@ -1,12 +1,12 @@
 import NoticeCategoryItem from '../NoticeCategoryItem';
 
-import { CardsList } from './NoticesCategoriesList.styled';
+import { NoticesCardsList } from './NoticesCategoriesList.styled';
 
 export const NoticesCategoriesList = () => {
   return (
-    <CardsList>
+    <NoticesCardsList>
       <NoticeCategoryItem />
-    </CardsList>
+    </NoticesCardsList>
   );
 };
 
