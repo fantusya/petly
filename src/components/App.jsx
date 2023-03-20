@@ -5,7 +5,6 @@ import { Toaster } from 'react-hot-toast';
 import { ROUTES } from 'constants/routes';
 import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
-
 import SharedLayout from 'components/SharedLayout';
 import Example from './Example';
 
