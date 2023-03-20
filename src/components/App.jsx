@@ -44,6 +44,7 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" replace />}></Route>
         </Route>
       </Routes> */}
+
       <Example />
       <FontStyles />
       <GlobalStyle />
