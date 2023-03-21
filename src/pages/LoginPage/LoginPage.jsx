@@ -8,12 +8,14 @@ import { RouteFormLoginRegister } from '../routeFormLoginRegister.jsx';
 export const LoginPage = () => {
   // const dispatch = useDispatch();
 
-  // const handleSubmit = (values, { resetForm }) => {
-  //   dispatch(logIn(values));
-  //   if (error !== null) {
-  //     resetForm();
-  //   }
-  // };
+  const handleSubmit = (values, { resetForm }) => {
+    console.log('Hallo', values);
+
+    // dispatch(logIn(values));
+    // if (error !== null) {
+    resetForm();
+    // }
+  };
 
   return (
     <Box as="section">
