@@ -5,7 +5,6 @@ import {
   InfoProp,
   InfoInput,
   InfoButton,
-  Pensil,
 } from './UserDataItem.styled';
 
 export const UserDataItem = () => {
@@ -18,7 +17,7 @@ export const UserDataItem = () => {
             <InfoInput type="text" name="name" placeholder="Anna" />
           </InfoField>
           <InfoButton type="submit">
-            <Pensil />
+            <svg></svg>
           </InfoButton>
         </InfoForm>
       </InfoItem>
@@ -34,7 +33,7 @@ export const UserDataItem = () => {
             />
           </InfoField>
           <InfoButton type="submit">
-            <Pensil />
+            <svg></svg>
           </InfoButton>
         </InfoForm>
       </InfoItem>
@@ -46,7 +45,7 @@ export const UserDataItem = () => {
             <InfoInput type="text" name="birthday" placeholder="00.00.0000" />
           </InfoField>
           <InfoButton type="submit">
-            <Pensil />
+            <svg></svg>
           </InfoButton>
         </InfoForm>
       </InfoItem>
@@ -58,7 +57,7 @@ export const UserDataItem = () => {
             <InfoInput type="tel" name="phone" placeholder="+38000000000" />
           </InfoField>
           <InfoButton type="submit">
-            <Pensil />
+            <svg></svg>
           </InfoButton>
         </InfoForm>
       </InfoItem>
@@ -70,7 +69,7 @@ export const UserDataItem = () => {
             <InfoInput type="text" name="city" placeholder="Kiev" />
           </InfoField>
           <InfoButton type="submit">
-            <Pensil />
+            <svg></svg>
           </InfoButton>
         </InfoForm>
       </InfoItem>

@@ -1,11 +1,12 @@
-import { LogoutButton, LogoutIcon } from './Logout.styled';
-// import { ReactComponent as LogoutIcon } from 'images/svg/logout.svg';
+import { LogoutButton } from './Logout.styled';
 
 export const Logout = () => {
   return (
     <LogoutButton>
-      <LogoutIcon />
-      <span>Log Out</span>
+      <svg width="18" height="18">
+        <use></use>
+      </svg>
+      Log Out
     </LogoutButton>
   );
 };
