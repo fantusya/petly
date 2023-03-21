@@ -2,17 +2,19 @@ import { Formik, Form, Field } from 'formik';
 import { schema } from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { RouteFormLoginRegister } from '../routeFormLoginRegister.jsx';
 
 export const LoginPage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(logIn(values));
-    if (error !== null) {
-      resetForm();
-    }
+    console.log('Hallo', values);
+
+    // dispatch(logIn(values));
+    // if (error !== null) {
+    resetForm();
+    // }
   };
 
   return (
@@ -27,7 +29,6 @@ export const LoginPage = () => {
           <Form autoComplete="on">
             <label htmlFor="email">Email</label>
             <Field type="email" name="email" placeholder="Email" required />
-            <Error name="email" component="div" />
 
             <label htmlFor="password">Password</label>
             <Field
@@ -36,7 +37,6 @@ export const LoginPage = () => {
               placeholder="Password"
               required
             />
-            <ErrorMessage name="password" component="div" />
             <button type="submit">Login</button>
           </Form>
         </Formik>
