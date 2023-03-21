@@ -22,8 +22,8 @@ const UserPage = lazy(() => import('pages/UserPage'));
 export const App = () => {
   // const { status, results } = useFetchingData('api/friends');
   // const { status, results } = useFetchingData('api/news');
-  useFetchingData(1, 'api/friends');
-  // useFetchingData('api/news');
+  useFetchingData('api/friends');
+  useFetchingData('api/news');
 
   return (
     <>
