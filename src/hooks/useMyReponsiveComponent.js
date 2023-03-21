@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const MyReponsiveComponent = () => {
+export const useMyReponsiveComponent = () => {
   const [isMobileScreen, setIsMobileScreen] = useState(false);
   const [isTabletScreen, setIsTabletScreen] = useState(false);
   const [isDesktopScreen, setIsDesktopScreen] = useState(false);

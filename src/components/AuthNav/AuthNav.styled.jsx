@@ -5,6 +5,16 @@ export const AuthNavWrapp = styled.div`
   display: flex;
   justify-content: center;
   gap: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 55px;
+    margin-bottom: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 20px;
+    margin-right: 0;
+    justify-content: flex-end;
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -26,5 +36,12 @@ export const StyledNavLink = styled(NavLink)`
   :focus-visible:not(.active) {
     color: white;
     background-color: ${p => p.theme.colors.accent};
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 10px 28px;
   }
 `;

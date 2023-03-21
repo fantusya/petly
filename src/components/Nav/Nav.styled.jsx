@@ -5,9 +5,14 @@ export const NavigationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 40px;
+  align-items: center;
+  // display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
 `;
 
 export const StyledNavLink = styled(NavLink)`
+  display: flex;
   font-family: ${p => p.theme.fonts.text};
   padding-top: 20px;
   padding-bottom: 20px;

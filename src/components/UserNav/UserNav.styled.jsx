@@ -26,6 +26,17 @@ export const StyledNavLink = styled(NavLink)`
   :focus-visible:not(.active) {
     background-color: ${p => p.theme.colors.focus};
   }
+
+  @media screen and (min-width: 768px) {
+    line-height: 1.35;
+    font-size: 16px;
+    margin-right: 50px;
+    // margin-bottom: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 0;
+    justify-content: flex-end;
+  }
 `;
 
 export const AvatarIcon = styled.img`

@@ -9,7 +9,7 @@ export const NavContainer = styled.div`
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding-left: 32px;
-    padding-right: 37px;
+    padding-right: 32px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
