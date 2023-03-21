@@ -2,17 +2,16 @@ import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-import useFetchingData from 'hooks/useFetchingData';
-
+import { ROUTES } from 'constants/routes';
+import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
+import Example from './Example';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
 
-import Example from './Example';
-
-// const HomePage = lazy(() => import('pages/HomePage'));
+const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
 // const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
@@ -23,38 +22,58 @@ const UserPage = lazy(() => import('pages/UserPage'));
 export const App = () => {
   // const { status, results } = useFetchingData('api/friends');
   // const { status, results } = useFetchingData('api/news');
-  useFetchingData(1, 'api/friends');
-  // useFetchingData('api/news');
+  useFetchingData('api/friends');
+  useFetchingData('api/news');
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          {/* <Route index element={<HomePage />} />
-          <Route path="news" element={<NewsPage />} />
-          <Route path="notices/:categoryName" element={<NoticesPage />} />
-          <Route path="friends" element={<OurFriendsPage />} />
-          <Route
-            path="register"
+        <Route path={ROUTES.home} element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          {/* <Route path={ROUTES.news} element={<NewsPage />} /> */}
+          {/* <Route path={`${ROUTES.notices}`}>
+            <Route
+              index
+              element={
+                <Navigate replace to={`${ROUTES_CATEGORY_NAMES.sell}`} />
+              }
+            />
+            <Route
+              path={`:${ROUTES_PARAMS.categoryName}`}
+              element={<NoticesPage />}
+            />
+
+          </Route> */}
+          {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
+          {/* <Route
+            path={ROUTES.register}
             element={
               <RestrictedRoute
                 redirectTo="/user"
                 component={<RegisterPage />}
               />
             }
-          />
-          <Route
-            path="login"
+          /> */}
+          {/* <Route
+            path={ROUTES.login}
             element={
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
-          />
-          <PrivateRoute redirectTo="/login" component={<UserPage />} /> */}
+          /> */}
+          {/* <Route
+            path={ROUTES.user}
+            element={
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          /> */}
+
+          {/* // MUST BE COMMENTED LATER */}
 
           <Route path="user" element={<UserPage />} />
-          <Route path="*" element={<Navigate to="/" replace />}></Route>
+          <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
       </Routes>
+
       <Example />
       <FontStyles />
       <GlobalStyle />
