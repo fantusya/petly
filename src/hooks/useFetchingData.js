@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { fetchData } from 'api';
 import { Status } from 'constants/status';
 
-export default function useFetchingData(page, url) {
+export const useFetchingData = (page, url) => {
   const [status, setStatus] = useState(Status.IDLE);
   const [results, setResults] = useState([]);
   const [hasMore, setHasMore] = useState(false);
@@ -32,4 +32,4 @@ export default function useFetchingData(page, url) {
   }, [url, page]);
 
   return { status, results, hasMore };
-}
+};

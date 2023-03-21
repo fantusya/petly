@@ -1,20 +1,15 @@
 import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-
 import { Toaster } from 'react-hot-toast';
 
-import useFetchingData from 'hooks/useFetchingData';
-
+import { ROUTES } from 'constants/routes';
+import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
+import Example from './Example';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
-
-import { ROUTES } from 'constants/routes';
-
 import FontStyles from 'globalStyles/fontStyles';
-
-import Example from './Example';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
