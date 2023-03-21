@@ -1,4 +1,4 @@
-import { Container } from 'globalStyles/globalStyle';
+// import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 import {
   TitleContainer,
