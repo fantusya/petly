@@ -2,18 +2,18 @@ import { Formik, Form, Field } from 'formik';
 import { schema } from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { RouteFormLoginRegister } from '../routeFormLoginRegister.jsx';
 
 export const LoginPage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(logIn(values));
-    if (error !== null) {
-      resetForm();
-    }
-  };
+  // const handleSubmit = (values, { resetForm }) => {
+  //   dispatch(logIn(values));
+  //   if (error !== null) {
+  //     resetForm();
+  //   }
+  // };
 
   return (
     <Box as="section">
