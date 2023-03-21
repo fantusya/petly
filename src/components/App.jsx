@@ -10,6 +10,7 @@ import Example from './Example';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
+import RegisterPage from 'pages/RegisterPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -69,14 +70,14 @@ export const App = () => {
 
           {/* // MUST BE DELETED LATER */}
           <Route path="user" element={<UserPage />} />
-          
+
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
       </Routes>
 
-      <Example />   
-      
-       {/* // MUST BE DELETED LATER */}
+      <Example />
+
+      {/* // MUST BE DELETED LATER */}
       <RegisterPage />
 
       <FontStyles />
