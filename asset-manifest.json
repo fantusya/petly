@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/petly/static/css/main.c3d5249d.css",
-    "main.js": "/petly/static/js/main.4caf1331.js",
+    "main.js": "/petly/static/js/main.fb4ba978.js",
     "static/js/35.ac414bb2.chunk.js": "/petly/static/js/35.ac414bb2.chunk.js",
-    "static/js/361.d4479eb8.chunk.js": "/petly/static/js/361.d4479eb8.chunk.js",
+    "static/js/991.b9177495.chunk.js": "/petly/static/js/991.b9177495.chunk.js",
     "static/media/manrope-v13-latin-700.woff": "/petly/static/media/manrope-v13-latin-700.12905788f876fb01b91f.woff",
     "static/media/manrope-v13-latin-regular.woff": "/petly/static/media/manrope-v13-latin-regular.d099ceeb4963e67cab6c.woff",
     "static/media/manrope-v13-latin-500.woff": "/petly/static/media/manrope-v13-latin-500.92b1c2e13f62cf6d3e12.woff",
@@ -14,19 +14,21 @@
     "static/media/poppins-v20-latin-700.woff": "/petly/static/media/poppins-v20-latin-700.c54a52658bf21b37083d.woff",
     "static/media/poppins-v20-latin-regular.woff2": "/petly/static/media/poppins-v20-latin-regular.405055dd680fa1dcdfa2.woff2",
     "static/media/poppins-v20-latin-700.woff2": "/petly/static/media/poppins-v20-latin-700.d86662fe776dae29ea78.woff2",
-    "static/media/kamera.svg": "/petly/static/media/kamera.8a0b4d214ad562b8f118f4a867063786.svg",
-    "static/media/logout.svg": "/petly/static/media/logout.03f4ecea9d5cfa1d1530d5f5603438e7.svg",
+    "static/media/hoveredTrash.svg": "/petly/static/media/hoveredTrash.4b527d62974dbf5480f23a572e5e740e.svg",
+    "static/media/notFavorite.svg": "/petly/static/media/notFavorite.c02df80a0976e3d3eb9b90bca8b65324.svg",
+    "static/media/kamera.svg": "/petly/static/media/kamera.de5a199de7547a618225a341f0dc2dcc.svg",
+    "static/media/logout.svg": "/petly/static/media/logout.d44b0534ca00849745a985bbee267e6e.svg",
     "index.html": "/petly/index.html",
-    "static/media/pensil.svg": "/petly/static/media/pensil.ec4ed88c2533e1f26ae4cfd937d7107f.svg",
+    "static/media/pensil.svg": "/petly/static/media/pensil.0dfe90a46094e58a47cc756ea678ef1f.svg",
     "static/media/burger.svg": "/petly/static/media/burger.bc50d14435a09d11fb3798d752330a17.svg",
-    "static/media/avatar_plus.svg": "/petly/static/media/avatar_plus.deec2b9327a6f7e779ae3cbb9fa31798.svg",
+    "static/media/addAvatar.svg": "/petly/static/media/addAvatar.deec2b9327a6f7e779ae3cbb9fa31798.svg",
     "main.c3d5249d.css.map": "/petly/static/css/main.c3d5249d.css.map",
-    "main.4caf1331.js.map": "/petly/static/js/main.4caf1331.js.map",
+    "main.fb4ba978.js.map": "/petly/static/js/main.fb4ba978.js.map",
     "35.ac414bb2.chunk.js.map": "/petly/static/js/35.ac414bb2.chunk.js.map",
-    "361.d4479eb8.chunk.js.map": "/petly/static/js/361.d4479eb8.chunk.js.map"
+    "991.b9177495.chunk.js.map": "/petly/static/js/991.b9177495.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.4caf1331.js"
+    "static/js/main.fb4ba978.js"
   ]
 }
