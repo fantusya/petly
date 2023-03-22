@@ -13,7 +13,7 @@ import FontStyles from 'globalStyles/fontStyles';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
-// const NewsPage = lazy(() => import('pages/NewsPage'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 // const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -23,7 +23,7 @@ export const App = () => {
   // const { status, results } = useFetchingData('api/friends');
   // const { status, results } = useFetchingData('api/news');
   useFetchingData('api/friends');
-  useFetchingData('api/news');
+  // useFetchingData('api/news');
 
   return (
     <>

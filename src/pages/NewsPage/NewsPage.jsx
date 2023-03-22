@@ -1,28 +1,31 @@
+import { Box } from 'components/Box/Box';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import NewsItem from '../../components/NewsItem/NewsItem';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import { Title, NewsPageWrapper, NewsList } from './News.styled';
+import { useFetchingData } from 'hooks/useFetchingData';
+import NewsItem from '../../components/NewsPage/NewsItem/NewsItem';
+import SearchBar from '../../components/NewsPage/SearchBar/SearchBar';
+import { NewsList } from './NewsPage.styled';
+import {
+  TitleContainer,
+  PageTitle,
+} from '../../commonComponents/PageTitle.styled';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
 
-  // Як приклад для наглядності,  отримання новин із сайту newsapi.org
+  const { status, results } = useFetchingData(1, 'api/news');
+
   useEffect(() => {
-    axios
-      .get('https://newsapi.org/v2/top-headlines', {
-        params: {
-          country: 'us',
-          apiKey: '83133a4f0221416bbbf3ca7f6aacf757',
-        },
-      })
-      .then(response => setNews(response.data.articles.slice(0, 6)))
-      .catch(error => console.log(error));
-  }, []);
+    if (status === 'RESOLVED') {
+      setNews(results.slice(0, 6));
+    }
+  }, [status, results]);
 
   return (
-    <NewsPageWrapper>
-      <Title>News</Title>
+    <Box as="section" pt={['42px', '58px', '88px']}>
+      <TitleContainer>
+        <PageTitle>News</PageTitle>
+      </TitleContainer>
+
       <SearchBar setNews={setNews} />
       <NewsList>
         {news.map((article, index) => (
@@ -35,7 +38,7 @@ const NewsPage = () => {
           />
         ))}
       </NewsList>
-    </NewsPageWrapper>
+    </Box>
   );
 };
 

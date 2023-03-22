@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { FaSearch } from 'react-icons/fa';
+// import { useFetchingData } from 'hooks/useFetchingData';
 import {
   SearchBarContainer,
   SearchInput,
   SearchIconContainer,
   ResetIconContainer,
   ResetIcon,
+  SearchIcon,
+  SearchButton,
 } from './SearchBar.styled';
 
 const SearchBar = ({ setNews }) => {
@@ -14,16 +15,11 @@ const SearchBar = ({ setNews }) => {
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
 
   const handleSearch = event => {
+    // ЛОГІКУ фільтрування та сортування ВИКОНУЄ Міша!!!!!!!!!!!
+    // ДОДAСТЬ після мержа гілки!!!!!!!!!!!!!!
     event.preventDefault();
-    axios
-      .get('https://newsapi.org/v2/everything', {
-        params: {
-          q: searchTerm,
-          apiKey: '83133a4f0221416bbbf3ca7f6aacf757',
-        },
-      })
-      .then(response => setNews(response.data.articles.slice(0, 6)))
-      .catch(error => console.log(error));
+    //  const [news, setNews] = useState([]);
+    //  const { status, results } = useFetchingData(1, 'api/news');
   };
 
   const handleResetSearch = () => {
@@ -38,24 +34,23 @@ const SearchBar = ({ setNews }) => {
   };
 
   return (
-    <SearchBarContainer onSubmit={handleSearch}>
+    <SearchBarContainer>
       <SearchInput
         type="text"
         value={searchTerm}
         onChange={handleSearchInputChange}
-        placeholder="Search news"
+        placeholder="Search"
       />
-      {isSearchEmpty && (
+      <SearchButton onClick={handleSearch}>
         <SearchIconContainer>
-          <FaSearch />
+          <SearchIcon />
         </SearchIconContainer>
-      )}
+      </SearchButton>
       {!isSearchEmpty && (
         <ResetIconContainer onClick={handleResetSearch}>
           <ResetIcon />
         </ResetIconContainer>
       )}
-      <button type="submit">Search</button>
     </SearchBarContainer>
   );
 };
