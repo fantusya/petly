@@ -12,7 +12,7 @@ import {
 } from './UserData.styled';
 import UserDataItem from 'components/UserDataItem';
 import Logout from 'components/Logout';
-import { ReactComponent as AvatarPlus } from 'images/svg/avatar_plus.svg';
+import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserData = () => {
   return (
