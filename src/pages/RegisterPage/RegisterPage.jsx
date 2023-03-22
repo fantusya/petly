@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import {
   H2,
   Wrapper,
@@ -12,13 +10,10 @@ import {
 import { Formik } from 'formik';
 
 import { Container } from 'globalStyles/globalStyle';
+import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
+import { useState } from 'react';
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
-// import { useState } from 'react';
 
-const handleSubmit = (value, { resetForm }) => {
-  resetForm();
-  console.log(value);
-};
 const initialValues = {
   email: '',
   password: '',
@@ -28,45 +23,29 @@ const initialValues = {
   phone: '',
 };
 
-const registerValidationSchema = Yup.object({
-  email: Yup.string()
-    .email('Invalid email pattern')
-    .min(6, 'At least 6 symbols')
-    .required('Required field'),
-
-  password: Yup.string()
-    .min(7, 'At least 7 symbols')
-    .max(32, 'Maximum 32 symbols')
-    .required('Required field'),
-
-  confirm: Yup.string()
-    .oneOf([Yup.ref('password'), ''], 'passwords must match')
-    .min(7, 'At least 7 symbols')
-    .max(32, 'Maximum 30 symbols')
-    .required('Required field'),
-
-  name: Yup.string()
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      'Only letters are allowed'
-    )
-    .min(5, 'At least 5 symbols')
-    .max(20, 'Maximum 20 symbols')
-    .required('Required field'),
-  city: Yup.string()
-    .min(6, 'At least 6 symbols')
-    .max(30, 'Maximum 30 symbols')
-    .required('Required field'),
-
-  phone: Yup.number()
-    .truncate(
-      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
-    )
-
-    .required('Required field'),
-});
-
 export const RegisterPage = () => {
+  const [currentStep, setCarrentStep] = useState(0);
+
+  const handleNextStep = () => {
+    setCarrentStep(prev => prev + 1);
+  };
+
+  const handlePrevStep = () => {
+    setCarrentStep(prev => prev - 1);
+  };
+
+  const steps = [
+    <StepOne next={handleNextStep} />,
+    <StepTwo back={handlePrevStep} />,
+  ];
+
+  const handleSubmit = (value, { resetForm }) => {
+    resetForm();
+
+    console.log(value);
+    console.log(value.password);
+  };
+
   return (
     <section>
       <Container>
@@ -77,9 +56,67 @@ export const RegisterPage = () => {
               initialValues={initialValues}
               onSubmit={handleSubmit}
               validationSchema={registerValidationSchema}
+              autoComplete="off"
             >
-              <RegisterForm>
-                <Input
+              <RegisterForm>{steps[currentStep]}</RegisterForm>
+            </Formik>
+            <Text>
+              Already have an account?
+              <a href="http://localhost:3000/petly">Login</a>
+            </Text>
+
+            {/* <RouteFormLoginRegister
+            link="/login"
+            question="Already have an account??"
+            pageName="login"
+          /> */}
+          </>
+        </Wrapper>
+      </Container>
+    </section>
+  );
+};
+
+const StepOne = props => {
+  return (
+    <>
+      <Input type="email" name="email" placeholder="Email" autoComplete="off" />
+      <Error name="email" component="div" />
+      <Input type="password" name="password" placeholder="Password" />
+      <Error name="password" component="div" />
+      <Input type="password" name="confirm" placeholder="Confirm Password" />
+      <Error name="confirm" component="div" />
+      <RegisterButton type="button" onClick={props.next} id="next">
+        Next
+      </RegisterButton>
+    </>
+  );
+};
+const StepTwo = props => {
+  return (
+    <>
+      <Input type="text" name="name" placeholder="Name" />
+      <Error name="name" component="div" />
+      <Input type="text" name="city" placeholder="City, region" />
+      <Error name="city" component="div" />
+      <Input type="tel" name="phone" placeholder="Mobile phone" />
+      <Error name="phone" component="div" />
+
+      <RegisterButton type="submit">Register</RegisterButton>
+      <RegisterButton type="button" onClick={props.back}>
+        Back
+      </RegisterButton>
+    </>
+  );
+};
+
+export default RegisterPage;
+
+// --------------НАБРОСКИ------------------
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// {
+/* <Input
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -101,27 +138,8 @@ export const RegisterPage = () => {
                 <Input type="tel" name="phone" placeholder="Mobile phone" />
                 <Error name="phone" component="div" />
                 <RegisterButton type="submit">Register</RegisterButton>
-                <RegisterButton type="button" disabled="false">
+                <RegisterButton type="button" disabled>
                   Next
                 </RegisterButton>
-                <RegisterButton type="button">Back</RegisterButton>
-              </RegisterForm>
-            </Formik>
-            <Text>
-              Already have an account?
-              <a href="http://localhost:3000/petly">Login</a>
-            </Text>
-
-            {/* <RouteFormLoginRegister
-            link="/login"
-            question="Already have an account??"
-            pageName="login"
-          /> */}
-          </>
-        </Wrapper>
-      </Container>
-    </section>
-  );
-};
-
-export default RegisterPage;
+                <RegisterButton type="button">Back</RegisterButton> */
+// }
