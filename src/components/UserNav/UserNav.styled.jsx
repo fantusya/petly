@@ -17,7 +17,7 @@ export const StyledNavLink = styled(NavLink)`
   border: 2px solid #f59256;
   border-radius: 40px;
   line-height: 1.35;
-  background-color: ${p => p.theme.colors.primary};
+  // background-color: ${p => p.theme.colors.primary};
   transition: all 0.3s linear;
   &:hover {
     background-color: ${p => p.theme.colors.focus};
