@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   NewsItemContainer,
+  Border,
   NewsTitle,
   NewsDescription,
   NewsDateLinkContainer,
@@ -11,6 +12,7 @@ import {
 const NewsItem = ({ title, description, date, url }) => {
   return (
     <NewsItemContainer>
+      <Border />
       <NewsTitle>{title}</NewsTitle>
       <NewsDescription>{description}</NewsDescription>
       <NewsDateLinkContainer>

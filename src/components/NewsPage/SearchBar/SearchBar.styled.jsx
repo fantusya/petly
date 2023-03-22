@@ -27,8 +27,8 @@ export const SearchBarContainer = styled.form`
 
 export const SearchInput = styled.input`
   position: absolute;
-  width: 57px;
-  height: 22px;
+  // width: 57px;
+  // height: 22px;
 
   width: 100%;
   padding-left: 9px;

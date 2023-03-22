@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:3030';
-axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
+axios.defaults.baseURL = 'http://localhost:3030';
+// axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
 
 export const fetchData = async url => {
   const { data } = await axios.get(url);

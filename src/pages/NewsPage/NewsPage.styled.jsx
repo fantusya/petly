@@ -8,6 +8,7 @@ export const NewsList = styled.div`
 
   media (min-width: ${theme.breakpoints[1]}) {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
   }
 
   media (min-width: ${theme.breakpoints[2]}) {

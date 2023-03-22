@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from 'components/Box/Box';
-import { ReactComponent as Trash } from '../../images/svg/trash.svg';
-import { ReactComponent as Heart } from '../../images/svg/heart.svg';
+import { ReactComponent as Trash } from 'images/svg/hoveredTrash.svg';
+import { ReactComponent as Heart } from 'images/svg/notFavorite.svg';
 
 export const NoticesItem = styled.li`
   width: 280px;

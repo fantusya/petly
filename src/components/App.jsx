@@ -1,12 +1,24 @@
 import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+// import axios from 'axios';
+// import { useDispatch } from 'react-redux';
+// import { logIn, refreshUser, addPet, removePet } from 'redux/auth/operations';
+// import {
+//   getByCategory,
+//   getFavorites,
+//   getOwnNotices,
+//   removeFromFavorites,
+//   addOwnNotice,
+//   addToFavorites,
+// } from 'redux/notices/operations';
 
 import { ROUTES } from 'constants/routes';
-import { useFetchingData } from 'hooks';
+// import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 import Example from './Example';
+import NoticeCategoryItem from './NoticeCategoryItem';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
@@ -20,10 +32,12 @@ const NewsPage = lazy(() => import('pages/NewsPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
+  // const [selectedFile, setSelectedFile] = useState(null);
+
   // const { status, results } = useFetchingData('api/friends');
   // const { status, results } = useFetchingData('api/news');
   useFetchingData('api/friends');
-  // useFetchingData('api/news');
+  useFetchingData('api/news');
 
   return (
     <>
@@ -31,6 +45,7 @@ export const App = () => {
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           {/* <Route path={ROUTES.news} element={<NewsPage />} /> */}
+          <Route path="notice" element={<NoticeCategoryItem />} />
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
@@ -42,7 +57,6 @@ export const App = () => {
               path={`:${ROUTES_PARAMS.categoryName}`}
               element={<NoticesPage />}
             />
-
           </Route> */}
           {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
           {/* <Route
@@ -73,6 +87,14 @@ export const App = () => {
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
       </Routes>
+
+      {/* <input
+        type="file"
+        name="photoURL"
+        onChange={handleChange}
+        accept="image/*,.png,.jpg,.gif,.web"
+      />
+      <button onClick={handleUpload}>Submit</button> */}
 
       <Example />
       <FontStyles />

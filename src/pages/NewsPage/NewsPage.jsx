@@ -1,13 +1,10 @@
 import { Box } from 'components/Box/Box';
 import React, { useState, useEffect } from 'react';
 import { useFetchingData } from 'hooks/useFetchingData';
-import NewsItem from '../../components/NewsPage/NewsItem/NewsItem';
-import SearchBar from '../../components/NewsPage/SearchBar/SearchBar';
+import NewsItem from 'components/NewsPage/NewsItem/NewsItem';
+import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
 import { NewsList } from './NewsPage.styled';
-import {
-  TitleContainer,
-  PageTitle,
-} from '../../commonComponents/PageTitle.styled';
+import { PageTitle } from 'commonComponents/PageTitle.styled';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
@@ -22,9 +19,7 @@ const NewsPage = () => {
 
   return (
     <Box as="section" pt={['42px', '58px', '88px']}>
-      <TitleContainer>
-        <PageTitle>News</PageTitle>
-      </TitleContainer>
+      <PageTitle>News</PageTitle>
 
       <SearchBar setNews={setNews} />
       <NewsList>
