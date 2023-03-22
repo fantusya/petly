@@ -13,8 +13,11 @@ import {
 } from './NoticeCategoryItem.styled';
 import { Label } from 'components/commonComponents';
 
+import { useAuth } from 'hooks';
+
 export const NoticeCategoryItem = ({ stateHandler }) => {
-  const isLogged = true;
+  const { isLoggedIn } = useAuth();
+
   const imagePath =
     'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/71jQYBofWLL._CR0,204,1224,1224_UX256.jpg';
 
@@ -34,9 +37,9 @@ export const NoticeCategoryItem = ({ stateHandler }) => {
           </AddFavoriteButton>
         </Box>
       </Wrapper>
-      <ItemContent isLogged={isLogged}>
+      <ItemContent isLogged={isLoggedIn}>
         <ItemTitle>Cute dog looking for a home</ItemTitle>
-        <ItemRecords isLogged={isLogged}>
+        <ItemRecords isLogged={isLoggedIn}>
           <Box as="ul" display="inline-block" width="30%">
             <ItemСharacteristic>Breed:</ItemСharacteristic>
             <ItemСharacteristic>Place:</ItemСharacteristic>
@@ -50,12 +53,12 @@ export const NoticeCategoryItem = ({ stateHandler }) => {
         </ItemRecords>
         <Box display="flex" flexDirection="column" alignItems="center">
           <NoticeButton
-            isLogged={isLogged}
+            isLogged={isLoggedIn}
             onClick={() => stateHandler('noticeDetails')}
           >
             Learn more
           </NoticeButton>
-          {isLogged && (
+          {isLoggedIn && (
             <NoticeButton>
               Delete <DeleteIcon />
             </NoticeButton>

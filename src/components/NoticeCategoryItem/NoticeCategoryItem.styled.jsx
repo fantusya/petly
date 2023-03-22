@@ -143,7 +143,12 @@ export const AddFavoriteButton = styled.button`
 
   cursor: pointer;
 
-  & path {
-    // fill: ${p => p.theme.colors.accent};
+  &:hover {
+    ${AddFavoriteIcon} path {
+      fill: ${p => p.theme.colors.accent};
+      transition: ${p => p.theme.transition.main};
+    }
   }
+
+  transition: ${p => p.theme.transition.main};
 `;

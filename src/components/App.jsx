@@ -8,6 +8,7 @@ import { useFetchingData } from 'hooks';
 import SharedLayout from 'components/SharedLayout';
 import Example from './Example';
 
+import NoticesCategoriesList from './NoticesCategoriesList';
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
 
@@ -73,7 +74,7 @@ export const App = () => {
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
       </Routes>
-
+      <NoticesCategoriesList />
       <Example />
       <FontStyles />
       <GlobalStyle />
