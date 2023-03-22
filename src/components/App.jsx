@@ -7,6 +7,7 @@ import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 import Example from './Example';
+import NoticeCategoryItem from './NoticeCategoryItem';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
@@ -31,6 +32,7 @@ export const App = () => {
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           {/* <Route path={ROUTES.news} element={<NewsPage />} /> */}
+          <Route path="notice" element={<NoticeCategoryItem />} />
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
@@ -42,7 +44,6 @@ export const App = () => {
               path={`:${ROUTES_PARAMS.categoryName}`}
               element={<NoticesPage />}
             />
-
           </Route> */}
           {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
           {/* <Route
