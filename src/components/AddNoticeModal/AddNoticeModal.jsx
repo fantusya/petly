@@ -45,7 +45,6 @@ import {
 import { ReactComponent as MaleIcon } from '../../images/svg/male.svg';
 import { ReactComponent as FemaleIcon } from '../../images/svg/female.svg';
 
-
 const validationSchema = Yup.object({
   category: Yup.string().required('Choose category'),
   title: Yup.string()
@@ -149,6 +148,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       formik.setFieldValue('photoURL', files[0]);
     }
   };
+
 //   useEffect(() => {
 //     const escClose = handleEscClick(handleModalToggle);
 //     return () => escClose();
@@ -296,7 +296,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                   <MaleIconBox>
                     <MaleIcon/>                
                   </MaleIconBox>
-                  Male
+                   Male
                 </SexLabel>
 
                 <InputRadio
@@ -424,3 +424,4 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 };
 
 export default AddNoticeModal;
+

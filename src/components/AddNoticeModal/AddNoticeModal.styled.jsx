@@ -419,7 +419,6 @@ export const ActionButton = styled(ModalButton)`
 
 
 
-
 // export const CloseBtn = styled(CloseButton)`
 //   position: absolute;
 //   top: 20px;
