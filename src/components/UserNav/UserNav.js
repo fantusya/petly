@@ -1,5 +1,5 @@
 import { StyledNavLink, AvatarIcon } from 'components/UserNav/UserNav.styled';
-import Avatar from '../../images/Avatar.png';
+import Avatar from 'images/Avatar.png';
 
 export const UserNav = () => {
   return (
