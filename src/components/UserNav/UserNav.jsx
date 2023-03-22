@@ -13,6 +13,7 @@ export const UserNav = ({ setOpen }) => {
       }}
     >
       <AvatarIcon src={Avatar} alt="avatar" />
+      Account
     </StyledNavLink>
   );
 };
