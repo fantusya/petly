@@ -1,31 +1,35 @@
-import { Box } from 'components/Box/Box';
 import { useRef } from 'react';
+import { Box } from 'components/Box/Box';
 
 import { useModalClose } from 'hooks/useModalClose';
+import { ReactComponent as Cross } from '../../images/svg/cross.svg';
 
 import {
   ModalContainer,
   Backdrop,
   ModalTitle,
   ModalRecords,
-  ModalСharacteristic,
+  Record,
   Wrapper,
+  ContentWrapper,
   AddFavoriteIcon,
   ModalLabel,
   ModalFavoriteButton,
   ButtonsWrapper,
   ModalComments,
   CommentsBold,
+  Link,
+  CloseButtonWrapper,
+  RecordName,
+  RecordContent,
+  ContactButton,
 } from './NoticeModal.styled';
 
-import {
-  ModalButton,
-  CloseButton,
-  CloseIcon,
-} from 'components/commonComponents';
+import { ModalCloseButton } from 'components/commonComponents';
 
 export const NoticeModal = ({ stateHandler }) => {
   const noticeDetailsRef = useRef(null);
+
   useModalClose(noticeDetailsRef, () => stateHandler('noticeDetails'));
 
   const imagePath =
@@ -33,48 +37,71 @@ export const NoticeModal = ({ stateHandler }) => {
   return (
     <Backdrop>
       <ModalContainer ref={noticeDetailsRef}>
-        <Box display="flex" justifyContent="right">
-          <CloseButton onClick={() => stateHandler('noticeDetails')}>
-            <CloseIcon />
-          </CloseButton>
-        </Box>
-        <Wrapper img={imagePath}>
-          <Box>
+        <CloseButtonWrapper>
+          <ModalCloseButton onClick={() => stateHandler('noticeDetails')}>
+            <Cross />
+          </ModalCloseButton>
+        </CloseButtonWrapper>
+        <ContentWrapper>
+          <Wrapper img={imagePath}>
             <ModalLabel>Sell</ModalLabel>
+          </Wrapper>
+          <Box>
+            <ModalTitle>
+              Cute dog looking for a home bnmbmb nbmbmnbmb mnb
+            </ModalTitle>
+            <ModalRecords>
+              <Record>
+                <RecordName>Name:</RecordName>
+                <RecordContent>1234567890123456</RecordContent>
+              </Record>
+              <Record>
+                <RecordName>Birthday:</RecordName>
+                <RecordContent>Birthday</RecordContent>
+              </Record>
+              <Record>
+                <RecordName>Breed:</RecordName>
+                <RecordContent>Pomeranian dog dog doggg</RecordContent>
+              </Record>
+              <Record>
+                <RecordName>Location:</RecordName>
+                <RecordContent>Lviv</RecordContent>
+              </Record>
+              <Record>
+                <RecordName>The sex:</RecordName>
+                <RecordContent>male</RecordContent>
+              </Record>
+              <Record>
+                <RecordName>Email:</RecordName>
+                <RecordContent>
+                  <Link href="mailto: user@somelongname111111">
+                    {/* <EllipsisText
+                      text={'user@somelongname111111'}
+                      length={18}
+                    /> */}
+                    user@somelongname111111
+                  </Link>
+                </RecordContent>
+              </Record>
+              <Record>
+                <RecordName>Phone:</RecordName>
+                <RecordContent>
+                  <Link href="tel: +0634477382">+0634477382</Link>
+                </RecordContent>
+              </Record>
+              <Record>
+                <RecordName>Price:</RecordName>
+                <RecordContent>$150</RecordContent>
+              </Record>
+            </ModalRecords>
           </Box>
-        </Wrapper>
-        <ModalTitle>Cute dog looking for a home</ModalTitle>
-        <ModalRecords>
-          {/*я бы сменил ширину на 50 - на макете она такая, с крохотной погрешностью из-за шрифта*/}
-          <Box as="ul" display="inline-block" width="40%" fontWeight="600">
-            <ModalСharacteristic>Name:</ModalСharacteristic>
-            <ModalСharacteristic>Birthday:</ModalСharacteristic>
-            <ModalСharacteristic>Breed:</ModalСharacteristic>
-            <ModalСharacteristic>Location:</ModalСharacteristic>
-            <ModalСharacteristic>The sex:</ModalСharacteristic>
-            <ModalСharacteristic>Email:</ModalСharacteristic>
-            <ModalСharacteristic>Phone:</ModalСharacteristic>
-            <ModalСharacteristic>Price:</ModalСharacteristic>
-          </Box>
-          <Box as="ul" display="inline-block">
-            <ModalСharacteristic>Rich</ModalСharacteristic>
-            <ModalСharacteristic>Birthday</ModalСharacteristic>
-            <ModalСharacteristic>Pomeranian</ModalСharacteristic>
-            <ModalСharacteristic>Lviv</ModalСharacteristic>
-            <ModalСharacteristic>male</ModalСharacteristic>
-            {/*в случае длинной почты всё ломается - можно добавить css-свойство text-overflow: ellipsis на
-         контейнер (проверить) - оно будет сокращать до "ХХХ..." всё, что не вместилось*/}
-            <ModalСharacteristic>user@somelongname111111</ModalСharacteristic>
-            <ModalСharacteristic>+0634477382</ModalСharacteristic>
-            <ModalСharacteristic>$150</ModalСharacteristic>
-          </Box>
-        </ModalRecords>
+        </ContentWrapper>
         <ModalComments>
           <CommentsBold>Comments:</CommentsBold> Lorem ipsum dolor sit amet,
           consectetur adipisicing elit. Minus laudantium vero esse.
         </ModalComments>
         <ButtonsWrapper>
-          <ModalButton>Contact</ModalButton>
+          <ContactButton href="tel: +0634477382">Contact</ContactButton>
           <ModalFavoriteButton>
             Add to <AddFavoriteIcon />
           </ModalFavoriteButton>

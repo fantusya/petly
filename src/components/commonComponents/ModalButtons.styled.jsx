@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-
-import { ReactComponent as Cross } from '../../images/svg/cross.svg';
-
 export const ModalButton = styled.button`
   width: 100%;
   height: 40px;
@@ -37,8 +34,6 @@ export const ModalButton = styled.button`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 160px;
 
-    flex-wrap: nowrap;
-
     &:not(:last-child) {
       margin-bottom: 0px;
     }
@@ -49,12 +44,7 @@ export const ModalButton = styled.button`
   }
 `;
 
-export const CloseIcon = styled(Cross)`
-  width: 16px;
-  height: 16px;
-`;
-
-export const CloseButton = styled.button`
+export const ModalCloseButton = styled.button`
   width: 34px;
   height: 34px;
   margin-bottom: 6px;

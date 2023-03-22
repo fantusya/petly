@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import NoticeModal from 'components/NoticeModal';
 import NoticeCategoryItem from '../NoticeCategoryItem';
+import NoticeModal from 'components/NoticeModal';
 import { NoticesCardsList } from './NoticesCategoriesList.styled';
 
 export const NoticesCategoriesList = () => {
@@ -17,9 +17,9 @@ export const NoticesCategoriesList = () => {
   //
   return (
     <>
-      <NoticesCardsList>
-        <NoticeCategoryItem stateHandler={stateHandler} />
-        <NoticeCategoryItem stateHandler={stateHandler} />
+      <NoticesCardsList stateHandler={stateHandler}>
+        <NoticeCategoryItem stateHandler={stateHandler} state={state} />
+        <NoticeCategoryItem stateHandler={stateHandler} state={state} />
       </NoticesCardsList>
       {state.noticeDetails ? <NoticeModal stateHandler={stateHandler} /> : null}
     </>

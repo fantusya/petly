@@ -15,7 +15,7 @@ import { Label } from 'components/commonComponents';
 
 import { useAuth } from 'hooks';
 
-export const NoticeCategoryItem = ({ stateHandler }) => {
+export const NoticeCategoryItem = ({ stateHandler, state }) => {
   const { isLoggedIn } = useAuth();
 
   const imagePath =
