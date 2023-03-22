@@ -39,6 +39,80 @@ export const App = () => {
   useFetchingData('api/friends');
   useFetchingData('api/news');
 
+  // useFetchingData('api/friends');
+  // useFetchingData('api/news');
+
+  // const handleChange = e => {
+  //   const chosenImg = e.target.files[0];
+
+  //   if (!e.target.files.length || !chosenImg) {
+  //     setSelectedFile(null);
+  //     console.log('Choose an image to change your avatar!');
+  //     return;
+  //   }
+  //   setSelectedFile(chosenImg);
+  // };
+
+  // const handleUpload = e => {
+  //   e.preventDefault();
+
+  //   // if (!selectedFile) {
+  //   //   console.log('CHOOSE FILE PLS');
+  //   //   return;
+  //   // }
+  //   // const data = new FormData();
+  //   // data.append('name', 'Kovarny kotyara');
+  //   // data.append('breed', 'schkodnyk');
+  //   // data.append('comments', 'Миленький мальчик!');
+  //   // data.append('date', new Date());
+  //   // data.append('photoURL', selectedFile);
+
+  //   // const data = new FormData();
+  //   // data.append('name', 'kotofeychik');
+  //   // data.append('sex', 'female');
+  //   // data.append('title', 'Kupite pls');
+  //   // data.append('category', 'sell');
+  //   // data.append('breed', 'schkodnyk');
+  //   // data.append('comments', 'Миленький мальчик!');
+  //   // data.append('location', 'Brovary');
+  //   // data.append('price', 1);
+  //   // data.append('birthDate', new Date());
+  //   // data.append('photoURL', selectedFile);
+  //   // dispatch(addOwnNotice(data));
+  //   // let id = '6418cb61dea99f728afd5b48';
+  //   // dispatch(addToFavorites(id));
+  // };
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   async function getLOGIN() {
+  //     try {
+  //       const data = await dispatch(
+  //         logIn({
+  //           email: 'guba.anastaysha@gmail.com',
+  //           password: 'ann12345',
+  //         })
+  //       );
+
+  //       if (data.type === 'auth/login/fulfilled') {
+  //         const dataREf = await dispatch(refreshUser());
+  //         // if (dataREf.type === 'auth/refresh/fulfilled') {
+  //         //   dispatch(getFavorites());
+  //         // }
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getLOGIN();
+
+  //   // if (data.type === 'auth/register/fulfilled') {
+  //   //     await dispatch(
+  //   //       login({ email: values.email, password: values.password })
+  //   //     );
+  // }, [dispatch]);
+
   return (
     <>
       <Routes>
