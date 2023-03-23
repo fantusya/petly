@@ -90,8 +90,8 @@ export const Text = styled.p`
   letter-spacing: 0.04em;
   color: rgba(17, 17, 17, 0.6);
 `;
-export const Error = styled(ErrorMessage)`
-  margin-left: -120px;
+export const ErrorValid = styled(ErrorMessage)`
+  margin-left: -50px;
   margin-top: 2px;
   color: #e2001a;
   font-size: 11px;
