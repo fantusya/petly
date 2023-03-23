@@ -1,41 +1,47 @@
-import { Container } from 'globalStyles/globalStyle';
+// import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 import {
-  UserTitle,
+  TitleContainer,
+  Title,
   UserSection,
+  UserContainer,
   UserPhoto,
   UserPhotoButton,
   UserDataList,
+  Kamera,
 } from './UserData.styled';
 import UserDataItem from 'components/UserDataItem';
 import Logout from 'components/Logout';
+import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserData = () => {
   return (
-    <Box pt="61px" as="section">
-      <Container>
-        <UserTitle>My information:</UserTitle>
+    <Box pt={['61px', '61px', '88px']} as="section">
+      <TitleContainer>
+        <Title>My information:</Title>
+      </TitleContainer>
 
+      <UserContainer>
         <UserSection>
-          <UserPhoto>
-            <svg>
-              <use></use>
-            </svg>
-          </UserPhoto>
-          <UserPhotoButton>
-            <svg width="20" height="20">
-              <use></use>
-            </svg>
-            Edit photo
-          </UserPhotoButton>
+          <div>
+            <UserPhoto>
+              <AvatarPlus />
+            </UserPhoto>
+            <UserPhotoButton>
+              <Kamera />
+              <span>Edit photo</span>
+            </UserPhotoButton>
+          </div>
 
-          <UserDataList>
-            <UserDataItem></UserDataItem>
-          </UserDataList>
+          <div>
+            <UserDataList>
+              <UserDataItem></UserDataItem>
+            </UserDataList>
 
-          <Logout />
+            <Logout />
+          </div>
         </UserSection>
-      </Container>
+      </UserContainer>
     </Box>
   );
 };
