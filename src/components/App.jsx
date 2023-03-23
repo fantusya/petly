@@ -14,7 +14,7 @@ import { Toaster } from 'react-hot-toast';
 // } from 'redux/notices/operations';
 
 import { ROUTES } from 'constants/routes';
-// import { useFetchingData } from 'hooks';
+import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 import Example from './Example';
@@ -25,7 +25,7 @@ import FontStyles from 'globalStyles/fontStyles';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
-const NewsPage = lazy(() => import('pages/NewsPage'));
+// const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 // const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
