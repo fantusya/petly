@@ -25,7 +25,7 @@ import FontStyles from 'globalStyles/fontStyles';
 import RegisterPage from 'pages/RegisterPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
 // const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 // const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
