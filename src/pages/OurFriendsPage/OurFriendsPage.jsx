@@ -1,15 +1,19 @@
 import { useFetchingData } from 'hooks';
 
 import FriendsList from 'components/FriendsList';
-import { FriendContainer } from './OurFriendsPage.styled';
+
+import { Container } from 'globalStyles/globalStyle';
+
 export const OurFriendsPage = () => {
   const { results, status } = useFetchingData('api/friends');
 
   return (
-    <FriendContainer>
-      <h1>Our friends</h1>
-      <FriendsList results={results} status={status} />
-    </FriendContainer>
+    <section>
+      <Container>
+        <h1>Our friends</h1>
+        <FriendsList results={results} />
+      </Container>
+    </section>
   );
 };
 

@@ -1,8 +1,8 @@
 import FriendsPopUp from "components/FriendsPopUp";
-// import { DEFAULT_IMAGE } from 'constants/urls';
+
 import { ListFriends, ItemFriend, ItemFriendBox, ItemFriendName } from "./FriendsList.styled";
 
-export const FriendsList = ({ results, status }) => {
+export const FriendsList = ({ results }) => {
 
     const elements = results.map(({ title, url, address, addressUrl, email, imageUrl, phone, workDays, _id }) => {
 
@@ -18,7 +18,7 @@ export const FriendsList = ({ results, status }) => {
         
         return (
             <ItemFriend key={_id} resultsLength={results.length}>
-                {url ? <ItemFriendName target="_blanc" href={url}>{title}</ItemFriendName> : <p>{title}</p>}
+                {url ? <ItemFriendName target="_blank" rel="noreferrer" href={url}>{title}</ItemFriendName> : <p>{title}</p>}
                 <ItemFriendBox>
                     <div>
                         <img src={imageUrl ? imageUrl : placeholder} alt={title} />
@@ -27,7 +27,7 @@ export const FriendsList = ({ results, status }) => {
                         <p>Time:</p>
                         {from && to ? <p>{from} - {to}</p> : <p>{emptyField}</p>}
                         <p>Address:</p>
-                        {address ? <a target="_blanc" href={addressUrl}>{address}</a> : <p>{emptyField}</p>}
+                        {address ? <a target="_blank" rel="noreferrer" href={addressUrl}>{address}</a> : <p>{emptyField}</p>}
                         <p>Email:</p>
                         {email ? <a href={`mailto:${email}`}>{email}</a> : <p>{emptyField}</p>}
                         <p>Phone</p>
