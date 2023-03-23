@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
-axios.defaults.baseURL = 'http://localhost:3030';
+axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
+// axios.defaults.baseURL = 'http://localhost:3030';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3030',
+  baseURL: 'https://uninterested-hose-newt.cyclic.app',
 });
 instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 
@@ -29,6 +29,7 @@ export const signup = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('api/users/signup', credentials);
+      token.set(data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

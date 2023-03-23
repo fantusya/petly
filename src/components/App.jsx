@@ -24,6 +24,7 @@ import NoticesCategoriesList from './NoticesCategoriesList';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
+import RegisterPage from 'pages/RegisterPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -173,9 +174,9 @@ export const App = () => {
             }
           /> */}
 
-          {/* // MUST BE COMMENTED LATER */}
-
+          {/* // MUST BE DELETED LATER */}
           <Route path="user" element={<UserPage />} />
+
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
       </Routes>
@@ -189,7 +190,10 @@ export const App = () => {
       <button onClick={handleUpload}>Submit</button> */}
 
       <Example />
+      {/* // MUST BE DELETED LATER */}
+      <RegisterPage />
       <FontStyles />
+
       <GlobalStyle />
       <Toaster position="top-right" reverseOrder={false} />
     </>
