@@ -1,21 +1,33 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const LogoImg = styled.img`
+export const LogoText = styled.div`
   width: 82px;
   display: block;
 
-  // @media (min-width: ${p => p.theme.breakpoints[1]}) {
-  //     width: 94px;
-  // }
+  font-family: ${p => p.theme.fonts.logo};
+  font-size: ${p => p.theme.fontSizes[7]};
+  color: ${p => p.theme.colors.black};
 
-  // @media (min-width: ${p => p.theme.breakpoints[2]}) {
-  //     width: 94px;
-  // }
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 94px;
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    width: 94px;
+    margin-right: 80px;
+  }
+`;
+
+export const LogoSpan = styled.span`
+  font-family: ${p => p.theme.fonts.logo};
+  font-size: ${p => p.theme.fontSizes[7]};
+  color: ${p => p.theme.colors.accent};
 `;
 
 export const HomeLink = styled(NavLink)`
-  //  z-index: 100e
+  text-decoration: none;
+  //  z-index: 100;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-right: auto;
