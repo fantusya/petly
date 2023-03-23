@@ -60,7 +60,6 @@ export const App = () => {
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           /> */}
-          <Route path={ROUTES.login} element={<LoginPage />} />
           {/* <Route
             path={ROUTES.user}
             element={
