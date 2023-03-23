@@ -2,7 +2,6 @@
 import { MdDeleteForever } from 'react-icons/md';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import { Box } from 'components/Box/Box';
-import { theme } from 'globalStyles/theme';
 
 import {
   CardWrapper,
