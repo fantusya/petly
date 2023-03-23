@@ -1,5 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+
+import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 // import axios from 'axios';
 // import { useDispatch } from 'react-redux';
@@ -18,7 +20,7 @@ import { useFetchingData } from 'hooks';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 import Example from './Example';
-import NoticeCategoryItem from './NoticeCategoryItem';
+import NoticesCategoriesList from './NoticesCategoriesList';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
@@ -33,6 +35,14 @@ const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
   // const [selectedFile, setSelectedFile] = useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState({
+    noticeDetails: false,
+    addNoticeModal: false,
+  });
+  const stateHandler = value => {
+    setIsModalOpen({ ...isModalOpen, [value]: !isModalOpen[value] });
+  };
 
   // const { status, results } = useFetchingData('api/friends');
   // const { status, results } = useFetchingData('api/news');
@@ -119,7 +129,15 @@ export const App = () => {
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           {/* <Route path={ROUTES.news} element={<NewsPage />} /> */}
-          <Route path="notice" element={<NoticeCategoryItem />} />
+          <Route
+            path="notice"
+            element={
+              <NoticesCategoriesList
+                stateHandler={stateHandler}
+                isModalOpen={isModalOpen}
+              />
+            }
+          />
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
