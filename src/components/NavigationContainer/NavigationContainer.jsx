@@ -3,9 +3,9 @@ import { NavContainer } from 'components/NavigationContainer/NavigationContainer
 const NavigationContainer = ({ children }) => {
   return (
     <>
-      <a href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+      {/* <a href="https://uninterested-hose-newt.cyclic.app/api/users/google">
         GOOGLE
-      </a>
+      </a> */}
       <NavContainer>{children}</NavContainer>
     </>
   );

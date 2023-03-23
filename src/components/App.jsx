@@ -172,11 +172,10 @@ export const App = () => {
       <button onClick={handleUpload}>Submit</button> */}
 
       <Example />
-
       {/* // MUST BE DELETED LATER */}
       <RegisterPage />
-
       <FontStyles />
+
       <GlobalStyle />
       <Toaster position="top-right" reverseOrder={false} />
     </>
