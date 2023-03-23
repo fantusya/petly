@@ -2,13 +2,18 @@ import { BsPlusLg } from 'react-icons/bs';
 
 import { Box } from 'components/Box/Box';
 import PetsList from '../PetsList';
-import { Title, Button } from './PetsData.styled';
+import { PetsWrapper, Title, Button } from './PetsData.styled';
 
 import { Container } from 'globalStyles/globalStyle';
 
 export const PetsData = () => {
   return (
-    <Box as="section" pt={46} pb={80}>
+    <PetsWrapper
+    // pt={46}
+    // pb={80}
+    // flex="0 0 70%"
+    // transform="translate(-100%, 0px)"
+    >
       <Container>
         <Box
           mb={5}
@@ -26,7 +31,7 @@ export const PetsData = () => {
         </Box>
         <PetsList />
       </Container>
-    </Box>
+    </PetsWrapper>
   );
 };
 
