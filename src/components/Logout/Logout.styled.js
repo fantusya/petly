@@ -35,6 +35,12 @@ export const LogoutButton = styled.button`
       color: ${theme.colors.white};
     }
   }
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    margin-left: 0;
+    padding: 3px 9px;
+    font-size: ${theme.fontSizes[2]};
+  }
 `;
 
 export const LogoutIcon = styled(Icon)`

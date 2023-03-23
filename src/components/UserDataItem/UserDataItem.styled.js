@@ -31,6 +31,10 @@ export const InfoProp = styled.p`
   font-weight: ${p => p.theme.fontWeights.medium};
 
   color: ${p => p.theme.colors.text};
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    font-size: ${theme.fontSizes[3]};
+  }
 `;
 
 export const InfoInput = styled.input`
@@ -42,9 +46,15 @@ export const InfoInput = styled.input`
 
   font-size: ${p => p.theme.fontSizes[0]};
   font-weight: ${p => p.theme.fontWeights.normal};
-  color: ${p => p.theme.colors.text};
 
+  color: ${p => p.theme.colors.text};
   background-color: ${p => p.theme.colors.background};
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    max-width: 216px;
+    padding: 3px 12px 4px 12px;
+    font-size: ${theme.fontSizes[3]};
+  }
 `;
 
 export const InfoButton = styled.button`
@@ -67,10 +77,21 @@ export const InfoButton = styled.button`
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
   }
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const Pensil = styled(Icon)`
+  display: inline-block;
   width: 12.5px;
   height: 12.5px;
   fill: currentColor;
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    width: 20px;
+    height: 20px;
+  }
 `;
