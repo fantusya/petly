@@ -5,13 +5,13 @@ import { theme } from 'globalStyles/theme';
 export const TitleAuth = styled.h1`
   text-align: center;
   font-family: ${p => p.theme.fonts.text};
-  margin-bottom: 40px;
+  margin-bottom: ${p => p.theme.fontSizes[9]};
   font-size: ${p => p.theme.fontSizes[8]};
 `;
 export const FormCustom = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  font-size: ${p => p.theme.fontSizes[3]};
 `;
 export const LoginButton = styled.button`
   display: flex;
@@ -23,10 +23,6 @@ export const LoginButton = styled.button`
   border-radius: ${p => p.theme.radii.small};
   cursor: pointer;
 
-  font-size: ${p => p.theme.fontSizes[5]};
-  font-weight: ${p => p.theme.fontWeights.medium};
-
-  color: rgba(17, 17, 17, 0.6);
   color: ${theme.colors.white};
   background-color: ${p => p.theme.colors.accent};
 
@@ -40,14 +36,14 @@ export const LoginButton = styled.button`
 `;
 
 export const Input = styled(Field)`
-  padding: 4px 18px;
-  border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
+  border: ${p => p.theme.borders.normal}${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.big};
   outline: ${p => p.theme.colors.transparent};
-
+  padding-top: ${p => p.theme.fontSizes[0]};
+  padding-bottom: ${p => p.theme.fontSizes[0]};
+  padding-left: ${p => p.theme.fontSizes[2]};
   font-size: ${p => p.theme.fontSizes[5]};
-  font-weight: ${p => p.theme.fontWeights.normal};
+  font-weight: ${p => p.theme.fontWeights.medium};
   color: ${p => p.theme.colors.text};
-
   background-color: ${p => p.theme.colors.background};
 `;

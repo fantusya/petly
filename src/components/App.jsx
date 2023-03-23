@@ -12,7 +12,7 @@ import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
 
 const HomePage = lazy(() => import('pages/HomePage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
 // const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 // const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
@@ -60,6 +60,7 @@ export const App = () => {
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           /> */}
+          <Route path={ROUTES.login} element={<LoginPage />} />
           {/* <Route
             path={ROUTES.user}
             element={
