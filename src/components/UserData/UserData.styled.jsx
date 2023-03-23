@@ -9,6 +9,10 @@ export const TitleContainer = styled(Container)`
   @media (min-width: ${theme.breakpoints[1]}) {
     margin-bottom: 40px;
   }
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -46,7 +50,6 @@ export const UserSection = styled.div`
   @media (min-width: ${theme.breakpoints[1]}) {
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
     gap: 52px;
     flex: 0 0 calc(100vw / 2 + (768px - 32px * 2) / 2);
     padding: 24px 40px 24px 0;
@@ -54,6 +57,16 @@ export const UserSection = styled.div`
     border-radius: ${theme.radii.big};
     border-top-left-radius: ${theme.radii.none};
     border-bottom-left-radius: ${theme.radii.none};
+  }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    position: relative;
+    flex-direction: column;
+    gap: 32px;
+    flex: 0 0 calc(100vw - 16px * 2 - 821px - 32px);
+    width: 0 0 calc(100vw - 16px * 2 - 821px - 32px);
+    padding: 20px 16px 18px 0;
+    box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   }
 `;
 
@@ -70,7 +83,11 @@ export const UserPhoto = styled.div`
   background-color: ${p => p.theme.colors.background};
 
   @media (min-width: ${theme.breakpoints[1]}) {
-    margin-bottom: 9px;
+    margin-bottom: 8px;
+  }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    margin-bottom: 0;
   }
 `;
 
@@ -111,10 +128,37 @@ export const UserPhotoButton = styled.button`
   @media (min-width: ${theme.breakpoints[1]}) {
     margin: 0 0 0 auto;
   }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    position: absolute;
+    top: 231px;
+    right: 16px;
+  }
+`;
+
+export const UserThumb = styled.div`
+  @media (min-width: ${theme.breakpoints[1]}) {
+    width: 379px;
+  }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    width: 382px;
+    margin-left: auto;
+  }
 `;
 
 export const UserDataList = styled.ul`
   margin-bottom: 40px;
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    margin-top: 16px;
+    margin-bottom: 33px;
+  }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
 `;
 
 export const Kamera = styled(Icon)`

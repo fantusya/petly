@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from 'components/Box/Box';
-import { ReactComponent as Trash } from '../../images/svg/trash.svg';
-import { ReactComponent as Heart } from '../../images/svg/heart.svg';
+import { ReactComponent as Trash } from 'images/svg/hoveredTrash.svg';
+import { ReactComponent as Heart } from 'images/svg/notFavorite.svg';
 
 export const NoticesItem = styled.li`
   width: 280px;
@@ -31,24 +31,6 @@ export const Wrapper = styled(Box)`
 
   background-image: url(${props => props.img});
   background-size: cover;
-`;
-
-export const ItemLabel = styled.span`
-  padding-top: 6px;
-  padding-bottom: 6px;
-  width: 158px;
-
-  border-radius: 0px 40px 40px 0px;
-
-  color: ${p => p.theme.colors.text};
-  background-color: ${p => p.theme.colors.cardLabelBg};
-  backdrop-filter: blur(2px);
-
-  font-size: ${p => p.theme.fontSizes[0]};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  line-height: 1.333;
-  letter-spacing: ${p => p.theme.letterSpacing.text};
-  text-align: center;
 `;
 
 export const ItemContent = styled(Box)`
@@ -161,7 +143,12 @@ export const AddFavoriteButton = styled.button`
 
   cursor: pointer;
 
-  & path {
-    // fill: ${p => p.theme.colors.accent};
+  &:hover {
+    ${AddFavoriteIcon} path {
+      fill: ${p => p.theme.colors.accent};
+      transition: ${p => p.theme.transition.main};
+    }
   }
+
+  transition: ${p => p.theme.transition.main};
 `;

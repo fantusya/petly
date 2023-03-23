@@ -1,4 +1,14 @@
 import styled from 'styled-components';
+import { theme } from 'globalStyles/theme';
+
+export const PetsWrapper = styled.section`
+  padding-top: 46px;
+  padding-bottom: 80px;
+  /* @media (min-width: ${theme.breakpoints[2]}) {
+    flex: 0 0 70%;
+    transform: translate(-100%, 0px);
+  } */
+`;
 
 export const Title = styled.h2`
   display: inline;

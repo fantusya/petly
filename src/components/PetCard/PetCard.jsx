@@ -14,7 +14,7 @@ import {
 export const PetCard = () => {
   return (
     <CardWrapper>
-      <Box border={normal} borderColor={transparent}>
+      <Box border="normal" borderColor="transparent">
         <Image src={DEFAULT_IMAGE} alt="My pet" width={240} />
       </Box>
 

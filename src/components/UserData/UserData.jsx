@@ -1,4 +1,3 @@
-// import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 import {
   TitleContainer,
@@ -9,14 +8,15 @@ import {
   UserPhotoButton,
   UserDataList,
   Kamera,
+  UserThumb,
 } from './UserData.styled';
 import UserDataItem from 'components/UserDataItem';
 import Logout from 'components/Logout';
-import { ReactComponent as AvatarPlus } from 'images/svg/avatar_plus.svg';
+import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserData = () => {
   return (
-    <Box pt={['61px', '61px', '88px']} as="section">
+    <Box pt={['61px', '61px', '88px', '58px']} flex="0 0 100%" as="section">
       <TitleContainer>
         <Title>My information:</Title>
       </TitleContainer>
@@ -33,13 +33,13 @@ export const UserData = () => {
             </UserPhotoButton>
           </div>
 
-          <div>
+          <UserThumb>
             <UserDataList>
-              <UserDataItem></UserDataItem>
+              <UserDataItem />
             </UserDataList>
 
             <Logout />
-          </div>
+          </UserThumb>
         </UserSection>
       </UserContainer>
     </Box>

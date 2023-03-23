@@ -1,17 +1,21 @@
 import styled from 'styled-components';
 
 export const StyledMenu = styled.div`
-  display: block;
+  // display: block;
+  display: ${open => (!open ? 'none' : 'block')};
   padding-top: 40px;
   background: ${p => p.theme.colors.background};
   transform: ${({ open }) => (!open ? 'translateX(100%)' : 'translateX(0)')};
+
   height: calc(100vh - 63px);
   text-align: center;
   position: absolute;
   overflow-y: scroll;
+  // overflow-y: hidden;
   top: 63px;
   left: 0;
   transition: transform 0.3s ease-in-out;
+
   @media (min-width: 768px) {
     padding-top: 130px;
     top: 0;
@@ -27,8 +31,8 @@ export const StyledMenu = styled.div`
 
 export const StyledBurger = styled.button`
   position: absolute;
-  top: 32%;
-  right: 20px;
+  top: 20px;
+  right: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -48,8 +52,9 @@ export const StyledBurger = styled.button`
   }
   @media screen and (min-width: 768px) {
     right: 32px;
-    top: 39%;
+    top: 31px;
   }
+
   div {
     width: 30px;
     height: 3.5px;

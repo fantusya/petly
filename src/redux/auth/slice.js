@@ -6,6 +6,8 @@ import {
   refreshUser,
   updateAvatar,
   updateInfo,
+  addPet,
+  removePet,
 } from './operations';
 
 const handlePending = state => {
@@ -20,15 +22,16 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   user: {
-    token: null,
     name: null,
     email: null,
     phone: null,
     birthDate: null,
     city: null,
     avatarURL: null,
+    myPets: [],
   },
-  token: null,
+  accessToken: null,
+  refreshToken: null,
 
   isLoggedIn: false,
   isRefreshing: false,
@@ -45,15 +48,15 @@ const authSlice = createSlice({
   //   },
   extraReducers: {
     [signup.fulfilled](state, action) {
-      state.user = action.payload;
-      state.isLoggedIn = true;
-
+      // state.user = action.payload;
       state.isRefreshing = false;
       state.error = false;
     },
     [logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      // state.user = action.payload.user;
+      console.log('action.payload', action.payload);
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
 
       state.isLoggedIn = true;
       state.isRefreshing = false;
@@ -68,7 +71,8 @@ const authSlice = createSlice({
         city: null,
         avatarURL: null,
       };
-      state.token = null;
+      state.accessToken = null;
+      state.refreshToken = null;
 
       state.isLoggedIn = false;
       state.isRefreshing = false;
@@ -93,18 +97,37 @@ const authSlice = createSlice({
       state.isRefreshing = false;
       state.error = false;
     },
+    [addPet.fulfilled](state, action) {
+      state.user.myPets.push(action.payload);
+
+      state.isRefreshing = false;
+      state.error = false;
+    },
+    [removePet.fulfilled](state, action) {
+      const index = state.user.myPets.findIndex(
+        pet => pet._id === action.payload._id
+      );
+      state.user.myPets.splice(index, 1);
+
+      state.isRefreshing = false;
+      state.error = false;
+    },
     [signup.pending]: handlePending,
     [logIn.pending]: handlePending,
     [logOut.pending]: handlePending,
     [refreshUser.pending]: handlePending,
     [updateAvatar.pending]: handlePending,
     [updateInfo.pending]: handlePending,
+    [addPet.pending]: handlePending,
+    [removePet.pending]: handlePending,
     [signup.rejected]: handleRejected,
     [logIn.rejected]: handleRejected,
     [logOut.rejected]: handleRejected,
     [refreshUser.rejected]: handleRejected,
     [updateAvatar.rejected]: handleRejected,
     [updateInfo.rejected]: handleRejected,
+    [addPet.rejected]: handleRejected,
+    [removePet.rejected]: handleRejected,
   },
 });
 

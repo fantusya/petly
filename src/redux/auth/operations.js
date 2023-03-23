@@ -1,15 +1,22 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
-// axios.defaults.baseURL = 'http://localhost:3000';
+// axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
+axios.defaults.baseURL = 'http://localhost:3030';
+
+const instance = axios.create({
+  baseURL: 'http://localhost:3030',
+});
+instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
+    instance.defaults.headers.common.Authorization = '';
   },
 };
 
@@ -40,7 +47,7 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('api/users/login', credentials);
       // After successful login, add the token to the HTTP header
-      token.set(data.token);
+      token.set(data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -75,7 +82,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
@@ -112,6 +119,32 @@ export const updateInfo = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.patch(`api/users/avatars`, credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// =========== PETS ===========
+
+export const addPet = createAsyncThunk(
+  'auth/addPet',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await instance.post(`api/pets`, credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const removePet = createAsyncThunk(
+  'auth/removePet',
+  async (petId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`api/pets/${petId}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
