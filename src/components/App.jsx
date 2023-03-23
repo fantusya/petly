@@ -28,7 +28,7 @@ const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 // const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
-// const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
@@ -37,8 +37,8 @@ export const App = () => {
 
   // const { status, results } = useFetchingData('api/friends');
   // const { status, results } = useFetchingData('api/news');
-  useFetchingData('api/friends');
-  useFetchingData('api/news');
+  // useFetchingData('api/friends');
+  // useFetchingData('api/news');
 
   // useFetchingData('api/friends');
   // useFetchingData('api/news');
@@ -133,7 +133,7 @@ export const App = () => {
               element={<NoticesPage />}
             />
           </Route> */}
-          {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
+          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
           {/* <Route
             path={ROUTES.register}
             element={
