@@ -1,5 +1,3 @@
-import FriendsPopUp from "components/FriendsPopUp";
-
 import { ListFriends, ItemFriend, ItemFriendBox, ItemFriendName } from "./FriendsList.styled";
 
 export const FriendsList = ({ results }) => {
