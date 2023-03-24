@@ -14,7 +14,7 @@ const NewsPage = () => {
   const [request, setRequest] = useState('');
 
   const { status, results } = useFetchingData('api/news');
-
+  
   /*сортування новин */
 
   useEffect(() => {

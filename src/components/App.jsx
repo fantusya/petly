@@ -5,32 +5,24 @@ import { Toaster } from 'react-hot-toast';
 
 import { ROUTES } from 'constants/routes';
 // import { useFetchingData } from 'hooks';
+import { RestrictedRoute } from './Routes/PrivateRoute';
 // import { RestrictedRoute, PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
-import Example from './Example';
+// import Example from './Example';
 import NoticeCategoryItem from './NoticeCategoryItem';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
-// import RegisterPage from 'pages/RegisterPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
-// const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
-  // const dispatch = useDispatch();
-
-  // const { status, results } = useFetchingData('api/friends');
-  // const { status, results } = useFetchingData('api/news');
-
-  // useFetchingData('api/friends');
-  // useFetchingData('api/news');
-
   return (
     <>
       <Routes>
@@ -51,7 +43,7 @@ export const App = () => {
             />
           </Route> */}
           <Route path={ROUTES.friends} element={<OurFriendsPage />} />
-          {/* <Route
+          <Route
             path={ROUTES.register}
             element={
               <RestrictedRoute
@@ -59,13 +51,13 @@ export const App = () => {
                 component={<RegisterPage />}
               />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path={ROUTES.login}
             element={
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
-          /> */}
+          />
           {/* <Route
             path={ROUTES.user}
             element={
@@ -80,9 +72,6 @@ export const App = () => {
         </Route>
       </Routes>
 
-      <Example />
-      {/* // MUST BE DELETED LATER */}
-      {/* <RegisterPage /> */}
       <FontStyles />
       <GlobalStyle />
       <Toaster position="top-right" reverseOrder={false} />
