@@ -58,6 +58,8 @@ export const theme = {
     none: 'none',
     normal: '1px solid',
     bold: '2px solid',
+    transparent: '1px solid transparent',
+    input: '1px solid rgba(245, 146, 86, 0.5)',
   },
   radii: {
     none: '0',

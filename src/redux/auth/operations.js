@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
-axios.defaults.baseURL = 'http://localhost:3030';
+axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
+// axios.defaults.baseURL = 'http://localhost:3030';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3030',
+  baseURL: 'https://uninterested-hose-newt.cyclic.app',
 });
 instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 

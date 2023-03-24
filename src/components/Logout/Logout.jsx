@@ -1,9 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/operations';
 import { LogoutButton, LogoutIcon } from './Logout.styled';
-// import { ReactComponent as LogoutIcon } from 'images/svg/logout.svg';
 
 export const Logout = () => {
+  const dispatch = useDispatch();
+
   return (
-    <LogoutButton>
+    <LogoutButton type="button" onClick={() => dispatch(logOut())}>
       <LogoutIcon />
       <span>Log Out</span>
     </LogoutButton>
