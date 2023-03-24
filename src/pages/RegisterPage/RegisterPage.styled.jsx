@@ -26,7 +26,7 @@ export const RegisterForm = styled(Form)`
   flex-direction: column;
 `;
 
-export const Input = styled(Field)`
+export const InputReg = styled(Field)`
   background-color: ${p => p.theme.colors.background};
   border-radius: 40px;
   border: 1px solid ${p => p.theme.colors.accent};
@@ -38,7 +38,9 @@ export const Input = styled(Field)`
   line-height: 19px;
 
   font-size: ${p => p.theme.fontSizes[1]};
+  position: relative;
 `;
+
 export const H2 = styled.h2`
   font-weight: 700;
   font-size: ${p => p.theme.fontSizes[5]};
@@ -53,6 +55,7 @@ export const H2 = styled.h2`
 
   color: #111111;
 `;
+
 export const RegisterButton = styled.button`
   border: ${p => p.theme.borders.bold} ${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.small};
@@ -96,4 +99,19 @@ export const ErrorValid = styled(ErrorMessage)`
   color: #e2001a;
   font-size: 11px;
   line-height: 15px;
+`;
+export const Button = styled.button`
+  position: absolute;
+  top: 35px;
+  left: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: inherit;
+`;
+export const Div = styled.div`
+  position: relative;
 `;

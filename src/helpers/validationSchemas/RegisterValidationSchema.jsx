@@ -15,9 +15,7 @@ const registerValidationSchema = Yup.object({
     .max(32, 'Maximum 32 symbols')
     .required('Required field'),
   confirm: Yup.string()
-    .matches(/^\S+$/, 'Does not match the password')
-    .min(7, 'Does not match the password')
-    .max(32, 'Does not match the password')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
     .required('Required field'),
   name: Yup.string()
     .matches(
@@ -28,6 +26,8 @@ const registerValidationSchema = Yup.object({
   city: Yup.string().required('Required field (City, region)'),
   phone: Yup.string()
     .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
+    .min(13)
+    .max(13)
     .required('Required field'),
 });
 
