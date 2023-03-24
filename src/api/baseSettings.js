@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { LOCALHOST_URL } from 'constants/urls';
-import { HOST_URL, LOCALHOST_URL } from 'constants/urls';
+import { HOST_URL } from 'constants/urls';
 
 // axios.defaults.baseURL = LOCALHOST_URL;
 
