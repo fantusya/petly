@@ -1,4 +1,7 @@
+const HOST_URL = 'https://uninterested-hose-newt.cyclic.app';
+const LOCALHOST_URL = 'http://localhost:3030';
+
 const DEFAULT_IMAGE =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFm8eXQHeAtAFkY2WBztX3RFB5ONe0RAT7g&usqp=CAU';
 
-export { DEFAULT_IMAGE };
+export { HOST_URL, LOCALHOST_URL, DEFAULT_IMAGE };

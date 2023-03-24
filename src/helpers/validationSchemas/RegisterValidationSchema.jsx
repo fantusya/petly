@@ -4,7 +4,7 @@ const registerValidationSchema = Yup.object({
   email: Yup.string()
     .matches(
       /^(?=.{1,63}$)(?=.{2,}@)[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      'Invalid email(aaaaa@aaa.aaa)'
+      'Error! Email must be in a format: aaaaa@aaa.aaa'
     )
     .min(12, 'At least 12 symbols')
     .max(50, 'Maximum 50 symbols')
