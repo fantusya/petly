@@ -1,17 +1,20 @@
 import { useSelector } from 'react-redux';
 import {
-  selectNotices,
+  selectOwnNotices,
+  selectFavoriteNotices,
   selectIsLoading,
   selectError,
 } from 'redux/notices/selectors';
 
 export const useAuth = () => {
-  const noticesItems = useSelector(selectNotices);
+  const ownNotices = useSelector(selectOwnNotices);
+  const favoriteNotices = useSelector(selectFavoriteNotices);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   return {
-    noticesItems,
+    ownNotices,
+    favoriteNotices,
     isLoading,
     error,
   };
