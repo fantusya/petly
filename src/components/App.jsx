@@ -15,10 +15,10 @@ import FontStyles from 'globalStyles/fontStyles';
 import RegisterPage from 'pages/RegisterPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
 // const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
-// const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
@@ -50,7 +50,7 @@ export const App = () => {
               element={<NoticesPage />}
             />
           </Route> */}
-          {/* <Route path={ROUTES.friends} element={<OurFriendsPage />} /> */}
+          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
           {/* <Route
             path={ROUTES.register}
             element={
