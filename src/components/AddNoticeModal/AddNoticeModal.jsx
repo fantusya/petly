@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -6,14 +6,15 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-import { handleBackdropClick, handleEscClick } from 'helpers/modalHelpers'; 
+// import { handleBackdropClick, handleEscClick } from 'helpers/modalHelpers'; 
 import { addOwnNotice } from 'redux/notices/operations';
-// import { Button } from 'components/Button';  //??????
 
 import Modal from 'components/Modal';
+import { ModalCloseButton } from 'components/commonComponents';
+import { CloseButtonWrapper } from 'components/NoticeModal/NoticeModal.styled';
+import { ReactComponent as Cross } from '../../images/svg/cross.svg';
 import {
   Container,
-  CloseBtn,
   Title,
   FirstForm,
   UserComment,
@@ -22,7 +23,7 @@ import {
   TextAreaInput,
   TextLabel,
   TextInput,
-  ActionButtons,
+  ActionButton,
   RadioGroup,
   RadioLabel,
   RadioInput,
@@ -32,15 +33,17 @@ import {
   BoxQuestion,
   InputRadio,
   SexLabel,
-  MaleIcon,
-  FemaleIcon,
+  MaleIconBox,
+  FemaleIconBox,
   PhotoPetInput,
   PhotoAddContainer,
   ImageInputWrapper,
   ImageTitle,
   AddedImage,
-} from './AddModalNotice.styled';
-
+  ActionButtonsWrapper,
+} from './AddNoticeModal.styled';
+import { ReactComponent as MaleIcon } from '../../images/svg/male.svg';
+import { ReactComponent as FemaleIcon } from '../../images/svg/female.svg';
 
 
 const validationSchema = Yup.object({
@@ -87,7 +90,7 @@ const validationSchema = Yup.object({
     .max(120, '120 characters max'),
 });
 
-export const AddNoticeModal = ({ handleModalToggle }) => {
+const AddNoticeModal = ({ handleModalToggle }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isFirstRegStep, setIsFirstRegStep] = useState(true);
@@ -146,15 +149,22 @@ export const AddNoticeModal = ({ handleModalToggle }) => {
       formik.setFieldValue('photoURL', files[0]);
     }
   };
-  useEffect(() => {
-    const escClose = handleEscClick(handleModalToggle);
-    return () => escClose();
-  }, [handleModalToggle]);
+//   useEffect(() => {
+//     const escClose = handleEscClick(handleModalToggle);
+//     return () => escClose();
+//   }, [handleModalToggle]);
+
+    //e => handleBackdropClick(e, handleModalToggle)
 
   return (
-    <Modal onClick={e => handleBackdropClick(e, handleModalToggle)}> 
+    <Modal onClick={handleModalToggle}> 
       <Container>
-        <CloseBtn onClick={handleModalToggle} />
+        <CloseButtonWrapper>
+          <ModalCloseButton onClick={handleModalToggle} >
+            <Cross />
+          </ModalCloseButton>
+        </CloseButtonWrapper>
+        
         <Title>Add pet</Title>
         <form
           encType="multipart/form-data"
@@ -283,7 +293,9 @@ export const AddNoticeModal = ({ handleModalToggle }) => {
                   onChange={formik.handleChange}
                 />
                 <SexLabel htmlFor="malePet">
-                  <MaleIcon></MaleIcon>
+                  <MaleIconBox>
+                    <MaleIcon/>                
+                  </MaleIconBox>
                   Male
                 </SexLabel>
 
@@ -296,7 +308,9 @@ export const AddNoticeModal = ({ handleModalToggle }) => {
                   onChange={formik.handleChange}
                 />
                 <SexLabel htmlFor="femalePet">
-                  <FemaleIcon></FemaleIcon>
+                  <FemaleIconBox>
+                    <FemaleIcon/>                
+                  </FemaleIconBox>
                   Female
                 </SexLabel>
 
@@ -391,22 +405,22 @@ export const AddNoticeModal = ({ handleModalToggle }) => {
             </>
           )}
 
-          <ActionButtons>
+          <ActionButtonsWrapper>
             {isFirstRegStep ? (
-              <Button onClick={handleModalToggle}>Cancel</Button>
+              <ActionButton onClick={handleModalToggle}>Cancel</ActionButton>
             ) : (
-              <Button onClick={moveNextRegStep}>Back</Button>
+              <ActionButton onClick={moveNextRegStep}>Back</ActionButton>
             )}
             {isFirstRegStep ? (
-              <Button onClick={moveNextRegStep}> Next</Button>
+              <ActionButton onClick={moveNextRegStep}> Next</ActionButton>
             ) : (
-              <Button type="submit">Done</Button>
+              <ActionButton type="submit">Done</ActionButton>
             )}
-          </ActionButtons>
+          </ActionButtonsWrapper>
         </form>
       </Container>
     </Modal>
   );
 };
 
-// export default AddNoticeModal;
+export default AddNoticeModal;

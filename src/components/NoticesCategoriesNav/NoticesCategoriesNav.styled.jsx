@@ -56,61 +56,25 @@ export const NavBtn = styled(NavLink)`
   }
 `;
 
-export const FloatingAddPetBtn = styled('span')`
-  position: fixed;
-  bottom: 40px;
-  right: 20px;
-  z-index: 999;
-
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-
-  color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.accent};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[0]};
-
-  border-radius: ${p => p.theme.radii.circular};
-
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    display: none;
-  } ;
-`;
-
-export const BtnWrapper = styled('button')`
-  display: none;
-  background-color: transparent;
+export const AddButton = styled(Box)`
+  @media (max-width: 767.9px) {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    z-index: 999;
+  }
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: flex-start;
-    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-self: flex-start;
   }
-  color: ${p => p.theme.colors.text};
 `;
+
+
 
 export const AddPetText = styled('p')`
   margin-right: 12px;
   font-size: ${p => p.theme.fontSizes[4]};
 `;
 
-export const AddPetBtn = styled('span')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-
-  color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.accent};
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[0]};
-
-  border-radius: ${p => p.theme.radii.circular};
-`;
