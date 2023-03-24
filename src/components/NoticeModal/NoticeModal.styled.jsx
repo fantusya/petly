@@ -100,18 +100,16 @@ export const Record = styled.li`
 `;
 
 export const RecordName = styled.span`
-    display: inline-block;
-    width: 40%;
-  }
+  display: inline-block;
+  width: 40%;
 `;
 
 export const RecordContent = styled.span`
-    display: inline-block;
-    width: 60%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+  display: inline-block;
+  width: 60%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const Link = styled.a`
@@ -119,7 +117,7 @@ export const Link = styled.a`
   text-decoration: inherit;
   text-overflow: ellipsis;
 
-  &: hover {
+  &:hover {
     text-decoration: underline;
   }
 `;
@@ -147,6 +145,7 @@ export const AddFavoriteIcon = styled(Heart)`
 
   & path {
     fill: ${p => p.theme.colors.accent};
+  }
 `;
 
 export const ModalFavoriteButton = styled(ModalButton)`
