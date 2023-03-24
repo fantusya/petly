@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-import { MdDeleteForever } from 'react-icons/md';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import { Box } from 'components/Box/Box';
 
@@ -9,6 +7,7 @@ import {
   PetInfo,
   PetTitle,
   BtnDelete,
+  DeleteIcon,
 } from './PetCard.styled';
 
 export const PetCard = () => {
@@ -38,7 +37,7 @@ export const PetCard = () => {
         </PetInfo>
 
         <BtnDelete type="button">
-          <MdDeleteForever size={20} />
+          <DeleteIcon width={20} height={20} />
         </BtnDelete>
       </Box>
     </CardWrapper>

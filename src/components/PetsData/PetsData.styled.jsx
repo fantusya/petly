@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from 'globalStyles/theme';
+import { ReactComponent as Icon } from 'images/svg/addCard.svg';
 
 export const PetsWrapper = styled.section`
   padding-top: 46px;
@@ -37,4 +38,8 @@ export const Button = styled.button`
   background-color: ${p => p.theme.colors.accent};
 
   cursor: pointer;
+`;
+
+export const AddIcon = styled(Icon)`
+  fill: currentColor;
 `;
