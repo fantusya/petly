@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  // getByCategory,
   getFavorites,
   addToFavorites,
   removeFromFavorites,
@@ -35,13 +34,6 @@ const noticesSlice = createSlice({
   //     },
   //   },
   extraReducers: {
-    // [getByCategory.fulfilled](state, action) {
-    //   state.noticesItems = action.payload.results;
-    //   state.totalItems = action.payload.totalItems;
-
-    //   state.isLoading = false;
-    //   state.error = false;
-    // },
     [getFavorites.fulfilled](state, action) {
       if (
         !action.payload.results.some(item =>

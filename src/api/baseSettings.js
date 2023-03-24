@@ -2,25 +2,53 @@ import axios from 'axios';
 import { LOCALHOST_URL } from 'constants/urls';
 // import { HOST_URL, LOCALHOST_URL } from 'constants/urls';
 
-axios.defaults.baseURL = LOCALHOST_URL;
-
-export const instance = axios.create({
-  baseURL: LOCALHOST_URL,
-});
-
-// axios.defaults.baseURL = HOST_URL;
-// const instance = axios.create({
-//   baseURL: HOST_URL,
-// });
-instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
-
 export const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    privateRoutes.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
-    instance.defaults.headers.common.Authorization = '';
+    privateRoutes.defaults.headers.common.Authorization = '';
   },
 };
+
+export const commonRoutes = axios.create({
+  baseURL: LOCALHOST_URL,
+});
+// export const commonRoutes = axios.create({
+//   baseURL: HOST_URL,
+// });
+export const privateRoutes = axios.create({
+  baseURL: LOCALHOST_URL,
+});
+// export const privateRoutes = axios.create({
+//   baseURL: HOST_URL,
+// });
+
+// privateRoutes.interceptors.request.use(config => {
+//   const accessToken = localStorage.getItem('accessToken');
+//   config.headers.common.authorization = `Bearer ${accessToken}`;
+//   return config;
+// });
+
+privateRoutes.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+
+      try {
+        const { data } = await privateRoutes.post('api/users/refresh', {
+          refreshToken,
+        });
+
+        token.set(data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+
+        return privateRoutes(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
