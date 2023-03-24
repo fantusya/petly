@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as Icon } from 'images/svg/trash.svg';
 
 export const CardWrapper = styled.div`
   padding-top: ${p => p.theme.space[4]}px;
@@ -38,9 +39,6 @@ export const PetTitle = styled.span`
 `;
 
 export const BtnDelete = styled.button`
-  width: ${p => p.theme.radii.small};
-  height: ${p => p.theme.radii.small};
-
   position: absolute;
   top: ${p => p.theme.space[4]}px;
   right: ${p => p.theme.space[0]}px;
@@ -58,4 +56,8 @@ export const BtnDelete = styled.button`
   &:focus {
     color: ${p => p.theme.colors.accent};
   }
+`;
+
+export const DeleteIcon = styled(Icon)`
+  fill: currentColor;
 `;
