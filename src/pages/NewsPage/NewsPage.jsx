@@ -5,30 +5,8 @@ import NewsItem from 'components/NewsPage/NewsItem/NewsItem';
 import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
 import { NewsList } from './NewsPage.styled';
 import { PageTitle } from 'components/commonComponents/PageTitle.styled';
-
-/*новий формат дати */
-function toISODate(milliseconds) {
-  let date = new Date(milliseconds);
-  let y = date.getFullYear();
-  let m = date.getMonth() + 1;
-  let d = date.getDate();
-  m = m < 10 ? '0' + m : m;
-  d = d < 10 ? '0' + d : d;
-  return [d, m, y].join('/');
-}
-
-/*обрізка тексту */
-function stringMax(text, length) {
-  if (text.length > length) {
-    let newText = text.substring(0, length);
-    return newText.substring(
-      0,
-      Math.max(newText.lastIndexOf(' '), newText.lastIndexOf(',') - 1)
-    );
-  } else {
-    return text;
-  }
-}
+import { toISODate } from 'helpers/newsHelpers/dateConverting';
+import { stringMax } from 'helpers/newsHelpers/stringConverting';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);

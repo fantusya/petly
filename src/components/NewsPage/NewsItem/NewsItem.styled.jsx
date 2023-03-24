@@ -46,7 +46,7 @@ export const Border = styled.div`
 export const NewsTitle = styled.h3`
   // position: absolute;
 
-  margin-bottom: 16px;
+  margin-bottom: ${theme.space[4]}px;
 
   color: ${p => p.theme.colors.text};
 
@@ -81,7 +81,7 @@ export const NewsDateLinkContainer = styled.div`
 export const NewsDate = styled.p`
   // position: absolute;
 
-  color: rgba(17, 17, 17, 0.6);
+  color: ${theme.colors.date};
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.normal};
@@ -92,7 +92,7 @@ export const NewsDate = styled.p`
 export const NewsLink = styled.a`
   // position: absolute;
 
-  color: #f59256;
+  color: ${theme.colors.accent};
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.medium};
