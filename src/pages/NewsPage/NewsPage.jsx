@@ -4,12 +4,12 @@ import { useFetchingData } from 'hooks/useFetchingData';
 import NewsItem from 'components/NewsPage/NewsItem/NewsItem';
 import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
 import { NewsList } from './NewsPage.styled';
-import { PageTitle } from 'commonComponents/PageTitle.styled';
+import { PageTitle } from 'components/commonComponents/PageTitle.styled';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
 
-  const { status, results } = useFetchingData(1, 'api/news');
+  const { status, results } = useFetchingData('api/news');
 
   useEffect(() => {
     if (status === 'RESOLVED') {

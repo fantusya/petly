@@ -7,7 +7,7 @@ import {
   NewsDateLinkContainer,
   NewsDate,
   NewsLink,
-} from './NewsItem.styled.js';
+} from './NewsItem.styled';
 
 const NewsItem = ({ title, description, date, url }) => {
   return (
