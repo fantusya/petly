@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { instance } from 'api/baseSettings';
+import { commonRoutes } from 'api/baseSettings';
 import { Status } from 'constants/status';
 
 export const useFetchingData = url => {
@@ -12,7 +12,7 @@ export const useFetchingData = url => {
       setStatus(Status.PENDING);
 
       try {
-        const data = await instance(url);
+        const data = await commonRoutes(url);
         console.log(data.data);
         setResults(data.data);
         setStatus(Status.RESOLVED);

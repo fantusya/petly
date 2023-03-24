@@ -11,18 +11,18 @@ export const token = {
   },
 };
 
-export const commonRoutes = axios.create({
-  baseURL: LOCALHOST_URL,
-});
 // export const commonRoutes = axios.create({
-//   baseURL: HOST_URL,
+//   baseURL: LOCALHOST_URL,
 // });
-export const privateRoutes = axios.create({
-  baseURL: LOCALHOST_URL,
+export const commonRoutes = axios.create({
+  baseURL: HOST_URL,
 });
 // export const privateRoutes = axios.create({
-//   baseURL: HOST_URL,
+//   baseURL: LOCALHOST_URL,
 // });
+export const privateRoutes = axios.create({
+  baseURL: HOST_URL,
+});
 
 // privateRoutes.interceptors.request.use(config => {
 //   const accessToken = localStorage.getItem('accessToken');
