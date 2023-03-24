@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-// import { CloseButton } from 'components/Button/CloseButton';  // ???
 
 import maleIcon from 'images/male-icon.png';
 import femaleIcon from 'images/female-icon.png';
+import { ModalButton } from 'components/commonComponents';
 
 export const Container = styled.div`
   display: flex;
@@ -12,21 +12,6 @@ export const Container = styled.div`
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 40px 80px;
-  }
-`;
-
-export const CloseBtn = styled(CloseButton)`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 34px;
-  height: 34px;
-
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    top: 24px;
-    right: 24px;
-    width: 44px;
-    height: 44px;
   }
 `;
 
@@ -301,13 +286,13 @@ export const SexLabel = styled.label`
   }
 `;
 
-export const MaleIcon = styled.div`
+export const MaleIconBox = styled.div`
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-  background-image: url(${maleIcon});
-  background-repeat: no-repeat;
-  background-size: contain, cover;
+//   background-image: url(${maleIcon});
+//   background-repeat: no-repeat;
+//   background-size: contain, cover;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 60px;
@@ -316,13 +301,13 @@ export const MaleIcon = styled.div`
   }
 `;
 
-export const FemaleIcon = styled.div`
+export const FemaleIconBox = styled.div`
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-  background-image: url(${femaleIcon});
-  background-repeat: no-repeat;
-  background-size: contain, cover;
+//   background-image: url(${femaleIcon});
+//   background-repeat: no-repeat;
+//   background-size: contain, cover;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 60px;
@@ -409,7 +394,7 @@ export const AddedImage = styled.div`
   }
 `;
 
-export const ActionButtons = styled.div`
+export const ActionButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -421,3 +406,31 @@ export const ActionButtons = styled.div`
     // gap: ${p => p.theme.space[3]}px;
   }
 `;
+
+export const ActionButton = styled(ModalButton)`
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.white};
+    background-color: ${p => p.theme.colors.accent};
+
+    transition: ${p => p.theme.transition.main};
+  }
+`;
+
+
+
+
+// export const CloseBtn = styled(CloseButton)`
+//   position: absolute;
+//   top: 20px;
+//   right: 20px;
+//   width: 34px;
+//   height: 34px;
+
+//   @media (min-width: ${p => p.theme.breakpoints[1]}) {
+//     top: 24px;
+//     right: 24px;
+//     width: 44px;
+//     height: 44px;
+//   }
+// `;

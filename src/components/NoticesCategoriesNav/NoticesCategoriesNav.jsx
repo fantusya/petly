@@ -1,30 +1,26 @@
-import { useAuth } from 'hooks';
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useAuth } from 'hooks';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
   NavBox,
   NavBtnWrapper,
   NavBtn,
-  FloatingAddPetBtn,
-  BtnWrapper,
-  AddPetText,
-  AddPetBtn,
+  AddButton,
 } from './NoticesCategoriesNav.styled';
+import { AddPetBtnCircleLink, AddPetBtnLink } from 'components/AddNoticeButton/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
+  const [extended, setExtended] = useState(false);
   const { isLoggedIn } = useAuth();
 
   const navigate = useNavigate();
-  const location = useLocation().pathname.split('/').pop();
 
-  const handleAddPet = () => {
-    if (!isLoggedIn) {
-      toast.warn('You must login first');
-      return;
-    }
-
-    navigate(`${location}/addpet`);
+  const handleModalToggle = () => {
+    setExtended(prev => {
+      return !prev;
+    });
   };
 
   return (
@@ -40,16 +36,24 @@ export const NoticesCategoriesNav = () => {
           </>
         )}
       </NavBtnWrapper>
-      <BtnWrapper>
-        <AddPetText>Add pet</AddPetText>
-        <AddPetBtn onClick={handleAddPet}>
-          {/* <svg> <svg/> */}
-        </AddPetBtn>
-      </BtnWrapper>
-      <FloatingAddPetBtn onClick={handleAddPet} type="button">
-        Add pet
-        {/* <svg> <svg/> */}
-      </FloatingAddPetBtn>
+
+      <AddButton
+        onClick={e => {
+          e.preventDefault();
+          isLoggedIn ? handleModalToggle() : navigate('/login');
+        }}
+      >
+        {window.innerWidth < 768 ? (
+          <AddPetBtnCircleLink>Add pet</AddPetBtnCircleLink>
+        ) : (
+          <AddPetBtnLink>Add pet</AddPetBtnLink>
+        )}
+      </AddButton>
+      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
+
+
     </NavBox>
   );
 };
+
+export default NoticesCategoriesNav;

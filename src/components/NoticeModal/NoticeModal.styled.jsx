@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from 'components/Box/Box';
 
-import { ReactComponent as Heart } from '../../images/svg/heart.svg';
+import { ReactComponent as Heart } from '../../images/svg/notFavorite.svg';
 import { Label, ModalButton } from 'components/commonComponents';
 
 export const Backdrop = styled(Box)`
