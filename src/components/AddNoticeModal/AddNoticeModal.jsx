@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-// import { handleBackdropClick, handleEscClick } from 'helpers/modalHelpers'; 
+// import { handleBackdropClick, handleEscClick } from 'helpers/modalHelpers';
 import { addOwnNotice } from 'redux/notices/operations';
 
 import Modal from 'components/Modal';
@@ -96,11 +96,9 @@ const AddNoticeModal = ({ handleModalToggle }) => {
   const [image, setImage] = useState(null);
 
   const { pathname } = useLocation();
-  
+
   const moveNextRegStep = () => {
-    isFirstRegStep
-      ? setIsFirstRegStep(false)
-      : setIsFirstRegStep(true);
+    isFirstRegStep ? setIsFirstRegStep(false) : setIsFirstRegStep(true);
   };
 
   const categoryByDefault = () => {
@@ -148,23 +146,22 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       formik.setFieldValue('photoURL', files[0]);
     }
   };
+  //   useEffect(() => {
+  //     const escClose = handleEscClick(handleModalToggle);
+  //     return () => escClose();
+  //   }, [handleModalToggle]);
 
-//   useEffect(() => {
-//     const escClose = handleEscClick(handleModalToggle);
-//     return () => escClose();
-//   }, [handleModalToggle]);
-
-    //e => handleBackdropClick(e, handleModalToggle)
+  //e => handleBackdropClick(e, handleModalToggle)
 
   return (
-    <Modal onClick={handleModalToggle}> 
+    <Modal onClick={handleModalToggle}>
       <Container>
         <CloseButtonWrapper>
-          <ModalCloseButton onClick={handleModalToggle} >
+          <ModalCloseButton onClick={handleModalToggle}>
             <Cross />
           </ModalCloseButton>
         </CloseButtonWrapper>
-        
+
         <Title>Add pet</Title>
         <form
           encType="multipart/form-data"
@@ -176,7 +173,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
           {isFirstRegStep && (
             <FirstForm>
               <UserComment>
-              You can add a pet for others to buy or take it into good hands.
+                You can add a pet for others to buy or take it into good hands.
               </UserComment>
               <RadioGroup onChange={formik.handleChange} required>
                 <RadioLabel>
@@ -280,9 +277,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
           {!isFirstRegStep && (
             <>
               <SexFormBox>
-                <BoxQuestion>
-                  The sex:
-                </BoxQuestion>
+                <BoxQuestion>The sex:</BoxQuestion>
 
                 <InputRadio
                   id="malePet"
@@ -294,9 +289,9 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 />
                 <SexLabel htmlFor="malePet">
                   <MaleIconBox>
-                    <MaleIcon/>                
+                    <MaleIcon />
                   </MaleIconBox>
-                   Male
+                  Male
                 </SexLabel>
 
                 <InputRadio
@@ -309,11 +304,10 @@ const AddNoticeModal = ({ handleModalToggle }) => {
                 />
                 <SexLabel htmlFor="femalePet">
                   <FemaleIconBox>
-                    <FemaleIcon/>                
+                    <FemaleIcon />
                   </FemaleIconBox>
                   Female
                 </SexLabel>
-
               </SexFormBox>
               <InputCont>
                 <TextLabel htmlFor="locationPet">
@@ -424,4 +418,3 @@ const AddNoticeModal = ({ handleModalToggle }) => {
 };
 
 export default AddNoticeModal;
-
