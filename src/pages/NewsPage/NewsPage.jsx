@@ -32,7 +32,7 @@ function stringMax(text, length) {
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
-  const [test, setTest] = useState([]);
+  const [publicNews, setPublicNews] = useState([]);
   const [request, setRequest] = useState('');
 
   const { status, results } = useFetchingData('api/news');
@@ -58,7 +58,7 @@ const NewsPage = () => {
             : 'Two or three weeks ago',
       }));
       setNews(NewDateNews);
-      setTest(NewDateNews);
+      setPublicNews(NewDateNews);
     }
   }, [status, results]);
 
@@ -76,10 +76,10 @@ const NewsPage = () => {
       /*якщо нічого не знайдено,- рендер всього списку */
       if (filterNews.length === 0) {
         console.log('нічого не знайдено');
-        setTest(news);
+        setPublicNews(news);
         return;
       }
-      setTest(filterNews);
+      setPublicNews(filterNews);
     }
 
     filterArray();
@@ -103,7 +103,7 @@ const NewsPage = () => {
 
       <SearchBar setNews={handleFormSubmit} />
       <NewsList>
-        {test.map(article => (
+        {publicNews.map(article => (
           <NewsItem
             key={article._id}
             title={article.title}
