@@ -12,11 +12,11 @@ import NoticeCategoryItem from './NoticeCategoryItem';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
-import RegisterPage from 'pages/RegisterPage';
+// import RegisterPage from 'pages/RegisterPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
-// const NewsPage = lazy(() => import('pages/NewsPage'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
 // const NoticesPage = lazy(() => import('pages/NoticesPage'));
 const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -36,7 +36,7 @@ export const App = () => {
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          {/* <Route path={ROUTES.news} element={<NewsPage />} /> */}
+          <Route path={ROUTES.news} element={<NewsPage />} />
           <Route path="notice" element={<NoticeCategoryItem />} />
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
@@ -82,7 +82,7 @@ export const App = () => {
 
       <Example />
       {/* // MUST BE DELETED LATER */}
-      <RegisterPage />
+      {/* <RegisterPage /> */}
       <FontStyles />
       <GlobalStyle />
       <Toaster position="top-right" reverseOrder={false} />

@@ -18,14 +18,23 @@ const SearchBar = ({ setNews }) => {
     // ЛОГІКУ фільтрування та сортування ВИКОНУЄ Міша!!!!!!!!!!!
     // ДОДAСТЬ після мержа гілки!!!!!!!!!!!!!!
     event.preventDefault();
-    //  const [news, setNews] = useState([]);
-    //  const { status, results } = useFetchingData(1, 'api/news');
+
+    if (searchTerm.trim() === '') {
+      console.log('введіть пошуковий запит');
+      setNews(searchTerm);
+      return;
+    }
+    setNews(searchTerm);
+    setSearchTerm(searchTerm);
   };
+
+  //  const [news, setNews] = useState([]);
+  //  const { status, results } = useFetchingData(1, 'api/news');
 
   const handleResetSearch = () => {
     setSearchTerm('');
     setIsSearchEmpty(true);
-    setNews([]);
+    setNews('');
   };
 
   const handleSearchInputChange = event => {
@@ -34,14 +43,14 @@ const SearchBar = ({ setNews }) => {
   };
 
   return (
-    <SearchBarContainer>
+    <SearchBarContainer onSubmit={handleSearch}>
       <SearchInput
         type="text"
         value={searchTerm}
         onChange={handleSearchInputChange}
         placeholder="Search"
       />
-      <SearchButton onClick={handleSearch}>
+      <SearchButton type="submit">
         <SearchIconContainer>
           <SearchIcon />
         </SearchIconContainer>
