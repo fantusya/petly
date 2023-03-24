@@ -1,12 +1,7 @@
 import styled from 'styled-components';
-import { theme } from 'globalStyles';
 import { Box } from 'components/Box/Box';
 
-export const NoticePageContainer = styled(Box)`
-  background-color: ${p => theme.colors.background};
-`;
-
-export const NoticesPageMain = styled.main`
+export const NoticesPageMain = styled(Box)`
 position: relative;
   margin-top: 30px;
   padding: 0 0 100px 0;
@@ -17,3 +12,8 @@ position: relative;
     padding-bottom: 200px;
   }
 `;
+
+
+// export const NoticePageContainer = styled(Box)`
+//   background-color: ${p => theme.colors.background};
+// `;
