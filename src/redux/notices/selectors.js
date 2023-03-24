@@ -1,6 +1,8 @@
 // import { createSelector } from '@reduxjs/toolkit';
 
-export const selectNotices = state => state.notices.noticesItems;
+export const selectOwnNotices = state => state.notices.ownNotices;
+
+export const selectFavoriteNotices = state => state.notices.favoriteNotices;
 
 export const selectIsLoading = state => state.notices.isLoading;
 

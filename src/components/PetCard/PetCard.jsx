@@ -1,8 +1,5 @@
-/* eslint-disable no-undef */
-import { MdDeleteForever } from 'react-icons/md';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import { Box } from 'components/Box/Box';
-import { theme } from 'globalStyles/theme';
 
 import {
   CardWrapper,
@@ -10,12 +7,13 @@ import {
   PetInfo,
   PetTitle,
   BtnDelete,
+  DeleteIcon,
 } from './PetCard.styled';
 
 export const PetCard = () => {
   return (
     <CardWrapper>
-      <Box border={theme.borders.normal} borderColor={theme.colors.transparent}>
+      <Box border="normal" borderColor="transparent">
         <Image src={DEFAULT_IMAGE} alt="My pet" width={240} />
       </Box>
 
@@ -39,7 +37,7 @@ export const PetCard = () => {
         </PetInfo>
 
         <BtnDelete type="button">
-          <MdDeleteForever size={20} />
+          <DeleteIcon width={20} height={20} />
         </BtnDelete>
       </Box>
     </CardWrapper>

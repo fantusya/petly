@@ -1,9 +1,15 @@
-import { Formik, Form, Field } from 'formik';
-import { schema } from 'helpers/validationSchemas/loginSchema';
+import { Formik } from 'formik';
+import schema from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 // import { useDispatch } from 'react-redux';
-import { RouteFormLoginRegister } from '../routeFormLoginRegister.jsx';
+import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
+import {
+  TitleAuth,
+  FormCustom,
+  LoginButton,
+  Input,
+} from './LoginPage.styled.jsx';
 
 export const LoginPage = () => {
   // const dispatch = useDispatch();
@@ -20,25 +26,22 @@ export const LoginPage = () => {
   return (
     <Box as="section">
       <Container>
-        <h1>Login</h1>
+        <TitleAuth>Login</TitleAuth>
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={handleSubmit}
           validationSchema={schema}
         >
-          <Form autoComplete="on">
-            <label htmlFor="email">Email</label>
-            <Field type="email" name="email" placeholder="Email" required />
-
-            <label htmlFor="password">Password</label>
-            <Field
+          <FormCustom autoComplete="off">
+            <Input type="email" name="email" placeholder="Email" required />
+            <Input
               type="password"
               name="password"
               placeholder="Password"
               required
             />
-            <button type="submit">Login</button>
-          </Form>
+            <LoginButton type="submit">Login</LoginButton>
+          </FormCustom>
         </Formik>
         <RouteFormLoginRegister
           link="/register"

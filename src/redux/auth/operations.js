@@ -1,24 +1,28 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { privateRoutes, token } from 'api/baseSettings';
+// import { LOCALHOST_URL, HOST_URL } from 'constants/urls';
 
-// axios.defaults.baseURL = 'https://uninterested-hose-newt.cyclic.app';
-axios.defaults.baseURL = 'http://localhost:3030';
+// const instance = axios.create({
+//   baseURL: HOST_URL,
+// });
 
-const instance = axios.create({
-  baseURL: 'http://localhost:3030',
-});
-instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
+// const instance = axios.create({
+//   baseURL: LOCALHOST_URL,
+// });
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-    instance.defaults.headers.common.Authorization = '';
-  },
-};
+// instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
+
+// const token = {
+//   set(token) {
+//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   },
+//   unset() {
+//     axios.defaults.headers.common.Authorization = '';
+//     instance.defaults.headers.common.Authorization = '';
+//   },
+// };
 
 /*
  * POST @ /users/signup
@@ -28,7 +32,10 @@ export const signup = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('api/users/signup', credentials);
+      const { data } = await privateRoutes.post(
+        'api/users/signup',
+        credentials
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -44,9 +51,10 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('api/users/login', credentials);
+      const { data } = await privateRoutes.post('api/users/login', credentials);
       // After successful login, add the token to the HTTP header
       token.set(data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -60,7 +68,7 @@ export const logIn = createAsyncThunk(
  */
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.get('api/users/logout');
+    await privateRoutes.get('api/users/logout');
     // After a successful logout, remove the token from the HTTP header
     token.unset();
   } catch (error) {
@@ -85,14 +93,13 @@ export const refreshUser = createAsyncThunk(
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
-      // console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
       // If there is a token, add it to the HTTP header and perform the request
       token.set(persistedToken);
-      const { data } = await axios.get('api/users/current');
+      const { data } = await privateRoutes.get('api/users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -105,7 +112,7 @@ export const updateAvatar = createAsyncThunk(
   async (avatar, thunkAPI) => {
     try {
       console.log('avatar', avatar);
-      const { data } = await axios.put(`api/users/avatars`, avatar);
+      const { data } = await privateRoutes.put(`api/users/avatars`, avatar);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -117,7 +124,10 @@ export const updateInfo = createAsyncThunk(
   'auth/updateUser',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.patch(`api/users/avatars`, credentials);
+      const { data } = await privateRoutes.patch(
+        `api/users/avatars`,
+        credentials
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -131,7 +141,11 @@ export const addPet = createAsyncThunk(
   'auth/addPet',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await instance.post(`api/pets`, credentials);
+      const { data } = await privateRoutes.post(`api/pets`, credentials, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -143,7 +157,7 @@ export const removePet = createAsyncThunk(
   'auth/removePet',
   async (petId, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`api/pets/${petId}`);
+      const { data } = await privateRoutes.delete(`api/pets/${petId}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
