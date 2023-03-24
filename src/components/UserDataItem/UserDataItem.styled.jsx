@@ -116,5 +116,3 @@ export const Check = styled(CheckIcon)`
     height: 20px;
   }
 `;
-
-export default UserDataItem;
