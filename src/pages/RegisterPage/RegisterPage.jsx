@@ -48,9 +48,6 @@ export const RegisterPage = () => {
   ) => {
     dispatch(signup({ email, password, name, city, phone }));
     resetForm();
-
-    console.log(email);
-    console.log(password);
   };
 
   const steps = [
@@ -98,12 +95,7 @@ const StepOne = props => {
 
   return (
     <>
-      <InputReg
-        type="email"
-        name="email"
-        placeholder="Email"
-        autoComplete="off"
-      />
+      <InputReg type="email" name="email" placeholder="Email" />
       <ErrorValid name="email" component="div" />
       <Div>
         <InputReg
