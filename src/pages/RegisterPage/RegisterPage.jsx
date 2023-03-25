@@ -8,6 +8,8 @@ import {
   ErrorValid,
   Button,
   Div,
+  OpenEyaIcon,
+  ClosedEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled';
 import { Formik } from 'formik';
 
@@ -47,6 +49,7 @@ export const RegisterPage = () => {
     { resetForm }
   ) => {
     dispatch(signup({ email, password, name, city, phone }));
+
     resetForm();
   };
 
@@ -106,7 +109,7 @@ const StepOne = props => {
           type={passwordVisibility ? 'text' : 'password'}
         ></InputReg>
         <Button type="button" onClick={toggleShowPassword}>
-          {passwordVisibility ? '🐵' : '🙈'}
+          {passwordVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
         </Button>
       </Div>
       <ErrorValid name="password" component="div" />

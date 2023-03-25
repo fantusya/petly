@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { ErrorMessage, Field, Form } from 'formik';
+import { ReactComponent as Open } from 'images/svg/openedEye.svg';
+import { ReactComponent as Closed } from 'images/svg/closedEye.svg';
 
 // • позиционирование элемента относительно других (position/top/left)
 // • margin/padding/width/height
@@ -102,7 +104,7 @@ export const ErrorValid = styled(ErrorMessage)`
 `;
 export const Button = styled.button`
   position: absolute;
-  top: 35px;
+  top: 37px;
   left: 240px;
   display: flex;
   flex-direction: column;
@@ -115,3 +117,6 @@ export const Button = styled.button`
 export const Div = styled.div`
   position: relative;
 `;
+
+export const OpenEyaIcon = styled(Open)``;
+export const ClosedEyaIcon = styled(Closed)``;
