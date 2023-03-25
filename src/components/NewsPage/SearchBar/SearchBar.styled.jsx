@@ -1,5 +1,5 @@
-import { FaTimesCircle } from 'react-icons/fa';
 import { ReactComponent as SearchSvg } from 'images/svg/searchIcon.svg';
+import { ReactComponent as ClearSvg } from 'images/svg/clear.svg';
 import styled from 'styled-components';
 
 export const SearchBarForm = styled.form`
@@ -45,8 +45,7 @@ export const SearchInput = styled.input`
   color: ${p => p.theme.colors.inputTxt};
   line-height: ${p => p.theme.lineHeights.text};
   letter-spacing: ${p => p.theme.letterSpacing.text};
-
-    &:focus {
+  &:focus {
     border-color: #333;
     border: 1px solid rgba(245, 146, 86, 0.5);
   }
@@ -59,7 +58,7 @@ export const SearchInput = styled.input`
     color: ${p => p.theme.colors.inputTxt};
   }
 
- @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 9px 20px;
 
     font-size: ${p => p.theme.fontSizes[4]};
@@ -90,7 +89,6 @@ export const ResetIconContainer = styled.div`
   cursor: pointer;
 `;
 
-
 export const SearchIcon = styled(SearchSvg)`
   display: inline-block;
   width: 100%;
@@ -102,24 +100,21 @@ export const SearchIcon = styled(SearchSvg)`
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[3]};
-
-  &:hover, &:focus {
+  }
+  &:hover,
+  &:focus {
     color: green;
   }
 `;
 
-export const ResetIcon = styled(Clear)`
+export const ResetIcon = styled(ClearSvg)`
   color: ${p => p.theme.colors.text};
 
   font-size: ${p => p.theme.fontSizes[1]};
 
-  transition: ${theme.transition.main};
+  transition: ${p => p.theme.transition.main};
 
   &:hover {
     color: red;
-  }
-
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[3]};
   }
 `;

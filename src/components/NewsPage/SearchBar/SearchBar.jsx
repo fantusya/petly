@@ -31,7 +31,7 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   const handleSearchButtonClick = () => {
-    setNews(searchTerm);
+    setSearchTerm(searchTerm);
   };
 
   const handleResetSearch = () => {
