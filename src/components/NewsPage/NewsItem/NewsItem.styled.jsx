@@ -6,7 +6,7 @@ export const NewsItemContainer = styled.div`
 
   margin-bottom: 40px;
 
-  padding: 0px 20px 0px 20px;
+  // padding: 0px 20px 0px 20px;
 
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@ export const NewsItemContainer = styled.div`
   text-align: left;
 
   @media (min-width: ${theme.breakpoints[1]}) {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -46,7 +46,7 @@ export const Border = styled.div`
 export const NewsTitle = styled.h3`
   // position: absolute;
 
-  margin-bottom: ${theme.space[4]}px;
+  margin-bottom: 16px;
 
   color: ${p => p.theme.colors.text};
 
@@ -81,7 +81,7 @@ export const NewsDateLinkContainer = styled.div`
 export const NewsDate = styled.p`
   // position: absolute;
 
-  color: ${theme.colors.date};
+  color: rgba(17, 17, 17, 0.6);
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.normal};
@@ -92,7 +92,7 @@ export const NewsDate = styled.p`
 export const NewsLink = styled.a`
   // position: absolute;
 
-  color: ${theme.colors.accent};
+  color: #f59256;
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.medium};

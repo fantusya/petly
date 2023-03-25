@@ -1,11 +1,15 @@
 import {
   H2,
   Wrapper,
-  Input,
+  InputReg,
   RegisterForm,
   RegisterButton,
   Text,
   ErrorValid,
+  Button,
+  Div,
+  OpenEyaIcon,
+  ClosedEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled';
 import { Formik } from 'formik';
 
@@ -14,7 +18,7 @@ import registerValidationSchema from 'helpers/validationSchemas/RegisterValidati
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { signup } from 'redux/auth/operations';
+import { signup, logIn } from 'redux/auth/operations';
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
 
 const initialValues = {
@@ -27,6 +31,7 @@ const initialValues = {
 };
 
 export const RegisterPage = () => {
+  // ____________________________________________________________________________
   const [currentStep, setCarrentStep] = useState(0);
 
   const dispatch = useDispatch();
@@ -39,21 +44,26 @@ export const RegisterPage = () => {
     setCarrentStep(prev => prev - 1);
   };
 
+  const handleSubmit = async (
+    { email, password, name, city, phone },
+    { resetForm }
+  ) => {
+    const resultSignup = await dispatch(
+      signup({ email, password, name, city, phone })
+    );
+    if (resultSignup.type === 'auth/signup/fulfilled') {
+      console.log('resultSignup', resultSignup);
+      const resultLogIn = await dispatch(logIn({ email, password }));
+      console.log('resultLogIn', resultLogIn);
+    }
+
+    resetForm();
+  };
+
   const steps = [
     <StepOne next={handleNextStep} />,
     <StepTwo back={handlePrevStep} />,
   ];
-
-  const handleSubmit = (
-    { email, password, name, city, phone },
-    { resetForm }
-  ) => {
-    dispatch(signup({ email, password, name, city, phone }));
-    resetForm();
-
-    console.log(email);
-    console.log(password);
-  };
 
   return (
     <section>
@@ -67,7 +77,9 @@ export const RegisterPage = () => {
               validationSchema={registerValidationSchema}
               autoComplete="off"
             >
-              <RegisterForm>{steps[currentStep]}</RegisterForm>
+              <RegisterForm autoComplete="off">
+                {steps[currentStep]}
+              </RegisterForm>
             </Formik>
             <Text>
               Already have an account?
@@ -75,10 +87,10 @@ export const RegisterPage = () => {
             </Text>
 
             {/* <RouteFormLoginRegister
-            link="/login"
-            question="Already have an account??"
-            pageName="login"
-          /> */}
+              link="/login"
+              question="Already have an account??"
+              pageName="login"
+            /> */}
           </>
         </Wrapper>
       </Container>
@@ -87,20 +99,39 @@ export const RegisterPage = () => {
 };
 
 const StepOne = props => {
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
+
+  const toggleShowPassword = () => {
+    setPasswordVisibility(!passwordVisibility);
+  };
+
   return (
     <>
-      <Input type="email" name="email" placeholder="Email" autoComplete="off" />
+      <InputReg type="email" name="email" placeholder="Email" />
       <ErrorValid name="email" component="div" />
-      <Input type="password" name="password" placeholder="Password" />
+      <Div>
+        <InputReg
+          // type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          type={passwordVisibility ? 'text' : 'password'}
+        ></InputReg>
+        <Button type="button" onClick={toggleShowPassword}>
+          {passwordVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
+        </Button>
+      </Div>
       <ErrorValid name="password" component="div" />
-      <Input type="password" name="confirm" placeholder="Confirm Password" />
+
+      <InputReg
+        // type="password"
+        type={passwordVisibility ? 'text' : 'password'}
+        name="confirm"
+        placeholder="Confirm Password"
+      />
+
       <ErrorValid name="confirm" component="div" />
-      <RegisterButton
-        type="button"
-        onClick={props.next}
-        id="next"
-        // disabled={props.valid}
-      >
+      <RegisterButton type="button" onClick={props.next} disabled={false}>
         Next
       </RegisterButton>
     </>
@@ -109,11 +140,11 @@ const StepOne = props => {
 const StepTwo = props => {
   return (
     <>
-      <Input type="text" name="name" placeholder="Name" />
+      <InputReg type="text" name="name" placeholder="Name" />
       <ErrorValid name="name" component="div" />
-      <Input type="text" name="city" placeholder="City, region" />
+      <InputReg type="text" name="city" placeholder="City, region" />
       <ErrorValid name="city" component="div" />
-      <Input type="tel" name="phone" placeholder="Mobile phone" />
+      <InputReg type="tel" name="phone" placeholder="Mobile phone" />
       <ErrorValid name="phone" component="div" />
 
       <RegisterButton type="submit">Register</RegisterButton>

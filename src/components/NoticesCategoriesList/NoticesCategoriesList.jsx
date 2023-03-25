@@ -1,27 +1,63 @@
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import { Status } from 'constants/status';
+import { getNoticeByCategory } from 'api/notice';
 import NoticeCategoryItem from '../NoticeCategoryItem';
-import NoticeModal from 'components/NoticeModal';
+// import NoticeModal from 'components/NoticeModal';
 import { NoticesCardsList } from './NoticesCategoriesList.styled';
+import { useLocation } from 'react-router-dom';
+import { useNotices } from 'hooks/useNotices';
 
 export const NoticesCategoriesList = () => {
-  // Move to NoticesPage
-  const [state, setState] = useState({
-    noticeDetails: false,
-    addNotice: false,
-  });
+  const [status, setStatus] = useState(Status.IDLE);
+  const [results, setResults] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const stateHandler = value => {
-    setState({ ...state, [value]: !state[value] });
-  };
-  //
+  const location = useLocation();
+  const categoryName = location.pathname.split('/').reverse()[0];
+  const { query: search } = useNotices();
+
+  useEffect(() => {
+    async function getNotices() {
+      setResults([]);
+      setStatus(Status.PENDING);
+
+      try {
+        if (page === 0) {
+          setPage(1);
+          return;
+        }
+
+        const notices = await getNoticeByCategory({
+          categoryName,
+          search,
+          page,
+        });
+
+        console.log('notices', notices);
+
+        // setResults(prevState => [...prevState, ...notices.results]);
+        setResults(notices.results);
+        // setTotal(movies.total);
+        setStatus(Status.RESOLVED);
+      } catch (error) {
+        setStatus(Status.REJECTED);
+      }
+    }
+
+    getNotices();
+  }, [categoryName, search, page]);
+
   return (
     <>
-      <NoticesCardsList stateHandler={stateHandler}>
-        <NoticeCategoryItem stateHandler={stateHandler} state={state} />
-        <NoticeCategoryItem stateHandler={stateHandler} state={state} />
-      </NoticesCardsList>
-      {state.noticeDetails ? <NoticeModal stateHandler={stateHandler} /> : null}
+      {status === Status.PENDING && <b>LOADING</b>}
+      {status === Status.RESOLVED && (
+        <NoticesCardsList>
+          {results.map(item => (
+            <NoticeCategoryItem key={item._id} notice={item} />
+          ))}
+        </NoticesCardsList>
+      )}
+      {status === Status.REJECTED && <b>ERROR</b>}
     </>
   );
 };

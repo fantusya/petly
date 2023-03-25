@@ -3,8 +3,8 @@ import schema from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
-import { logIn } from '../../redux/auth/operations';
 import { useState } from 'react';
 import { RxLockOpen1, RxLockClosed } from 'react-icons/rx';
 
@@ -20,8 +20,8 @@ import {
 } from '../authFormStyle.styled';
 
 export const LoginPage = () => {
-  const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Привет я твой боди', values);

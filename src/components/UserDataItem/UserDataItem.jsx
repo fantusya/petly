@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateInfo } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import {
   InfoItem,
@@ -15,6 +17,7 @@ export const UserDataItem = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
   const { user } = useAuth();
+  const dispatch = useDispatch();
 
   console.log(user, 'user');
   console.log(isDisabled, 'isDisabled');
@@ -34,6 +37,11 @@ export const UserDataItem = () => {
       return;
     }
     console.log('Submit');
+
+    dispatch(updateInfo(e.currentTarget.value));
+
+    setIsDisabled(true);
+    setIsUpdating(false);
   };
 
   const { name, email, birthDate, phone, city } = user;

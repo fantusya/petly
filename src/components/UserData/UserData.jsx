@@ -1,18 +1,15 @@
+import UserPhoto from 'components/UserData/UserPhoto';
 import { Box } from 'components/Box/Box';
 import {
   TitleContainer,
   Title,
   UserSection,
   UserContainer,
-  UserPhoto,
-  UserPhotoButton,
   UserDataList,
-  Kamera,
   UserThumb,
 } from './UserData.styled';
 import UserDataItem from 'components/UserDataItem';
 import Logout from 'components/Logout';
-import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserData = () => {
   return (
@@ -23,15 +20,7 @@ export const UserData = () => {
 
       <UserContainer>
         <UserSection>
-          <div>
-            <UserPhoto>
-              <AvatarPlus />
-            </UserPhoto>
-            <UserPhotoButton>
-              <Kamera />
-              <span>Edit photo</span>
-            </UserPhotoButton>
-          </div>
+          <UserPhoto />
 
           <UserThumb>
             <UserDataList>
@@ -47,4 +36,3 @@ export const UserData = () => {
 };
 
 export default UserData;
-
