@@ -19,7 +19,10 @@ export const UserPage = () => {
   }, [accessToken, refreshToken]);
 
   return (
-    <Box display={['block', 'block', ' block', 'flex']}>
+    <Box
+      display={['block', 'block', ' block', 'flex']}
+      pt={['58px', '58px', '72px', '68px']}
+    >
       {/* <Helmet> */}
       <title>Profile</title>
       {/* </Helmet> */}

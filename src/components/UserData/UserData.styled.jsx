@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { theme } from 'globalStyles/theme';
 import { Container } from 'globalStyles/globalStyle';
-import { ReactComponent as Icon } from 'images/svg/kamera.svg';
 
 export const TitleContainer = styled(Container)`
   margin-bottom: 18px;
@@ -70,72 +69,6 @@ export const UserSection = styled.div`
   }
 `;
 
-export const UserPhoto = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 233px;
-  height: 233px;
-  margin: 0 auto 12px;
-  border-radius: ${p => p.theme.radii.circular};
-  box-shadow: ${p => p.theme.shadows.avatar};
-
-  background-color: ${p => p.theme.colors.background};
-
-  @media (min-width: ${theme.breakpoints[1]}) {
-    margin-bottom: 8px;
-  }
-
-  @media (min-width: ${theme.breakpoints[2]}) {
-    margin-bottom: 0;
-  }
-`;
-
-export const UserPhotoButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin: 0 24px 36px auto;
-  padding: 4px 8px;
-  border: none;
-  border-radius: ${p => p.theme.radii.small};
-  cursor: pointer;
-
-  font-family: ${p => p.theme.fonts.text};
-  font-size: ${p => p.theme.fontSizes[0]};
-  line-height: ${p => p.theme.lineHeights.logo};
-
-  color: ${p => p.theme.colors.accent};
-  background-color: ${p => p.theme.colors.transparent};
-
-  transition: ${p => p.theme.transition.main};
-
-  span {
-    color: ${theme.colors.text};
-    transition: ${theme.transition.main};
-  }
-
-  &:hover,
-  &:focus {
-    color: ${p => p.theme.colors.white};
-    background-color: ${p => p.theme.colors.accent};
-
-    span {
-      color: ${p => p.theme.colors.white};
-    }
-  }
-
-  @media (min-width: ${theme.breakpoints[1]}) {
-    margin: 0 0 0 auto;
-  }
-
-  @media (min-width: ${theme.breakpoints[2]}) {
-    position: absolute;
-    top: 231px;
-    right: 16px;
-  }
-`;
-
 export const UserThumb = styled.div`
   @media (min-width: ${theme.breakpoints[1]}) {
     width: 379px;
@@ -159,8 +92,4 @@ export const UserDataList = styled.ul`
     margin-top: 0;
     margin-bottom: 24px;
   }
-`;
-
-export const Kamera = styled(Icon)`
-  fill: currentColor;
 `;
