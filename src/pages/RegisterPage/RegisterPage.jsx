@@ -51,6 +51,8 @@ export const RegisterPage = () => {
     dispatch(signup({ email, password, name, city, phone }));
 
     resetForm();
+
+    console.log(password);
   };
 
   const steps = [
@@ -78,10 +80,10 @@ export const RegisterPage = () => {
             </Text>
 
             {/* <RouteFormLoginRegister
-            link="/login"
-            question="Already have an account??"
-            pageName="login"
-          /> */}
+              link="/login"
+              question="Already have an account??"
+              pageName="login"
+            /> */}
           </>
         </Wrapper>
       </Container>
