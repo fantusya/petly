@@ -7,7 +7,6 @@ import {
   ResetIconContainer,
   ResetIcon,
   SearchIcon,
-  SearchButton,
 } from './SearchBar.styled';
 
 const SearchBar = ({ setNews }) => {
@@ -15,8 +14,6 @@ const SearchBar = ({ setNews }) => {
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
 
   const handleSearch = event => {
-    // ЛОГІКУ фільтрування та сортування ВИКОНУЄ Міша!!!!!!!!!!!
-    // ДОДAСТЬ після мержа гілки!!!!!!!!!!!!!!
     event.preventDefault();
 
     if (searchTerm.trim() === '') {
@@ -28,8 +25,9 @@ const SearchBar = ({ setNews }) => {
     setSearchTerm(searchTerm);
   };
 
-  //  const [news, setNews] = useState([]);
-  //  const { status, results } = useFetchingData(1, 'api/news');
+  const handleSearchButtonClick = () => {
+    setNews(searchTerm);
+  };
 
   const handleResetSearch = () => {
     setSearchTerm('');
@@ -50,11 +48,11 @@ const SearchBar = ({ setNews }) => {
         onChange={handleSearchInputChange}
         placeholder="Search"
       />
-      <SearchButton type="submit">
-        <SearchIconContainer>
-          <SearchIcon />
-        </SearchIconContainer>
-      </SearchButton>
+
+      <SearchIconContainer onClick={handleSearchButtonClick}>
+        <SearchIcon />
+      </SearchIconContainer>
+
       {!isSearchEmpty && (
         <ResetIconContainer onClick={handleResetSearch}>
           <ResetIcon />
@@ -65,3 +63,61 @@ const SearchBar = ({ setNews }) => {
 };
 
 export default SearchBar;
+
+// ------------------------------------------------
+// import React, { useState } from 'react';
+// import {
+//   SearchBarContainer,
+//   SearchInput,
+//   SearchIconContainer,
+//   ResetIconContainer,
+//   ResetIcon,
+//   SearchIcon,
+// } from './SearchBar.styled';
+
+// const SearchBar = ({ setNews }) => {
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//   const handleInputChange = event => {
+//     setSearchTerm(event.target.value);
+//   };
+
+//   const handleResetSearch = () => {
+//     setSearchTerm('');
+//     setNews('');
+//   };
+
+//   const handleSearchButtonClick = () => {
+//     setNews(searchTerm);
+//   };
+
+//   const handleKeyPress = event => {
+//     if (event.key === 'Enter') {
+//       handleSearchButtonClick();
+//     }
+//   };
+
+//   return (
+//     <SearchBarContainer>
+//       <SearchInput
+//         type="text"
+//         value={searchTerm}
+//         onChange={handleInputChange}
+//         onKeyPress={handleKeyPress}
+//         placeholder="Search"
+//       />
+
+//       <SearchIconContainer onClick={handleSearchButtonClick}>
+//         <SearchIcon />
+//       </SearchIconContainer>
+
+//       {searchTerm && (
+//         <ResetIconContainer onClick={handleResetSearch}>
+//           <ResetIcon />
+//         </ResetIconContainer>
+//       )}
+//     </SearchBarContainer>
+//   );
+// };
+
+// export default SearchBar;

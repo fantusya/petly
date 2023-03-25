@@ -1,7 +1,8 @@
-import { FaTimesCircle } from 'react-icons/fa';
-import { FaSearch } from 'react-icons/fa';
+import { ReactComponent as searchIcon } from 'images/svg/searchIcon.svg';
+
+import { ReactComponent as Clear } from 'images/svg/clear.svg';
+
 import { theme } from 'globalStyles/theme';
-// import { Container } from 'globalStyles/globalStyle';
 
 import styled from 'styled-components';
 
@@ -17,9 +18,9 @@ export const SearchBarContainer = styled.form`
   box-shadow: ${p => p.theme.shadows.section};
   border-radius: ${p => p.theme.radii.small};
 
-  color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.white};
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     width: 608px;
     height: 44px;
   }
@@ -31,6 +32,7 @@ export const SearchInput = styled.input`
   // height: 22px;
 
   width: 100%;
+  height: 100%;
   padding-left: 9px;
 
   display: flex;
@@ -38,6 +40,8 @@ export const SearchInput = styled.input`
 
   border: ${p => p.theme.borders.none};
     outline: none;
+
+    border-radius: ${p => p.theme.radii.small};
 
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[2]};
@@ -48,32 +52,11 @@ export const SearchInput = styled.input`
 
       &:focus {
     border-color: #333;
+     border: 1px solid rgba(245, 146, 86, 0.5);
   }
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[4]};
-  }
-`;
-
-export const SearchButton = styled.button`
-  padding: 8px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: ${p => p.theme.colors.white};
-
-  border: ${p => p.theme.borders.none};
-  cursor: pointer;
-
-  outline: none;
-  border-radius: ${p => p.theme.radii.circular};
-
-  transition: ${theme.transition.main};
-
-  &:hover {
-    background-color: #f5f5f5;
   }
 `;
 
@@ -82,6 +65,7 @@ export const SearchIconContainer = styled.div`
   top: 50%;
   right: 12px;
   transform: translateY(-50%);
+  cursor: pointer;
 `;
 
 export const ResetIconContainer = styled.div`
@@ -92,34 +76,26 @@ export const ResetIconContainer = styled.div`
   cursor: pointer;
 `;
 
-export const SearchIcon = styled(FaSearch)`
+export const SearchIcon = styled(searchIcon)`
   color: ${p => p.theme.colors.text};
 
   font-size: ${p => p.theme.fontSizes[1]};
 
   transition: ${theme.transition.main};
 
-  &:hover {
-    color: green;
-  }
-
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[3]};
   }
 `;
 
-export const ResetIcon = styled(FaTimesCircle)`
+export const ResetIcon = styled(Clear)`
   color: ${p => p.theme.colors.text};
 
   font-size: ${p => p.theme.fontSizes[1]};
 
   transition: ${theme.transition.main};
 
-  &:hover {
-    color: red;
-  }
-
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[3]};
   }
 `;
