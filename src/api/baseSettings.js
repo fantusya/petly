@@ -30,25 +30,25 @@ export const privateRoutes = axios.create({
 //   return config;
 // });
 
-privateRoutes.interceptors.response.use(
-  response => response,
-  async error => {
-    if (error.response.status === 401) {
-      const refreshToken = localStorage.getItem('refreshToken');
+// privateRoutes.interceptors.response.use(
+//   response => response,
+//   async error => {
+//     if (error.response.status === 401) {
+//       const refreshToken = localStorage.getItem('refreshToken');
 
-      try {
-        const { data } = await privateRoutes.post('api/users/refresh', {
-          refreshToken,
-        });
+//       try {
+//         const { data } = await privateRoutes.post('api/users/refresh', {
+//           refreshToken,
+//         });
 
-        token.set(data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
+//         token.set(data.accessToken);
+//         localStorage.setItem('refreshToken', data.refreshToken);
 
-        return privateRoutes(error.config);
-      } catch (error) {
-        return Promise.reject(error);
-      }
-    }
-    return Promise.reject(error);
-  }
-);
+//         return privateRoutes(error.config);
+//       } catch (error) {
+//         return Promise.reject(error);
+//       }
+//     }
+//     return Promise.reject(error);
+//   }
+// );

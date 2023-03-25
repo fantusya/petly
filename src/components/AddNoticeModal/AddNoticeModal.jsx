@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useFormik } from 'formik';
@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 // import { handleBackdropClick, handleEscClick } from 'helpers/modalHelpers';
-import { addOwnNotice } from 'redux/notices/operations';
+// import { addOwnNotice } from 'redux/notices/operations';
 
 import Modal from 'components/Modal';
 import { ModalCloseButton } from 'components/commonComponents';
@@ -90,7 +90,7 @@ const validationSchema = Yup.object({
 });
 
 const AddNoticeModal = ({ handleModalToggle }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isFirstRegStep, setIsFirstRegStep] = useState(true);
   const [image, setImage] = useState(null);
@@ -132,7 +132,7 @@ const AddNoticeModal = ({ handleModalToggle }) => {
       data.append('price', values.price);
       data.append('comments', values.comments);
       data.append('photoURL', values.photoURL);
-      dispatch(addOwnNotice(data));
+      // dispatch(addOwnNotice(data));
       handleModalToggle();
       navigate('/notices/own');
       toast.success(`Your pet ${values.name} has been added to notices`);

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-// import { useFetchingData } from 'hooks/useFetchingData';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { search } from 'redux/notices/slice';
 import {
-  SearchBarContainer,
+  SearchBarForm,
   SearchInput,
   SearchIconContainer,
   ResetIconContainer,
@@ -9,19 +11,22 @@ import {
   SearchIcon,
 } from './SearchBar.styled';
 
-const SearchBar = ({ setNews }) => {
+const SearchBar = ({ onSubmit }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
+
+  const location = useLocation();
+  const currentPage = location.pathname.split('/')[1];
+  const dispatch = useDispatch();
 
   const handleSearch = event => {
     event.preventDefault();
 
-    if (searchTerm.trim() === '') {
-      console.log('введіть пошуковий запит');
-      setNews(searchTerm);
-      return;
+    onSubmit(searchTerm);
+    if (currentPage === 'notices') {
+      dispatch(search(searchTerm));
     }
-    setNews(searchTerm);
+
     setSearchTerm(searchTerm);
   };
 
@@ -32,7 +37,7 @@ const SearchBar = ({ setNews }) => {
   const handleResetSearch = () => {
     setSearchTerm('');
     setIsSearchEmpty(true);
-    setNews('');
+    onSubmit('');
   };
 
   const handleSearchInputChange = event => {
@@ -41,7 +46,7 @@ const SearchBar = ({ setNews }) => {
   };
 
   return (
-    <SearchBarContainer onSubmit={handleSearch}>
+    <SearchBarForm onSubmit={handleSearch}>
       <SearchInput
         type="text"
         value={searchTerm}
@@ -58,7 +63,7 @@ const SearchBar = ({ setNews }) => {
           <ResetIcon />
         </ResetIconContainer>
       )}
-    </SearchBarContainer>
+    </SearchBarForm>
   );
 };
 

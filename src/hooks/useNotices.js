@@ -4,11 +4,13 @@ import {
   selectFavoriteNotices,
   selectIsLoading,
   selectError,
+  selectQuery,
 } from 'redux/notices/selectors';
 
-export const useAuth = () => {
+export const useNotices = () => {
   const ownNotices = useSelector(selectOwnNotices);
   const favoriteNotices = useSelector(selectFavoriteNotices);
+  const query = useSelector(selectQuery);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
@@ -17,5 +19,6 @@ export const useAuth = () => {
     favoriteNotices,
     isLoading,
     error,
+    query,
   };
 };

@@ -8,7 +8,9 @@ export const selectIsLoading = state => state.notices.isLoading;
 
 export const selectError = state => state.notices.error;
 
-export const selectFilter = state => state.filter;
+// export const selectFilter = state => state.filter;
+
+export const selectQuery = state => state.notices.searchQuery;
 
 // export const selectVisibleContacts = state => {
 //   const contacts = selectContacts(state);
