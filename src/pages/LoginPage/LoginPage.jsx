@@ -5,51 +5,77 @@ import { Box } from 'components/Box/Box';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
+import { useState } from 'react';
+import { RxLockOpen1, RxLockClosed } from 'react-icons/rx';
+
 import {
   TitleAuth,
   FormCustom,
-  LoginButton,
+  Button,
   Input,
-} from './LoginPage.styled.jsx';
+  Error,
+  BoxAuth,
+  LogoBg,
+  Icon,
+} from '../authFormStyle.styled';
 
 export const LoginPage = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('Hallo', values);
-
+    console.log('Привет я твой боди', values);
     dispatch(logIn(values));
-    // if (error !== null) {
     resetForm();
-    // }
+  };
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
   return (
     <Box as="section">
-      <Container>
-        <TitleAuth>Login</TitleAuth>
-        <Formik
-          initialValues={{ email: '', password: '' }}
-          onSubmit={handleSubmit}
-          validationSchema={schema}
-        >
-          <FormCustom autoComplete="off">
-            <Input type="email" name="email" placeholder="Email" required />
-            <Input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
+      <LogoBg>
+        <Container>
+          <BoxAuth>
+            <TitleAuth>Login</TitleAuth>
+            <Formik
+              initialValues={{ email: '', password: '' }}
+              onSubmit={handleSubmit}
+              validationSchema={schema}
+            >
+              <FormCustom>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  autoComplete="off"
+                />
+                <Error name="email" component="div" />
+
+                <Input
+                  type={passwordShown ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  autoComplete="off"
+                  required
+                />
+
+                <Icon onClick={togglePassword}>
+                  {passwordShown ? <RxLockOpen1 /> : <RxLockClosed />}
+                </Icon>
+                <Error name="password" component="div" />
+                <Button type="submit">Login</Button>
+              </FormCustom>
+            </Formik>
+            <RouteFormLoginRegister
+              link="/register"
+              question="Don't have an account?"
+              pageName="Register"
             />
-            <LoginButton type="submit">Login</LoginButton>
-          </FormCustom>
-        </Formik>
-        <RouteFormLoginRegister
-          link="/register"
-          question="Don't have an account?"
-          pageName="Register"
-        />
-      </Container>
+          </BoxAuth>
+        </Container>
+      </LogoBg>
     </Box>
   );
 };
