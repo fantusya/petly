@@ -47,12 +47,16 @@ export const signup = createAsyncThunk(
  * POST @ /users/login
  * body: { email, password }
  */
+
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await privateRoutes.post('api/users/login', credentials);
       // After successful login, add the token to the HTTP header
+      console.log('data.refreshToken', data.refreshToken);
+      console.log('data.accessToken', data.accessToken);
+
       token.set(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const HeaderElement = styled.header`
+  z-index: 1;
+
   padding-top: ${p => p.theme.space[4]}px;
+  padding-bottom: ${p => p.theme.space[4]}px;
   top: 0;
   width: 100%;
   /* padding-bottom: 15px;
@@ -9,14 +12,15 @@ export const HeaderElement = styled.header`
   padding-right: 0;  */
   position: fixed;
 
-  // z-index: 10;
   background-color: ${p => p.theme.colors.background};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     padding-top: 20px;
+    padding-bottom: 20px;
   }
 `;

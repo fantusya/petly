@@ -5,8 +5,14 @@ import { token } from 'api/baseSettings';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import { Box } from 'components/Box/Box';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
+import { refreshUser } from 'redux/auth/operations';
 
 export const UserPage = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing, isLoggedIn } = useAuth();
+
   const [searchParams] = useSearchParams();
   const accessToken = searchParams.get('accessToken');
   const refreshToken = searchParams.get('refreshToken');
@@ -16,7 +22,17 @@ export const UserPage = () => {
       token.set(accessToken);
       localStorage.setItem('refreshToken', refreshToken);
     }
-  }, [accessToken, refreshToken]);
+
+    if (isLoggedIn) {
+      dispatch(refreshUser());
+    }
+  }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(refreshUser());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <Box display={['block', 'block', ' block', 'flex']}>
