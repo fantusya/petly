@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Status } from 'constants/status';
 import { getNoticeByCategory } from 'api/notice';
 import NoticeCategoryItem from '../NoticeCategoryItem';
-import NoticeModal from 'components/NoticeModal';
+// import NoticeModal from 'components/NoticeModal';
 import { NoticesCardsList } from './NoticesCategoriesList.styled';
 import { useLocation } from 'react-router-dom';
 import { useNotices } from 'hooks/useNotices';
@@ -22,10 +22,10 @@ export const NoticesCategoriesList = () => {
       setStatus(Status.PENDING);
 
       try {
-        // if (page === 0) {
-        //   setPage(1);
-        //   return;
-        // }
+        if (page === 0) {
+          setPage(1);
+          return;
+        }
 
         const notices = await getNoticeByCategory({
           categoryName,

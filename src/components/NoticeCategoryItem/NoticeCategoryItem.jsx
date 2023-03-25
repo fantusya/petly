@@ -3,11 +3,8 @@ import {
   NoticesItem,
   Wrapper,
   ItemContent,
-  ItemRecords,
   ItemTitle,
   ItemСharacteristic,
-  NoticeButton,
-  DeleteIcon,
   AddFavoriteIcon,
   AddFavoriteButton,
 } from './NoticeCategoryItem.styled';
