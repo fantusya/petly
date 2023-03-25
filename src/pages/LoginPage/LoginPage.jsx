@@ -44,13 +44,20 @@ export const LoginPage = () => {
               validationSchema={schema}
             >
               <FormCustom>
-                <Input type="email" name="email" placeholder="Email" required />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  autoComplete="off"
+                />
                 <Error name="email" component="div" />
 
                 <Input
                   type={passwordShown ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
+                  autoComplete="off"
                   required
                 />
 

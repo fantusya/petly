@@ -9,6 +9,9 @@ import img2xTab from '../images/forms/wave_lg@2x.webp';
 import imgDesc from '../images/forms/wave_lg.webp';
 import img2xDesc from '../images/forms/wave_lg@2x.webp';
 
+import svgError from '../images/svg/error.svg';
+import svgSucsess from '../images/svg/success.svg';
+
 export const TitleAuth = styled.h1`
   text-align: center;
   margin-bottom: 40px;
@@ -43,15 +46,36 @@ export const Input = styled(Field)`
   letter-spacing: ${p => p.theme.letterSpacing.text};
   color: ${p => p.theme.colors.text};
   background-color: ${p => p.theme.colors.background};
+
+  :valid:not(:placeholder-shown) {
+    border-color: ${p => p.theme.colors.success};
+    background: url('${svgSucsess}');
+    background-repeat: no-repeat;
+    background-position: 350px;
+  }
+  :invalid:not(:placeholder-shown) {
+    border-color: ${p => p.theme.colors.error};
+    background: url('${svgError}');
+    background-repeat: no-repeat;
+    background-position: 350px;
+  }
+
   @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[4]};
     padding: 14px 32px;
-  }
-  :valid {
-    border-color: ${p => p.theme.colors.success};
-  }
-  :invalid {
-    border-color: ${p => p.theme.colors.error};
+
+    :valid:not(:placeholder-shown) {
+      border-color: ${p => p.theme.colors.success};
+      background: url('${svgSucsess}');
+      background-repeat: no-repeat;
+      background-position: 450px;
+    }
+    :invalid:not(:placeholder-shown) {
+      border-color: ${p => p.theme.colors.error};
+      background: url('${svgError}');
+      background-repeat: no-repeat;
+      background-position: 450px;
+    }
   }
 `;
 
@@ -114,7 +138,7 @@ export const LogoBg = styled.div`
     }
     @media (min-width: ${theme.breakpoints[2]}) {
       background-image: url('${imgDesc}');
-      background-position: top center;
+      background-position: center 270px;
 
       @media screen and (min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
@@ -143,7 +167,7 @@ export const Icon = styled.span`
   }
   @media (min-width: ${theme.breakpoints[1]}) {
     top: 42%;
-    right: 22px;
+    right: -30px;
   }
   svg {
     width: 16px;
