@@ -1,9 +1,9 @@
-import { Items } from './PetsList.styled';
+import { List, Items } from './PetsList.styled';
 import PetCard from '../PetCard';
 
 export const PetsList = () => {
   return (
-    <ul>
+    <List>
       <Items>
         <PetCard />
       </Items>
@@ -11,7 +11,7 @@ export const PetsList = () => {
       <Items>
         <PetCard />
       </Items>
-    </ul>
+    </List>
   );
 };
 

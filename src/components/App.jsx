@@ -1,17 +1,15 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-// import { useDispatch } from 'react-redux';
+// import { useAuth } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
 
 import { ROUTES } from 'constants/routes';
-
-// import { useFetchingData } from 'hooks';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
-// import { PrivateRoute } from './Routes/PrivateRoute';
-
+import { PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
-// import Example from './Example';
-import NoticeCategoryItem from './NoticeCategoryItem';
+import NoticesCategoriesList from './NoticesCategoriesList';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
@@ -19,19 +17,37 @@ import FontStyles from 'globalStyles/fontStyles';
 const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
-// const NoticesPage = lazy(() => import('pages/NoticesPage'));
+const NoticesPage = lazy(() => import('pages/NoticesPage'));
 const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
+  // const { isLoggedIn } = useAuth;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
+
           <Route path={ROUTES.news} element={<NewsPage />} />
-          <Route path="notice" element={<NoticeCategoryItem />} />
+
+          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
+
+          <Route path={ROUTES.notices} element={<NoticesPage />}>
+            <Route path="sell" element={<NoticesCategoriesList />} />
+            <Route path="for-free" element={<NoticesCategoriesList />} />
+            <Route path="lost-found" element={<NoticesCategoriesList />} />
+            <Route path="favorite" element={<NoticesCategoriesList />} />
+            <Route path="own" element={<NoticesCategoriesList />} />
+          </Route>
+
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
@@ -44,7 +60,7 @@ export const App = () => {
               element={<NoticesPage />}
             />
           </Route> */}
-          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
+
           <Route
             path={ROUTES.register}
             element={
@@ -60,15 +76,15 @@ export const App = () => {
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           />
-          {/* <Route
+          <Route
             path={ROUTES.user}
             element={
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
-          /> */}
+          />
 
           {/* // MUST BE DELETED LATER */}
-          <Route path="user" element={<UserPage />} />
+          {/* <Route path="user" element={<UserPage />} /> */}
 
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>

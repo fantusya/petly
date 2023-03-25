@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { SpanText, LinkToOtherPage, TextBox } from './authFormStyle.styled';
 
 const RouteFormLoginRegister = ({ link, question, pageName }) => {
   return (
-    <p>
-      <span>{question}</span>
-      <Link to={link}>{pageName}</Link>
-    </p>
+    <TextBox>
+      <SpanText>{question}</SpanText>
+      <LinkToOtherPage to={link}>{pageName}</LinkToOtherPage>
+    </TextBox>
   );
 };
 export default RouteFormLoginRegister;

@@ -6,11 +6,11 @@ export const NAV_LIST = [
     link: ROUTES.news,
   },
   {
-    label: 'Notices',
+    label: 'Find Pet',
     link: `${ROUTES.notices}`,
   },
   {
-    label: 'Friends',
+    label: 'Our Friends',
     link: ROUTES.friends,
   },
 ];
