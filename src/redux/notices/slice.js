@@ -1,26 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getByCategory,
-  // getById,
   getFavorites,
-  // addToFavorites,
-  // removeFromFavorites,
-  getOwnNotices,
-  addOwnNotice,
+  addToFavorites,
+  removeFromFavorites,
+  getUserNotices,
+  removeUserNotice,
 } from './operations';
 
 const handlePending = state => {
-  state.isRefreshing = true;
+  state.isLoading = true;
 };
 
 const handleRejected = (state, action) => {
-  //   console.log('action.payload', action.payload);
-  state.isRefreshing = false;
-  state.error = action.payload.message || false;
+  console.log('action.payload', action.payload);
+  state.isLoading = false;
+  state.error = action.payload || true;
 };
 
 const initialState = {
-  noticesItems: [],
+  ownNotices: [],
+  favoriteNotices: [],
+  totalItems: null,
   isLoading: false,
   error: false,
 };
@@ -34,52 +34,63 @@ const noticesSlice = createSlice({
   //     },
   //   },
   extraReducers: {
-    [getByCategory.fulfilled](state, action) {
-      state.noticesItems = action.payload;
-
-      state.isRefreshing = false;
-      state.error = false;
-    },
     [getFavorites.fulfilled](state, action) {
-      state.noticesItems = action.payload;
+      if (
+        !action.payload.results.some(item =>
+          state.favoriteNotices.includes(item)
+        )
+      ) {
+        state.favoriteNotices.push(...action.payload.results);
+      }
+      state.totalItems = action.payload.totalItems;
 
-      state.isRefreshing = false;
+      state.isLoading = false;
       state.error = false;
     },
-    // [addToFavorites.fulfilled](state, action) {
-    //   state.noticesItems = action.payload.favoriteNotices;
+    [addToFavorites.fulfilled](state, action) {
+      state.favoriteNotices.unshift(action.payload);
 
-    //   state.isRefreshing = false;
-    //   state.error = false;
-    // },
-    [getOwnNotices.fulfilled](state, action) {
-      state.noticesItems = action.payload;
-
-      state.isRefreshing = false;
+      state.isLoading = false;
       state.error = false;
     },
-    [addOwnNotice.fulfilled](state, action) {
-      state.noticesItems.unshift(action.payload);
+    [removeFromFavorites.fulfilled](state, action) {
+      const index = state.favoriteNotices.indexOf(action.payload.result);
+      state.favoriteNotices.splice(index, 1);
 
-      state.isRefreshing = false;
+      state.isLoading = false;
       state.error = false;
     },
-    // [getById.fulfilled](state, action) {
-    //   state.isRefreshing = false;
-    //   state.error = false;
-    // },
-    [getByCategory.pending]: handlePending,
+    [getUserNotices.fulfilled](state, action) {
+      if (
+        !action.payload.results.some(item => state.ownNotices.includes(item))
+      ) {
+        state.ownNotices.push(...action.payload.results);
+      }
+      state.totalItems = action.payload.totalItems;
+
+      state.isLoading = false;
+      state.error = false;
+    },
+    [removeUserNotice.fulfilled](state, action) {
+      const index = state.ownNotices.indexOf(action.payload.result);
+      state.ownNotices.splice(index, 1);
+
+      state.isLoading = false;
+      state.error = false;
+    },
+    // [getByCategory.pending]: handlePending,
     [getFavorites.pending]: handlePending,
-    // [addToFavorites.pending]: handlePending,
-    [getOwnNotices.pending]: handlePending,
-    [addOwnNotice.pending]: handlePending,
-    // [getById.pending]: handlePending,
-    [getByCategory.rejected]: handleRejected,
+    [addToFavorites.pending]: handlePending,
+    [removeFromFavorites.pending]: handlePending,
+    [getUserNotices.pending]: handlePending,
+    [removeUserNotice.pending]: handlePending,
+
+    // [getByCategory.rejected]: handleRejected,
     [getFavorites.rejected]: handleRejected,
-    // [addToFavorites.rejected]: handleRejected,
-    [getOwnNotices.rejected]: handleRejected,
-    [addOwnNotice.rejected]: handleRejected,
-    // [getById.rejected]: handleRejected,
+    [addToFavorites.rejected]: handleRejected,
+    [removeFromFavorites.rejected]: handleRejected,
+    [getUserNotices.rejected]: handleRejected,
+    [removeUserNotice.rejected]: handleRejected,
   },
 });
 
