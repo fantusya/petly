@@ -8,6 +8,7 @@ import {
   NavBtnWrapper,
   NavBtn,
   AddButton,
+  NavUl,
 } from './NoticesCategoriesNav.styled';
 import {
   AddPetBtnCircleLink,
@@ -27,20 +28,29 @@ export const NoticesCategoriesNav = () => {
   };
 
   return (
-    <NavBox>
-      <NavBtnWrapper>
+    <NavUl>
+      <li>
         <NavBtn to="sell">sell</NavBtn>
+      </li>
+      <li>
+        {' '}
         <NavBtn to="lost-found">lost/found</NavBtn>
+      </li>
+      <li>
         <NavBtn to="for-free">in good hands</NavBtn>
-        {isLoggedIn && (
-          <>
+      </li>
+      {isLoggedIn && (
+        <>
+          <li>
             <NavBtn to="favorite">favorite ads</NavBtn>
+          </li>
+          <li>
             <NavBtn to="own">my ads</NavBtn>
-          </>
-        )}
-      </NavBtnWrapper>
-
-      <AddButton
+          </li>
+        </>
+      )}
+    </NavUl>
+    /* <AddButton
         onClick={e => {
           e.preventDefault();
           isLoggedIn ? handleModalToggle() : navigate('/login');
@@ -52,8 +62,7 @@ export const NoticesCategoriesNav = () => {
           <AddPetBtnLink>Add pet</AddPetBtnLink>
         )}
       </AddButton>
-      {/* {extended && <AddNoticeModal handleModalToggle={handleModalToggle} /> */}
-    </NavBox>
+      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />} */
   );
 };
 

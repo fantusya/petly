@@ -1,15 +1,12 @@
 import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-// import { useDispatch } from 'react-redux';
 
 import { ROUTES } from 'constants/routes';
-// import { useFetchingData } from 'hooks';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
 // import { PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
-// import Example from './Example';
-import NoticeCategoryItem from './NoticeCategoryItem';
+import NoticesCategoriesList from './NoticesCategoriesList';
 
 import { GlobalStyle } from 'globalStyles/globalStyle';
 import FontStyles from 'globalStyles/fontStyles';
@@ -29,7 +26,13 @@ export const App = () => {
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           <Route path={ROUTES.news} element={<NewsPage />} />
-          <Route path="notice" element={<NoticesPage />} />
+          <Route path={ROUTES.notices} element={<NoticesPage />}>
+            <Route path="sell" element={<NoticesCategoriesList />} />
+            <Route path="for-free" element={<NoticesCategoriesList />} />
+            <Route path="lost-found" element={<NoticesCategoriesList />} />
+            <Route path="favorite" element={<NoticesCategoriesList />} />
+            <Route path="own" element={<NoticesCategoriesList />} />
+          </Route>
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index

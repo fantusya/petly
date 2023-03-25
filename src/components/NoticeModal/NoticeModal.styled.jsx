@@ -131,8 +131,7 @@ export const AddFavoriteIcon = styled(Heart)`
 `;
 
 export const ModalFavoriteButton = styled(ModalButton)`
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
 

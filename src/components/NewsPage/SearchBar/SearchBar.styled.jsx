@@ -1,11 +1,12 @@
 import { FaTimesCircle } from 'react-icons/fa';
-import { FaSearch } from 'react-icons/fa';
+import { ReactComponent as SearchSvg } from 'images/svg/searchIcon.svg';
+
 import { theme } from 'globalStyles/theme';
 // import { Container } from 'globalStyles/globalStyle';
 
 import styled from 'styled-components';
 
-export const SearchBarContainer = styled.form`
+export const SearchBarForm = styled.form`
   position: relative;
   display: flex;
   align-items: center;
@@ -14,12 +15,7 @@ export const SearchBarContainer = styled.form`
   height: 40px;
   margin: 0 auto;
 
-  box-shadow: ${p => p.theme.shadows.section};
-  border-radius: ${p => p.theme.radii.small};
-
-  color: ${p => p.theme.colors.white};
-
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     width: 608px;
     height: 44px;
   }
@@ -27,6 +23,7 @@ export const SearchBarContainer = styled.form`
 
 export const SearchInput = styled.input`
   position: absolute;
+  padding: 9px 12px;
   // width: 57px;
   // height: 22px;
 
@@ -36,21 +33,30 @@ export const SearchInput = styled.input`
   display: flex;
   align-items: center;
 
+  box-shadow: ${p => p.theme.shadows.section};
+  border-radius: ${p => p.theme.radii.small};
   border: ${p => p.theme.borders.none};
-    outline: none;
+  outline: none;
+
+  color: ${p => p.theme.colors.white};
 
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[2]};
   font-weight: ${p => p.theme.fontWeights.medium};
   color: ${p => p.theme.colors.inputTxt};
-  line-height: ${p => p.theme.lineHeights.text};}
+  line-height: ${p => p.theme.lineHeights.text};
   letter-spacing: ${p => p.theme.letterSpacing.text};
 
-      &:focus {
-    border-color: #333;
+  &::placeholder {
+    color: ${p => p.theme.colors.inputTxt};
   }
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  &:focus {
+    color: ${p => p.theme.colors.inputTxt};
+  }
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    padding: 9px 20px;
     font-size: ${p => p.theme.fontSizes[4]};
   }
 `;
@@ -78,10 +84,16 @@ export const SearchButton = styled.button`
 `;
 
 export const SearchIconContainer = styled.div`
+  width: 20px;
+  height: 20px;
   position: absolute;
   top: 50%;
   right: 12px;
   transform: translateY(-50%);
+  @media (min-width: ${theme.breakpoints[1]}) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const ResetIconContainer = styled.div`
@@ -92,19 +104,17 @@ export const ResetIconContainer = styled.div`
   cursor: pointer;
 `;
 
-export const SearchIcon = styled(FaSearch)`
-  color: ${p => p.theme.colors.text};
+export const SearchIcon = styled(SearchSvg)`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 
-  font-size: ${p => p.theme.fontSizes[1]};
+  color: ${p => p.theme.colors.text};
 
   transition: ${theme.transition.main};
 
   &:hover {
     color: green;
-  }
-
-  media (min-width: ${theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[3]};
   }
 `;
 
@@ -119,7 +129,7 @@ export const ResetIcon = styled(FaTimesCircle)`
     color: red;
   }
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[3]};
   }
 `;

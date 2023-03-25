@@ -142,7 +142,7 @@ export const AddFavoriteIcon = styled(Heart)`
   width: 24px;
   height: 22px;
 
-  fill: ${p => (p.isFavorite ? p.theme.colors.accent : p.theme.colors.white)};
+  fill: ${p => (p.isfavorite ? p.theme.colors.accent : p.theme.colors.white)};
 `;
 
 export const AddFavoriteButton = styled.button`

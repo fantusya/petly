@@ -7,8 +7,8 @@ import {
   NoticesItem,
   Wrapper,
   ItemContent,
-  ItemRecords,
   ItemTitle,
+  ItemRecords,
   Record,
   RecordName,
   RecordContent,
@@ -31,7 +31,7 @@ import {
   selectOwnNotices,
 } from 'redux/notices/selectors';
 
-export const NoticeCategoryItem = ({ data }) => {
+export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
   const ownCards = useSelector(selectOwnNotices);
@@ -49,7 +49,7 @@ export const NoticeCategoryItem = ({ data }) => {
     photoURL,
     breed,
     _id: id,
-  } = data;
+  } = notice;
 
   //Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,7 +113,7 @@ export const NoticeCategoryItem = ({ data }) => {
               onClick={isLoggedIn ? handleFavorites : notify}
               isFavorite={isFavorite}
             >
-              <AddFavoriteIcon isFavorite={isFavorite ? true : null} />
+              <AddFavoriteIcon isfavorite={isFavorite ? true : null} />
             </AddFavoriteButton>
           </Box>
         </Wrapper>

@@ -2,8 +2,10 @@ import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { Box } from 'components/Box/Box';
 import { getNoticeById } from 'api/notice';
+import { Status } from 'constants/status';
 import { useAuth } from 'hooks';
 import { ReactComponent as Cross } from '../../images/svg/cross.svg';
+import { ModalButton } from 'components/commonComponents';
 
 import {
   ModalContainer,
@@ -26,6 +28,7 @@ import {
 } from './NoticeModal.styled';
 
 import { ModalCloseButton } from 'components/commonComponents';
+import { toast } from 'react-hot-toast';
 
 export const NoticeModal = ({
   id,
@@ -36,26 +39,27 @@ export const NoticeModal = ({
   notify,
 }) => {
   const [notice, setNotice] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState(Status.IDLE);
   const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    try {
-      setIsLoading(true);
-      const fetchNotice = async () => {
+    setStatus(Status.PENDING);
+
+    const fetchNotice = async () => {
+      try {
         const data = await getNoticeById(id);
         setNotice(data);
-      };
-      fetchNotice();
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+        setStatus(Status.RESOLVED);
+      } catch {
+        setStatus(Status.REJECTED);
+      }
+    };
+    fetchNotice();
   }, [id]);
 
   return (
     <>
-      {isLoading && (
+      {status === Status.PENDING && (
         <Box
           display="flex"
           justifyContent="center"
@@ -65,7 +69,17 @@ export const NoticeModal = ({
           <p>Data is loading</p>
         </Box>
       )}
-      {notice && (
+      {status === Status.REJECTED && (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          p="20px 50px"
+        >
+          <p>Error...</p>
+        </Box>
+      )}
+      {status === Status.RESOLVED && (
         <ModalContainer>
           <CloseButtonWrapper>
             <ModalCloseButton onClick={() => onClose()}>
@@ -120,7 +134,7 @@ export const NoticeModal = ({
                 <Record>
                   <RecordName>Email:</RecordName>
                   <RecordContent>
-                    {notice.owner ? (
+                    {notice.owner?.email ? (
                       <Link href={`mailto: ${notice.owner.email}`}>
                         {notice.owner.email}
                       </Link>
@@ -132,7 +146,7 @@ export const NoticeModal = ({
                 <Record>
                   <RecordName>Phone:</RecordName>
                   <RecordContent>
-                    {notice.owner ? (
+                    {notice.owner?.phone ? (
                       <Link href={`tel: ${notice.owner.phone}`}>
                         {notice.owner.phone}
                       </Link>
@@ -157,9 +171,15 @@ export const NoticeModal = ({
             {notice.comments ? notice.comments : ''}
           </ModalComments>
           <ButtonsWrapper>
-            <ContactButton href={`tel: ${notice.owner.phone}`}>
-              Contact
-            </ContactButton>
+            {notice?.owner ? (
+              <ContactButton href={`tel: ${notice.owner.phone}`}>
+                Contact
+              </ContactButton>
+            ) : (
+              <ModalButton onClick={() => toast('No contact information')}>
+                Contact
+              </ModalButton>
+            )}
             <ModalFavoriteButton
               onClick={isLoggedIn ? handleFavorites(id) : notify}
             >
