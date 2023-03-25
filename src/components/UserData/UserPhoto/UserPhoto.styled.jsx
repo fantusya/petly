@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { theme } from 'globalStyles/theme';
-import { ReactComponent as Icon } from 'images/svg/kamera.svg';
+import { ReactComponent as KameraIcon } from 'images/svg/kamera.svg';
+import { ReactComponent as CheckIcon } from 'images/svg/check.svg';
 
 export const AddAvatarBtn = styled.button`
   display: flex;
@@ -15,6 +16,7 @@ export const AddAvatarBtn = styled.button`
   box-shadow: ${p => p.theme.shadows.avatar};
   cursor: pointer;
 
+  color: ${theme.colors.accent};
   background-color: ${p => p.theme.colors.background};
 
   @media (min-width: ${theme.breakpoints[1]}) {
@@ -84,6 +86,13 @@ export const EditPhotoBtn = styled.button`
   }
 `;
 
-export const Kamera = styled(Icon)`
+export const Kamera = styled(KameraIcon)`
+  fill: currentColor;
+`;
+
+export const Check = styled(CheckIcon)`
+  display: inline-block;
+  width: 50px;
+  height: 50px;
   fill: currentColor;
 `;

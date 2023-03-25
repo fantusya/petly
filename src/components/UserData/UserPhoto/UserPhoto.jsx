@@ -7,11 +7,13 @@ import {
   HiddenInput,
   EditPhotoBtn,
   Kamera,
+  Check,
 } from './UserPhoto.styled';
 import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserPhoto = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isFileSelected, setIsFileSelected] = useState(false);
 
   const dispatch = useDispatch();
   const filePicker = useRef(null);
@@ -37,12 +39,17 @@ export const UserPhoto = () => {
       return;
     }
     setSelectedFile(chosenImg);
+    setIsFileSelected(true);
+    toast.success(
+      'Photo selected. Confirm your choice by clicking on the "Edit photo" button'
+    );
   };
 
   return (
-    <form onSubmit={handleUpload}>
+    <div>
       <AddAvatarBtn onClick={() => filePicker.current.click()}>
-        <AvatarPlus />
+        {isFileSelected ? <Check /> : <AvatarPlus />}
+        {/* <AvatarPlus /> */}
       </AddAvatarBtn>
 
       <HiddenInput
@@ -52,11 +59,11 @@ export const UserPhoto = () => {
         onChange={handleChange}
         accept="image/*,.png,.jpg,.gif,.web"
       />
-      <EditPhotoBtn type="submit">
+      <EditPhotoBtn type="submit" onClick={handleUpload}>
         <Kamera />
         <span>Edit photo</span>
       </EditPhotoBtn>
-    </form>
+    </div>
   );
 };
 
