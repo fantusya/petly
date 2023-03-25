@@ -47,6 +47,12 @@ export const Input = styled(Field)`
     font-size: ${p => p.theme.fontSizes[4]};
     padding: 14px 32px;
   }
+  :valid {
+    border-color: ${p => p.theme.colors.success};
+  }
+  :invalid {
+    border-color: ${p => p.theme.colors.error};
+  }
 `;
 
 export const Button = styled.button`
