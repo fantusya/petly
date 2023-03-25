@@ -9,14 +9,16 @@ export const HeaderElement = styled.header`
   padding-right: 0;  */
   position: fixed;
 
-  // z-index: 10;
+  z-index: 10;
   background-color: ${p => p.theme.colors.background};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    padding-top: 20px;
+    padding-top: 22px;
+    padding-bottom: 22px;
   }
 `;

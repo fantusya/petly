@@ -34,9 +34,7 @@ export const HomePage = () => {
 
               {matches.large && (
                 <HomeSection>
-                  <Container>
-                    <HomeTitle>Take good care of your small pets</HomeTitle>
-                  </Container>
+                  <HomeTitle>Take good care of your small pets</HomeTitle>
                 </HomeSection>
               )}
             </Fragment>
