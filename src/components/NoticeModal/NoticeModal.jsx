@@ -6,7 +6,7 @@ import { Status } from 'constants/status';
 import { useAuth } from 'hooks';
 import { ReactComponent as Cross } from '../../images/svg/cross.svg';
 import { ModalButton } from 'components/commonComponents';
-
+import { DEFAULT_IMAGE } from 'constants/urls';
 import {
   ModalContainer,
   ModalTitle,
@@ -87,13 +87,7 @@ export const NoticeModal = ({
             </ModalCloseButton>
           </CloseButtonWrapper>
           <ContentWrapper>
-            <Wrapper
-              img={
-                notice.photoURL
-                  ? notice.photoURL
-                  : 'https://cdn-icons-png.flaticon.com/512/2454/2454311.png'
-              }
-            >
+            <Wrapper img={notice.photoURL ? notice.photoURL : DEFAULT_IMAGE}>
               <ModalLabel>{label}</ModalLabel>
             </Wrapper>
             <Box>

@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box } from 'components/Box/Box';
+import { DEFAULT_IMAGE } from 'constants/urls';
 import {
   NoticesItem,
   Wrapper,
@@ -94,13 +95,7 @@ export const NoticeCategoryItem = ({ notice }) => {
   return (
     <>
       <NoticesItem>
-        <Wrapper
-          img={
-            photoURL
-              ? photoURL
-              : 'https://cdn-icons-png.flaticon.com/512/2454/2454311.png'
-          }
-        >
+        <Wrapper img={photoURL ? photoURL : DEFAULT_IMAGE}>
           <Box
             display="flex"
             justifyContent="space-between"
