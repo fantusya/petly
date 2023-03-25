@@ -14,7 +14,7 @@ const NewsPage = () => {
   const [request, setRequest] = useState('');
 
   const { status, results } = useFetchingData('api/news');
-  
+
   /*сортування новин */
 
   useEffect(() => {
@@ -76,7 +76,13 @@ const NewsPage = () => {
   /* -------------------------------------------------------------------------------------- */
 
   return (
-    <Box as="section" pt={['42px', '58px', '88px']}>
+    <Box
+      as="section"
+      pt={['100px', '100px', '160px', '126px']}
+      pl={['20px', '20px', '32px', '16px']}
+      pr={['20px', '20px', '32px', '16px']}
+      pb={['100px', '100px', '100px', '200px']}
+    >
       <PageTitle>News</PageTitle>
 
       <SearchBar setNews={handleFormSubmit} />

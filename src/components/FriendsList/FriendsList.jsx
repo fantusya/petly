@@ -5,6 +5,9 @@ import {
   ItemFriend,
   ItemFriendBox,
   ItemFriendName,
+  ItemFriendLogo,
+  InfoFriendsItem,
+  InfoFriendsLink,
 } from './FriendsList.styled';
 
 export const FriendsList = ({ results }) => {
@@ -25,6 +28,8 @@ export const FriendsList = ({ results }) => {
         'https://ucarecdn.com/63e1c87e-c59a-4af0-85f9-2eea65e645f3/placeholder_friend.png';
       let workTime = {};
 
+      console.log(results.length % 2);
+
       if (workDays && workDays.length !== 0) {
         workTime = workDays.find(item => item.isOpen === true);
       }
@@ -42,37 +47,51 @@ export const FriendsList = ({ results }) => {
           )}
           <ItemFriendBox>
             <div>
-              <img src={imageUrl ? imageUrl : placeholder} alt={title} />
+              <ItemFriendLogo src={imageUrl ? imageUrl : placeholder} alt={title} />
             </div>
             <div>
-              <p>Time:</p>
-              {from && to ? (
-                <p>
-                  {from} - {to}
-                </p>
-              ) : (
-                <p>{emptyField}</p>
-              )}
-              <p>Address:</p>
-              {address ? (
-                <a target="_blank" rel="noreferrer" href={addressUrl}>
-                  {address}
-                </a>
-              ) : (
-                <p>{emptyField}</p>
-              )}
-              <p>Email:</p>
-              {email ? (
-                <a href={`mailto:${email}`}>{email}</a>
-              ) : (
-                <p>{emptyField}</p>
-              )}
-              <p>Phone</p>
-              {phone ? (
-                <a href={`tel:${phone}`}>{phone}</a>
-              ) : (
-                <p>{emptyField}</p>
-              )}
+              <ul>
+                <InfoFriendsItem>
+                  <p>Time:</p>
+                  {from && to ? (
+                    <p>
+                      {from} - {to}
+                    </p>
+                  ) : (
+                    <p>{emptyField}</p>
+                  )}
+                </InfoFriendsItem>
+                <InfoFriendsItem>
+                <p>Address:</p>
+                  {address ? (
+                    <InfoFriendsLink target="_blank" rel="noreferrer" href={addressUrl}>
+                      {address}
+                    </InfoFriendsLink>
+                  ) : (
+                    <p>{emptyField}</p>
+                  )}
+                </InfoFriendsItem>
+                <InfoFriendsItem>
+                  <p>Email:</p>
+                  {email ? (
+                    <InfoFriendsLink href={`mailto:${email}`}>
+                      {email}
+                    </InfoFriendsLink>
+                  ) : (
+                    <p>{emptyField}</p>
+                  )}
+                </InfoFriendsItem>
+                <InfoFriendsItem>
+                  <p>Phone:</p>
+                  {phone ? (
+                    <InfoFriendsLink href={`tel:${phone}`}>
+                      {phone}
+                    </InfoFriendsLink>
+                  ) : (
+                    <p>{emptyField}</p>
+                  )}
+                </InfoFriendsItem>
+              </ul>
             </div>
           </ItemFriendBox>
         </ItemFriend>

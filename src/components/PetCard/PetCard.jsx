@@ -13,7 +13,7 @@ import {
 export const PetCard = () => {
   return (
     <CardWrapper>
-      <Box border="normal" borderColor="transparent">
+      <Box pt={20} border="normal" borderColor="transparent">
         <Image src={DEFAULT_IMAGE} alt="My pet" width={240} />
       </Box>
 
@@ -33,7 +33,9 @@ export const PetCard = () => {
         <PetInfo>
           <PetTitle>Comments: </PetTitle>
           Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet,
-          consectetur Lorem ipsum dolor sit amet, consectetur.
+          consectetur Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor
+          sit amet, consectetur Lorem ipsum dolor sit amet, consecteturLorem
+          ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet
         </PetInfo>
 
         <BtnDelete type="button">

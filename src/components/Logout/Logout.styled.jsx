@@ -45,5 +45,5 @@ export const LogoutButton = styled.button`
 
 export const LogoutIcon = styled(Icon)`
   fill: currentColor;
-  /* stroke: currentColor; */
+  stroke: currentColor;
 `;

@@ -20,8 +20,8 @@ import registerValidationSchema from 'helpers/validationSchemas/RegisterValidati
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { signup } from 'redux/auth/operations';
-import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
+import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
+import { signup, logIn } from 'redux/auth/operations';
 
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
 
@@ -48,15 +48,20 @@ export const RegisterPage = () => {
     setCarrentStep(prev => prev - 1);
   };
 
-  const handleSubmit = (
+  const handleSubmit = async (
     { email, password, name, city, phone },
     { resetForm }
   ) => {
-    dispatch(signup({ email, password, name, city, phone }));
+    const resultSignup = await dispatch(
+      signup({ email, password, name, city, phone })
+    );
+    if (resultSignup.type === 'auth/signup/fulfilled') {
+      console.log('resultSignup', resultSignup);
+      const resultLogIn = await dispatch(logIn({ email, password }));
+      console.log('resultLogIn', resultLogIn);
+    }
 
     resetForm();
-
-    console.log(password);
   };
 
   const steps = [
@@ -76,7 +81,9 @@ export const RegisterPage = () => {
               validationSchema={registerValidationSchema}
               autoComplete="off"
             >
-              <RegisterForm>{steps[currentStep]}</RegisterForm>
+              <RegisterForm autoComplete="off">
+                {steps[currentStep]}
+              </RegisterForm>
             </Formik>
             <Text>
               Already have an account?

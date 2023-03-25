@@ -10,7 +10,7 @@ export const PageTitle = styled.h1`
   color: ${p => p.theme.colors.text};
   line-height: ${p => p.theme.lineHeights.text};
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[9]};
   }
 

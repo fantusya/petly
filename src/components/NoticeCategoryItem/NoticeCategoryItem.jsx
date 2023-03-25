@@ -3,11 +3,8 @@ import {
   NoticesItem,
   Wrapper,
   ItemContent,
-  ItemRecords,
   ItemTitle,
   ItemСharacteristic,
-  NoticeButton,
-  DeleteIcon,
   AddFavoriteIcon,
   AddFavoriteButton,
 } from './NoticeCategoryItem.styled';
@@ -15,7 +12,9 @@ import { Label } from 'components/commonComponents';
 
 import { useAuth } from 'hooks';
 
-export const NoticeCategoryItem = ({ stateHandler, state }) => {
+export const NoticeCategoryItem = ({
+  notice: { category, title, breed, location, birthDate, photoURL },
+}) => {
   const { isLoggedIn } = useAuth();
 
   const imagePath =
@@ -23,7 +22,7 @@ export const NoticeCategoryItem = ({ stateHandler, state }) => {
 
   return (
     <NoticesItem>
-      <Wrapper img={imagePath}>
+      <Wrapper img={photoURL || imagePath}>
         <Box
           display="flex"
           justifyContent="space-between"
@@ -31,28 +30,26 @@ export const NoticeCategoryItem = ({ stateHandler, state }) => {
           pt="12px"
           pr="12px"
         >
-          <Label>Sell</Label>
+          <Label>{category}</Label>
           <AddFavoriteButton>
             <AddFavoriteIcon />
           </AddFavoriteButton>
         </Box>
       </Wrapper>
       <ItemContent isLogged={isLoggedIn}>
-        <ItemTitle>Cute dog looking for a home</ItemTitle>
-        <ItemRecords isLogged={isLoggedIn}>
-          <Box as="ul" display="inline-block" width="30%">
-            <ItemСharacteristic>Breed:</ItemСharacteristic>
-            <ItemСharacteristic>Place:</ItemСharacteristic>
-            <ItemСharacteristic>Age:</ItemСharacteristic>
-          </Box>
-          <Box as="ul" display="inline-block">
-            <ItemСharacteristic>Pomeranian</ItemСharacteristic>
-            <ItemСharacteristic>Lviv</ItemСharacteristic>
-            <ItemСharacteristic>one year</ItemСharacteristic>
-          </Box>
-        </ItemRecords>
+        <ItemTitle>{title}</ItemTitle>
+        <Box as="ul" display="inline-block" width="30%">
+          <ItemСharacteristic>Breed:</ItemСharacteristic>
+          <ItemСharacteristic>Place:</ItemСharacteristic>
+          <ItemСharacteristic>Age:</ItemСharacteristic>
+        </Box>
+        <Box as="ul" display="inline-block">
+          <ItemСharacteristic>{breed}</ItemСharacteristic>
+          <ItemСharacteristic>{location}</ItemСharacteristic>
+          <ItemСharacteristic>{birthDate} year</ItemСharacteristic>
+        </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
-          <NoticeButton
+          {/* <NoticeButton
             isLogged={isLoggedIn}
             onClick={() => stateHandler('noticeDetails')}
           >
@@ -62,7 +59,7 @@ export const NoticeCategoryItem = ({ stateHandler, state }) => {
             <NoticeButton>
               Delete <DeleteIcon />
             </NoticeButton>
-          )}
+          )} */}
         </Box>
       </ItemContent>
     </NoticesItem>
