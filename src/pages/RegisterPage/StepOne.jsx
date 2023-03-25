@@ -19,8 +19,10 @@ export const StepOne = props => {
 
   return (
     <>
-      <InputReg type="email" name="email" placeholder="Email" />
-      <ErrorValid name="email" component="div" />
+      <Div>
+        <InputReg type="email" name="email" placeholder="Email" />
+        <ErrorValid name="email" component="div" />
+      </Div>
       <Div>
         <InputReg
           // type="password"
@@ -31,18 +33,19 @@ export const StepOne = props => {
         ></InputReg>
         <Button type="button" onClick={toggleShowPassword}>
           {passwordVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-        </Button>
+        </Button>{' '}
+        <ErrorValid name="password" component="div" />
       </Div>
-      <ErrorValid name="password" component="div" />
+      <Div>
+        <InputReg
+          // type="password"
+          type={passwordVisibility ? 'text' : 'password'}
+          name="confirm"
+          placeholder="Confirm Password"
+        />
+        <ErrorValid name="confirm" component="div" />
+      </Div>
 
-      <InputReg
-        // type="password"
-        type={passwordVisibility ? 'text' : 'password'}
-        name="confirm"
-        placeholder="Confirm Password"
-      />
-
-      <ErrorValid name="confirm" component="div" />
       <RegisterButton type="button" onClick={props.next} disabled={false}>
         Next
       </RegisterButton>

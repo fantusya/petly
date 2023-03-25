@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 42px;
+  margin-top: 100px;
   margin-left: 20px;
   margin-right: 20px;
 `;
@@ -43,7 +43,7 @@ export const InputReg = styled(Field)`
   position: relative;
 `;
 
-export const H2 = styled.h2`
+export const H2 = styled.h1`
   font-weight: 700;
   font-size: ${p => p.theme.fontSizes[5]};
   line-height: 33px;
@@ -96,7 +96,8 @@ export const Text = styled.p`
   color: rgba(17, 17, 17, 0.6);
 `;
 export const ErrorValid = styled(ErrorMessage)`
-  margin-left: -50px;
+  position: absolute;
+  margin-left: 20px;
   margin-top: 2px;
   color: #e2001a;
   font-size: 11px;
