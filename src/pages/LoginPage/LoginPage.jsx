@@ -2,7 +2,8 @@ import { Formik } from 'formik';
 import schema from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import {
   TitleAuth,
@@ -12,12 +13,12 @@ import {
 } from './LoginPage.styled.jsx';
 
 export const LoginPage = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Hallo', values);
 
-    // dispatch(logIn(values));
+    dispatch(logIn(values));
     // if (error !== null) {
     resetForm();
     // }

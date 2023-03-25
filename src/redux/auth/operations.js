@@ -47,14 +47,19 @@ export const signup = createAsyncThunk(
  * POST @ /users/login
  * body: { email, password }
  */
+
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await privateRoutes.post('api/users/login', credentials);
       // After successful login, add the token to the HTTP header
+      console.log('data.refreshToken', data.refreshToken);
+      console.log('data.accessToken', data.accessToken);
+
       token.set(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('accessToken', data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -90,6 +95,7 @@ export const refreshUser = createAsyncThunk(
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
+    console.log('persisted token', persistedToken);
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
@@ -100,6 +106,7 @@ export const refreshUser = createAsyncThunk(
       // If there is a token, add it to the HTTP header and perform the request
       token.set(persistedToken);
       const { data } = await privateRoutes.get('api/users/current');
+      console.log('CURRENT', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
