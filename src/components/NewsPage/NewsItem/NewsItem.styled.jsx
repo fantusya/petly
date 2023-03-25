@@ -6,18 +6,24 @@ export const NewsItemContainer = styled.div`
 
   margin-bottom: 40px;
 
+  padding: 0px 20px 0px 20px;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     margin-bottom: 60px;
   }
 `;
 
+export const ContainerNews = styled.div`
+  flex-grow: 1;
+`;
+
 export const Border = styled.div`
-  position: absolute;
+  // position: absolute;
   width: 200px;
   height: 4px;
   left: 0px;
@@ -27,20 +33,20 @@ export const Border = styled.div`
   background: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);
   border-radius: ${p => p.theme.radii.big};
 
-  media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${theme.breakpoints[1]}) {
     width: 280px;
     height: 8px;
   }
 
-  media (min-width: ${theme.breakpoints[2]}) {
+  @media (min-width: ${theme.breakpoints[2]}) {
     width: 340px;
   }
 `;
 
 export const NewsTitle = styled.h3`
-  position: absolute;
+  // position: absolute;
 
-  margin-bottom: 16px;
+  margin-bottom: ${theme.space[4]}px;
 
   color: ${p => p.theme.colors.text};
 
@@ -52,7 +58,7 @@ export const NewsTitle = styled.h3`
 `;
 
 export const NewsDescription = styled.p`
-  position: absolute;
+  // position: absolute;
   width: 100%;
 
   margin-bottom: 20px;
@@ -73,9 +79,9 @@ export const NewsDateLinkContainer = styled.div`
 `;
 
 export const NewsDate = styled.p`
-  position: absolute;
+  // position: absolute;
 
-  color: rgba(17, 17, 17, 0.6);
+  color: ${theme.colors.date};
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.normal};
@@ -84,9 +90,9 @@ export const NewsDate = styled.p`
 `;
 
 export const NewsLink = styled.a`
-  position: absolute;
+  // position: absolute;
 
-  color: #f59256;
+  color: ${theme.colors.accent};
 
   font-family: ${p => p.theme.fonts.text};
   font-weight: ${p => p.theme.fontWeights.medium};

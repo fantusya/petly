@@ -7,14 +7,18 @@ import {
   NewsDateLinkContainer,
   NewsDate,
   NewsLink,
-} from './NewsItem.styled.js';
+  ContainerNews,
+} from './NewsItem.styled';
 
 const NewsItem = ({ title, description, date, url }) => {
   return (
     <NewsItemContainer>
-      <Border />
-      <NewsTitle>{title}</NewsTitle>
-      <NewsDescription>{description}</NewsDescription>
+      <ContainerNews>
+        <Border />
+        <NewsTitle>{title}</NewsTitle>
+        <NewsDescription>{description}</NewsDescription>
+      </ContainerNews>
+
       <NewsDateLinkContainer>
         <NewsDate>{date}</NewsDate>
         <NewsLink href={url} target="_blank" rel="noopener noreferrer">
