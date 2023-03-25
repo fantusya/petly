@@ -30,8 +30,8 @@ const initialState = {
     avatarURL: null,
     myPets: [],
   },
-  // accessToken: null,
-  // refreshToken: null,
+  accessToken: null,
+  refreshToken: null,
 
   isLoggedIn: false,
   isRefreshing: false,
@@ -49,7 +49,6 @@ const authSlice = createSlice({
   extraReducers: {
     [signup.fulfilled](state, action) {
       // state.user = action.payload;
-      state.isLoggedIn = true;
       state.isRefreshing = false;
       state.error = false;
     },
@@ -57,7 +56,7 @@ const authSlice = createSlice({
       // state.user = action.payload.user;
       console.log('action.payload', action.payload);
       // state.accessToken = action.payload.accessToken;
-      // state.refreshToken = action.payload.refreshToken;
+      state.accessToken = action.payload.accessToken;
 
       state.isLoggedIn = true;
       state.isRefreshing = false;
@@ -72,8 +71,8 @@ const authSlice = createSlice({
         city: null,
         avatarURL: null,
       };
-      // state.accessToken = null;
-      // state.refreshToken = null;
+      state.accessToken = null;
+      state.refreshToken = null;
 
       state.isLoggedIn = false;
       state.isRefreshing = false;

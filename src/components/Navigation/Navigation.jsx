@@ -6,11 +6,13 @@ import { useState } from 'react';
 import { BurgerZone } from 'components/BurgerMenu/BurgerMenu';
 import React, { Fragment } from 'react';
 import Media from 'react-media';
+import { useAuth } from 'hooks';
 
-const token = true;
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
-  console.log('navigation', open);
+
+  const { isLoggedIn } = useAuth();
+
   return (
     <MainNav>
       <Media
@@ -24,7 +26,7 @@ export const Navigation = () => {
           <Fragment>
             {matches.small && (
               <BurgerZone setOpen={setOpen} open={open}>
-                {!token ? (
+                {!isLoggedIn ? (
                   <AuthNav setOpen={setOpen} />
                 ) : (
                   <UserNav setOpen={setOpen} />
@@ -38,14 +40,14 @@ export const Navigation = () => {
                 <BurgerZone setOpen={setOpen} open={open}>
                   <Nav setOpen={setOpen} />
                 </BurgerZone>
-                {!token ? <AuthNav /> : <UserNav />}
+                {!isLoggedIn ? <AuthNav /> : <UserNav />}
               </>
             )}
 
             {matches.large && (
               <>
                 <Nav />
-                {!token ? <AuthNav /> : <UserNav />}
+                {!isLoggedIn ? <AuthNav /> : <UserNav />}
               </>
             )}
           </Fragment>
@@ -54,7 +56,7 @@ export const Navigation = () => {
 
       {/* {isMobileScreen ? (
         <BurgerZone setOpen={setOpen} open={open}>
-          {!token ? (
+          {!isLoggedIn ? (
             <AuthNav setOpen={setOpen} />
           ) : (
             <UserNav setOpen={setOpen} />
@@ -68,12 +70,12 @@ export const Navigation = () => {
               <BurgerZone setOpen={setOpen} open={open}>
                 <Nav setOpen={setOpen} />
               </BurgerZone>
-              {!token ? <AuthNav /> : <UserNav />}
+              {!isLoggedIn ? <AuthNav /> : <UserNav />}
             </>
           ) : (
             <>
               <Nav />
-              {!token ? <AuthNav /> : <UserNav />}
+              {!isLoggedIn ? <AuthNav /> : <UserNav />}
             </>
           )}
         </>
