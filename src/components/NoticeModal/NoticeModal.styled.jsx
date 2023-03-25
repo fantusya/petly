@@ -4,39 +4,9 @@ import { Box } from 'components/Box/Box';
 import { ReactComponent as Heart } from '../../images/svg/notFavorite.svg';
 import { Label, ModalButton } from 'components/commonComponents';
 
-export const Backdrop = styled(Box)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 50;
-
-  width: 100vw;
-  height: 100%;
-  padding-top: 50px;
-
-  background: rgba(17, 17, 17, 0.6);
-  backdrop-filter: blur(10px);
-
-  font-family: ${p => p.theme.fonts.text};
-`;
-
 export const ModalContainer = styled(Box)`
-  position: relative;
-
-  width: 280px;
-  margin: auto;
   padding: 20px;
-
-  background: ${p => p.theme.colors.white};
-
-  border-radius: 20px;
-
   cursor: default;
-
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 704px;
-    padding: 32px 20px;
-  }
 `;
 
 export const Wrapper = styled(Box)`
@@ -70,7 +40,7 @@ export const ModalLabel = styled(Label)`
 
 export const ModalTitle = styled(Box)`
   margin-bottom: 16px;
-  max-width: 320px;
+  max-width: 300px;
 
   color: ${p => p.theme.colors.black};
 
@@ -78,16 +48,26 @@ export const ModalTitle = styled(Box)`
   font-weight: ${p => p.theme.fontWeights.bold};
   line-height: ${p => p.theme.lineHeights.text};
   letter-spacing: ${p => p.theme.letterSpacing.title};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const ModalRecords = styled.ul`
   margin-bottom: 28px;
+  min-width: 240px;
 
   color: ${p => p.theme.colors.black};
 
   font-size: ${p => p.theme.fontSizes[1]};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 1.357;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: ${p => p.theme.fontSizes[2]};
+    line-height: ${p => p.theme.lineHeights.text};
+  }
 `;
 
 export const Record = styled.li`
@@ -107,15 +87,17 @@ export const RecordName = styled.span`
 export const RecordContent = styled.span`
   display: inline-block;
   width: 60%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
 `;
 
 export const Link = styled.a`
+  display: block;
   color: inherit;
   text-decoration: inherit;
   text-overflow: ellipsis;
+  overflow: hidden;
 
   &:hover {
     text-decoration: underline;

@@ -2,14 +2,17 @@ import React from 'react';
 import { useAuth } from 'hooks';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
+// import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
   NavBox,
   NavBtnWrapper,
   NavBtn,
   AddButton,
 } from './NoticesCategoriesNav.styled';
-import { AddPetBtnCircleLink, AddPetBtnLink } from 'components/AddNoticeButton/AddNoticeButton';
+import {
+  AddPetBtnCircleLink,
+  AddPetBtnLink,
+} from 'components/AddNoticeButton/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
   const [extended, setExtended] = useState(false);
@@ -49,9 +52,7 @@ export const NoticesCategoriesNav = () => {
           <AddPetBtnLink>Add pet</AddPetBtnLink>
         )}
       </AddButton>
-      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
-
-
+      {/* {extended && <AddNoticeModal handleModalToggle={handleModalToggle} /> */}
     </NavBox>
   );
 };

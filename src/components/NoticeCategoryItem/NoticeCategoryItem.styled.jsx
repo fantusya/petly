@@ -56,7 +56,7 @@ export const ItemTitle = styled(Box)`
   letter-spacing: ${p => p.theme.letterSpacing.title};
 `;
 
-export const ItemRecords = styled(Box)`
+export const ItemRecords = styled.ul`
   margin-bottom: ${props => (props.isLogged ? '20px' : '50px')};
 
   color: ${p => p.theme.colors.text};
@@ -66,10 +66,26 @@ export const ItemRecords = styled(Box)`
   line-height: ${p => p.theme.lineHeights.text};
 `;
 
-export const ItemСharacteristic = styled.li`
+export const Record = styled.li`
+  display: flex;
+  align-items: center;
+
   &:not(:last-child) {
     margin-bottom: 8px;
   }
+`;
+
+export const RecordName = styled.span`
+  display: inline-block;
+  width: 30%;
+`;
+
+export const RecordContent = styled.span`
+  display: inline-block;
+  width: 70%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const DeleteIcon = styled(Trash)`
@@ -125,6 +141,8 @@ export const NoticeButton = styled.button`
 export const AddFavoriteIcon = styled(Heart)`
   width: 24px;
   height: 22px;
+
+  fill: ${p => (p.isFavorite ? p.theme.colors.accent : p.theme.colors.white)};
 `;
 
 export const AddFavoriteButton = styled.button`
@@ -145,7 +163,8 @@ export const AddFavoriteButton = styled.button`
 
   &:hover {
     ${AddFavoriteIcon} path {
-      fill: ${p => p.theme.colors.accent};
+      fill: ${p =>
+        p.isFavorite ? p.theme.colors.white : p.theme.colors.accent};
       transition: ${p => p.theme.transition.main};
     }
   }
