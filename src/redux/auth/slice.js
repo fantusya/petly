@@ -46,6 +46,11 @@ const authSlice = createSlice({
   //       state.error = false;
   //     },
   //   },
+  reducers: {
+    setToken(state, action) {
+      state.accessToken = action.payload;
+    },
+  },
   extraReducers: {
     [signup.fulfilled](state, action) {
       // state.user = action.payload;
@@ -53,7 +58,7 @@ const authSlice = createSlice({
       state.error = false;
     },
     [logIn.fulfilled](state, action) {
-      // state.user = action.payload.user;
+      state.user = action.payload.user;
       console.log('action.payload', action.payload);
       // state.accessToken = action.payload.accessToken;
       state.accessToken = action.payload.accessToken;
@@ -132,4 +137,5 @@ const authSlice = createSlice({
 });
 
 // export const { changeError } = authSlice.actions;
+export const { setToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

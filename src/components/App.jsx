@@ -1,10 +1,13 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+// import { useAuth } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
 
 import { ROUTES } from 'constants/routes';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
-// import { PrivateRoute } from './Routes/PrivateRoute';
+import { PrivateRoute } from './Routes/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 import NoticesCategoriesList from './NoticesCategoriesList';
 
@@ -20,12 +23,23 @@ const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
+  // const { isLoggedIn } = useAuth;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
           <Route index element={<HomePage />} />
+
           <Route path={ROUTES.news} element={<NewsPage />} />
+
+          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
+
           <Route path={ROUTES.notices} element={<NoticesPage />}>
             <Route path="sell" element={<NoticesCategoriesList />} />
             <Route path="for-free" element={<NoticesCategoriesList />} />
@@ -33,6 +47,7 @@ export const App = () => {
             <Route path="favorite" element={<NoticesCategoriesList />} />
             <Route path="own" element={<NoticesCategoriesList />} />
           </Route>
+
           {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
@@ -45,7 +60,7 @@ export const App = () => {
               element={<NoticesPage />}
             />
           </Route> */}
-          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
+
           <Route
             path={ROUTES.register}
             element={
@@ -61,15 +76,15 @@ export const App = () => {
               <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           />
-          {/* <Route
+          <Route
             path={ROUTES.user}
             element={
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
-          /> */}
+          />
 
           {/* // MUST BE DELETED LATER */}
-          <Route path="user" element={<UserPage />} />
+          {/* <Route path="user" element={<UserPage />} /> */}
 
           <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
         </Route>
