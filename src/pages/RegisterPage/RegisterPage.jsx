@@ -1,8 +1,21 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
+
+import { signup, logIn } from 'redux/auth/operations';
+
+import { Container } from 'globalStyles/globalStyle';
+import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
+
+import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
+
 import {
   H2,
   Wrapper,
-  InputReg,
   RegisterForm,
+  Text,
   RegisterButton,
   GoogleRegisterButton,
   Text,
@@ -13,15 +26,6 @@ import {
   OpenEyaIcon,
   ClosedEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled';
-import { Formik } from 'formik';
-
-import { Container } from 'globalStyles/globalStyle';
-import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
-import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
-import { signup, logIn } from 'redux/auth/operations';
 
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
 
@@ -35,7 +39,6 @@ const initialValues = {
 };
 
 export const RegisterPage = () => {
-  // ____________________________________________________________________________
   const [currentStep, setCarrentStep] = useState(0);
 
   const dispatch = useDispatch();
@@ -99,67 +102,6 @@ export const RegisterPage = () => {
         </Wrapper>
       </Container>
     </section>
-  );
-};
-
-const StepOne = props => {
-  const [passwordVisibility, setPasswordVisibility] = useState(false);
-
-  const toggleShowPassword = () => {
-    setPasswordVisibility(!passwordVisibility);
-  };
-
-  return (
-    <>
-      <InputReg type="email" name="email" placeholder="Email" />
-      <ErrorValid name="email" component="div" />
-      <Div>
-        <InputReg
-          // type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          type={passwordVisibility ? 'text' : 'password'}
-        ></InputReg>
-        <Button type="button" onClick={toggleShowPassword}>
-          {passwordVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-        </Button>
-      </Div>
-      <ErrorValid name="password" component="div" />
-
-      <InputReg
-        // type="password"
-        type={passwordVisibility ? 'text' : 'password'}
-        name="confirm"
-        placeholder="Confirm Password"
-      />
-
-      <ErrorValid name="confirm" component="div" />
-      <RegisterButton type="button" onClick={props.next} disabled={false}>
-        Next
-      </RegisterButton>
-      <GoogleRegisterButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
-        <GoogleImg src={GooglePic} alt="Google" />
-        Signup with Google
-      </GoogleRegisterButton>
-    </>
-  );
-};
-const StepTwo = props => {
-  return (
-    <>
-      <InputReg type="text" name="name" placeholder="Name" />
-      <ErrorValid name="name" component="div" />
-      <InputReg type="text" name="city" placeholder="City, region" />
-      <ErrorValid name="city" component="div" />
-      <InputReg type="tel" name="phone" placeholder="Mobile phone" />
-      <ErrorValid name="phone" component="div" />
-
-      <RegisterButton type="submit">Register</RegisterButton>
-      <RegisterButton type="button" onClick={props.back}>
-        Back
-      </RegisterButton>
-    </>
   );
 };
 
