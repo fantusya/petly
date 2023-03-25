@@ -1,18 +1,12 @@
 import {
   H2,
   Wrapper,
-  InputReg,
   RegisterForm,
-  RegisterButton,
   Text,
-  ErrorValid,
-  Button,
-  Div,
-  OpenEyaIcon,
-  ClosedEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled';
 import { Formik } from 'formik';
-
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
 import { Container } from 'globalStyles/globalStyle';
 import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
 import { useState } from 'react';
@@ -87,63 +81,6 @@ export const RegisterPage = () => {
         </Wrapper>
       </Container>
     </section>
-  );
-};
-
-const StepOne = props => {
-  const [passwordVisibility, setPasswordVisibility] = useState(false);
-
-  const toggleShowPassword = () => {
-    setPasswordVisibility(!passwordVisibility);
-  };
-
-  return (
-    <>
-      <InputReg type="email" name="email" placeholder="Email" />
-      <ErrorValid name="email" component="div" />
-      <Div>
-        <InputReg
-          // type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          type={passwordVisibility ? 'text' : 'password'}
-        ></InputReg>
-        <Button type="button" onClick={toggleShowPassword}>
-          {passwordVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-        </Button>
-      </Div>
-      <ErrorValid name="password" component="div" />
-
-      <InputReg
-        // type="password"
-        type={passwordVisibility ? 'text' : 'password'}
-        name="confirm"
-        placeholder="Confirm Password"
-      />
-
-      <ErrorValid name="confirm" component="div" />
-      <RegisterButton type="button" onClick={props.next} disabled={false}>
-        Next
-      </RegisterButton>
-    </>
-  );
-};
-const StepTwo = props => {
-  return (
-    <>
-      <InputReg type="text" name="name" placeholder="Name" />
-      <ErrorValid name="name" component="div" />
-      <InputReg type="text" name="city" placeholder="City, region" />
-      <ErrorValid name="city" component="div" />
-      <InputReg type="tel" name="phone" placeholder="Mobile phone" />
-      <ErrorValid name="phone" component="div" />
-
-      <RegisterButton type="submit">Register</RegisterButton>
-      <RegisterButton type="button" onClick={props.back}>
-        Back
-      </RegisterButton>
-    </>
   );
 };
 

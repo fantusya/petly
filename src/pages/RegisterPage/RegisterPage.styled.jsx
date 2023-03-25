@@ -109,8 +109,8 @@ export const Button = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: none;
   background-color: inherit;
 `;
