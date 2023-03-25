@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useFormik } from 'formik';
@@ -90,7 +90,7 @@ const validationSchema = Yup.object({
 });
 
 const AddNoticeModal = ({ handleModalToggle }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isFirstRegStep, setIsFirstRegStep] = useState(true);
   const [image, setImage] = useState(null);
