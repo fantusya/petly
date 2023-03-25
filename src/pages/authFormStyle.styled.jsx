@@ -64,20 +64,22 @@ export const Button = styled.button`
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
 
-  border: inherit;
+  border: ${p => p.theme.borders.normal}${p => p.theme.colors.accent};
 
   border-radius: ${p => p.theme.radii.small};
   cursor: pointer;
 
-  color: ${theme.colors.white};
-  background-color: ${p => p.theme.colors.accent};
+  color: ${p => p.theme.colors.black};
+  background-color: ${p => p.theme.colors.background};
 
-  transition: ${theme.transition.main};
+  transition: ${p => p.theme.transition.main};
 
   &:hover,
   :active {
-    background-color: ${theme.colors.accent};
-    color: ${theme.colors.white};
+    background-color: ${p => p.theme.colors.accent};
+    color: ${p => p.theme.colors.white};
+    transition: color ${p => p.theme.transition.main},
+      background-color ${p => p.theme.colors.accent};
   }
   @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[4]};
