@@ -80,7 +80,7 @@ background-size: 280px 380px, 100vw 470px;
 
 
     background-image: url(${goldenD1}), url(${WaveD1});
-    background-size: 592px 745px, 102vw calc(100vw * 0.645);
+    background-size: 611px 753px, 100vw calc(100vw * 0.635);
     background-position-x: calc(50% + 330px), center, calc(50% + 118px);
     // 577px 675px, 101vw calc(61.5vw);
     background-position-y: bottom, bottom, calc(50% - 204px);
