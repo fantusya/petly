@@ -1,40 +1,43 @@
 import React, { useState } from 'react';
-// import { useFetchingData } from 'hooks/useFetchingData';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { search } from 'redux/notices/slice';
 import {
-  SearchBarContainer,
+  SearchBarForm,
   SearchInput,
   SearchIconContainer,
   ResetIconContainer,
   ResetIcon,
   SearchIcon,
-  SearchButton,
 } from './SearchBar.styled';
 
-const SearchBar = ({ setNews }) => {
+const SearchBar = ({ onSubmit }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
 
+  const location = useLocation();
+  const currentPage = location.pathname.split('/')[1];
+  const dispatch = useDispatch();
+
   const handleSearch = event => {
-    // ЛОГІКУ фільтрування та сортування ВИКОНУЄ Міша!!!!!!!!!!!
-    // ДОДAСТЬ після мержа гілки!!!!!!!!!!!!!!
     event.preventDefault();
 
-    if (searchTerm.trim() === '') {
-      console.log('введіть пошуковий запит');
-      setNews(searchTerm);
-      return;
+    onSubmit(searchTerm);
+    if (currentPage === 'notices') {
+      dispatch(search(searchTerm));
     }
-    setNews(searchTerm);
+
     setSearchTerm(searchTerm);
   };
 
-  //  const [news, setNews] = useState([]);
-  //  const { status, results } = useFetchingData(1, 'api/news');
+  const handleSearchButtonClick = () => {
+    setSearchTerm(searchTerm);
+  };
 
   const handleResetSearch = () => {
     setSearchTerm('');
     setIsSearchEmpty(true);
-    setNews('');
+    onSubmit('');
   };
 
   const handleSearchInputChange = event => {
@@ -43,25 +46,83 @@ const SearchBar = ({ setNews }) => {
   };
 
   return (
-    <SearchBarContainer onSubmit={handleSearch}>
+    <SearchBarForm onSubmit={handleSearch}>
       <SearchInput
         type="text"
         value={searchTerm}
         onChange={handleSearchInputChange}
         placeholder="Search"
       />
-      <SearchButton type="submit">
-        <SearchIconContainer>
-          <SearchIcon />
-        </SearchIconContainer>
-      </SearchButton>
+
+      <SearchIconContainer onClick={handleSearchButtonClick}>
+        <SearchIcon />
+      </SearchIconContainer>
+
       {!isSearchEmpty && (
         <ResetIconContainer onClick={handleResetSearch}>
           <ResetIcon />
         </ResetIconContainer>
       )}
-    </SearchBarContainer>
+    </SearchBarForm>
   );
 };
 
 export default SearchBar;
+
+// ------------------------------------------------
+// import React, { useState } from 'react';
+// import {
+//   SearchBarContainer,
+//   SearchInput,
+//   SearchIconContainer,
+//   ResetIconContainer,
+//   ResetIcon,
+//   SearchIcon,
+// } from './SearchBar.styled';
+
+// const SearchBar = ({ setNews }) => {
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//   const handleInputChange = event => {
+//     setSearchTerm(event.target.value);
+//   };
+
+//   const handleResetSearch = () => {
+//     setSearchTerm('');
+//     setNews('');
+//   };
+
+//   const handleSearchButtonClick = () => {
+//     setNews(searchTerm);
+//   };
+
+//   const handleKeyPress = event => {
+//     if (event.key === 'Enter') {
+//       handleSearchButtonClick();
+//     }
+//   };
+
+//   return (
+//     <SearchBarContainer>
+//       <SearchInput
+//         type="text"
+//         value={searchTerm}
+//         onChange={handleInputChange}
+//         onKeyPress={handleKeyPress}
+//         placeholder="Search"
+//       />
+
+//       <SearchIconContainer onClick={handleSearchButtonClick}>
+//         <SearchIcon />
+//       </SearchIconContainer>
+
+//       {searchTerm && (
+//         <ResetIconContainer onClick={handleResetSearch}>
+//           <ResetIcon />
+//         </ResetIconContainer>
+//       )}
+//     </SearchBarContainer>
+//   );
+// };
+
+// export default SearchBar;

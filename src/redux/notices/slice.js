@@ -20,6 +20,7 @@ const handleRejected = (state, action) => {
 const initialState = {
   ownNotices: [],
   favoriteNotices: [],
+  searchQuery: '',
   totalItems: null,
   isLoading: false,
   error: false,
@@ -28,11 +29,11 @@ const initialState = {
 const noticesSlice = createSlice({
   name: 'notices',
   initialState,
-  //   reducers: {
-  //     changeError(state, action) {
-  //       state.error = false;
-  //     },
-  //   },
+  reducers: {
+    search(state, action) {
+      state.searchQuery = action.payload;
+    },
+  },
   extraReducers: {
     [getFavorites.fulfilled](state, action) {
       if (
@@ -95,4 +96,5 @@ const noticesSlice = createSlice({
 });
 
 // export const { changeError } = authSlice.actions;
+export const { search } = noticesSlice.actions;
 export const noticesReducer = noticesSlice.reducer;

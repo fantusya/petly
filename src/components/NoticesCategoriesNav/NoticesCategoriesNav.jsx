@@ -4,12 +4,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
-  NavBox,
-  NavBtnWrapper,
+  // NavBox,
+  // NavBtnWrapper,
   NavBtn,
   AddButton,
+  NavUl,
 } from './NoticesCategoriesNav.styled';
-import { AddPetBtnCircleLink, AddPetBtnLink } from 'components/AddNoticeButton/AddNoticeButton';
+import {
+  AddPetBtnCircleLink,
+  AddPetBtnLink,
+} from 'components/AddNoticeButton/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
   const [extended, setExtended] = useState(false);
@@ -24,19 +28,29 @@ export const NoticesCategoriesNav = () => {
   };
 
   return (
-    <NavBox>
-      <NavBtnWrapper>
-        <NavBtn to="sell">sell</NavBtn>
-        <NavBtn to="lost-found">lost/found</NavBtn>
-        <NavBtn to="for-free">in good hands</NavBtn>
+    <>
+      <NavUl>
+        <li>
+          <NavBtn to="sell">sell</NavBtn>
+        </li>
+        <li>
+          {' '}
+          <NavBtn to="lost-found">lost/found</NavBtn>
+        </li>
+        <li>
+          <NavBtn to="for-free">in good hands</NavBtn>
+        </li>
         {isLoggedIn && (
           <>
-            <NavBtn to="favorite">favorite ads</NavBtn>
-            <NavBtn to="own">my ads</NavBtn>
+            <li>
+              <NavBtn to="favorite">favorite ads</NavBtn>
+            </li>
+            <li>
+              <NavBtn to="own">my ads</NavBtn>
+            </li>
           </>
         )}
-      </NavBtnWrapper>
-
+      </NavUl>
       <AddButton
         onClick={e => {
           e.preventDefault();
@@ -50,9 +64,7 @@ export const NoticesCategoriesNav = () => {
         )}
       </AddButton>
       {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
-
-
-    </NavBox>
+    </>
   );
 };
 
