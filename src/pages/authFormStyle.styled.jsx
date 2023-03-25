@@ -44,7 +44,7 @@ export const Input = styled(Field)`
   color: ${p => p.theme.colors.text};
   background-color: ${p => p.theme.colors.background};
   @media (min-width: ${theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[3]};
+    font-size: ${p => p.theme.fontSizes[4]};
     padding: 14px 32px;
   }
 `;
@@ -53,7 +53,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 112px;
+  padding: 9px 0 9px 0;
   margin-bottom: 40px;
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
@@ -75,7 +75,7 @@ export const Button = styled.button`
   }
   @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[4]};
-    padding: 12px 200px;
+    padding: 12px 0 12px 0;
   }
 `;
 
