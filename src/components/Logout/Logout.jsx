@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/operations';
 import { LogoutButton, LogoutIcon } from './Logout.styled';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
@@ -5,7 +7,7 @@ import { logOut } from 'redux/auth/operations';
 
 export const Logout = () => {
   const dispatch = useDispatch();
-
+  
   const handleLogOut = () => {
     dispatch(logOut());
   };
