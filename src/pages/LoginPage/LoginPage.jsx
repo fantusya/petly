@@ -4,11 +4,14 @@ import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 // import { useDispatch } from 'react-redux';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
+import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import {
   TitleAuth,
   FormCustom,
   LoginButton,
   Input,
+  GoogleLoginButton,
+  GoogleImg,
 } from './LoginPage.styled.jsx';
 
 export const LoginPage = () => {
@@ -41,6 +44,10 @@ export const LoginPage = () => {
               required
             />
             <LoginButton type="submit">Login</LoginButton>
+            <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+              <GoogleImg src={GooglePic} alt="Google" />
+              Login with Google
+            </GoogleLoginButton>
           </FormCustom>
         </Formik>
         <RouteFormLoginRegister

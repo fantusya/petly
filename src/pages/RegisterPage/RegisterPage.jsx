@@ -4,8 +4,10 @@ import {
   Input,
   RegisterForm,
   RegisterButton,
+  GoogleRegisterButton,
   Text,
   ErrorValid,
+  GoogleImg,
 } from 'pages/RegisterPage/RegisterPage.styled';
 import { Formik } from 'formik';
 
@@ -15,6 +17,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { signup } from 'redux/auth/operations';
+import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
+
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
 
 const initialValues = {
@@ -103,6 +107,10 @@ const StepOne = props => {
       >
         Next
       </RegisterButton>
+      <GoogleRegisterButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+        <GoogleImg src={GooglePic} alt="Google" />
+        Signup with Google
+      </GoogleRegisterButton>
     </>
   );
 };

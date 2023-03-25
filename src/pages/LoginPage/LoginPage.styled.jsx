@@ -35,6 +35,40 @@ export const LoginButton = styled.button`
   }
 `;
 
+export const GoogleLoginButton = styled.a`
+  border: ${p => p.theme.borders.bold} ${p => p.theme.colors.accent};
+  border-radius: ${p => p.theme.radii.small};
+
+  color: ${p => p.theme.colors.black};
+  background-color: ${p => p.theme.colors.background};
+  transition: color ${p => p.theme.transition.main},
+    background-color ${p => p.theme.transition.main};
+
+  &:hover {
+    color: ${p => p.theme.colors.background};
+    background-color: ${p => p.theme.colors.accent};
+  }
+
+  margin-top: 12px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  width: 280px;
+  text-decoration: none;
+
+  padding: 8px;
+`;
+
+export const GoogleImg = styled.img`
+  width: 26px;
+  margin-right: 10px;
+`;
+
 export const Input = styled(Field)`
   border: ${p => p.theme.borders.normal}${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.big};
