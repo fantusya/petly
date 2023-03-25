@@ -90,7 +90,7 @@ const validationSchema = Yup.object({
 });
 
 const AddNoticeModal = ({ handleModalToggle }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isFirstRegStep, setIsFirstRegStep] = useState(true);
   const [image, setImage] = useState(null);

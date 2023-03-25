@@ -11,7 +11,7 @@ import { refreshUser } from 'redux/auth/operations';
 
 export const UserPage = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   const [searchParams] = useSearchParams();
   const accessToken = searchParams.get('accessToken');
@@ -22,11 +22,7 @@ export const UserPage = () => {
       token.set(accessToken);
       localStorage.setItem('refreshToken', refreshToken);
     }
-
-    if (isLoggedIn) {
-      dispatch(refreshUser());
-    }
-  }, [dispatch, isLoggedIn]);
+  }, [accessToken, refreshToken]);
 
   useEffect(() => {
     if (isLoggedIn) {
