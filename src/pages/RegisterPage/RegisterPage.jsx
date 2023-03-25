@@ -4,8 +4,10 @@ import {
   InputReg,
   RegisterForm,
   RegisterButton,
+  GoogleRegisterButton,
   Text,
   ErrorValid,
+  GoogleImg,
   Button,
   Div,
   OpenEyaIcon,
@@ -18,7 +20,9 @@ import registerValidationSchema from 'helpers/validationSchemas/RegisterValidati
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
 import { signup, logIn } from 'redux/auth/operations';
+
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
 
 const initialValues = {
@@ -134,6 +138,10 @@ const StepOne = props => {
       <RegisterButton type="button" onClick={props.next} disabled={false}>
         Next
       </RegisterButton>
+      <GoogleRegisterButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+        <GoogleImg src={GooglePic} alt="Google" />
+        Signup with Google
+      </GoogleRegisterButton>
     </>
   );
 };

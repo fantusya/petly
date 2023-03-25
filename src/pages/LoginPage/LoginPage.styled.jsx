@@ -35,15 +35,39 @@
 //   }
 // `;
 
-// export const Input = styled(Field)`
-//   border: ${p => p.theme.borders.normal}${p => p.theme.colors.accent};
-//   border-radius: ${p => p.theme.radii.big};
-//   outline: ${p => p.theme.colors.transparent};
-//   padding-top: ${p => p.theme.fontSizes[0]};
-//   padding-bottom: ${p => p.theme.fontSizes[0]};
-//   padding-left: ${p => p.theme.fontSizes[2]};
-//   font-size: ${p => p.theme.fontSizes[5]};
-//   font-weight: ${p => p.theme.fontWeights.medium};
-//   color: ${p => p.theme.colors.text};
-//   background-color: ${p => p.theme.colors.background};
-// `;
+
+export const GoogleLoginButton = styled.a`
+  padding: 8px;
+  margin-top: 12px;
+  
+  width: 280px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: ${p => p.theme.borders.bold} ${p => p.theme.colors.accent};
+  border-radius: ${p => p.theme.radii.small};
+
+  color: ${p => p.theme.colors.black};
+  background-color: ${p => p.theme.colors.background};
+  
+  transition: color ${p => p.theme.transition.main},
+    background-color ${p => p.theme.transition.main};
+
+  &:hover {
+    color: ${p => p.theme.colors.background};
+    background-color: ${p => p.theme.colors.accent};
+  }
+
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes[4]};
+  line-height: ${p => p.theme.lineHeights.text};
+  letter-spacing: ${p => p.theme.letterSpacing.text};
+  text-decoration: none;
+`;
+
+export const GoogleImg = styled.img`
+  width: 26px;
+  margin-right: 10px;
+`;

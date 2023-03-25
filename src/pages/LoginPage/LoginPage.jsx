@@ -5,6 +5,7 @@ import { Box } from 'components/Box/Box';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
+import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
 import { RxLockOpen1, RxLockClosed } from 'react-icons/rx';
 
@@ -18,6 +19,8 @@ import {
   LogoBg,
   Icon,
 } from '../authFormStyle.styled';
+
+import { GoogleLoginButton, GoogleImg} from './LoginPage.styled.jsx';
 
 export const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -73,6 +76,18 @@ export const LoginPage = () => {
               question="Don't have an account?"
               pageName="Register"
             />
+            <LoginButton type="submit">Login</LoginButton>
+            <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+              <GoogleImg src={GooglePic} alt="Google" />
+              Login with Google
+            </GoogleLoginButton>
+          </FormCustom>
+        </Formik>
+        <RouteFormLoginRegister
+          link="/register"
+          question="Don't have an account?"
+          pageName="Register"
+        />
           </BoxAuth>
         </Container>
       </LogoBg>
