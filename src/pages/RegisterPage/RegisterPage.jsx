@@ -31,7 +31,6 @@ const initialValues = {
 };
 
 export const RegisterPage = () => {
-  // ____________________________________________________________________________
   const [currentStep, setCarrentStep] = useState(0);
 
   const dispatch = useDispatch();
