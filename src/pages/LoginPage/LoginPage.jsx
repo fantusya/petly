@@ -20,7 +20,7 @@ import {
   Icon,
 } from '../authFormStyle.styled';
 
-import { GoogleLoginButton, GoogleImg} from './LoginPage.styled.jsx';
+import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
 
 export const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -71,23 +71,19 @@ export const LoginPage = () => {
                 <Button type="submit">Login</Button>
               </FormCustom>
             </Formik>
+
             <RouteFormLoginRegister
               link="/register"
               question="Don't have an account?"
               pageName="Register"
             />
-            <LoginButton type="submit">Login</LoginButton>
+
+            {/* <LoginButton type="submit">Login</LoginButton> */}
+
             <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
               <GoogleImg src={GooglePic} alt="Google" />
               Login with Google
             </GoogleLoginButton>
-          </FormCustom>
-        </Formik>
-        <RouteFormLoginRegister
-          link="/register"
-          question="Don't have an account?"
-          pageName="Register"
-        />
           </BoxAuth>
         </Container>
       </LogoBg>

@@ -1,4 +1,4 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 // import { Field, Form } from 'formik';
 // import { theme } from 'globalStyles/theme';
 
@@ -35,23 +35,22 @@
 //   }
 // `;
 
-
 export const GoogleLoginButton = styled.a`
   padding: 8px;
   margin-top: 12px;
-  
+
   width: 280px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   border: ${p => p.theme.borders.bold} ${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.small};
 
   color: ${p => p.theme.colors.black};
   background-color: ${p => p.theme.colors.background};
-  
+
   transition: color ${p => p.theme.transition.main},
     background-color ${p => p.theme.transition.main};
 
