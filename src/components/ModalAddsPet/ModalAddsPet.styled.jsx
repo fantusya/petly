@@ -15,17 +15,18 @@ export const Backdrop = styled.div`
   transition: background-color ${p => p.theme.transition};
 `;
 
-// @media screen and (max-width: 767px) {
-//     overflow-y: hidden;
-//   }
-
 export const Modal = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  min-width: 280px;
+  padding-top: ${p => p.theme.space[5] + 8}px;
+  padding-bottom: ${p => p.theme.space[5] - 2}px;
+  padding-left: ${p => p.theme.space[4] + 4}px;
+  padding-right: ${p => p.theme.space[4] + 4}px;
+
+  width: 280px;
   height: auto;
 
   border: ${p => p.theme.borders.normal} ${p => p.theme.colors.transparent};
@@ -34,10 +35,18 @@ export const Modal = styled.div`
   background-color: ${p => p.theme.colors.white};
 
   transition: transform ${p => p.theme.transition};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    padding-left: ${p => p.theme.space[6] + 16}px;
+    padding-right: ${p => p.theme.space[6] + 16}px;
+    padding-bottom: ${p => p.theme.space[5] + 8}px;
+
+    width: 608px;
+  }
 `;
 
 export const Title = styled.h2`
-  margin-bottom: ${p => p.theme.space[4] + 4}px;
+  margin-bottom: ${p => p.theme.space[5] - 4}px;
 
   color: ${p => p.theme.colors.text};
 
@@ -48,6 +57,12 @@ export const Title = styled.h2`
   letter-spacing: ${p => p.theme.letterSpacing.text};
 
   text-align: center;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: ${p => p.theme.space[5] + 8}px;
+
+    font-size: ${p => p.theme.fontSizes[8]};
+  }
 `;
 
 export const ButtonClose = styled.button`
@@ -57,6 +72,7 @@ export const ButtonClose = styled.button`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   width: ${p => p.theme.space[5] + 2}px;
   height: ${p => p.theme.space[5] + 2}px;
@@ -74,6 +90,16 @@ export const ButtonClose = styled.button`
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.accent};
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: ${p => p.theme.space[5] + 12}px;
+    height: ${p => p.theme.space[5] + 12}px;
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    top: ${p => p.theme.space[4] + 8}px;
+    right: ${p => p.theme.space[4] + 8}px;
   }
 `;
 

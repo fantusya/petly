@@ -1,37 +1,56 @@
-import { Field, ErrorMessage } from 'formik';
-// import { AddPhotoIcon } from './PetForm.styled';
+import {
+  PetBox,
+  Label,
+  Input,
+  TextInput,
+  ErrorValidation,
+  Button,
+  ButtonBox,
+} from './PetForm.styled';
 
-const OneStep = ({ next }) => {
+import { Box } from 'components/Box/Box';
+
+const OneStep = ({ next, closeModal }) => {
   return (
     <>
-      <label htmlFor="petName">
-        {' '}
-        Name pet
-        <Field
-          type="text"
-          name="petName"
-          placeholder="Type name pet"
-          autoFocus
-        />
-        <ErrorMessage name="petName" component="div" />
-      </label>
+      <PetBox>
+        <Label htmlFor="petName">
+          {' '}
+          Name pet
+          <Input
+            type="text"
+            name="petName"
+            placeholder="Type name pet"
+            autoFocus
+          />
+          <ErrorValidation name="petName" component="div" />
+        </Label>
+      </PetBox>
 
-      {/* <label htmlFor="petBirth"> Date of birth
-        <Field as="date" name="petBirth" placeholder="Type date of birth" />
-        <ErrorMessage name="petBirth" component="div" />
-      </label> */}
+      {/* <PetBox>
+       <Label htmlFor="petBirth"> Date of birth
+        <Input as="date" name="petBirth" placeholder="Type date of birth" />
+        <ErrorValidation name="petBirth" component="div" />
+      </Label> 
+      </PetBox> */}
 
-      <label htmlFor="breed">
-        {' '}
-        Breed
-        <Field type="text" name="breed" placeholder="Type breed" />
-        <ErrorMessage name="breed" component="div" />
-      </label>
+      <Box mb={40}>
+        <Label htmlFor="breed">
+          {' '}
+          Breed
+          <Input type="text" name="breed" placeholder="Type breed" />
+          <ErrorValidation name="breed" component="div" />
+        </Label>
+      </Box>
 
-      <button type="button" onClick={next}>
-        Next
-      </button>
-      <button type="button">Cansel</button>
+      <ButtonBox>
+        <Button type="button" onClick={next}>
+          Next
+        </Button>
+        <Button mb={0} type="button" onClick={closeModal}>
+          Cansel
+        </Button>
+      </ButtonBox>
     </>
   );
 };
@@ -39,29 +58,29 @@ const OneStep = ({ next }) => {
 const TwoStep = ({ back }) => {
   return (
     <>
-      {/* <label htmlFor="petPhoto"> Add photo and some comments
+      {/* <PetBox>
+      <Label htmlFor="petPhoto"> Add photo and some comments
         <AddPhotoIcon width={48} height={48} />
-        <Field as="file" name="petPhoto" />
-        <ErrorMessage name="petPhoto" component="div" />
-      </label> */}
+        <Input as="file" name="petPhoto" />
+        <ErrorValidation name="petPhoto" component="div" />
+      </Label> 
+      </PetBox>*/}
 
-      <label htmlFor="petInfo">
-        {' '}
-        Comments
-        <Field
-          as="textarea"
-          name="petInfo"
-          rows={5}
-          placeholder="Type comments"
-        />
-        <ErrorMessage name="petInfo" component="div" />
-      </label>
+      <Box mb={40}>
+        <Label htmlFor="petInfo">
+          {' '}
+          Comments
+          <TextInput type="text" name="petInfo" placeholder="Type comments" />
+          <ErrorValidation name="petInfo" component="div" />
+        </Label>
+      </Box>
 
-      <button type="submit">Done</button>
-
-      <button type="button" onClick={back}>
-        Back
-      </button>
+      <ButtonBox>
+        <Button type="submit">Done</Button>
+        <Button type="button" onClick={back}>
+          Back
+        </Button>
+      </ButtonBox>
     </>
   );
 };
