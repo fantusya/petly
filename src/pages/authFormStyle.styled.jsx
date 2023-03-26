@@ -84,7 +84,7 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   padding: 9px 0 9px 0;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
 
