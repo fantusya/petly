@@ -53,7 +53,7 @@ export const StepOne = props => {
       <RegisterButton type="button" onClick={props.next} disabled={false}>
         Next
       </RegisterButton>
-      <GoogleRegisterButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+      <GoogleRegisterButton href="https://petly-gd7x.onrender.com/api/users/google">
         <GoogleImg src={GooglePic} alt="Google" />
         Signup with Google
       </GoogleRegisterButton>

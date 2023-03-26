@@ -69,7 +69,7 @@ export const LoginPage = () => {
                 </Icon>
                 <Error name="password" component="div" />
                 <Button type="submit">Login</Button>
-                <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+                <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
                   <GoogleImg src={GooglePic} alt="Google" />
                   Login with Google
                 </GoogleLoginButton>
