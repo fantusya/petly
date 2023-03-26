@@ -66,8 +66,6 @@ export const UserDataItem = () => {
           </InfoButton>
         </InfoForm>
       </InfoItem>
-      <img src={user?.avatarURL} alt="" />
-
       <InfoItem>
         <InfoForm onSubmit={handleSubmit}>
           <InfoField>
@@ -143,5 +141,4 @@ export const UserDataItem = () => {
     </>
   );
 };
-
 export default UserDataItem;

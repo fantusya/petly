@@ -97,7 +97,8 @@ const TwoStep = ({ back, handleChange }) => {
           {' '}
           Comments
           <TextInput
-            as="textarea"
+            type="textarea"
+            resize="none"
             name="comments"
             rows="5"
             placeholder="Type comments"

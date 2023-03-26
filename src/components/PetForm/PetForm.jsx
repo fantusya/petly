@@ -53,7 +53,7 @@ export const PetForm = ({ closeModal }) => {
     console.log('Відправити форму!!!!!!!!!!');
 
     const { name, birthDate, breed, comments } = values;
-
+    console.log('values', values);
     if (!selectedFile) {
       console.log('CHOOSE FILE PLS');
       return;

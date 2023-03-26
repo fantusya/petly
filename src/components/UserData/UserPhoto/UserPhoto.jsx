@@ -63,18 +63,20 @@ export const UserPhoto = () => {
             {isFileSelected ? <Check /> : <AvatarPlus />}
           </AddAvatarBtn>
 
-      <HiddenInput
-        ref={filePicker}
-        type="file"
-        name="avatarURL"
-        onChange={handleChange}
-        accept="image/*,.png,.jpg,.gif,.web"
-      />
-      <EditPhotoBtn type="submit" onClick={handleUpload}>
-        <Kamera />
-        <span>Edit photo</span>
-      </EditPhotoBtn>
-    </div>
+          <HiddenInput
+            ref={filePicker}
+            type="file"
+            name="avatar"
+            onChange={handleChange}
+            accept="image/*,.png,.jpg,.gif,.web"
+          />
+          <EditPhotoBtn type="submit" onClick={handleUpload}>
+            <Kamera />
+            <span>Edit photo</span>
+          </EditPhotoBtn>
+        </div>
+      )}
+    </>
   );
 };
 
