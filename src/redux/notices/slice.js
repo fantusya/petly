@@ -36,13 +36,14 @@ const noticesSlice = createSlice({
   },
   extraReducers: {
     [getFavorites.fulfilled](state, action) {
-      if (
-        !action.payload.results.some(item =>
-          state.favoriteNotices.includes(item)
-        )
-      ) {
-        state.favoriteNotices.push(...action.payload.results);
-      }
+      // if (
+      //   !action.payload.results.some(item =>
+      //     state.favoriteNotices.includes(item)
+      //   )
+      // ) {
+      //   state.favoriteNotices.push(...action.payload.results);
+      // }
+      state.favoriteNotices = action.payload.results;
       state.totalItems = action.payload.totalItems;
 
       state.isLoading = false;
@@ -62,11 +63,12 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [getUserNotices.fulfilled](state, action) {
-      if (
-        !action.payload.results.some(item => state.ownNotices.includes(item))
-      ) {
-        state.ownNotices.push(...action.payload.results);
-      }
+      // if (
+      //   !action.payload.results.some(item => state.ownNotices.includes(item))
+      // ) {
+      //   state.ownNotices.push(...action.payload.results);
+      // }
+      state.ownNotices = action.payload.results;
       state.totalItems = action.payload.totalItems;
 
       state.isLoading = false;

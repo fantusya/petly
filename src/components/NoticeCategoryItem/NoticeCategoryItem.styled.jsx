@@ -42,6 +42,11 @@ export const ItemContent = styled(Box)`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding-right: 20px;
     padding-left: 20px;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 
@@ -54,6 +59,12 @@ export const ItemTitle = styled(Box)`
   font-weight: ${p => p.theme.fontWeights.bold};
   line-height: 1.357;
   letter-spacing: ${p => p.theme.letterSpacing.title};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+  }
 `;
 
 export const ItemRecords = styled.ul`
@@ -142,7 +153,14 @@ export const AddFavoriteIcon = styled(Heart)`
   width: 24px;
   height: 22px;
 
-  fill: ${p => (p.isfavorite ? p.theme.colors.accent : p.theme.colors.white)};
+  fill: ${p => p.theme.colors.white};
+`;
+
+export const RemoveFavoriteIcon = styled(Heart)`
+  width: 24px;
+  height: 22px;
+
+  fill: ${p => p.theme.colors.accent};
 `;
 
 export const AddFavoriteButton = styled.button`
@@ -163,8 +181,11 @@ export const AddFavoriteButton = styled.button`
 
   &:hover {
     ${AddFavoriteIcon} path {
-      fill: ${p =>
-        p.isFavorite ? p.theme.colors.white : p.theme.colors.accent};
+      fill: ${p => p.theme.colors.accent};
+      transition: ${p => p.theme.transition.main};
+    }
+    ${RemoveFavoriteIcon} path {
+      fill: ${p => p.theme.colors.white};
       transition: ${p => p.theme.transition.main};
     }
   }

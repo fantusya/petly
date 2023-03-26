@@ -1,5 +1,4 @@
 import { AuthNavWrapp, StyledNavLink } from 'components/AuthNav/AuthNav.styled';
-import Media from 'react-media';
 
 export const AuthNav = ({ setOpen }) => {
   return (
@@ -7,9 +6,7 @@ export const AuthNav = ({ setOpen }) => {
       <StyledNavLink
         to="/login"
         onClick={() => {
-          <Media queries={{ small: { maxWidth: 767.9 } }}>
-            {matches => matches.small || setOpen(false)}
-          </Media>;
+          setOpen(false);
         }}
       >
         Login
@@ -17,9 +14,7 @@ export const AuthNav = ({ setOpen }) => {
       <StyledNavLink
         to="/register"
         onClick={() => {
-          <Media queries={{ small: { maxWidth: 767.9 } }}>
-            {matches => matches.small || setOpen(false)}
-          </Media>;
+          setOpen(false);
         }}
       >
         Registration

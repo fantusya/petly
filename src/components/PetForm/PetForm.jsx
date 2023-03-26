@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { addPet } from 'redux/auth/operations';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+
 import { Formik } from 'formik';
 import { OneStep, TwoStep } from './Steps';
 import { validationPetSchema } from 'helpers/validationSchemas/validationPetSchema';
 import { Forma } from './PetForm.styled';
 
 const initialValues = {
-  petName: '',
-  petBirth: '',
+  name: '',
+  birthDate: '',
   breed: '',
-  petPhoto: '',
-  petInfo: '',
+  photoURL: '',
+  comments: '',
 };
 
 export const PetForm = ({ closeModal }) => {
-  const pets = useSelector(selectUser).myPets;
   const dispatch = useDispatch();
 
-  console.log('pets', pets);
-
   const [currentStep, setCurrentStep] = useState(0);
+  const [selectedFile, setSelectedFile] = useState(null);
+  // const [previewImg, setPreviewImg] = useState(null);
 
   const handleNextStep = () => {
     setCurrentStep(prev => prev + 1);
@@ -31,12 +31,47 @@ export const PetForm = ({ closeModal }) => {
     setCurrentStep(prev => prev - 1);
   };
 
+  const handleChange = e => {
+    const chosenImg = e.target.files[0];
+    console.log('chosenImg', chosenImg);
+
+    if (!e.target.files.length || !chosenImg) {
+      setSelectedFile(null);
+      toast.warning('Choose an image to change your avatar!');
+      return;
+    }
+    setSelectedFile(chosenImg);
+
+    // const reader = new FileReader();
+    // reader.onload = e => {
+    //   setPreviewImg(e.target.result);
+    // };
+    // reader.readAsDataURL(chosenImg);
+  };
+
   const handleSubmit = (values, { resetForm }) => {
     console.log('Відправити форму!!!!!!!!!!');
-    console.log('values', values);
-    // console.log('actions', actions);
 
-    dispatch(addPet(values));
+    const { name, birthDate, breed, comments } = values;
+    console.log('values', values);
+    if (!selectedFile) {
+      console.log('CHOOSE FILE PLS');
+      return;
+    }
+
+    const data = new FormData();
+    data.append('name', name);
+    data.append('birthDate', birthDate);
+    data.append('breed', breed);
+    data.append('photoURL', selectedFile);
+    data.append('comments', comments);
+    dispatch(addPet(data));
+
+    console.log('selectedFile', selectedFile);
+    console.log('values', values);
+    console.log('data', data);
+
+    // dispatch(addPet(values));
 
     resetForm();
     closeModal();
@@ -44,7 +79,7 @@ export const PetForm = ({ closeModal }) => {
 
   const steps = [
     <OneStep next={handleNextStep} closeModal={closeModal} />,
-    <TwoStep back={handlePrevStep} />,
+    <TwoStep back={handlePrevStep} handleChange={handleChange} />,
   ];
 
   return (

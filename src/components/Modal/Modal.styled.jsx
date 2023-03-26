@@ -13,6 +13,7 @@ export const Backdrop = styled.div`
   background-color: ${p => p.theme.colors.modalBackdrop};
   backdrop-filter: blur(5px);
   overflow: scroll;
+  z-index: 10;
 `;
 
 export const ModalWindow = styled.div`
