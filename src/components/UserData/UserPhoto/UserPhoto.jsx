@@ -1,8 +1,10 @@
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
 import { updateAvatar } from 'redux/auth/operations';
 import toast from 'react-hot-toast';
 import {
+  Avatar,
   AddAvatarBtn,
   HiddenInput,
   EditPhotoBtn,
@@ -15,6 +17,9 @@ export const UserPhoto = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isFileSelected, setIsFileSelected] = useState(false);
 
+  const { user, name } = useAuth();
+  const { avatarURL } = user;
+
   const dispatch = useDispatch();
   const filePicker = useRef(null);
 
@@ -23,6 +28,7 @@ export const UserPhoto = () => {
 
     if (!selectedFile) {
       console.log('CHOOSE FILE PLS');
+      toast.error('Choose an image to change your avatar!');
       return;
     }
     console.log('selectedFile', selectedFile);
@@ -37,22 +43,25 @@ export const UserPhoto = () => {
 
     if (!e.target.files.length || !chosenImg) {
       setSelectedFile(null);
-      toast.warning('Choose an image to change your avatar!');
+      toast.error('Choose an image to change your avatar!');
       return;
     }
     setSelectedFile(chosenImg);
     setIsFileSelected(true);
-    toast.success(
-      'Photo selected. Confirm your choice by clicking on the "Edit photo" button'
-    );
+    toast.success('Photo selected. Click on the 📸 "Edit photo"');
   };
 
   return (
-    <div>
-      <AddAvatarBtn onClick={() => filePicker.current.click()}>
-        {isFileSelected ? <Check /> : <AvatarPlus />}
-        {/* <AvatarPlus /> */}
-      </AddAvatarBtn>
+    <>
+      {avatarURL ? (
+        <Avatar>
+          <img srcSet={avatarURL} alt={name} width="233px" />
+        </Avatar>
+      ) : (
+        <div>
+          <AddAvatarBtn onClick={() => filePicker.current.click()}>
+            {isFileSelected ? <Check /> : <AvatarPlus />}
+          </AddAvatarBtn>
 
       <HiddenInput
         ref={filePicker}

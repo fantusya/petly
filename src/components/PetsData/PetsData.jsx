@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 import { Box } from 'components/Box/Box';
 import { ModalAddsPet } from 'components/ModalAddsPet/ModalAddsPet';
@@ -15,6 +17,9 @@ import { Container } from 'globalStyles/globalStyle';
 
 export const PetsData = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const pets = useSelector(selectUser).myPets;
+  console.log('pets', pets);
 
   const toogleModal = () => {
     setShowModal(!showModal);

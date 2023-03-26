@@ -3,25 +3,24 @@ import { Status } from 'constants/status';
 import { getNoticeByCategory } from 'api/notice';
 import NoticeCategoryItem from '../NoticeCategoryItem';
 import { useDispatch } from 'react-redux';
-// import NoticeModal from 'components/NoticeModal';
 import { NoticesCardsList } from './NoticesCategoriesList.styled';
 import { useLocation } from 'react-router-dom';
 import { useNotices } from 'hooks/useNotices';
 import { getFavorites } from 'redux/notices/operations';
 import { getUserNotices } from 'redux/notices/operations';
+import { Box } from 'components/Box/Box';
 
 export const NoticesCategoriesList = () => {
   const [status, setStatus] = useState(Status.IDLE);
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
 
-  // const { ownNotices, favoriteNotices } = useNotices();
+  const { ownNotices, favoriteNotices } = useNotices();
 
   const dispatch = useDispatch();
   const location = useLocation();
   const categoryName = location.pathname.split('/').reverse()[0];
-  const { query: search } = useNotices();
-  console.log('categoryName', categoryName);
+  const { query: search, isLoading, error } = useNotices();
 
   useEffect(() => {
     async function getNotices() {
@@ -35,9 +34,9 @@ export const NoticesCategoriesList = () => {
         }
 
         if (categoryName === 'favorite') {
-          dispatch(getFavorites(search, page));
+          dispatch(getFavorites({ search, page }));
         } else if (categoryName === 'own') {
-          dispatch(getUserNotices(search, page));
+          dispatch(getUserNotices({ search, page }));
         } else {
           const notices = await getNoticeByCategory({
             categoryName,
@@ -61,15 +60,34 @@ export const NoticesCategoriesList = () => {
 
   return (
     <>
-      {status === Status.PENDING && <b>LOADING</b>}
+      {status === Status.PENDING && isLoading && (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          p="20px 50px"
+        >
+          LOADING
+        </Box>
+      )}
       {status === Status.RESOLVED && (
         <NoticesCardsList>
+          {categoryName === 'favorite'
+            ? favoriteNotices.map(item => (
+                <NoticeCategoryItem key={item._id} notice={item} />
+              ))
+            : null}
+          {categoryName === 'own'
+            ? ownNotices.map(item => (
+                <NoticeCategoryItem key={item._id} notice={item} />
+              ))
+            : null}
           {results.map(item => (
             <NoticeCategoryItem key={item._id} notice={item} />
           ))}
         </NoticesCardsList>
       )}
-      {status === Status.REJECTED && <b>ERROR</b>}
+      {status === Status.REJECTED && error && <b>ERROR</b>}
     </>
   );
 };
