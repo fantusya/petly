@@ -33,8 +33,6 @@ export const NoticesCategoriesList = () => {
           page,
         });
 
-        console.log('notices', notices);
-
         // setResults(prevState => [...prevState, ...notices.results]);
         setResults(notices.results);
         // setTotal(movies.total);

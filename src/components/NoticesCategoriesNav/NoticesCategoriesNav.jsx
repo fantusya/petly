@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from 'hooks';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
+// import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
   // NavBox,
   // NavBtnWrapper,

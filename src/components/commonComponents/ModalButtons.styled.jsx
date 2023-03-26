@@ -23,8 +23,7 @@ export const ModalButton = styled.button`
 
   cursor: pointer;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
   }
@@ -63,8 +62,7 @@ export const ModalCloseButton = styled.button`
 
   transition: ${p => p.theme.transition.main};
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
   }
