@@ -61,20 +61,14 @@ export const Input = styled(Field)`
 `;
 
 export const TextInput = styled(Input)`
-  height: 100px;
   border-radius: ${p => p.theme.radii.small};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: ${p => p.theme.space[4]}px;
     margin-top: ${p => p.theme.space[4] - 4}px;
-    height: 116px;
     // margin-left: ${p => p.theme.space[5] - 4}px;
     // width: 394px;
   }
-`;
-
-export const AddPhotoIcon = styled(Icon)`
-  fill: currentColor;
 `;
 
 export const ErrorValidation = styled(ErrorMessage)`
@@ -138,4 +132,46 @@ export const ButtonBox = styled.div`
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     font-size: ${p => p.theme.fontSizes[5]};
   }
+`;
+
+export const PetAvatarBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 233px;
+  height: 233px;
+  margin: 0 auto 12px;
+
+  border: none;
+  border-radius: ${p => p.theme.radii.circular};
+  box-shadow: ${p => p.theme.shadows.avatar};
+  cursor: pointer;
+
+  color: ${p => p.theme.colors.accent};
+  background-color: ${p => p.theme.colors.background};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: 8px;
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    margin-bottom: 0;
+  }
+`;
+
+export const AddPhotoIcon = styled(Icon)`
+  fill: currentColor;
+`;
+
+export const HiddenInput = styled.input`
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 `;

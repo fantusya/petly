@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import {
   PetBox,
   Label,
@@ -6,6 +8,9 @@ import {
   ErrorValidation,
   Button,
   ButtonBox,
+  AddPhotoIcon,
+  HiddenInput,
+  PetAvatarBtn,
 } from './PetForm.styled';
 
 import { Box } from 'components/Box/Box';
@@ -14,25 +19,31 @@ const OneStep = ({ next, closeModal }) => {
   return (
     <>
       <PetBox>
-        <Label htmlFor="petName">
+        <Label htmlFor="name">
           {' '}
           Name pet
           <Input
             type="text"
-            name="petName"
+            name="name"
             placeholder="Type name pet"
             autoFocus
           />
-          <ErrorValidation name="petName" component="div" />
+          <ErrorValidation name="name" component="div" />
         </Label>
       </PetBox>
 
-      {/* <PetBox>
-       <Label htmlFor="petBirth"> Date of birth
-        <Input as="date" name="petBirth" placeholder="Type date of birth" />
-        <ErrorValidation name="petBirth" component="div" />
-      </Label> 
-      </PetBox> */}
+      <PetBox>
+        <Label htmlFor="birthDate">
+          {' '}
+          Date of birth
+          <Input
+            type="date"
+            name="birthDate"
+            placeholder="Type date of birth"
+          />
+          <ErrorValidation name="birthDate" component="div" />
+        </Label>
+      </PetBox>
 
       <Box mb={40}>
         <Label htmlFor="breed">
@@ -48,30 +59,50 @@ const OneStep = ({ next, closeModal }) => {
           Next
         </Button>
         <Button mb={0} type="button" onClick={closeModal}>
-          Cansel
+          Cancel
         </Button>
       </ButtonBox>
     </>
   );
 };
 
-const TwoStep = ({ back }) => {
+const TwoStep = ({ back, handleChange }) => {
+  const filePicker = useRef(null);
+
   return (
     <>
-      {/* <PetBox>
-      <Label htmlFor="petPhoto"> Add photo and some comments
-        <AddPhotoIcon width={48} height={48} />
-        <Input as="file" name="petPhoto" />
-        <ErrorValidation name="petPhoto" component="div" />
-      </Label> 
-      </PetBox>*/}
+      <PetBox>
+        <Label htmlFor="photoURL">
+          {' '}
+          Add photo and some comments
+          <PetAvatarBtn
+            type="button"
+            onClick={() => filePicker.current.click()}
+          >
+            <AddPhotoIcon width={48} height={48} />
+          </PetAvatarBtn>
+          <HiddenInput
+            ref={filePicker}
+            type="file"
+            name="photoURL"
+            onChange={handleChange}
+            accept="image/*,.png,.jpg,.gif,.web"
+          />
+          <ErrorValidation name="photoURL" component="div" />
+        </Label>
+      </PetBox>
 
       <Box mb={40}>
-        <Label htmlFor="petInfo">
+        <Label htmlFor="comments">
           {' '}
           Comments
-          <TextInput type="text" name="petInfo" placeholder="Type comments" />
-          <ErrorValidation name="petInfo" component="div" />
+          <TextInput
+            as="textarea"
+            name="comments"
+            rows="5"
+            placeholder="Type comments"
+          />
+          <ErrorValidation name="comments" component="div" />
         </Label>
       </Box>
 
