@@ -6,19 +6,19 @@ import { Formik } from 'formik';
 import { signup, logIn } from 'redux/auth/operations';
 
 import { Container } from 'globalStyles/globalStyle';
+import { Box } from 'components/Box/Box';
 
 import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 
+import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
 import {
-  H2,
-  Wrapper,
-  RegisterForm,
-  Text,
-} from 'pages/RegisterPage/RegisterPage.styled';
-
-// import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
+  BoxAuth,
+  FormCustom,
+  LogoBg,
+  TitleAuth,
+} from 'pages/authFormStyle.styled';
 
 const initialValues = {
   email: '',
@@ -76,35 +76,30 @@ export const RegisterPage = () => {
   ];
 
   return (
-    <section>
-      <Container>
-        <Wrapper>
-          <>
-            <H2>Registration</H2>
+    <Box as="section">
+      <LogoBg>
+        <Container>
+          <BoxAuth>
+            <TitleAuth>Registration</TitleAuth>
+
             <Formik
               initialValues={initialValues}
               onSubmit={handleSubmit}
               validationSchema={registerValidationSchema}
               autoComplete="off"
             >
-              <RegisterForm autoComplete="off">
-                {steps[currentStep]}
-              </RegisterForm>
+              <FormCustom autoComplete="off">{steps[currentStep]}</FormCustom>
             </Formik>
-            <Text>
-              Already have an account?
-              <a href="http://localhost:3000/petly">Login</a>
-            </Text>
 
-            {/* <RouteFormLoginRegister
+            <RouteFormLoginRegister
               link="/login"
               question="Already have an account??"
               pageName="login"
-            /> */}
-          </>
-        </Wrapper>
-      </Container>
-    </section>
+            />
+          </BoxAuth>
+        </Container>
+      </LogoBg>
+    </Box>
   );
 };
 
