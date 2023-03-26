@@ -1,23 +1,19 @@
-import { AddLinkBasic, AddLinkCircle, AddCardIcon } from "./AddNoticeButton.styled";
+import { AddCardIcon } from "./AddNoticeButton.styled";
 
-const AddPetBtnLink = ({ name = '', href = '', children }) => {
-    return (
-      <AddLinkBasic href={href} name={name}>
-        {children}
-        <>
-          <AddCardIcon/>
-        </>
-      </AddLinkBasic>
-    );
-  };
-  
-const AddPetBtnCircleLink = ({ name = '', href = '', children }) => {
-return (
-    <AddLinkCircle href={href} name={name}>
-    <AddCardIcon/>
-    {children}
-    </AddLinkCircle>
-);
+import { useMedia } from 'react-use';
+import { AddPetButton, AddButtonBox } from './AddNoticeButton.styled';
+
+export const AddNoticeButton = ({ handleModalToggle }) => {
+  const isMobile = useMedia('(max-width: 767px)');
+  return (
+    <AddButtonBox>
+      {!isMobile && 'Add pet'}
+      <AddPetButton type="button" onClick={handleModalToggle}>
+        <AddCardIcon />
+        {isMobile && 'Add pet'}
+      </AddPetButton>
+    </AddButtonBox>
+  );
 };
-  
-export { AddPetBtnLink, AddPetBtnCircleLink };
+
+export default AddNoticeButton; 

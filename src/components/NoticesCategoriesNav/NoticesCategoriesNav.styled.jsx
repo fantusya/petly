@@ -2,20 +2,37 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Box } from 'components/Box/Box';
 
-// export const NavBox = styled(Box)`
-//   padding-top: ${p => p.theme.space[6]}px;
+export const NavBox = styled(Box)`
+  // padding-top: ${p => p.theme.space[6]}px;
 
-//   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-//     display: flex;
-//     justify-content: space-between;
-//   }
-// `;
+  // @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
+  margin-top: 28px;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    align-items: center;
+  }
+`;
 
 export const NavUl = styled.ul`
-  padding-top: 28px;
+  // padding-top: 28px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+
+  justify-content: flex-start;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 75%;
+  }
 `;
 
 // export const NavBtnWrapper = styled(Box)`
@@ -68,6 +85,12 @@ export const NavBtn = styled(NavLink)`
 `;
 
 export const AddButton = styled(Box)`
+  border-radius: ${p => p.theme.radii.circular};;
+  border-style: none;
+  background-color: ${p => p.theme.colors.accent};
+  cursor: pointer;
+  // transition: all 400ms ease 0s;
+
   @media (max-width: 767.9px) {
     position: fixed;
     top: 50%;
