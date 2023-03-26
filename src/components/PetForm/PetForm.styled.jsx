@@ -10,6 +10,14 @@ export const PetBox = styled.div`
   }
 `;
 
+export const PetWrap = styled.div`
+  text-align: center;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: ${p => p.theme.space[5] + 8}px;
+  }
+`;
+
 export const Label = styled.label`
   color: ${p => p.theme.colors.text};
 
@@ -24,6 +32,15 @@ export const Label = styled.label`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[5]};
     line-height: 1.08;
+  }
+`;
+
+export const LabelText = styled(Label)`
+  font-size: ${p => p.theme.fontSizes[1]};
+  line-height: ${p => p.theme.lineHeights.text};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: ${p => p.theme.fontSizes[4]};
   }
 `;
 
@@ -61,20 +78,15 @@ export const Input = styled(Field)`
 `;
 
 export const TextInput = styled(Input)`
-  height: 100px;
+  margin-top: ${p => p.theme.space[3]}px;
   border-radius: ${p => p.theme.radii.small};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: ${p => p.theme.space[4]}px;
     margin-top: ${p => p.theme.space[4] - 4}px;
-    height: 116px;
     // margin-left: ${p => p.theme.space[5] - 4}px;
     // width: 394px;
   }
-`;
-
-export const AddPhotoIcon = styled(Icon)`
-  fill: currentColor;
 `;
 
 export const ErrorValidation = styled(ErrorMessage)`
@@ -130,12 +142,54 @@ export const Button = styled.button`
 `;
 
 export const ButtonBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     font-size: ${p => p.theme.fontSizes[5]};
   }
+`;
+
+export const PetAvatarBtn = styled.button`
+  margin: 0 auto 20px;
+  margin-top: ${p => p.theme.space[4] + 4}px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 208px;
+  height: 208px;
+
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.small};
+  cursor: pointer;
+
+  background-color: ${p => p.theme.colors.background};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: ${p => p.theme.space[0]}px;
+    width: 182px;
+    height: 182px;
+  }
+`;
+
+export const AddPhotoIcon = styled(Icon)`
+  fill: currentColor;
+`;
+
+export const HiddenInput = styled.input`
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 `;
