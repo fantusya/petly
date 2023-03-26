@@ -27,7 +27,7 @@ const NewsPage = () => {
       }));
       //   console.log('NewNews', NewNews);
       const SortNews = NewNews.sort(
-        (a, b) => b.date < a.date || isNaN(b.date) - isNaN(a.date)
+        (a, b) => b.date - a.date || isNaN(b.date) - isNaN(a.date)
       );
 
       const NewDateNews = SortNews.map(news => ({
