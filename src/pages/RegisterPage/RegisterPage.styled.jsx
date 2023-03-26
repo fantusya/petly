@@ -1,146 +1,16 @@
 import styled from 'styled-components';
-import { ErrorMessage, Field, Form } from 'formik';
+import { theme } from 'globalStyles/theme';
 import { ReactComponent as Open } from 'images/svg/openedEye.svg';
 import { ReactComponent as Closed } from 'images/svg/closedEye.svg';
-
-// • позиционирование элемента относительно других (position/top/left)
-// • margin/padding/width/height
-// • флексы
-// • все стили borders
-// • цвет/цвет фона
-// • типография
-// • transition
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
-  margin-left: 20px;
-  margin-right: 20px;
-`;
-
-export const RegisterForm = styled(Form)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  flex-direction: column;
-`;
-
-export const InputReg = styled(Field)`
-  background-color: ${p => p.theme.colors.background};
-  border-radius: 40px;
-  border: 1px solid ${p => p.theme.colors.accent};
-  width: 280px;
-  padding-top: 11px;
-  padding-bottom: 12px;
-  padding-left: 12px;
-  margin-top: 24px;
-  line-height: 19px;
-
-  font-size: ${p => p.theme.fontSizes[1]};
-  position: relative;
-`;
-
-export const H2 = styled.h1`
-  font-weight: 700;
-  font-size: ${p => p.theme.fontSizes[5]};
-  line-height: 33px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.04em;
-
-  justify-content: center;
-
-  color: #111111;
-`;
-
-export const RegisterButton = styled.button`
-  border: ${p => p.theme.borders.bold} ${p => p.theme.colors.accent};
-  border-radius: ${p => p.theme.radii.small};
-
-  color: ${p => p.theme.colors.black};
-  background-color: ${p => p.theme.colors.background};
-  transition: color ${p => p.theme.transition.main},
-    background-color ${p => p.theme.transition.main};
-
-  &:hover {
-    color: ${p => p.theme.colors.background};
-    background-color: ${p => p.theme.colors.accent};
-  }
-
-  margin-top: 12px;
-
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 27px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 0.04em;
-  width: 280px;
-
-  padding: 8px;
-`;
-
-export const GoogleRegisterButton = styled.a`
-  border: ${p => p.theme.borders.bold} ${p => p.theme.colors.accent};
-  border-radius: ${p => p.theme.radii.small};
-
-  color: ${p => p.theme.colors.black};
-  background-color: ${p => p.theme.colors.background};
-  transition: color ${p => p.theme.transition.main},
-    background-color ${p => p.theme.transition.main};
-
-  &:hover {
-    color: ${p => p.theme.colors.background};
-    background-color: ${p => p.theme.colors.accent};
-  }
-
-  margin-top: 12px;
-
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 27px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 0.04em;
-  width: 280px;
-  text-decoration: none;
-
-  padding: 8px;
-`;
 
 export const GoogleImg = styled.img`
   width: 26px;
   margin-right: 10px;
 `;
 
-export const Text = styled.p`
-  margin-top: 40px;
-  font-size: 12px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: rgba(17, 17, 17, 0.6);
-`;
-export const ErrorValid = styled(ErrorMessage)`
+export const ButtonImg = styled.button`
   position: absolute;
-  margin-left: 20px;
-  margin-top: 2px;
-  color: #e2001a;
-  font-size: 11px;
-  line-height: 15px;
-`;
-export const Button = styled.button`
-  position: absolute;
-  top: 37px;
+  top: 15px;
   left: 240px;
   display: flex;
   flex-direction: column;
@@ -149,6 +19,18 @@ export const Button = styled.button`
   height: 18px;
   border: none;
   background-color: inherit;
+  @media (min-width: ${theme.breakpoints[1]}) {
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    left: 330px;
+  }
+  @media (min-width: ${theme.breakpoints[2]}) {
+    width: 25px;
+    height: 25px;
+    top: 20px;
+    left: 430px;
+  }
 `;
 export const Div = styled.div`
   position: relative;

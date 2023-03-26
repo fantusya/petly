@@ -3,16 +3,15 @@ import { useState } from 'react';
 import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
 
 import {
-  InputReg,
-  RegisterButton,
-  ErrorValid,
-  Button,
+  ButtonImg,
   Div,
   OpenEyaIcon,
   ClosedEyaIcon,
-  GoogleRegisterButton,
   GoogleImg,
 } from 'pages/RegisterPage/RegisterPage.styled';
+
+import { Error, Input, Button } from 'pages/authFormStyle.styled';
+import { GoogleLoginButton } from 'pages/LoginPage/LoginPage.styled';
 
 export const StepOne = props => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
@@ -23,40 +22,39 @@ export const StepOne = props => {
 
   return (
     <>
+      <Input type="email" name="email" placeholder="Email" />
+      <Error name="email" component="div" />
+
       <Div>
-        <InputReg type="email" name="email" placeholder="Email" />
-        <ErrorValid name="email" component="div" />
-      </Div>
-      <Div>
-        <InputReg
+        <Input
           // type="password"
           id="password"
           name="password"
           placeholder="Password"
           type={passwordVisibility ? 'text' : 'password'}
-        ></InputReg>
-        <Button type="button" onClick={toggleShowPassword}>
+        ></Input>
+        <ButtonImg type="button" onClick={toggleShowPassword}>
           {passwordVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-        </Button>{' '}
-        <ErrorValid name="password" component="div" />
-      </Div>
-      <Div>
-        <InputReg
-          // type="password"
-          type={passwordVisibility ? 'text' : 'password'}
-          name="confirm"
-          placeholder="Confirm Password"
-        />
-        <ErrorValid name="confirm" component="div" />
+        </ButtonImg>
+        <Error name="password" component="div" />
       </Div>
 
-      <RegisterButton type="button" onClick={props.next} disabled={false}>
+      <Input
+        // type="password"
+        type={passwordVisibility ? 'text' : 'password'}
+        name="confirm"
+        placeholder="Confirm Password"
+      />
+      <Error name="confirm" component="div" />
+
+      <Button type="button" onClick={props.next} disabled={false}>
         Next
-      </RegisterButton>
-      <GoogleRegisterButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+      </Button>
+
+      <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
         <GoogleImg src={GooglePic} alt="Google" />
         Signup with Google
-      </GoogleRegisterButton>
+      </GoogleLoginButton>
     </>
   );
 };

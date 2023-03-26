@@ -7,7 +7,6 @@ import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
-import { RxLockOpen1, RxLockClosed } from 'react-icons/rx';
 
 import {
   TitleAuth,
@@ -21,6 +20,10 @@ import {
 } from '../authFormStyle.styled';
 
 import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
+import {
+  ClosedEyaIcon,
+  OpenEyaIcon,
+} from 'pages/RegisterPage/RegisterPage.styled.jsx';
 
 export const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -65,9 +68,10 @@ export const LoginPage = () => {
                 />
 
                 <Icon onClick={togglePassword}>
-                  {passwordShown ? <RxLockOpen1 /> : <RxLockClosed />}
+                  {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
                 </Icon>
                 <Error name="password" component="div" />
+
                 <Button type="submit">Login</Button>
                 <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
                   <GoogleImg src={GooglePic} alt="Google" />

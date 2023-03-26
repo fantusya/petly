@@ -35,7 +35,7 @@ export const FormCustom = styled(Form)`
 export const Input = styled(Field)`
   margin-bottom: 24px;
   padding: 11px 14px;
-
+  width: 100%;
   border: ${p => p.theme.borders.normal}${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.big};
   outline: ${p => p.theme.colors.transparent};
@@ -84,7 +84,8 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   padding: 9px 0 9px 0;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+  margin-top: 4px;
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
 
@@ -212,8 +213,9 @@ export const BoxAuth = styled.div`
 //============== стили для компонента "routeFormLogin"----------------
 
 export const TextBox = styled.p`
+  margin-top: 28px;
+  text-align: center;
   @media (min-width: ${theme.breakpoints[1]}) {
-    text-align: center;
   }
 `;
 
