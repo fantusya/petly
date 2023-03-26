@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Box } from 'components/Box/Box';
-import ModalAddsPet from '../ModalAddsPet';
+import { ModalAddsPet } from 'components/ModalAddsPet/ModalAddsPet';
 import PetsList from '../PetsList';
 import {
   PetsWrapper,
