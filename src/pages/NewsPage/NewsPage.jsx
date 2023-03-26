@@ -26,7 +26,9 @@ const NewsPage = () => {
         description: stringMax(news.description, 250) + '...',
       }));
       //   console.log('NewNews', NewNews);
-      const SortNews = NewNews.sort((a, b) => (a.date < b.date ? 1 : -1));
+      const SortNews = NewNews.sort(
+        (a, b) => b.date < a.date || isNaN(b.date) - isNaN(a.date)
+      );
 
       const NewDateNews = SortNews.map(news => ({
         ...news,
@@ -52,7 +54,7 @@ const NewsPage = () => {
       });
 
       /*якщо нічого не знайдено,- рендер всього списку */
-      if (filterNews.length === 0) {
+      if (filterNews.length === 0 && request !== '') {
         console.log('нічого не знайдено');
         setPublicNews(news);
         return;
@@ -67,7 +69,7 @@ const NewsPage = () => {
   const handleFormSubmit = value => {
     if (request !== value) {
       setRequest(value);
-    } else {
+    } else if (value.trim() !== '') {
       console.log('ви переглядаєте ' + value);
       return;
     }
@@ -85,7 +87,7 @@ const NewsPage = () => {
     >
       <PageTitle>News</PageTitle>
 
-      <SearchBar setNews={handleFormSubmit} />
+      <SearchBar onSubmit={handleFormSubmit} />
       <NewsList>
         {publicNews.map(article => (
           <NewsItem
