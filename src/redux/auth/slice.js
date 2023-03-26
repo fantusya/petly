@@ -22,6 +22,7 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   user: {
+    _id: null,
     name: null,
     email: null,
     phone: null,
@@ -70,6 +71,7 @@ const authSlice = createSlice({
     },
     [logOut.fulfilled](state) {
       state.user = {
+        _id: null,
         name: null,
         email: null,
         phone: null,
