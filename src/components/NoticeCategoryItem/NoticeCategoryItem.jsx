@@ -22,6 +22,7 @@ import { Label } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
 import { useAuth } from 'hooks';
+// import { useNotices } from 'hooks';
 import {
   addToFavorites,
   removeFromFavorites,
@@ -35,6 +36,7 @@ import {
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
+
   const ownCards = useSelector(selectOwnNotices);
   const favoriteCards = useSelector(selectFavoriteNotices);
   const [isFavorite, setIsFavorite] = useState(false);

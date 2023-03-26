@@ -26,9 +26,9 @@ export const PetsData = () => {
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Title>My pets:</Title>
           <Box display="flex" alignItems="center" gridGap="15px">
-            <Title>
+            <div>
               <TitleBtn>Add pet</TitleBtn>
-            </Title>
+            </div>
             <Button type="button" onClick={toogleModal}>
               <AddIcon width={24} height={24} />
             </Button>

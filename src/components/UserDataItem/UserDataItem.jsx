@@ -44,7 +44,6 @@ export const UserDataItem = () => {
     setIsUpdating(false);
   };
 
-  const { name, email, birthDate, phone, city } = user;
   return (
     <>
       <InfoItem>
@@ -54,7 +53,7 @@ export const UserDataItem = () => {
             <InfoInput
               type="text"
               name="name"
-              value={name || ''}
+              value={user?.name || ''}
               placeholder="Anna"
               disabled={isDisabled}
             />
@@ -76,7 +75,7 @@ export const UserDataItem = () => {
             <InfoInput
               type="email"
               name="email"
-              value={email || ''}
+              value={user?.email || ''}
               placeholder="anna00@gmail.com"
               disabled={isDisabled || isUpdating}
             />
@@ -94,7 +93,7 @@ export const UserDataItem = () => {
             <InfoInput
               type="text"
               name="birthday"
-              value={birthDate || ''}
+              value={user?.birthDate || ''}
               placeholder="00.00.0000"
               disabled={isDisabled || isUpdating}
             />
@@ -112,7 +111,7 @@ export const UserDataItem = () => {
             <InfoInput
               type="tel"
               name="phone"
-              value={phone || ''}
+              value={user?.phone || ''}
               placeholder={'+38000000000'}
               disabled={isDisabled || isUpdating}
             />
@@ -130,7 +129,7 @@ export const UserDataItem = () => {
             <InfoInput
               type="text"
               name="city"
-              value={city || ''}
+              value={user?.city || ''}
               placeholder="Kiev"
               disabled={isDisabled || isUpdating}
             />

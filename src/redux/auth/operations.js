@@ -119,7 +119,11 @@ export const updateAvatar = createAsyncThunk(
   async (avatar, thunkAPI) => {
     try {
       console.log('avatar', avatar);
-      const { data } = await privateRoutes.put(`api/users/avatars`, avatar);
+      const { data } = await privateRoutes.put(`api/users/avatars`, avatar, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

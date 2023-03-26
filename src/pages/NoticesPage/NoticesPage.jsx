@@ -41,7 +41,6 @@ export const NoticesPage = () => {
             <Suspense>
               <Outlet />
             </Suspense>
-            {/* <NoticesCategoriesList /> */}
           </NoticesPageMain>
         </Container>
       </Box>

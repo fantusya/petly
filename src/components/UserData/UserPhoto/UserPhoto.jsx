@@ -25,13 +25,15 @@ export const UserPhoto = () => {
       console.log('CHOOSE FILE PLS');
       return;
     }
+    console.log('selectedFile', selectedFile);
     const data = new FormData();
-    data.append('avatar', selectedFile);
+    data.append('avatarURL', selectedFile);
     dispatch(updateAvatar(data));
   };
 
   const handleChange = e => {
     const chosenImg = e.target.files[0];
+    console.log(chosenImg);
 
     if (!e.target.files.length || !chosenImg) {
       setSelectedFile(null);

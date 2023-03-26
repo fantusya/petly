@@ -9,7 +9,6 @@ export const Menu = ({ open, children }) => {
 };
 
 export const Burger = ({ open, setOpen }) => {
-  console.log('burger', open);
   return (
     <StyledBurger open={open} onClick={() => setOpen(!open)}>
       <div />
@@ -20,7 +19,6 @@ export const Burger = ({ open, setOpen }) => {
 };
 
 export const BurgerZone = ({ children, open, setOpen }) => {
-  console.log('burgerzona', open);
   const node = React.useRef();
   const body = document.body;
   if (open) {
