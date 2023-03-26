@@ -54,6 +54,12 @@ export const ItemTitle = styled(Box)`
   font-weight: ${p => p.theme.fontWeights.bold};
   line-height: 1.357;
   letter-spacing: ${p => p.theme.letterSpacing.title};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;
 
 export const ItemRecords = styled.ul`

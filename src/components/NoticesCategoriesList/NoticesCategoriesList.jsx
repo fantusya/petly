@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { useNotices } from 'hooks/useNotices';
 import { getFavorites } from 'redux/notices/operations';
 import { getUserNotices } from 'redux/notices/operations';
+import { Box } from 'components/Box/Box';
 
 export const NoticesCategoriesList = () => {
   const [status, setStatus] = useState(Status.IDLE);
@@ -59,7 +60,16 @@ export const NoticesCategoriesList = () => {
 
   return (
     <>
-      {status === Status.PENDING && isLoading && <b>LOADING</b>}
+      {status === Status.PENDING && isLoading && (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          p="20px 50px"
+        >
+          LOADING
+        </Box>
+      )}
       {status === Status.RESOLVED && (
         <NoticesCardsList>
           {categoryName === 'favorite'

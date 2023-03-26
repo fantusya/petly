@@ -135,7 +135,12 @@ export const NoticeCategoryItem = ({ notice }) => {
               </RecordContent>
             </Record>
           </ItemRecords>
-          <Box display="flex" flexDirection="column" alignItems="center">
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            flexGrow="1"
+          >
             <NoticeButton
               onClick={() => handleModalToggle()}
               isLogged={isLoggedIn}
