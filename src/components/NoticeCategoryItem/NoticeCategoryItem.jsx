@@ -1,7 +1,7 @@
 import moment from 'moment';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Box } from 'components/Box/Box';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import {
@@ -16,33 +16,26 @@ import {
   NoticeButton,
   DeleteIcon,
   AddFavoriteIcon,
+  RemoveFavoriteIcon,
   AddFavoriteButton,
 } from './NoticeCategoryItem.styled';
 import { Label } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
-import { useAuth } from 'hooks';
-// import { useNotices } from 'hooks';
+import { useAuth, useNotices } from 'hooks';
 import {
   addToFavorites,
+  getFavorites,
   removeFromFavorites,
   removeUserNotice,
 } from 'redux/notices/operations';
-import {
-  selectFavoriteNotices,
-  selectOwnNotices,
-} from 'redux/notices/selectors';
 
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
 
-  const ownCards = useSelector(selectOwnNotices);
-  const favoriteCards = useSelector(selectFavoriteNotices);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isOwn, setIsOwn] = useState(false);
-
-  // const isLoggedIn = true;
+  const { favoriteNotices, ownNotices } = useNotices();
 
   const {
     category,
@@ -51,6 +44,8 @@ export const NoticeCategoryItem = ({ notice }) => {
     title,
     photoURL,
     breed,
+    owner,
+    price,
     _id: id,
   } = notice;
 
@@ -82,73 +77,99 @@ export const NoticeCategoryItem = ({ notice }) => {
   //
 
   useEffect(() => {
-    setIsFavorite(favoriteCards.some(card => card._id === id));
-    setIsOwn(ownCards.some(card => card._id === id));
-  }, [favoriteCards, ownCards, id]);
+    if (
+      user.favorites.includes(id) ||
+      favoriteNotices.some(item => item._id === id)
+    ) {
+      setIsFavorite(true);
+    }
+  }, [favoriteNotices, ownNotices, id, user.favorites]);
 
   const notify = () => toast('Please login or register');
 
-  const handleFavorites = () => {
-    isFavorite
-      ? dispatch(removeFromFavorites(id))
-      : dispatch(addToFavorites(id));
+  const handleFavorites = id => {
+    if (isLoggedIn) {
+      isFavorite
+        ? dispatch(removeFromFavorites(id))
+        : dispatch(addToFavorites(id));
+      dispatch(getFavorites);
+      return;
+    }
+    notify();
   };
 
   return (
     <>
       <NoticesItem>
-        <Wrapper img={photoURL ? photoURL : DEFAULT_IMAGE}>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            pt="12px"
-            pr="12px"
-          >
-            <Label>{categoryName}</Label>
-            <AddFavoriteButton
-              onClick={isLoggedIn ? handleFavorites : notify}
-              isFavorite={isFavorite}
+        <Box height="100%" display="flex" flexDirection="column">
+          <Wrapper img={photoURL ? photoURL : DEFAULT_IMAGE}>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              pt="12px"
+              pr="12px"
             >
-              <AddFavoriteIcon isfavorite={isFavorite ? true : null} />
-            </AddFavoriteButton>
-          </Box>
-        </Wrapper>
-        <ItemContent isLogged={isLoggedIn}>
-          <ItemTitle>{title}</ItemTitle>
-          <ItemRecords isOwn={isOwn}>
-            <Record>
-              <RecordName>Breed:</RecordName>
-              <RecordContent>{breed}</RecordContent>
-            </Record>
-            <Record>
-              <RecordName>Place:</RecordName>
-              <RecordContent>{location}</RecordContent>
-            </Record>
-            <Record>
-              <RecordName>Age:</RecordName>
-              <RecordContent>
-                {birthDate ? moment(birthDate, 'YYYYMMDD').fromNow() : 'N/A'}
-              </RecordContent>
-            </Record>
-          </ItemRecords>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <NoticeButton
-              onClick={() => handleModalToggle()}
-              isLogged={isLoggedIn}
-            >
-              Learn more
-            </NoticeButton>
-            {isOwn ? (
-              <NoticeButton
-                isLogged={isLoggedIn}
-                onClick={() => dispatch(removeUserNotice(id))}
+              <Label>{categoryName}</Label>
+              <AddFavoriteButton
+                onClick={() => handleFavorites(id)}
+                isFavorite={isFavorite}
               >
-                Delete <DeleteIcon />
-              </NoticeButton>
-            ) : null}
-          </Box>
-        </ItemContent>
+                {isFavorite ? <RemoveFavoriteIcon /> : <AddFavoriteIcon />}
+              </AddFavoriteButton>
+            </Box>
+          </Wrapper>
+          <ItemContent isLogged={isLoggedIn}>
+            <ItemTitle>{title}</ItemTitle>
+            <Box>
+              <ItemRecords isOwn={owner?.id === user._id}>
+                <Record>
+                  <RecordName>Breed:</RecordName>
+                  <RecordContent>{breed}</RecordContent>
+                </Record>
+                <Record>
+                  <RecordName>Place:</RecordName>
+                  <RecordContent>{location}</RecordContent>
+                </Record>
+                <Record>
+                  <RecordName>Age:</RecordName>
+                  <RecordContent>
+                    {birthDate
+                      ? moment(birthDate, 'YYYYMMDD').fromNow()
+                      : 'N/A'}
+                  </RecordContent>
+                </Record>
+                {categoryName === 'sell' && (
+                  <Record>
+                    <RecordName>Price:</RecordName>
+                    <RecordContent>${price ? price : '0'}</RecordContent>
+                  </Record>
+                )}
+              </ItemRecords>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                flexGrow="1"
+              >
+                <NoticeButton
+                  onClick={() => handleModalToggle()}
+                  isLogged={isLoggedIn}
+                >
+                  Learn more
+                </NoticeButton>
+                {owner?.id === user._id ? (
+                  <NoticeButton
+                    isLogged={isLoggedIn}
+                    onClick={() => dispatch(removeUserNotice(id))}
+                  >
+                    Delete <DeleteIcon />
+                  </NoticeButton>
+                ) : null}
+              </Box>
+            </Box>
+          </ItemContent>
+        </Box>
       </NoticesItem>
       {isModalOpen ? (
         <Modal onClose={handleModalToggle}>

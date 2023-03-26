@@ -49,12 +49,9 @@ export const NoticesCategoriesNav = () => {
         )}
       </NavUl>
       <AddNoticeButton
-                onClick={e => {
-                  e.preventDefault();
-                   handleModalToggle();
-                }}
+        handleModalToggle={handleModalToggle}
         // onClick={e => {
-        //   // e.preventDefault();
+        //   e.preventDefault();
         //   isLoggedIn ? handleModalToggle() : navigate('/login');
         // }}
       />

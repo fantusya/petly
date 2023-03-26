@@ -1,4 +1,4 @@
-const HOST_URL = 'https://uninterested-hose-newt.cyclic.app';
+const HOST_URL = 'https://petly-gd7x.onrender.com';
 const LOCALHOST_URL = 'http://localhost:3030';
 
 const DEFAULT_IMAGE =

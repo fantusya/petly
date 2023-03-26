@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Box } from 'components/Box/Box';
 import { getNoticeById } from 'api/notice';
 import { Status } from 'constants/status';
-import { useAuth } from 'hooks';
+// import { useAuth } from 'hooks';
 import { ReactComponent as Cross } from '../../images/svg/cross.svg';
 import { ModalButton } from 'components/commonComponents';
 import { DEFAULT_IMAGE } from 'constants/urls';
@@ -36,16 +36,14 @@ export const NoticeModal = ({
   onClose,
   isFavorite,
   handleFavorites,
-  notify,
 }) => {
   const [notice, setNotice] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-  const { isLoggedIn } = useAuth();
+  // const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    setStatus(Status.PENDING);
-
     const fetchNotice = async () => {
+      setStatus(Status.PENDING);
       try {
         const data = await getNoticeById(id);
         setNotice(data);
@@ -54,6 +52,7 @@ export const NoticeModal = ({
         setStatus(Status.REJECTED);
       }
     };
+
     fetchNotice();
   }, [id]);
 
@@ -87,22 +86,22 @@ export const NoticeModal = ({
             </ModalCloseButton>
           </CloseButtonWrapper>
           <ContentWrapper>
-            <Wrapper img={notice.photoURL ? notice.photoURL : DEFAULT_IMAGE}>
+            <Wrapper img={notice?.photoURL ? notice.photoURL : DEFAULT_IMAGE}>
               <ModalLabel>{label}</ModalLabel>
             </Wrapper>
             <Box>
-              <ModalTitle>{notice.title}</ModalTitle>
+              <ModalTitle>{notice?.title}</ModalTitle>
               <ModalRecords>
                 <Record>
                   <RecordName>Name:</RecordName>
                   <RecordContent>
-                    {notice.name ? notice.name : 'N/A'}
+                    {notice?.name ? notice.name : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
                   <RecordName>Birthday:</RecordName>
                   <RecordContent>
-                    {notice.birthDate
+                    {notice?.birthDate
                       ? moment(notice.birthDate).format('DD.MM.YYYY')
                       : '00.00.0000'}
                   </RecordContent>
@@ -110,25 +109,25 @@ export const NoticeModal = ({
                 <Record>
                   <RecordName>Breed:</RecordName>
                   <RecordContent>
-                    {notice.breed ? notice.breed : 'N/A'}
+                    {notice?.breed ? notice.breed : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
                   <RecordName>Location:</RecordName>
                   <RecordContent>
-                    {notice.location ? notice.location : 'N/A'}
+                    {notice?.location ? notice.location : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
                   <RecordName>The sex:</RecordName>
                   <RecordContent>
-                    {notice.sex ? notice.sex : 'N/A'}
+                    {notice?.sex ? notice.sex : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
                   <RecordName>Email:</RecordName>
                   <RecordContent>
-                    {notice.owner?.email ? (
+                    {notice?.owner?.email ? (
                       <Link href={`mailto: ${notice.owner.email}`}>
                         {notice.owner.email}
                       </Link>
@@ -140,7 +139,7 @@ export const NoticeModal = ({
                 <Record>
                   <RecordName>Phone:</RecordName>
                   <RecordContent>
-                    {notice.owner?.phone ? (
+                    {notice?.owner?.phone ? (
                       <Link href={`tel: ${notice.owner.phone}`}>
                         {notice.owner.phone}
                       </Link>
@@ -149,11 +148,11 @@ export const NoticeModal = ({
                     )}
                   </RecordContent>
                 </Record>
-                {isLoggedIn ? (
+                {label === 'sell' ? (
                   <Record>
                     <RecordName>Price:</RecordName>
                     <RecordContent>
-                      ${notice.price ? notice.price : '0'}
+                      ${notice?.price ? notice.price : '0'}
                     </RecordContent>
                   </Record>
                 ) : null}
@@ -162,7 +161,7 @@ export const NoticeModal = ({
           </ContentWrapper>
           <ModalComments>
             <CommentsBold>Comments:</CommentsBold>{' '}
-            {notice.comments ? notice.comments : ''}
+            {notice?.comments ? notice.comments : ''}
           </ModalComments>
           <ButtonsWrapper>
             {notice?.owner ? (
@@ -174,9 +173,7 @@ export const NoticeModal = ({
                 Contact
               </ModalButton>
             )}
-            <ModalFavoriteButton
-              onClick={isLoggedIn ? handleFavorites(id) : notify}
-            >
+            <ModalFavoriteButton onClick={() => handleFavorites(id)}>
               {isFavorite ? 'Remove from' : 'Add to'} <AddFavoriteIcon />
             </ModalFavoriteButton>
           </ButtonsWrapper>
