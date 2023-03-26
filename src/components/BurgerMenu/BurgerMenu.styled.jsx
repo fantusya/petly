@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledMenu = styled.div`
-  // display: block;
-  display: ${open => (!open ? 'none' : 'block')};
+  display: block;
+  // display: ${open => (!open ? 'none' : 'block')};
   padding-top: 40px;
   background: ${p => p.theme.colors.background};
   transform: ${({ open }) => (!open ? 'translateX(100%)' : 'translateX(0)')};
@@ -18,11 +18,12 @@ export const StyledMenu = styled.div`
 
   @media (min-width: 768px) {
     padding-top: 130px;
-    top: 0;
+    top: 100%;
     height: 100vh;
   }
   @media (max-width: 1279px) {
     width: 100%;
+    // dispaly: none;
   }
   a {
     transition: all 0.3s linear;

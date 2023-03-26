@@ -46,6 +46,8 @@ export const HomeTitle = styled.h1`
 export const HomeSection = styled.section`
 padding-top: 100px;
 min-height: 100vh;
+ width: -webkit-fill-available;
+// height: calc(100% - 56px);
 background-repeat: no-repeat;
 background-position: bottom;
 
@@ -61,6 +63,8 @@ background-size: 280px 380px, 100vw 470px;
 
 @media (min-width: ${p => p.theme.breakpoints[1]}) {
     min-height: 100vh;
+     width: -webkit-fill-available;
+  
     padding-top: 130px;
 
     background-image: url(${goldenT1}), url(${WaveT});
@@ -68,6 +72,7 @@ background-size: 280px 380px, 100vw 470px;
 
 
     @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url(${goldenT2x}), url(${WaveT2x});
@@ -78,6 +83,8 @@ background-size: 280px 380px, 100vw 470px;
     padding-top: 160px;
     padding-bottom: 408px;
     min-height: 100vh;
+    width: -webkit-fill-available;
+   
 
 
     background-image: url(${goldenD1}), url(${WaveD1});
@@ -92,6 +99,7 @@ background-size: 280px 380px, 100vw 470px;
     // calc(55% + 330px) 100%, 40% -89%, calc(50% + 118px) calc(50% - 204px)
 
     @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: url(${goldenD2x}), url(${Wavve2x});
