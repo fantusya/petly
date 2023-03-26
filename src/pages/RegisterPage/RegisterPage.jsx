@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+// import { useFetchingData } from 'hooks';
 
 import { signup, logIn } from 'redux/auth/operations';
 
@@ -30,6 +31,18 @@ const initialValues = {
 
 export const RegisterPage = () => {
   const [currentStep, setCarrentStep] = useState(0);
+
+  //////////// CITIES LOGIC
+  // const query = 'Dnipro';
+  // const { status, results } = useFetchingData('api/cities', query);
+
+  // const array = results.map(({ useCounty, stateEn, cityEn, countyEn }) => {
+  //   return Number(useCounty)
+  //     ? `${cityEn}, ${countyEn}, ${stateEn} region`
+  //     : `${cityEn}, ${stateEn} region`;
+  // });
+  // console.log('array', array);
+  ///////////
 
   const dispatch = useDispatch();
 

@@ -36,7 +36,7 @@ export const ModalAddsPet = ({ onCloseModal }) => {
           <ModalCloseIcon width={28} height={28} />
         </ButtonClose>
 
-        <PetForm />
+        <PetForm closeModal={onCloseModal} />
       </Modal>
     </Backdrop>
   );

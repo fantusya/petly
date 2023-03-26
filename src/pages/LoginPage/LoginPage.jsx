@@ -69,6 +69,10 @@ export const LoginPage = () => {
                 </Icon>
                 <Error name="password" component="div" />
                 <Button type="submit">Login</Button>
+                <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+                  <GoogleImg src={GooglePic} alt="Google" />
+                  Login with Google
+                </GoogleLoginButton>
               </FormCustom>
             </Formik>
 
@@ -79,11 +83,6 @@ export const LoginPage = () => {
             />
 
             {/* <LoginButton type="submit">Login</LoginButton> */}
-
-            <GoogleLoginButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
-              <GoogleImg src={GooglePic} alt="Google" />
-              Login with Google
-            </GoogleLoginButton>
           </BoxAuth>
         </Container>
       </LogoBg>

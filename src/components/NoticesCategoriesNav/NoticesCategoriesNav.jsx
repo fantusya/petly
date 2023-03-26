@@ -1,34 +1,31 @@
 import React from 'react';
 import { useAuth } from 'hooks';
-// import { useState } from 'react';
+import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
-// import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
+import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
-  // NavBox,
+  NavBox,
   // NavBtnWrapper,
   NavBtn,
   // AddButton,
   NavUl,
 } from './NoticesCategoriesNav.styled';
-// import {
-//   AddPetBtnCircleLink,
-//   AddPetBtnLink,
-// } from 'components/AddNoticeButton/AddNoticeButton';
+import AddNoticeButton from 'components/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
-  // const [extended, setExtended] = useState(false);
+  const [extended, setExtended] = useState(false);
   const { isLoggedIn } = useAuth();
 
   // const navigate = useNavigate();
 
-  // const handleModalToggle = () => {
-  //   setExtended(prev => {
-  //     return !prev;
-  //   });
-  // };
+  const handleModalToggle = () => {
+    setExtended(prev => {
+      return !prev;
+    });
+  };
 
   return (
-    <>
+    <NavBox>
       <NavUl>
         <li>
           <NavBtn to="sell">sell</NavBtn>
@@ -51,20 +48,18 @@ export const NoticesCategoriesNav = () => {
           </>
         )}
       </NavUl>
-      {/* <AddButton
-        onClick={e => {
-          e.preventDefault();
-          isLoggedIn ? handleModalToggle() : navigate('/login');
-        }}
-      >
-        {window.innerWidth < 768 ? (
-          <AddPetBtnCircleLink>Add pet</AddPetBtnCircleLink>
-        ) : (
-          <AddPetBtnLink>Add pet</AddPetBtnLink>
-        )}
-      </AddButton> */}
-      {/* {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />} */}
-    </>
+      <AddNoticeButton
+                onClick={e => {
+                  e.preventDefault();
+                   handleModalToggle();
+                }}
+        // onClick={e => {
+        //   // e.preventDefault();
+        //   isLoggedIn ? handleModalToggle() : navigate('/login');
+        // }}
+      />
+      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
+    </NavBox>
   );
 };
 

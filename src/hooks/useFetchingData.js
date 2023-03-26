@@ -3,18 +3,20 @@ import { useEffect, useState } from 'react';
 import { commonRoutes } from 'api/baseSettings';
 import { Status } from 'constants/status';
 
-export const useFetchingData = url => {
+export const useFetchingData = (url, query = '') => {
   const [status, setStatus] = useState(Status.IDLE);
   const [results, setResults] = useState([]);
 
+  const newUrl = query ? `${url}?query=${query}` : url;
+
   useEffect(() => {
-    async function getFriends() {
+    async function getInfo() {
       setStatus(Status.PENDING);
 
       try {
-        const data = await commonRoutes(url);
-        console.log(data.data);
-        setResults(data.data);
+        const { data } = await commonRoutes.get(newUrl);
+        console.log('data', data);
+        setResults(data);
         setStatus(Status.RESOLVED);
       } catch (error) {
         setStatus(Status.REJECTED);
@@ -22,8 +24,8 @@ export const useFetchingData = url => {
       }
     }
 
-    getFriends();
-  }, [url]);
+    getInfo();
+  }, [url, query, newUrl]);
 
   return { status, results };
 };
@@ -34,7 +36,7 @@ export const useFetchingData = url => {
 //   const [hasMore, setHasMore] = useState(false);
 
 //   useEffect(() => {
-//     async function getFriends() {
+//     async function getInfo() {
 //       setStatus(Status.PENDING);
 
 //       try {
@@ -53,7 +55,7 @@ export const useFetchingData = url => {
 //       }
 //     }
 
-//     getFriends();
+//     getInfo();
 //   }, [url, page]);
 
 //   return { status, results, hasMore };

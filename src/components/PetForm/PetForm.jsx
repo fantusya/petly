@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Formik, Form } from 'formik';
+import { addPet } from 'redux/auth/operations';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+import { Formik } from 'formik';
 import { OneStep, TwoStep } from './Steps';
 import { validationPetSchema } from 'helpers/validationSchemas/validationPetSchema';
-
-// import { Box } from 'components/Box/Box';
+import { Forma } from './PetForm.styled';
 
 const initialValues = {
   petName: '',
@@ -13,7 +15,12 @@ const initialValues = {
   petInfo: '',
 };
 
-export const PetForm = () => {
+export const PetForm = ({ closeModal }) => {
+  const pets = useSelector(selectUser).myPets;
+  const dispatch = useDispatch();
+
+  console.log('pets', pets);
+
   const [currentStep, setCurrentStep] = useState(0);
 
   const handleNextStep = () => {
@@ -29,21 +36,24 @@ export const PetForm = () => {
     console.log('values', values);
     // console.log('actions', actions);
 
+    dispatch(addPet(values));
+
     resetForm();
+    closeModal();
   };
 
   const steps = [
-    <OneStep next={handleNextStep} />,
+    <OneStep next={handleNextStep} closeModal={closeModal} />,
     <TwoStep back={handlePrevStep} />,
   ];
 
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationPetSchema}
       onSubmit={handleSubmit}
+      validationSchema={validationPetSchema}
     >
-      <Form>{steps[currentStep]}</Form>
+      <Forma autoComplete="off">{steps[currentStep]}</Forma>
     </Formik>
   );
 };
