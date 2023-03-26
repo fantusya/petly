@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
+
 import {
   InputReg,
   RegisterButton,
@@ -8,6 +10,8 @@ import {
   Div,
   OpenEyaIcon,
   ClosedEyaIcon,
+  GoogleRegisterButton,
+  GoogleImg,
 } from 'pages/RegisterPage/RegisterPage.styled';
 
 export const StepOne = props => {
@@ -49,6 +53,10 @@ export const StepOne = props => {
       <RegisterButton type="button" onClick={props.next} disabled={false}>
         Next
       </RegisterButton>
+      <GoogleRegisterButton href="https://uninterested-hose-newt.cyclic.app/api/users/google">
+        <GoogleImg src={GooglePic} alt="Google" />
+        Signup with Google
+      </GoogleRegisterButton>
     </>
   );
 };

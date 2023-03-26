@@ -5,7 +5,6 @@ import { Formik } from 'formik';
 import { signup, logIn } from 'redux/auth/operations';
 
 import { Container } from 'globalStyles/globalStyle';
-import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
 
 import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
 import StepOne from './StepOne';
@@ -16,15 +15,6 @@ import {
   Wrapper,
   RegisterForm,
   Text,
-  RegisterButton,
-  GoogleRegisterButton,
-  Text,
-  ErrorValid,
-  GoogleImg,
-  Button,
-  Div,
-  OpenEyaIcon,
-  ClosedEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled';
 
 // import RouteFormLoginRegister from 'pages/routeFormLoginRegister';
