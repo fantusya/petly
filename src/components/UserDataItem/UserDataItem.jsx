@@ -93,6 +93,7 @@ export const UserDataItem = () => {
               type="text"
               name="birthday"
               // value={user?.birthDate || ''}
+              // placeholder={user?.birthDate.toLocaleDateString('ko-KR') || '00.00.0000'}
               placeholder={user?.birthDate || '00.00.0000'}
               disabled={isDisabled || isUpdating}
             />
