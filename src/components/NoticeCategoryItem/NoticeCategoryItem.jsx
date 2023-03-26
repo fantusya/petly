@@ -101,69 +101,75 @@ export const NoticeCategoryItem = ({ notice }) => {
   return (
     <>
       <NoticesItem>
-        <Wrapper img={photoURL ? photoURL : DEFAULT_IMAGE}>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            pt="12px"
-            pr="12px"
-          >
-            <Label>{categoryName}</Label>
-            <AddFavoriteButton
-              onClick={() => handleFavorites(id)}
-              isFavorite={isFavorite}
+        <Box height="100%" display="flex" flexDirection="column">
+          <Wrapper img={photoURL ? photoURL : DEFAULT_IMAGE}>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              pt="12px"
+              pr="12px"
             >
-              {isFavorite ? <RemoveFavoriteIcon /> : <AddFavoriteIcon />}
-            </AddFavoriteButton>
-          </Box>
-        </Wrapper>
-        <ItemContent isLogged={isLoggedIn}>
-          <ItemTitle>{title}</ItemTitle>
-          <ItemRecords isOwn={owner?.id === user._id}>
-            <Record>
-              <RecordName>Breed:</RecordName>
-              <RecordContent>{breed}</RecordContent>
-            </Record>
-            <Record>
-              <RecordName>Place:</RecordName>
-              <RecordContent>{location}</RecordContent>
-            </Record>
-            <Record>
-              <RecordName>Age:</RecordName>
-              <RecordContent>
-                {birthDate ? moment(birthDate, 'YYYYMMDD').fromNow() : 'N/A'}
-              </RecordContent>
-            </Record>
-            {categoryName === 'sell' && (
-              <Record>
-                <RecordName>Price:</RecordName>
-                <RecordContent>${price ? price : '0'}</RecordContent>
-              </Record>
-            )}
-          </ItemRecords>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            flexGrow="1"
-          >
-            <NoticeButton
-              onClick={() => handleModalToggle()}
-              isLogged={isLoggedIn}
-            >
-              Learn more
-            </NoticeButton>
-            {owner?.id === user._id ? (
-              <NoticeButton
-                isLogged={isLoggedIn}
-                onClick={() => dispatch(removeUserNotice(id))}
+              <Label>{categoryName}</Label>
+              <AddFavoriteButton
+                onClick={() => handleFavorites(id)}
+                isFavorite={isFavorite}
               >
-                Delete <DeleteIcon />
-              </NoticeButton>
-            ) : null}
-          </Box>
-        </ItemContent>
+                {isFavorite ? <RemoveFavoriteIcon /> : <AddFavoriteIcon />}
+              </AddFavoriteButton>
+            </Box>
+          </Wrapper>
+          <ItemContent isLogged={isLoggedIn}>
+            <ItemTitle>{title}</ItemTitle>
+            <Box>
+              <ItemRecords isOwn={owner?.id === user._id}>
+                <Record>
+                  <RecordName>Breed:</RecordName>
+                  <RecordContent>{breed}</RecordContent>
+                </Record>
+                <Record>
+                  <RecordName>Place:</RecordName>
+                  <RecordContent>{location}</RecordContent>
+                </Record>
+                <Record>
+                  <RecordName>Age:</RecordName>
+                  <RecordContent>
+                    {birthDate
+                      ? moment(birthDate, 'YYYYMMDD').fromNow()
+                      : 'N/A'}
+                  </RecordContent>
+                </Record>
+                {categoryName === 'sell' && (
+                  <Record>
+                    <RecordName>Price:</RecordName>
+                    <RecordContent>${price ? price : '0'}</RecordContent>
+                  </Record>
+                )}
+              </ItemRecords>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                flexGrow="1"
+              >
+                <NoticeButton
+                  onClick={() => handleModalToggle()}
+                  isLogged={isLoggedIn}
+                >
+                  Learn more
+                </NoticeButton>
+                {owner?.id === user._id ? (
+                  <NoticeButton
+                    isLogged={isLoggedIn}
+                    onClick={() => dispatch(removeUserNotice(id))}
+                  >
+                    Delete <DeleteIcon />
+                  </NoticeButton>
+                ) : null}
+              </Box>
+            </Box>
+          </ItemContent>
+        </Box>
       </NoticesItem>
       {isModalOpen ? (
         <Modal onClose={handleModalToggle}>

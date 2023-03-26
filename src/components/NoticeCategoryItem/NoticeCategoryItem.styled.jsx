@@ -42,6 +42,11 @@ export const ItemContent = styled(Box)`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding-right: 20px;
     padding-left: 20px;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 
@@ -56,9 +61,9 @@ export const ItemTitle = styled(Box)`
   letter-spacing: ${p => p.theme.letterSpacing.title};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
   }
 `;
 
