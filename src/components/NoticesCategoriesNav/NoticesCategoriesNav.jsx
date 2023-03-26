@@ -1,31 +1,31 @@
 import React from 'react';
 import { useAuth } from 'hooks';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 // import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
   // NavBox,
   // NavBtnWrapper,
   NavBtn,
-  AddButton,
+  // AddButton,
   NavUl,
 } from './NoticesCategoriesNav.styled';
-import {
-  AddPetBtnCircleLink,
-  AddPetBtnLink,
-} from 'components/AddNoticeButton/AddNoticeButton';
+// import {
+//   AddPetBtnCircleLink,
+//   AddPetBtnLink,
+// } from 'components/AddNoticeButton/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
-  const [extended, setExtended] = useState(false);
+  // const [extended, setExtended] = useState(false);
   const { isLoggedIn } = useAuth();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleModalToggle = () => {
-    setExtended(prev => {
-      return !prev;
-    });
-  };
+  // const handleModalToggle = () => {
+  //   setExtended(prev => {
+  //     return !prev;
+  //   });
+  // };
 
   return (
     <>
@@ -51,7 +51,7 @@ export const NoticesCategoriesNav = () => {
           </>
         )}
       </NavUl>
-      <AddButton
+      {/* <AddButton
         onClick={e => {
           e.preventDefault();
           isLoggedIn ? handleModalToggle() : navigate('/login');
@@ -62,8 +62,8 @@ export const NoticesCategoriesNav = () => {
         ) : (
           <AddPetBtnLink>Add pet</AddPetBtnLink>
         )}
-      </AddButton>
-      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
+      </AddButton> */}
+      {/* {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />} */}
     </>
   );
 };
