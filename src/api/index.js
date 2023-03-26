@@ -1,10 +1,10 @@
-import { commonRoutes } from './baseSettings';
+// import { commonRoutes } from './baseSettings';
 
-export const fetchData = async url => {
-  const { data } = await commonRoutes.get(url);
+// export const fetchData = async url => {
+//   const { data } = await commonRoutes.get(url);
 
-  return data;
-};
+//   return data;
+// };
 
 // export const fetchData = async (page, url) => {
 //   const {
