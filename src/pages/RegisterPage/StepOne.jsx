@@ -50,14 +50,11 @@ export const StepOne = props => {
       <Button type="button" onClick={props.next} disabled={false}>
         Next
       </Button>
-      
-      <RegisterButton type="button" onClick={props.next} disabled={false}>
-        Next
-      </RegisterButton>
-      <GoogleRegisterButton href="https://petly-gd7x.onrender.com/api/users/google">
+
+      <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
         <GoogleImg src={GooglePic} alt="Google" />
         Signup with Google
-      </GoogleRegisterButton>
+      </GoogleLoginButton>
     </>
   );
 };
