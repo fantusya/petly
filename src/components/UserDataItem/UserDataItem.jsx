@@ -20,8 +20,6 @@ export const UserDataItem = () => {
   const dispatch = useDispatch();
 
   console.log(user, 'user');
-  console.log(isDisabled, 'isDisabled');
-  console.log(isUpdating, 'isUpdating');
 
   const handleClick = () => {
     console.log('First click');
@@ -33,15 +31,16 @@ export const UserDataItem = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (!isDisabled) {
       return;
     }
-    console.log('Submit');
 
     dispatch(updateInfo(e.currentTarget.value));
 
     setIsDisabled(true);
     setIsUpdating(false);
+    console.log('Submit');
   };
 
   return (
@@ -53,9 +52,9 @@ export const UserDataItem = () => {
             <InfoInput
               type="text"
               name="name"
-              value={user?.name || ''}
-              placeholder="Anna"
-              disabled={isDisabled}
+              // value={user?.name || ''}
+              placeholder={user?.name || '****'}
+              disabled={isDisabled || !isUpdating}
             />
           </InfoField>
           <InfoButton
@@ -75,67 +74,67 @@ export const UserDataItem = () => {
             <InfoInput
               type="email"
               name="email"
-              value={user?.email || ''}
-              placeholder="anna00@gmail.com"
+              // value={user?.email || ''}
+              placeholder={user?.email || 'example@gmail.com'}
               disabled={isDisabled || isUpdating}
             />
           </InfoField>
           <InfoButton type="submit" onClick={handleClick} disabled={isUpdating}>
-            <Pensil />
+            {isUpdating ? <Check /> : <Pensil />}
           </InfoButton>
         </InfoForm>
       </InfoItem>
 
       <InfoItem>
-        <InfoForm>
+        <InfoForm onSubmit={handleSubmit}>
           <InfoField>
             <InfoProp>Birthday:</InfoProp>
             <InfoInput
               type="text"
               name="birthday"
-              value={user?.birthDate || ''}
-              placeholder="00.00.0000"
+              // value={user?.birthDate || ''}
+              placeholder={user?.birthDate || '00.00.0000'}
               disabled={isDisabled || isUpdating}
             />
           </InfoField>
           <InfoButton type="submit" onClick={handleClick} disabled={isUpdating}>
-            <Pensil />
+            {isUpdating ? <Check /> : <Pensil />}
           </InfoButton>
         </InfoForm>
       </InfoItem>
 
       <InfoItem>
-        <InfoForm>
+        <InfoForm onSubmit={handleSubmit}>
           <InfoField>
             <InfoProp>Phone:</InfoProp>
             <InfoInput
               type="tel"
               name="phone"
-              value={user?.phone || ''}
-              placeholder={'+38000000000'}
+              // value={user?.phone || ''}
+              placeholder={user?.phone || '+38000000000'}
               disabled={isDisabled || isUpdating}
             />
           </InfoField>
           <InfoButton type="submit" onClick={handleClick} disabled={isUpdating}>
-            <Pensil />
+            {isUpdating ? <Check /> : <Pensil />}
           </InfoButton>
         </InfoForm>
       </InfoItem>
 
       <InfoItem>
-        <InfoForm>
+        <InfoForm onSubmit={handleSubmit}>
           <InfoField>
             <InfoProp>City:</InfoProp>
             <InfoInput
               type="text"
               name="city"
-              value={user?.city || ''}
-              placeholder="Kiev"
+              // value={user?.city || ''}
+              placeholder={user?.city || 'City'}
               disabled={isDisabled || isUpdating}
             />
           </InfoField>
           <InfoButton type="submit" onClick={handleClick} disabled={isUpdating}>
-            <Pensil />
+            {isUpdating ? <Check /> : <Pensil />}
           </InfoButton>
         </InfoForm>
       </InfoItem>

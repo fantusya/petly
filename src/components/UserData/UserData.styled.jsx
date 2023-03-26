@@ -29,12 +29,10 @@ export const Title = styled.h2`
 export const UserContainer = styled(Container)`
   @media (min-width: ${theme.breakpoints[1]}) {
     display: flex;
-    margin: 0;
-    padding: 0;
-
-    display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -62,8 +60,7 @@ export const UserSection = styled.div`
     position: relative;
     flex-direction: column;
     gap: 32px;
-    flex: 0 0 calc(100vw - 16px * 2 - 821px - 32px);
-    width: 0 0 calc(100vw - 16px * 2 - 821px - 32px);
+    /* flex: 0 0 calc(100vw - 16px * 2 - 821px - 32px); */
     padding: 20px 16px 18px 0;
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   }
