@@ -39,7 +39,7 @@ export const GoogleLoginButton = styled.a`
   padding: 8px;
   margin-top: 12px;
 
-  width: 280px;
+  /* width: 280px; */
 
   display: flex;
   align-items: center;

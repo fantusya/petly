@@ -22,6 +22,7 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   user: {
+    _id: null,
     name: null,
     email: null,
     phone: null,
@@ -29,6 +30,7 @@ const initialState = {
     city: null,
     avatarURL: null,
     myPets: [],
+    favorites: [],
   },
   accessToken: null,
   refreshToken: null,
@@ -59,7 +61,7 @@ const authSlice = createSlice({
     },
     [logIn.fulfilled](state, action) {
       state.user = action.payload.user;
-      console.log('action.payload', action.payload);
+      // console.log('action.payload', action.payload);
       // state.accessToken = action.payload.accessToken;
       state.accessToken = action.payload.accessToken;
 
@@ -69,12 +71,15 @@ const authSlice = createSlice({
     },
     [logOut.fulfilled](state) {
       state.user = {
+        _id: null,
         name: null,
         email: null,
         phone: null,
         birthDate: null,
         city: null,
         avatarURL: null,
+        myPets: [],
+        favorites: [],
       };
       state.accessToken = null;
       state.refreshToken = null;
