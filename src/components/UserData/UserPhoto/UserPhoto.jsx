@@ -57,7 +57,7 @@ export const UserPhoto = () => {
       <HiddenInput
         ref={filePicker}
         type="file"
-        name="avatar"
+        name="avatarURL"
         onChange={handleChange}
         accept="image/*,.png,.jpg,.gif,.web"
       />
