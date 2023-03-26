@@ -116,9 +116,10 @@ export const Button = styled.button`
 export const LogoBg = styled.div`
   background-image: url('${imgPhone}');
   background-repeat: no-repeat;
-  margin-top: 60px;
+  margin-top: 100px;
   padding-bottom: 120px;
-  background-position: -60px 250px;
+  background-position: 50% 300px;
+
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
@@ -126,14 +127,14 @@ export const LogoBg = styled.div`
   }
   @media (min-width: ${theme.breakpoints[1]}) {
     background-image: url('${imgTab}');
-    background-position: -260px 270px;
+    background-position: 50% 270px;
     padding-bottom: 200px;
 
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
       background-image: url('${img2xTab}');
-      background-position: center 390px;
+      background-position: 50% 450px;
       background-size: 130%;
     }
     @media (min-width: ${theme.breakpoints[2]}) {
