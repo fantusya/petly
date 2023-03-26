@@ -45,6 +45,7 @@ export const NoticeCategoryItem = ({ notice }) => {
     photoURL,
     breed,
     owner,
+    price,
     _id: id,
   } = notice;
 
@@ -134,6 +135,12 @@ export const NoticeCategoryItem = ({ notice }) => {
                 {birthDate ? moment(birthDate, 'YYYYMMDD').fromNow() : 'N/A'}
               </RecordContent>
             </Record>
+            {categoryName === 'sell' && (
+              <Record>
+                <RecordName>Price:</RecordName>
+                <RecordContent>${price ? price : '0'}</RecordContent>
+              </Record>
+            )}
           </ItemRecords>
           <Box
             display="flex"

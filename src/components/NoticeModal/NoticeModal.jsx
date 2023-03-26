@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Box } from 'components/Box/Box';
 import { getNoticeById } from 'api/notice';
 import { Status } from 'constants/status';
-import { useAuth } from 'hooks';
+// import { useAuth } from 'hooks';
 import { ReactComponent as Cross } from '../../images/svg/cross.svg';
 import { ModalButton } from 'components/commonComponents';
 import { DEFAULT_IMAGE } from 'constants/urls';
@@ -39,7 +39,7 @@ export const NoticeModal = ({
 }) => {
   const [notice, setNotice] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-  const { isLoggedIn } = useAuth();
+  // const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     const fetchNotice = async () => {
@@ -148,7 +148,7 @@ export const NoticeModal = ({
                     )}
                   </RecordContent>
                 </Record>
-                {isLoggedIn ? (
+                {label === 'sell' ? (
                   <Record>
                     <RecordName>Price:</RecordName>
                     <RecordContent>
