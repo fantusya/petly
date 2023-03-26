@@ -55,7 +55,7 @@ export const AddPetButton = styled.button`
   @media screen and (max-width: 767px) {
     position: fixed;
     right: 20px;
-    bottom: 72px;
+    bottom: 30px;
     z-index: 99;
   }
 `;

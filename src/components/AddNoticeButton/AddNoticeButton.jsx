@@ -1,17 +1,39 @@
 import { AddCardIcon } from "./AddNoticeButton.styled";
-
-import { useMedia } from 'react-use';
+import Media from 'react-media';
 import { AddPetButton, AddButtonBox } from './AddNoticeButton.styled';
+import { Fragment } from "react";
 
 export const AddNoticeButton = ({ handleModalToggle }) => {
-  const isMobile = useMedia('(max-width: 767px)');
   return (
     <AddButtonBox>
-      {!isMobile && 'Add pet'}
-      <AddPetButton type="button" onClick={handleModalToggle}>
-        <AddCardIcon />
-        {isMobile && 'Add pet'}
-      </AddPetButton>
+      <Media
+        queries={{
+          mobile: '(max-width: 767.9px)',
+          tablet: '(min-width: 768px)',
+        }}>
+        {matches => (
+          <Fragment>
+            {matches.tablet && (
+              <>
+                Add pet
+                <AddPetButton type="button" onClick={handleModalToggle}>
+                  <AddCardIcon />
+                </AddPetButton>
+              </>
+            )}
+
+            {matches.mobile && (
+              <>
+                <AddPetButton type="button" onClick={handleModalToggle}>
+                  <AddCardIcon />
+                  Add pet
+                </AddPetButton>
+              </>
+            )}
+          </Fragment>
+        )}
+      </Media>
+
     </AddButtonBox>
   );
 };
