@@ -2,7 +2,9 @@ import { useRef } from 'react';
 
 import {
   PetBox,
+  PetWrap,
   Label,
+  LabelText,
   Input,
   TextInput,
   ErrorValidation,
@@ -45,7 +47,7 @@ const OneStep = ({ next, closeModal }) => {
         </Label>
       </PetBox>
 
-      <Box mb={40}>
+      <Box mb={40} mt={4}>
         <Label htmlFor="breed">
           {' '}
           Breed
@@ -71,8 +73,8 @@ const TwoStep = ({ back, handleChange }) => {
 
   return (
     <>
-      <PetBox>
-        <Label htmlFor="photoURL">
+      <PetWrap>
+        <LabelText htmlFor="photoURL">
           {' '}
           Add photo and some comments
           <PetAvatarBtn
@@ -89,18 +91,17 @@ const TwoStep = ({ back, handleChange }) => {
             accept="image/*,.png,.jpg,.gif,.web"
           />
           <ErrorValidation name="photoURL" component="div" />
-        </Label>
-      </PetBox>
+        </LabelText>
+      </PetWrap>
 
       <Box mb={40}>
         <Label htmlFor="comments">
           {' '}
           Comments
           <TextInput
-            type="textarea"
-            resize="none"
+            as="textarea"
             name="comments"
-            rows="5"
+            rows="4"
             placeholder="Type comments"
           />
           <ErrorValidation name="comments" component="div" />
