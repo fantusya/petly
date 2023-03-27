@@ -33,6 +33,7 @@ import {
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
+  console.log('USER', user);
 
   const [isFavorite, setIsFavorite] = useState(false);
   const { favoriteNotices, ownNotices } = useNotices();
@@ -49,14 +50,12 @@ export const NoticeCategoryItem = ({ notice }) => {
     _id: id,
   } = notice;
 
-  //Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  //Category Switch
   let categoryName = '';
 
   switch (category) {
@@ -74,7 +73,6 @@ export const NoticeCategoryItem = ({ notice }) => {
     default:
       break;
   }
-  //
 
   useEffect(() => {
     if (
@@ -82,6 +80,8 @@ export const NoticeCategoryItem = ({ notice }) => {
       favoriteNotices.some(item => item._id === id)
     ) {
       setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
     }
   }, [favoriteNotices, ownNotices, id, user.favorites]);
 
@@ -92,7 +92,7 @@ export const NoticeCategoryItem = ({ notice }) => {
       isFavorite
         ? dispatch(removeFromFavorites(id))
         : dispatch(addToFavorites(id));
-      dispatch(getFavorites);
+      dispatch(getFavorites());
       return;
     }
     notify();
@@ -135,14 +135,14 @@ export const NoticeCategoryItem = ({ notice }) => {
                   <RecordName>Age:</RecordName>
                   <RecordContent>
                     {birthDate
-                      ? moment(birthDate, 'YYYYMMDD').fromNow()
+                      ? moment(birthDate, 'YYYYMMDD').fromNow(true)
                       : 'N/A'}
                   </RecordContent>
                 </Record>
                 {categoryName === 'sell' && (
                   <Record>
                     <RecordName>Price:</RecordName>
-                    <RecordContent>${price ? price : '0'}</RecordContent>
+                    <RecordContent>{price ? price : '0'} грн</RecordContent>
                   </Record>
                 )}
               </ItemRecords>

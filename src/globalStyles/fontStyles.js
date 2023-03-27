@@ -6,14 +6,14 @@ import PoppinsWoff2 from 'fonts/poppins/poppins-v20-latin-regular.woff2';
 import PoppinsBoldWoff from 'fonts/poppins/poppins-v20-latin-700.woff';
 import PoppinsBoldWoff2 from 'fonts/poppins/poppins-v20-latin-700.woff2';
 
-import ManropeWoff from 'fonts/manrope/manrope-v13-latin-regular.woff';
-import ManropeWoff2 from 'fonts/manrope/manrope-v13-latin-regular.woff2';
+import ManropeWoff from 'fonts/manrope/manrope-v13-cyrillic_latin-regular.woff';
+import ManropeWoff2 from 'fonts/manrope/manrope-v13-cyrillic_latin-regular.woff2';
 
-import ManropeMediumWoff from 'fonts/manrope/manrope-v13-latin-500.woff';
-import ManropeMediumWoff2 from 'fonts/manrope/manrope-v13-latin-500.woff2';
+import ManropeMediumWoff from 'fonts/manrope/manrope-v13-cyrillic_latin-500.woff';
+import ManropeMediumWoff2 from 'fonts/manrope/manrope-v13-cyrillic_latin-500.woff2';
 
-import ManropeBoldWoff from 'fonts/manrope/manrope-v13-latin-700.woff';
-import ManropeBoldWoff2 from 'fonts/manrope/manrope-v13-latin-700.woff2';
+import ManropeBoldWoff from 'fonts/manrope/manrope-v13-cyrillic_latin-700.woff';
+import ManropeBoldWoff2 from 'fonts/manrope/manrope-v13-cyrillic_latin-700.woff2';
 
 const FontStyles = createGlobalStyle`
 @font-face {

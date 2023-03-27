@@ -7,13 +7,12 @@ import { ModalAddsPet } from 'components/ModalAddsPet/ModalAddsPet';
 import PetsList from '../PetsList';
 import {
   PetsWrapper,
+  PetsContainer,
   Title,
   TitleBtn,
   Button,
   AddIcon,
 } from './PetsData.styled';
-
-import { Container } from 'globalStyles/globalStyle';
 
 export const PetsData = () => {
   const [showModal, setShowModal] = useState(false);
@@ -27,7 +26,7 @@ export const PetsData = () => {
 
   return (
     <PetsWrapper>
-      <Container>
+      <PetsContainer>
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Title>My pets:</Title>
           <Box display="flex" alignItems="center" gridGap="15px">
@@ -42,7 +41,7 @@ export const PetsData = () => {
 
         {showModal && <ModalAddsPet onCloseModal={toogleModal} />}
         <PetsList />
-      </Container>
+      </PetsContainer>
     </PetsWrapper>
   );
 };
