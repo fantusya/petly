@@ -57,11 +57,11 @@ const SearchBar = ({ onSubmit }) => {
         placeholder={t('Search')}
       />
 
-      <SearchIconContainer onClick={handleSearchButtonClick}>
-        <SearchIcon />
-      </SearchIconContainer>
-
-      {!isSearchEmpty && (
+      {isSearchEmpty ? (
+        <SearchIconContainer onClick={handleSearchButtonClick}>
+          <SearchIcon />
+        </SearchIconContainer>
+      ) : (
         <ResetIconContainer onClick={handleResetSearch}>
           <ResetIcon />
         </ResetIconContainer>
