@@ -16,12 +16,14 @@ import {
   Error,
   BoxAuth,
   LogoBg,
-  Icon,
+  // Icon,
 } from '../authFormStyle.styled';
 
 import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
 import {
+  ButtonImg,
   ClosedEyaIcon,
+  Div,
   OpenEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled.jsx';
 

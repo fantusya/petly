@@ -10,6 +10,14 @@ export const PetBox = styled.div`
   }
 `;
 
+export const PetWrap = styled.div`
+  text-align: center;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: ${p => p.theme.space[5] + 8}px;
+  }
+`;
+
 export const Label = styled.label`
   color: ${p => p.theme.colors.text};
 
@@ -24,6 +32,15 @@ export const Label = styled.label`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[5]};
     line-height: 1.08;
+  }
+`;
+
+export const LabelText = styled(Label)`
+  font-size: ${p => p.theme.fontSizes[1]};
+  line-height: ${p => p.theme.lineHeights.text};
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: ${p => p.theme.fontSizes[4]};
   }
 `;
 
@@ -61,6 +78,7 @@ export const Input = styled(Field)`
 `;
 
 export const TextInput = styled(Input)`
+  margin-top: ${p => p.theme.space[3]}px;
   border-radius: ${p => p.theme.radii.small};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -124,10 +142,12 @@ export const Button = styled.button`
 `;
 
 export const ButtonBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     font-size: ${p => p.theme.fontSizes[5]};
@@ -135,27 +155,25 @@ export const ButtonBox = styled.div`
 `;
 
 export const PetAvatarBtn = styled.button`
+  margin: 0 auto 20px;
+  margin-top: ${p => p.theme.space[4] + 4}px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 233px;
-  height: 233px;
-  margin: 0 auto 12px;
+  width: 208px;
+  height: 208px;
 
-  border: none;
-  border-radius: ${p => p.theme.radii.circular};
-  box-shadow: ${p => p.theme.shadows.avatar};
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.small};
   cursor: pointer;
 
-  color: ${p => p.theme.colors.accent};
   background-color: ${p => p.theme.colors.background};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-bottom: 8px;
-  }
-
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-bottom: 0;
+    margin-bottom: ${p => p.theme.space[0]}px;
+    width: 182px;
+    height: 182px;
   }
 `;
 
