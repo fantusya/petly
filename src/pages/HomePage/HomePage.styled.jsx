@@ -44,54 +44,50 @@ export const HomeTitle = styled.h1`
 `;
 
 export const HomeSection = styled.section`
-padding-top: 100px;
-min-height: 100vh;
- width: -webkit-fill-available;
-// height: calc(100% - 56px);
-background-repeat: no-repeat;
-background-position: bottom;
+  padding-top: 100px;
+  min-height: 100vh;
+  width: -webkit-fill-available;
+  // height: calc(100% - 56px);
+  background-repeat: no-repeat;
+  background-position: bottom;
 
-background-image: url(${golden1}), url(${Wav1});
-background-size: 280px 380px, 100vw 470px;
+  background-image: url(${golden1}), url(${Wav1});
+  background-size: 280px 380px, 100vw 470px;
 
-@media (min-device-pixel-ratio: 2),
+  @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url(${golden2x}), url(${Wav2x});
   }
 
-
-@media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     min-height: 100vh;
-     width: -webkit-fill-available;
-  
+    width: -webkit-fill-available;
+
     padding-top: 130px;
 
     background-image: url(${goldenT1}), url(${WaveT});
     background-size: 636px 760px, 100vw 1085px;
 
-
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url(${goldenT2x}), url(${WaveT2x});
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${goldenT2x}), url(${WaveT2x});
     }
   }
 
-  @media (min-width: ${p => p.theme.breakpoints[2]})  {
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
     padding-top: 160px;
     padding-bottom: 408px;
     min-height: 100vh;
     width: -webkit-fill-available;
-   
-
 
     background-image: url(${goldenD1}), url(${WaveD1});
-  background-size: 485px 580px, 100vw calc(100vw * 0.455);
+    background-size: 485px 580px, 100vw calc(100vw * 0.405);
     background-position-x: calc(50% + 372px), 68%, calc(50% + 142px);
-    background-position-y: bottom, 97%, calc(50% - 345px);
-  
+    background-position-y: bottom, 100%, calc(50% - 345px);
+
     // background-size: 505px 580px, 100vw, 580px;
     // background-position-x: 756px,  center, 625px;
     // background-position-y: bottom, bottom, 400px;
@@ -99,10 +95,10 @@ background-size: 280px 380px, 100vw 470px;
     // calc(55% + 330px) 100%, 40% -89%, calc(50% + 118px) calc(50% - 204px)
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: url(${goldenD2x}), url(${Wavve2x});
     }
-
+  }
 `;
