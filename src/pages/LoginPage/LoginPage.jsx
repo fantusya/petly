@@ -16,12 +16,14 @@ import {
   Error,
   BoxAuth,
   LogoBg,
-  Icon,
+  // Icon,
 } from '../authFormStyle.styled';
 
 import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
 import {
+  ButtonImg,
   ClosedEyaIcon,
+  Div,
   OpenEyaIcon,
 } from 'pages/RegisterPage/RegisterPage.styled.jsx';
 
@@ -58,20 +60,20 @@ export const LoginPage = () => {
                   autoComplete="off"
                 />
                 <Error name="email" component="div" />
+                <Div>
+                  <Input
+                    type={passwordShown ? 'text' : 'password'}
+                    name="password"
+                    placeholder="Password"
+                    autoComplete="off"
+                    required
+                  />
 
-                <Input
-                  type={passwordShown ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Password"
-                  autoComplete="off"
-                  required
-                />
-
-                <Icon onClick={togglePassword}>
-                  {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-                </Icon>
-                <Error name="password" component="div" />
-
+                  <ButtonImg onClick={togglePassword}>
+                    {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
+                  </ButtonImg>
+                  <Error name="password" component="div" />
+                </Div>
                 <Button type="submit">Login</Button>
                 <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
                   <GoogleImg src={GooglePic} alt="Google" />

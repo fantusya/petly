@@ -8,7 +8,12 @@ import { signup, logIn } from 'redux/auth/operations';
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
 
-import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
+import {
+  registerValidationSchemaOne,
+  registerValidationSchemaTwo,
+} from 'helpers/validationSchemas/RegisterValidationSchema';
+
+// import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 
@@ -47,7 +52,10 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleNextStep = () => {
+    // console.log(password);
+    // if (password === confirm) {
     setCarrentStep(prev => prev + 1);
+    // }
   };
 
   const handlePrevStep = () => {
@@ -70,11 +78,6 @@ export const RegisterPage = () => {
     resetForm();
   };
 
-  const steps = [
-    <StepOne next={handleNextStep} />,
-    <StepTwo back={handlePrevStep} />,
-  ];
-
   return (
     <Box as="section">
       <LogoBg>
@@ -85,10 +88,17 @@ export const RegisterPage = () => {
             <Formik
               initialValues={initialValues}
               onSubmit={handleSubmit}
-              validationSchema={registerValidationSchema}
+              validationSchema={
+                currentStep === 0
+                  ? registerValidationSchemaOne
+                  : registerValidationSchemaTwo
+              }
               autoComplete="off"
             >
-              <FormCustom autoComplete="off">{steps[currentStep]}</FormCustom>
+              <FormCustom autoComplete="off">
+                {currentStep === 0 && <StepOne next={handleNextStep} />}
+                {currentStep === 1 && <StepTwo back={handlePrevStep} />}
+              </FormCustom>
             </Formik>
 
             <RouteFormLoginRegister
