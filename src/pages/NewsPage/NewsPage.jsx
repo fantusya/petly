@@ -7,8 +7,11 @@ import { NewsList } from './NewsPage.styled';
 import { PageTitle } from 'components/commonComponents/PageTitle.styled';
 import { toISODate } from 'helpers/newsHelpers/dateConverting';
 import { stringMax } from 'helpers/newsHelpers/stringConverting';
+import { useTranslation } from 'react-i18next';
 
 const NewsPage = () => {
+  const { t } = useTranslation();
+
   const [news, setNews] = useState([]);
   const [publicNews, setPublicNews] = useState([]);
   const [request, setRequest] = useState('');
@@ -85,7 +88,7 @@ const NewsPage = () => {
       pr={['20px', '20px', '32px', '16px']}
       pb={['100px', '100px', '100px', '200px']}
     >
-      <PageTitle>News</PageTitle>
+      <PageTitle>{t('News')}</PageTitle>
 
       <SearchBar onSubmit={handleFormSubmit} />
       <NewsList>
