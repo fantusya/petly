@@ -52,7 +52,7 @@ export const HomeSection = styled.section`
   padding-top: 100px;
   min-height: 100vh;
   width: -webkit-fill-available;
-  // height: calc(100% - 56px);
+
   background-repeat: no-repeat;
   background-position: bottom;
 
