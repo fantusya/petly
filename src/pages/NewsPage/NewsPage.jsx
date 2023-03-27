@@ -7,8 +7,16 @@ import { NewsList } from './NewsPage.styled';
 import { PageTitle } from 'components/commonComponents/PageTitle.styled';
 import { toISODate } from 'helpers/newsHelpers/dateConverting';
 import { stringMax } from 'helpers/newsHelpers/stringConverting';
+import { useTranslation } from 'react-i18next';
+
+// -------------------------------------------------
+import { toast } from 'react-hot-toast';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewsPage = () => {
+  const { t } = useTranslation();
+
   const [news, setNews] = useState([]);
   const [publicNews, setPublicNews] = useState([]);
   const [request, setRequest] = useState('');
@@ -54,11 +62,22 @@ const NewsPage = () => {
       });
 
       /*якщо нічого не знайдено,- рендер всього списку */
-      if (filterNews.length === 0 && request !== '') {
+      if (filterNews.length === 0) {
         console.log('нічого не знайдено');
         setPublicNews(news);
+        // -додано повідомлення про невдалий пошук
+        if (request !== '') {
+          toast.error(
+            'Новин за вказаним запитом не знайдено. Спробуйте інший запит!'
+          );
+          // alert(
+          //   'Новини за вказаним запитом не знайдено. Спробуйте інший запит.'
+          // );
+        }
+
         return;
       }
+
       setPublicNews(filterNews);
     }
 
@@ -85,7 +104,7 @@ const NewsPage = () => {
       pr={['20px', '20px', '32px', '16px']}
       pb={['100px', '100px', '100px', '200px']}
     >
-      <PageTitle>News</PageTitle>
+      <PageTitle>{t('News')}</PageTitle>
 
       <SearchBar onSubmit={handleFormSubmit} />
       <NewsList>
@@ -99,6 +118,7 @@ const NewsPage = () => {
           />
         ))}
       </NewsList>
+      <ToastContainer />
     </Box>
   );
 };

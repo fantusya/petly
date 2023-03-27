@@ -59,9 +59,9 @@ export const logIn = createAsyncThunk(
 
       token.set(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
-      localStorage.setItem('accessToken', data.accessToken);
       return data;
     } catch (error) {
+      console.log('ERROR', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -109,6 +109,7 @@ export const refreshUser = createAsyncThunk(
       console.log('CURRENT', data);
       return data;
     } catch (error) {
+      console.log('ERROR', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

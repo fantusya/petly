@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from 'hooks';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 // import { useNavigate } from 'react-router-dom';
 import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
@@ -13,15 +14,22 @@ import {
 import AddNoticeButton from 'components/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
-  const [extended, setExtended] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const { isLoggedIn } = useAuth();
 
   // const navigate = useNavigate();
 
   const handleModalToggle = () => {
-    setExtended(prev => {
-      return !prev;
-    });
+    if (isLoggedIn) {
+      setOpen(true);
+    } else {
+      toast.error('Please log in to add your notice!');
+    }
+  };
+
+  const handleButtonToggle = () => {
+    setOpen(false);
   };
 
   return (
@@ -48,14 +56,12 @@ export const NoticesCategoriesNav = () => {
           </>
         )}
       </NavUl>
-      <AddNoticeButton
-        handleModalToggle={handleModalToggle}
-        // onClick={e => {
-        //   e.preventDefault();
-        //   isLoggedIn ? handleModalToggle() : navigate('/login');
-        // }}
-      />
-      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
+      {/* {visibleBtn && <AddNoticeButton handleModalToggle={handleModalToggle} />} */}
+      {open ? (
+        <AddNoticeModal handleButtonToggle={handleButtonToggle} />
+      ) : (
+        <AddNoticeButton handleModalToggle={handleModalToggle} />
+      )}
     </NavBox>
   );
 };

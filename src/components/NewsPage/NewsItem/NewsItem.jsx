@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import {
   NewsItemContainer,
   Border,
@@ -11,6 +13,8 @@ import {
 } from './NewsItem.styled';
 
 const NewsItem = ({ title, description, date, url }) => {
+  const { t } = useTranslation();
+
   return (
     <NewsItemContainer>
       <ContainerNews>
@@ -22,7 +26,7 @@ const NewsItem = ({ title, description, date, url }) => {
       <NewsDateLinkContainer>
         <NewsDate>{date}</NewsDate>
         <NewsLink href={url} target="_blank" rel="noopener noreferrer">
-          Read More
+          {t('Read_more')}
         </NewsLink>
       </NewsDateLinkContainer>
     </NewsItemContainer>

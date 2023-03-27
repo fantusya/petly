@@ -12,11 +12,9 @@ import {
   TitleAuth,
   FormCustom,
   Button,
-  // Input,
   Error,
   BoxAuth,
   LogoBg,
-  // Icon,
 } from '../authFormStyle.styled';
 
 import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
@@ -57,23 +55,27 @@ export const LoginPage = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    required
                     autoComplete="off"
                     errors={errors}
                     touched={touched}
+                    required
                   />
-                  <Error name="email" component="div" />
 
-                  <CustomField
-                    type={passwordShown ? 'text' : 'password'}
-                    name="password"
-                    placeholder="Password"
-                    autoComplete="off"
-                    errors={errors}
-                    touched={touched}
-                    required
-                  />
-                  <Div>
+                 
+
+                  <Error name="email" component="div" />
+                 
+                    <CustomField
+                      type={passwordShown ? 'text' : 'password'}
+                      name="password"
+                      placeholder="Password"
+                      autoComplete="off"
+                      errors={errors}
+                      touched={touched}
+                      required
+                    />
+                     <Div>
+
                     <ButtonImg onClick={togglePassword}>
                       {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
                     </ButtonImg>
@@ -87,13 +89,11 @@ export const LoginPage = () => {
                 </FormCustom>
               )}
             </Formik>
-
             <RouteFormLoginRegister
               link="/register"
               question="Don't have an account?"
               pageName="Register"
             />
-
             {/* <LoginButton type="submit">Login</LoginButton> */}
           </BoxAuth>
         </Container>
