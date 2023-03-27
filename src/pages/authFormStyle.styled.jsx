@@ -8,6 +8,7 @@ import imgTab from '../images/forms/wave_lg.webp';
 import img2xTab from '../images/forms/wave_lg@2x.webp';
 import imgDesc from '../images/forms/wave_lg.webp';
 import img2xDesc from '../images/forms/wave_lg@2x.webp';
+import { useState, useEffect } from 'react';
 
 import svgError from '../images/svg/error.svg';
 import svgSucsess from '../images/svg/success.svg';
@@ -46,7 +47,7 @@ export const Input = styled(Field)`
   letter-spacing: ${p => p.theme.letterSpacing.text};
   color: ${p => p.theme.colors.text};
   background-color: ${p => p.theme.colors.background};
-
+  /* 
   :valid:not(:placeholder-shown) {
     border-color: ${p => p.theme.colors.success};
     background: url('${svgSucsess}');
@@ -76,7 +77,7 @@ export const Input = styled(Field)`
       background-repeat: no-repeat;
       background-position: 450px;
     }
-  }
+  } */
 `;
 
 export const Button = styled.button`
@@ -229,3 +230,38 @@ export const LinkToOtherPage = styled(Link)`
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[0]};
 `;
+
+const CustomField = props => {
+  const [isError, setIsError] = useState(false);
+  const { errors, touched, name } = props;
+
+  useEffect(() => {
+    if (
+      Object.keys(errors).includes(name) &&
+      Object.keys(touched).includes(name)
+    ) {
+      return setIsError(true);
+    }
+    setIsError(false);
+  }, [errors, name, touched]);
+
+  return (
+    <>
+      <Input
+        {...props}
+        style={{
+          border:
+            isError && touched
+              ? theme.borders.inputError
+              : theme.borders.inputSuccess,
+
+          backgroundImage:
+            isError && touched ? `url(${svgError})` : `url(${svgSucsess})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: '97% 50%',
+        }}
+      />
+    </>
+  );
+};
+export default CustomField;
