@@ -7,7 +7,7 @@ import { BurgerZone } from 'components/BurgerMenu/BurgerMenu';
 import React, { Fragment } from 'react';
 import Media from 'react-media';
 import { useAuth } from 'hooks';
-import { LangSwitcher } from 'components/LangSwitcher';
+import { LangSwitcher } from '../../components/LangSwitcher';
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
