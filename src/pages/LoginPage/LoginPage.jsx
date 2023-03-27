@@ -73,12 +73,12 @@ export const LoginPage = () => {
                     touched={touched}
                     required
                   />
-
-                  <Icon onClick={togglePassword}>
-                    {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-                  </Icon>
-                  <Error name="password" component="div" />
-
+                  <Div>
+                    <ButtonImg onClick={togglePassword}>
+                      {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
+                    </ButtonImg>
+                    <Error name="password" component="div" />
+                  </Div>
                   <Button type="submit">Login</Button>
                   <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
                     <GoogleImg src={GooglePic} alt="Google" />

@@ -1,6 +1,24 @@
 import { Error, Input, Button } from 'pages/authFormStyle.styled';
+// import { useEffect } from 'react';
 
-const StepTwo = props => {
+const StepTwo = ({ back }) => {
+  // const query = 'Dnipro';
+  // const { status, results } = useFetchingData('api/cities', query);
+
+  // const array = results.map(({ useCounty, stateEn, cityEn, countyEn }) => {
+  //   return Number(useCounty)
+  //     ? `${cityEn}, ${countyEn}, ${stateEn} region`
+  //     : `${cityEn}, ${stateEn} region`;
+  // });
+  // console.log('array', array);
+
+  // useEffect(() => {
+  //   const inputValue = value || '';
+  //   if (inputValue) {
+  //     console.log(inputValue);
+  //   }
+  // });
+
   return (
     <>
       <Input type="text" name="name" placeholder="Name" />
@@ -13,7 +31,7 @@ const StepTwo = props => {
       <Error name="phone" component="div" />
 
       <Button type="submit">Register</Button>
-      <Button type="button" onClick={props.back}>
+      <Button type="button" onClick={back}>
         Back
       </Button>
     </>
