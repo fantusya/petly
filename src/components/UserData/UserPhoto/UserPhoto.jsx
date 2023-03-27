@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateAvatar } from 'redux/auth/operations';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
+
 import {
   AvatarWrapper,
   Avatar,
@@ -17,6 +20,7 @@ import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 export const UserPhoto = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isFileSelected, setIsFileSelected] = useState(false);
+  const { t } = useTranslation();
 
   const { user, name } = useAuth();
   const { avatarURL } = user;
@@ -44,12 +48,12 @@ export const UserPhoto = () => {
 
     if (!e.target.files.length || !chosenImg) {
       setSelectedFile(null);
-      toast.error('Choose an image to change your avatar!');
+      toast.error(i18n.t('Chose_image'));
       return;
     }
     setSelectedFile(chosenImg);
     setIsFileSelected(true);
-    toast.success('Photo selected. Click on the 📸 "Edit photo"');
+    toast.success(i18n.t('Photo_selected'));
   };
 
   return (
@@ -75,7 +79,7 @@ export const UserPhoto = () => {
       )}
       <EditPhotoBtn type="submit" onClick={handleUpload}>
         <Kamera />
-        <span>Edit photo</span>
+        <span>{t('Edit_photo')}</span>
       </EditPhotoBtn>
     </AvatarWrapper>
   );
