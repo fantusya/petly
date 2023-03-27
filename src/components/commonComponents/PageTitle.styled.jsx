@@ -5,6 +5,7 @@ export const PageTitle = styled.h1`
   margin-bottom: 28px;
   text-align: center;
 
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[5]};
   font-weight: ${p => p.theme.fontWeights.bold};
   color: ${p => p.theme.colors.text};

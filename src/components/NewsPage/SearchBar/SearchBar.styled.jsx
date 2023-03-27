@@ -84,7 +84,7 @@ export const SearchIconContainer = styled.div`
 export const ResetIconContainer = styled.div`
   position: absolute;
   top: 50%;
-  right: 35px;
+  right: 12px;
   transform: translateY(-50%);
   cursor: pointer;
 `;
