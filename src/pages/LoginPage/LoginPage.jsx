@@ -7,16 +7,14 @@ import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
-// import CustomField from '../authFormStyle.styled';
+import CustomField from '../authFormStyle.styled';
 import {
   TitleAuth,
   FormCustom,
   Button,
-  Input,
   Error,
   BoxAuth,
   LogoBg,
-  // Icon,
 } from '../authFormStyle.styled';
 
 import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
@@ -51,35 +49,41 @@ export const LoginPage = () => {
               onSubmit={handleSubmit}
               validationSchema={schema}
             >
-              <FormCustom>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  autoComplete="off"
-                />
-                <Error name="email" component="div" />
-                <Div>
-                  <Input
-                    type={passwordShown ? 'text' : 'password'}
-                    name="password"
-                    placeholder="Password"
+              {({ errors, touched }) => (
+                <FormCustom>
+                  <CustomField
+                    type="email"
+                    name="email"
+                    placeholder="Email"
                     autoComplete="off"
+                    errors={errors}
+                    touched={touched}
                     required
                   />
+                  <Error name="email" component="div" />
+                  <Div>
+                    <CustomField
+                      type={passwordShown ? 'text' : 'password'}
+                      name="password"
+                      placeholder="Password"
+                      autoComplete="off"
+                      errors={errors}
+                      touched={touched}
+                      required
+                    />
 
-                  <ButtonImg onClick={togglePassword}>
-                    {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-                  </ButtonImg>
-                  <Error name="password" component="div" />
-                </Div>
-                <Button type="submit">Login</Button>
-                <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
-                  <GoogleImg src={GooglePic} alt="Google" />
-                  Login with Google
-                </GoogleLoginButton>
-              </FormCustom>
+                    <ButtonImg onClick={togglePassword}>
+                      {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
+                    </ButtonImg>
+                    <Error name="password" component="div" />
+                  </Div>
+                  <Button type="submit">Login</Button>
+                  <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
+                    <GoogleImg src={GooglePic} alt="Google" />
+                    Login with Google
+                  </GoogleLoginButton>
+                </FormCustom>
+              )}
             </Formik>
             <RouteFormLoginRegister
               link="/register"
