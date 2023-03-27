@@ -1,7 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-// import { useAuth } from 'hooks';
+import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 
@@ -23,16 +23,16 @@ const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
-  // const { isLoggedIn } = useAuth;
+  const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if (isLoggedIn) {
     dispatch(refreshUser());
-    // }
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>LOADING</b>
+  ) : (
     <>
       <Routes>
         <Route path={ROUTES.home} element={<SharedLayout />}>
