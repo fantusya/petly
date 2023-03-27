@@ -44,7 +44,7 @@ export const token = {
 //       const refreshToken = localStorage.getItem('refreshToken');
 
 //       try {
-//         const { data } = await privateRoutes.post('api/users/refresh', {
+//         const { data } = await commonRoutes.post('api/users/refresh', {
 //           refreshToken,
 //         });
 

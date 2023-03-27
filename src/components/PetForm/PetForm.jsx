@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { addPet } from 'redux/auth/operations';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
+import i18n from 'i18n';
 
 import { Formik } from 'formik';
 import { OneStep, TwoStep } from './Steps';
@@ -37,7 +38,7 @@ export const PetForm = ({ closeModal }) => {
 
     if (!e.target.files.length || !chosenImg) {
       setSelectedFile(null);
-      toast.warning('Choose an image to change your avatar!');
+      toast.warning(i18n.t('Chose_image'));
       return;
     }
     setSelectedFile(chosenImg);

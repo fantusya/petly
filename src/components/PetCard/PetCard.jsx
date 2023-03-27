@@ -1,5 +1,6 @@
 import { DEFAULT_IMAGE } from 'constants/urls';
 import { Box } from 'components/Box/Box';
+import { useTranslation } from 'react-i18next';
 
 import {
   CardWrapper,
@@ -11,6 +12,8 @@ import {
 } from './PetCard.styled';
 
 export const PetCard = () => {
+  const { t } = useTranslation();
+
   return (
     <CardWrapper>
       <Box pt={20} border="normal" borderColor="transparent">
@@ -19,19 +22,19 @@ export const PetCard = () => {
 
       <Box pt={20} position="relative">
         <PetInfo>
-          <PetTitle>Name: </PetTitle>
+          <PetTitle>{t('Name')}: </PetTitle>
           Jack
         </PetInfo>
         <PetInfo>
-          <PetTitle>Date of birth: </PetTitle>
+          <PetTitle>{t('Date_of_birth')}: </PetTitle>
           22.04.2018
         </PetInfo>
         <PetInfo>
-          <PetTitle>Breed: </PetTitle>
+          <PetTitle>{t('Breed')}: </PetTitle>
           Persian cat
         </PetInfo>
         <PetInfo>
-          <PetTitle>Comments: </PetTitle>
+          <PetTitle>{t('Comments')}: </PetTitle>
           Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet,
           consectetur Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor
           sit amet, consectetur Lorem ipsum dolor sit amet, consecteturLorem
