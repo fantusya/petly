@@ -19,7 +19,11 @@ import {
   LogoBg,
 } from '../authFormStyle.styled';
 
-import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
+import {
+  GoogleLoginButton,
+  GoogleImg,
+  LoginPOsitionBtn,
+} from './LoginPage.styled.jsx';
 import {
   ButtonImg,
   ClosedEyaIcon,
@@ -76,9 +80,12 @@ export const LoginPage = () => {
                     required
                   />
                   <Div>
-                    <ButtonImg onClick={togglePassword}>
-                      {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-                    </ButtonImg>
+                    <LoginPOsitionBtn>
+                      <ButtonImg onClick={togglePassword}>
+                        {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
+                      </ButtonImg>
+                    </LoginPOsitionBtn>
+
                     <Error name="password" component="div" />
                   </Div>
                   <Button type="submit">{t('Login')}</Button>

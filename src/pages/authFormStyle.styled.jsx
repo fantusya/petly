@@ -120,7 +120,7 @@ export const LogoBg = styled.div`
   background-repeat: no-repeat;
   margin-top: 100px;
   padding-bottom: 120px;
-  background-position: 50% 300px;
+  background-position: 50% 350px;
 
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
@@ -129,7 +129,7 @@ export const LogoBg = styled.div`
   }
   @media (min-width: ${theme.breakpoints[1]}) {
     background-image: url('${imgTab}');
-    background-position: 50% 270px;
+    background-position: 50% 350px;
     padding-bottom: 200px;
 
     @media screen and (min-device-pixel-ratio: 2),
@@ -141,7 +141,7 @@ export const LogoBg = styled.div`
     }
     @media (min-width: ${theme.breakpoints[2]}) {
       background-image: url('${imgDesc}');
-      background-position: center 270px;
+      background-position: center 350px;
 
       @media screen and (min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
@@ -230,6 +230,7 @@ export const LinkToOtherPage = styled(Link)`
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[0]};
 `;
+// ------------- логика подсветки бордера инпута ----------
 
 const CustomField = props => {
   const [isError, setIsError] = useState(false);
