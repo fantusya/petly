@@ -27,7 +27,9 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // if (isLoggedIn) {
     dispatch(refreshUser());
+    // }
   }, [dispatch]);
 
   return (
