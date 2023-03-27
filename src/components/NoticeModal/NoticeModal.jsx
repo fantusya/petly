@@ -26,6 +26,8 @@ import {
   RecordContent,
   ContactButton,
 } from './NoticeModal.styled';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 
 import { ModalCloseButton } from 'components/commonComponents';
 import { toast } from 'react-hot-toast';
@@ -39,6 +41,8 @@ export const NoticeModal = ({
 }) => {
   const [notice, setNotice] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const { t } = useTranslation();
+
   // const { isLoggedIn } = useAuth();
 
   useEffect(() => {
@@ -65,7 +69,7 @@ export const NoticeModal = ({
           alignItems="center"
           p="20px 50px"
         >
-          <p>Data is loading</p>
+          <p>{t('Data_loading')}</p>
         </Box>
       )}
       {status === Status.REJECTED && (
@@ -75,7 +79,7 @@ export const NoticeModal = ({
           alignItems="center"
           p="20px 50px"
         >
-          <p>Error...</p>
+          <p>{t('Error')}</p>
         </Box>
       )}
       {status === Status.RESOLVED && (
@@ -93,13 +97,13 @@ export const NoticeModal = ({
               <ModalTitle>{notice?.title}</ModalTitle>
               <ModalRecords>
                 <Record>
-                  <RecordName>Name:</RecordName>
+                  <RecordName>{t('Name')}:</RecordName>
                   <RecordContent>
                     {notice?.name ? notice.name : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Birthday:</RecordName>
+                  <RecordName>{t('Birthday')}:</RecordName>
                   <RecordContent>
                     {notice?.birthDate
                       ? moment(notice.birthDate).format('DD.MM.YYYY')
@@ -107,25 +111,25 @@ export const NoticeModal = ({
                   </RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Breed:</RecordName>
+                  <RecordName>{t('Breed')}:</RecordName>
                   <RecordContent>
                     {notice?.breed ? notice.breed : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Location:</RecordName>
+                  <RecordName>{t('Location')}:</RecordName>
                   <RecordContent>
                     {notice?.location ? notice.location : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>The sex:</RecordName>
+                  <RecordName>{t('The_sex')}:</RecordName>
                   <RecordContent>
                     {notice?.sex ? notice.sex : 'N/A'}
                   </RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Email:</RecordName>
+                  <RecordName>{t('Email')}:</RecordName>
                   <RecordContent>
                     {notice?.owner?.email ? (
                       <Link href={`mailto: ${notice.owner.email}`}>
@@ -137,7 +141,7 @@ export const NoticeModal = ({
                   </RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Phone:</RecordName>
+                  <RecordName>{t('Phone')}:</RecordName>
                   <RecordContent>
                     {notice?.owner?.phone ? (
                       <Link href={`tel: ${notice.owner.phone}`}>
@@ -150,7 +154,7 @@ export const NoticeModal = ({
                 </Record>
                 {label === 'sell' ? (
                   <Record>
-                    <RecordName>Price:</RecordName>
+                    <RecordName>{t('Price')}:</RecordName>
                     <RecordContent>
                       {notice?.price ? notice.price : '0'} грн
                     </RecordContent>
@@ -160,21 +164,24 @@ export const NoticeModal = ({
             </Box>
           </ContentWrapper>
           <ModalComments>
-            <CommentsBold>Comments:</CommentsBold>{' '}
+            <CommentsBold>{t('Comments')}:</CommentsBold>{' '}
             {notice?.comments ? notice.comments : ''}
           </ModalComments>
           <ButtonsWrapper>
             {notice?.owner ? (
               <ContactButton href={`tel: ${notice.owner.phone}`}>
-                Contact
+                {t('Contact')}
               </ContactButton>
             ) : (
-              <ModalButton onClick={() => toast('No contact information')}>
-                Contact
+              <ModalButton
+                onClick={() => toast(i18n.t('No_contact_information'))}
+              >
+                {t('Contact')}
               </ModalButton>
             )}
             <ModalFavoriteButton onClick={() => handleFavorites(id)}>
-              {isFavorite ? 'Remove from' : 'Add to'} <AddFavoriteIcon />
+              {isFavorite ? i18n.t('Remove_from') : i18n.t('Add_to')}{' '}
+              <AddFavoriteIcon />
             </ModalFavoriteButton>
           </ButtonsWrapper>
         </ModalContainer>
