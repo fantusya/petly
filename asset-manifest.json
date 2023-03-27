@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/petly/static/css/main.c3d5249d.css",
-    "main.js": "/petly/static/js/main.cab3c631.js",
+    "main.js": "/petly/static/js/main.b7ec3174.js",
     "static/js/223.83865577.chunk.js": "/petly/static/js/223.83865577.chunk.js",
     "static/js/359.40f6d421.chunk.js": "/petly/static/js/359.40f6d421.chunk.js",
     "static/js/39.b118a562.chunk.js": "/petly/static/js/39.b118a562.chunk.js",
@@ -24,16 +24,16 @@
     "static/media/Wav@2x.webp": "/petly/static/media/Wav@2x.a2e0ff9eca394f571761.webp",
     "static/media/wave_lg@2x.webp": "/petly/static/media/wave_lg@2x.5414c900ebdcf7b5b338.webp",
     "static/media/wave_sm.webp": "/petly/static/media/wave_sm.d524b465c4ff4dc666c0.webp",
+    "static/media/manrope-v13-cyrillic_latin-regular.woff": "/petly/static/media/manrope-v13-cyrillic_latin-regular.e62db8200e37b75a4fcb.woff",
+    "static/media/manrope-v13-cyrillic_latin-700.woff": "/petly/static/media/manrope-v13-cyrillic_latin-700.91b23c6d19dd1bab28b1.woff",
+    "static/media/manrope-v13-cyrillic_latin-500.woff": "/petly/static/media/manrope-v13-cyrillic_latin-500.c8721b16e62fa490b861.woff",
     "static/media/golden1.webp": "/petly/static/media/golden1.4f217190476c4f964c70.webp",
-    "static/media/manrope-v13-latin-700.woff": "/petly/static/media/manrope-v13-latin-700.12905788f876fb01b91f.woff",
-    "static/media/manrope-v13-latin-regular.woff": "/petly/static/media/manrope-v13-latin-regular.d099ceeb4963e67cab6c.woff",
-    "static/media/manrope-v13-latin-500.woff": "/petly/static/media/manrope-v13-latin-500.92b1c2e13f62cf6d3e12.woff",
+    "static/media/manrope-v13-cyrillic_latin-700.woff2": "/petly/static/media/manrope-v13-cyrillic_latin-700.37aa7a32bdad260f7d03.woff2",
+    "static/media/manrope-v13-cyrillic_latin-regular.woff2": "/petly/static/media/manrope-v13-cyrillic_latin-regular.63ce9221ad65dca24c29.woff2",
+    "static/media/manrope-v13-cyrillic_latin-500.woff2": "/petly/static/media/manrope-v13-cyrillic_latin-500.e46ccb57689dd45d7346.woff2",
     "static/media/Wav1.webp": "/petly/static/media/Wav1.047fb051776b2d21a427.webp",
     "static/media/WaveD1.webp": "/petly/static/media/WaveD1.5bef10c581c465b318db.webp",
     "static/media/wave_lg.webp": "/petly/static/media/wave_lg.e7f1a104eb01c5b1e2d3.webp",
-    "static/media/manrope-v13-latin-700.woff2": "/petly/static/media/manrope-v13-latin-700.19fa7bed40332c82ef91.woff2",
-    "static/media/manrope-v13-latin-regular.woff2": "/petly/static/media/manrope-v13-latin-regular.2cfae0fb4662deefa552.woff2",
-    "static/media/manrope-v13-latin-500.woff2": "/petly/static/media/manrope-v13-latin-500.41f498090b8ee0ff9a31.woff2",
     "static/media/poppins-v20-latin-regular.woff": "/petly/static/media/poppins-v20-latin-regular.f61407da33b59324fbef.woff",
     "static/media/poppins-v20-latin-700.woff": "/petly/static/media/poppins-v20-latin-700.c54a52658bf21b37083d.woff",
     "static/media/poppins-v20-latin-regular.woff2": "/petly/static/media/poppins-v20-latin-regular.405055dd680fa1dcdfa2.woff2",
@@ -60,7 +60,7 @@
     "static/media/addAvatar.svg": "/petly/static/media/addAvatar.deec2b9327a6f7e779ae3cbb9fa31798.svg",
     "static/media/addCard.svg": "/petly/static/media/addCard.40b2205dc2516cb92de4e8f4f8627464.svg",
     "main.c3d5249d.css.map": "/petly/static/css/main.c3d5249d.css.map",
-    "main.cab3c631.js.map": "/petly/static/js/main.cab3c631.js.map",
+    "main.b7ec3174.js.map": "/petly/static/js/main.b7ec3174.js.map",
     "223.83865577.chunk.js.map": "/petly/static/js/223.83865577.chunk.js.map",
     "359.40f6d421.chunk.js.map": "/petly/static/js/359.40f6d421.chunk.js.map",
     "39.b118a562.chunk.js.map": "/petly/static/js/39.b118a562.chunk.js.map",
@@ -75,6 +75,6 @@
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.cab3c631.js"
+    "static/js/main.b7ec3174.js"
   ]
 }
