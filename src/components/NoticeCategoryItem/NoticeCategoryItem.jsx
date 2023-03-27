@@ -18,8 +18,9 @@ import {
   AddFavoriteIcon,
   RemoveFavoriteIcon,
   AddFavoriteButton,
+  ConfirmWrapper,
 } from './NoticeCategoryItem.styled';
-import { Label } from 'components/commonComponents';
+import { Label, ModalButton } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
 import { useAuth, useNotices } from 'hooks';
@@ -33,7 +34,6 @@ import {
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
-
   const [isFavorite, setIsFavorite] = useState(false);
   const { favoriteNotices, ownNotices } = useNotices();
 
@@ -84,7 +84,10 @@ export const NoticeCategoryItem = ({ notice }) => {
     }
   }, [favoriteNotices, ownNotices, id, user.favorites]);
 
-  const notify = () => toast('Please login or register');
+  const notify = () =>
+    toast.error('Please login or register', {
+      position: 'top-center',
+    });
 
   const handleFavorites = id => {
     if (isLoggedIn) {
@@ -95,6 +98,12 @@ export const NoticeCategoryItem = ({ notice }) => {
       return;
     }
     notify();
+  };
+
+  const [deletionConfirmation, setDeletionConfirmation] = useState(false);
+
+  const handleDeletion = () => {
+    setDeletionConfirmation(!deletionConfirmation);
   };
 
   return (
@@ -157,14 +166,30 @@ export const NoticeCategoryItem = ({ notice }) => {
                 >
                   Learn more
                 </NoticeButton>
-                {owner?.id === user._id ? (
-                  <NoticeButton
-                    isLogged={isLoggedIn}
-                    onClick={() => dispatch(removeUserNotice(id))}
-                  >
-                    Delete <DeleteIcon />
-                  </NoticeButton>
-                ) : null}
+                {owner?.id === user._id && (
+                  <ConfirmWrapper>
+                    {deletionConfirmation ? (
+                      <>
+                        <ModalButton
+                          onClick={() => {
+                            handleDeletion();
+                            dispatch(removeUserNotice(id));
+                          }}
+                        >
+                          yes
+                        </ModalButton>
+                        <ModalButton onClick={handleDeletion}>no</ModalButton>
+                      </>
+                    ) : (
+                      <NoticeButton
+                        isLogged={isLoggedIn}
+                        onClick={handleDeletion}
+                      >
+                        Delete <DeleteIcon />
+                      </NoticeButton>
+                    )}
+                  </ConfirmWrapper>
+                )}
               </Box>
             </Box>
           </ItemContent>

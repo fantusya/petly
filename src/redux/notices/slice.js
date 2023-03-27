@@ -24,6 +24,7 @@ const initialState = {
   totalItems: null,
   isLoading: false,
   error: false,
+  favoriteAction: false,
 };
 
 const noticesSlice = createSlice({
@@ -52,7 +53,15 @@ const noticesSlice = createSlice({
     [addToFavorites.fulfilled](state, action) {
       state.favoriteNotices = [action.payload, ...state.favoriteNotices];
 
-      state.isLoading = false;
+      state.favoriteAction = false;
+      state.error = false;
+    },
+    [addToFavorites.rejected](state) {
+      state.favoriteAction = false;
+      state.error = true;
+    },
+    [addToFavorites.pending](state) {
+      state.favoriteAction = true;
       state.error = false;
     },
     [removeFromFavorites.fulfilled](state, action) {
@@ -62,6 +71,14 @@ const noticesSlice = createSlice({
       state.favoriteNotices = res;
 
       state.isLoading = false;
+      state.error = false;
+    },
+    [removeFromFavorites.rejected](state) {
+      state.favoriteAction = false;
+      state.error = true;
+    },
+    [removeFromFavorites.pending](state) {
+      state.favoriteAction = true;
       state.error = false;
     },
     [getUserNotices.fulfilled](state, action) {
@@ -85,15 +102,15 @@ const noticesSlice = createSlice({
     },
     // [getByCategory.pending]: handlePending,
     [getFavorites.pending]: handlePending,
-    [addToFavorites.pending]: handlePending,
-    [removeFromFavorites.pending]: handlePending,
+    // [addToFavorites.pending]: handlePending,
+    // [removeFromFavorites.pending]: handlePending,
     [getUserNotices.pending]: handlePending,
     [removeUserNotice.pending]: handlePending,
 
     // [getByCategory.rejected]: handleRejected,
     [getFavorites.rejected]: handleRejected,
-    [addToFavorites.rejected]: handleRejected,
-    [removeFromFavorites.rejected]: handleRejected,
+    // [addToFavorites.rejected]: handleRejected,
+    // [removeFromFavorites.rejected]: handleRejected,
     [getUserNotices.rejected]: handleRejected,
     [removeUserNotice.rejected]: handleRejected,
   },

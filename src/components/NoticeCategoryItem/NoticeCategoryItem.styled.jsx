@@ -13,8 +13,6 @@ export const NoticesItem = styled.li`
 
   font-family: ${p => p.theme.fonts.text};
 
-  cursor: default;
-
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 336px;
 
@@ -191,4 +189,17 @@ export const AddFavoriteButton = styled.button`
   }
 
   transition: ${p => p.theme.transition.main};
+`;
+
+export const ConfirmWrapper = styled(Box)`
+  width: 100%;
+  height: 38px;
+  margin-bottom: ${props => (props.isLogged ? '12px' : '0px')};
+
+  display: flex;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    max-width: 248px;
+    margin-bottom: ${props => (props.isLogged ? '20px' : '0px')};
+  }
 `;
