@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
 
@@ -15,6 +16,7 @@ import { GoogleLoginButton } from 'pages/LoginPage/LoginPage.styled';
 
 export const StepOne = props => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
+  const { t } = useTranslation();
 
   const toggleShowPassword = () => {
     setPasswordVisibility(!passwordVisibility);
@@ -22,7 +24,7 @@ export const StepOne = props => {
 
   return (
     <>
-      <Input type="email" name="email" placeholder="Email" />
+      <Input type="email" name="email" placeholder={t('Email')} />
       <Error name="email" component="div" />
 
       <Div>
@@ -30,7 +32,7 @@ export const StepOne = props => {
           // type="password"
 
           name="password"
-          placeholder="Password"
+          placeholder={t('Password')}
           type={passwordVisibility ? 'text' : 'password'}
         ></Input>
         <ButtonImg type="button" onClick={toggleShowPassword}>
@@ -43,17 +45,17 @@ export const StepOne = props => {
         // type="password"
         type={passwordVisibility ? 'text' : 'password'}
         name="confirm"
-        placeholder="Confirm Password"
+        placeholder={t('Confirm_Password')}
       />
       <Error name="confirm" component="div" />
 
       <Button type="button" onClick={props.next} disabled={false}>
-        Next
+        {t('Next')}
       </Button>
 
       <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
         <GoogleImg src={GooglePic} alt="Google" />
-        Signup with Google
+        {t('Signup_with_Google')}
       </GoogleLoginButton>
     </>
   );
