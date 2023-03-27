@@ -152,7 +152,7 @@ export const NoticeModal = ({
                   <Record>
                     <RecordName>Price:</RecordName>
                     <RecordContent>
-                      ${notice?.price ? notice.price : '0'}
+                      {notice?.price ? notice.price : '0'} грн
                     </RecordContent>
                   </Record>
                 ) : null}

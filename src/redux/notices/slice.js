@@ -50,14 +50,16 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [addToFavorites.fulfilled](state, action) {
-      state.favoriteNotices.unshift(action.payload);
+      state.favoriteNotices = [action.payload, ...state.favoriteNotices];
 
       state.isLoading = false;
       state.error = false;
     },
     [removeFromFavorites.fulfilled](state, action) {
-      const index = state.favoriteNotices.indexOf(action.payload.result);
-      state.favoriteNotices.splice(index, 1);
+      const res = state.favoriteNotices.filter(
+        item => action.payload.result !== item._id
+      );
+      state.favoriteNotices = res;
 
       state.isLoading = false;
       state.error = false;

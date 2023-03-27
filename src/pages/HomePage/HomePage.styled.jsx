@@ -28,14 +28,17 @@ export const Main = styled.main`
 export const HomeTitle = styled.h1`
   max-width: 280px;
   font-size: ${p => theme.fontSizes[7]};
+  //   34px
   line-height: ${p => theme.lineHeights.text};
   font-family: ${p => p.theme.fonts.textMedium};
   color: ${p => theme.colors.black};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 607px;
-    font-size: ${p => theme.fontSizes[10]};
+    font-size: ${p => theme.fontSizes[8]};
+    font-family: ${p => p.theme.fonts.text};
     line-height: 1.47;
+    padding: 0, 32px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
@@ -44,7 +47,7 @@ export const HomeTitle = styled.h1`
 `;
 
 export const HomeSection = styled.section`
-padding-top: 100px;
+padding-top: 118px;
 min-height: 100vh;
  width: -webkit-fill-available;
 // height: calc(100% - 56px);
@@ -52,7 +55,7 @@ background-repeat: no-repeat;
 background-position: bottom;
 
 background-image: url(${golden1}), url(${Wav1});
-background-size: 280px 380px, 100vw 470px;
+background-size: 265px 350px, 100vw 442px;
 
 @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -63,12 +66,13 @@ background-size: 280px 380px, 100vw 470px;
 
 @media (min-width: ${p => p.theme.breakpoints[1]}) {
     min-height: 100vh;
-     width: -webkit-fill-available;
-  
-    padding-top: 130px;
+    width: -webkit-fill-available;
+    padding-top: 160px;
+    min-height: 100vh;
 
     background-image: url(${goldenT1}), url(${WaveT});
-    background-size: 636px 760px, 100vw 1085px;
+    // background-size: 636px 760px, 100vw 1085px;
+  background-size:  292px 325px, 100vw 460px;
 
 
     @media (min-device-pixel-ratio: 2),
