@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledMenu = styled.div`
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   // display: ${open => (!open ? 'none' : 'block')};
   padding-top: 40px;
   background: ${p => p.theme.colors.background};
@@ -13,18 +15,20 @@ export const StyledMenu = styled.div`
   overflow-y: scroll;
   // overflow-y: hidden;
   top: 63px;
-  left: 0;
+  width: 100%;
+  left: ${({ open }) => (!open ? '100%' : '0')};
   transition: transform 0.3s ease-in-out;
 
   @media (min-width: 768px) {
     padding-top: 130px;
     top: 100%;
     height: 100vh;
+    left: ${({ open }) => (!open ? '100%' : '0')};
   }
-  @media (max-width: 1279px) {
-    width: 100%;
-    // dispaly: none;
-  }
+  // @media (max-width: 1279px) {
+  //   // width: 100%;
+  //   dispaly: none;
+  // }
   a {
     transition: all 0.3s linear;
   }
