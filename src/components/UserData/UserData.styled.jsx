@@ -2,6 +2,24 @@ import styled from 'styled-components';
 import { theme } from 'globalStyles/theme';
 import { Container } from 'globalStyles/globalStyle';
 
+export const UserWrapper = styled.section`
+  padding-top: 61px;
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    padding-top: 88px;
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 24px;
+
+    width: calc(100% - 821px - 32px);
+    padding-top: 58px;
+  }
+`;
+
 export const TitleContainer = styled(Container)`
   margin-bottom: 18px;
 
@@ -10,7 +28,9 @@ export const TitleContainer = styled(Container)`
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-bottom: 24px;
+    margin: 0;
+    padding: 0 0 0 16px;
+    width: 411px;
   }
 `;
 
@@ -33,6 +53,10 @@ export const UserContainer = styled(Container)`
     justify-content: flex-end;
     margin: 0;
     padding: 0;
+  }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    display: block;
   }
 `;
 
@@ -60,7 +84,7 @@ export const UserSection = styled.div`
     position: relative;
     flex-direction: column;
     gap: 32px;
-    /* flex: 0 0 calc(100vw - 16px * 2 - 821px - 32px); */
+    flex: 0;
     padding: 20px 16px 18px 0;
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   }
