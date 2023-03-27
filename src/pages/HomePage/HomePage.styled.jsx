@@ -25,15 +25,15 @@ export const Main = styled.main`
 
 export const HomeTitle = styled.h1`
   max-width: 280px;
-  font-size: ${p => theme.fontSizes[7]};
+  font-size: ${p => p.theme.fontSizes[7]};
   //   34px
-  line-height: ${p => theme.lineHeights.text};
+  line-height: ${p => p.theme.lineHeights.text};
   font-family: ${p => p.theme.fonts.textMedium};
   color: ${p => p.theme.fonts.black};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 607px;
-    font-size: ${p => theme.fontSizes[8]};
+    font-size: ${p => p.theme.fontSizes[8]};
     font-family: ${p => p.theme.fonts.text};
     line-height: 1.47;
     padding: 0, 32px;
@@ -53,11 +53,10 @@ export const HomeSection = styled.section`
   background-position: bottom;
 
   background-image: url(${golden1}), url(${Wav1});
-//  background-size: 280px 380px, 100vw 470px;
-// padding-top: 118px;
-// height: calc(100% - 56px);
-// background-size: 265px 350px, 100vw 442px;
-
+  //  background-size: 280px 380px, 100vw 470px;
+  // padding-top: 118px;
+  // height: calc(100% - 56px);
+  // background-size: 265px 350px, 100vw 442px;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -74,7 +73,7 @@ export const HomeSection = styled.section`
 
     background-image: url(${goldenT1}), url(${WaveT});
     // background-size: 636px 760px, 100vw 1085px;
-  background-size:  292px 325px, 100vw 460px;
+    background-size: 292px 325px, 100vw 460px;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
