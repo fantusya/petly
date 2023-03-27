@@ -8,6 +8,8 @@ import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
 import CustomField from '../authFormStyle.styled';
+import { useTranslation } from 'react-i18next';
+
 import {
   TitleAuth,
   FormCustom,
@@ -28,6 +30,7 @@ import {
 export const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Привет я твой боди', values);
@@ -43,7 +46,7 @@ export const LoginPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
-            <TitleAuth>Login</TitleAuth>
+            <TitleAuth>{t('Login')}</TitleAuth>
             <Formik
               initialValues={{ email: '', password: '' }}
               onSubmit={handleSubmit}
@@ -54,7 +57,7 @@ export const LoginPage = () => {
                   <CustomField
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t('Email')}
                     autoComplete="off"
                     errors={errors}
                     touched={touched}
@@ -65,7 +68,7 @@ export const LoginPage = () => {
                     <CustomField
                       type={passwordShown ? 'text' : 'password'}
                       name="password"
-                      placeholder="Password"
+                      placeholder={t('Password')}
                       autoComplete="off"
                       errors={errors}
                       touched={touched}
@@ -77,18 +80,18 @@ export const LoginPage = () => {
                     </ButtonImg>
                     <Error name="password" component="div" />
                   </Div>
-                  <Button type="submit">Login</Button>
+                  <Button type="submit">{t('Login')}</Button>
                   <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
                     <GoogleImg src={GooglePic} alt="Google" />
-                    Login with Google
+                    {t('Login_with_Google')}
                   </GoogleLoginButton>
                 </FormCustom>
               )}
             </Formik>
             <RouteFormLoginRegister
               link="/register"
-              question="Don't have an account?"
-              pageName="Register"
+              question={t('No_account')}
+              pageName={t('Register')}
             />
             {/* <LoginButton type="submit">Login</LoginButton> */}
           </BoxAuth>
