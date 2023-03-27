@@ -33,7 +33,7 @@ i18n
           Phone: 'Phone',
           //   Friends_404: `Sorry, we don't have any information at the moment. Please try
           //       again later. In the meantime, here's a cute photo.`,
-          //   Title: 'Take good care of your small pets',
+          Title: 'Take good care of your small pets',
           //   Login_with_Google: 'Login with Google',
           //   No_account: `Don't have an account?`,
           //   The_sex: 'The sex',
@@ -180,7 +180,7 @@ i18n
           Phone: 'Телефон',
           //   Friends_404: `На жаль, на даний момент у нас немає жодної інформації. Будь ласка, спробуйте
           //       знову пізніше. А поки що ось миле фото.`,
-          //   Title: 'Дбайте про своїх маленьких домашніх тварин',
+          Title: 'Дбайте про своїх маленьких домашніх тварин',
           //   Login_with_Google: 'Увійти з Google',
           //   No_account: 'Немає облікового запису?',
           //   The_sex: 'Стать',

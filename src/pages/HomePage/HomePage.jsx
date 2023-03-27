@@ -2,8 +2,11 @@ import { Container } from 'globalStyles/globalStyle';
 import { Main, HomeTitle, HomeSection } from 'pages/HomePage/HomePage.styled';
 import React, { Fragment } from 'react';
 import Media from 'react-media';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Main>
@@ -19,7 +22,7 @@ export const HomePage = () => {
               {matches.small && (
                 <HomeSection>
                   <Container>
-                    <HomeTitle>Take good care of your small pets</HomeTitle>
+                    <HomeTitle>{t('Title')}</HomeTitle>
                   </Container>
                 </HomeSection>
               )}
@@ -27,14 +30,14 @@ export const HomePage = () => {
               {matches.medium && (
                 <HomeSection>
                   <Container>
-                    <HomeTitle>Take good care of your small pets</HomeTitle>
+                    <HomeTitle>{t('Title')}</HomeTitle>
                   </Container>
                 </HomeSection>
               )}
 
               {matches.large && (
                 <HomeSection>
-                  <HomeTitle>Take good care of your small pets</HomeTitle>
+                  <HomeTitle>{t('Title')}</HomeTitle>
                 </HomeSection>
               )}
             </Fragment>
