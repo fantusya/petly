@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { search } from 'redux/notices/slice';
+import { useTranslation } from 'react-i18next';
+
 import {
   SearchBarForm,
   SearchInput,
@@ -14,6 +16,7 @@ import {
 const SearchBar = ({ onSubmit }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
+  const { t } = useTranslation();
 
   const location = useLocation();
   const currentPage = location.pathname.split('/')[1];
@@ -51,7 +54,7 @@ const SearchBar = ({ onSubmit }) => {
         type="text"
         value={searchTerm}
         onChange={handleSearchInputChange}
-        placeholder="Search"
+        placeholder={t('Search')}
       />
 
       <SearchIconContainer onClick={handleSearchButtonClick}>
