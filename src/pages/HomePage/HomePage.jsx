@@ -1,4 +1,4 @@
-import { Container } from 'globalStyles/globalStyle';
+// import { Container } from 'globalStyles/globalStyle';
 import { Main, HomeTitle, HomeSection } from 'pages/HomePage/HomePage.styled';
 import React, { Fragment } from 'react';
 import Media from 'react-media';
@@ -29,9 +29,9 @@ export const HomePage = () => {
 
               {matches.medium && (
                 <HomeSection>
-                  <Container>
-                    <HomeTitle>{t('Title')}</HomeTitle>
-                  </Container>
+                  {/* <Container> */}
+                  <HomeTitle>{t('Title')}</HomeTitle>
+                  {/* </Container> */}
                 </HomeSection>
               )}
 

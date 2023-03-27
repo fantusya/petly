@@ -36,7 +36,7 @@ export const HomeTitle = styled.h1`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 607px;
     padding-left: 32px;
-    font-size: ${p => p.theme.fontSizes[10]};
+    font-size: ${p => p.theme.fontSizes[7]};
     line-height: 1.47;
     padding: 0, 32px;
   }
@@ -57,8 +57,8 @@ export const HomeSection = styled.section`
   background-position: bottom;
 
   background-image: url(${golden1}), url(${Wav1});
-  //  background-size: 280px 380px, 100vw 470px;
-  // padding-top: 118px;
+  background-size: 280px 380px, 100vw 470px;
+
   // height: calc(100% - 56px);
   // background-size: 265px 350px, 100vw 442px;
 
