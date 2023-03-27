@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateInfo } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
+
 import {
   InfoItem,
   InfoForm,
@@ -18,6 +21,7 @@ export const UserDataItem = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const { user } = useAuth();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   console.log(user, 'user');
 
@@ -48,7 +52,7 @@ export const UserDataItem = () => {
       <InfoItem>
         <InfoForm onSubmit={handleSubmit}>
           <InfoField>
-            <InfoProp>Name:</InfoProp>
+            <InfoProp>{t('Name')}:</InfoProp>
             <InfoInput
               type="text"
               name="name"
@@ -69,7 +73,7 @@ export const UserDataItem = () => {
       <InfoItem>
         <InfoForm onSubmit={handleSubmit}>
           <InfoField>
-            <InfoProp>Email:</InfoProp>
+            <InfoProp>{t('Email')}:</InfoProp>
             <InfoInput
               type="email"
               name="email"
@@ -87,7 +91,7 @@ export const UserDataItem = () => {
       <InfoItem>
         <InfoForm onSubmit={handleSubmit}>
           <InfoField>
-            <InfoProp>Birthday:</InfoProp>
+            <InfoProp>{t('Birthday')}:</InfoProp>
             <InfoInput
               type="text"
               name="birthday"
@@ -106,7 +110,7 @@ export const UserDataItem = () => {
       <InfoItem>
         <InfoForm onSubmit={handleSubmit}>
           <InfoField>
-            <InfoProp>Phone:</InfoProp>
+            <InfoProp>{t('Phone')}:</InfoProp>
             <InfoInput
               type="tel"
               name="phone"
@@ -124,12 +128,12 @@ export const UserDataItem = () => {
       <InfoItem>
         <InfoForm onSubmit={handleSubmit}>
           <InfoField>
-            <InfoProp>City:</InfoProp>
+            <InfoProp>{t('City')}:</InfoProp>
             <InfoInput
               type="text"
               name="city"
               // value={user?.city || ''}
-              placeholder={user?.city || 'City'}
+              placeholder={user?.city || i18n.t('City')}
               disabled={isDisabled || isUpdating}
             />
           </InfoField>
