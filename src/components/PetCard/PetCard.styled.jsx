@@ -17,13 +17,13 @@ export const CardWrapper = styled.div`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    // justify-content: center;
     gap: ${p => p.theme.space[5]}px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     padding-left: ${p => p.theme.space[4] + 4}px;
-    padding-right: ${p => p.theme.space[4] + 4}px;
+    padding-right: ${p => p.theme.space[4] + 12}px;
   }
 `;
 
@@ -70,8 +70,9 @@ export const PetTitle = styled.span`
 
 export const BtnDelete = styled.button`
   position: absolute;
-  top: ${p => p.theme.space[4]}px;
-  right: ${p => p.theme.space[0]}px;
+  top: ${p => p.theme.space[4] + 4}px;
+  // right: ${p => p.theme.space[0]}px;
+  left: 215px;
 
   border: ${p => p.theme.borders.none};
 
@@ -91,8 +92,14 @@ export const BtnDelete = styled.button`
     width: ${p => p.theme.space[5] + 12}px;
     height: ${p => p.theme.space[5] + 12}px;
 
+    left: 427px;
+
     border-radius: ${p => p.theme.radii.circular};
     background-color: ${p => p.theme.colors.background};
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    left: 536px;
   }
 `;
 

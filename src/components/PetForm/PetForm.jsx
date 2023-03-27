@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { addPet } from 'redux/auth/operations';
-import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 import i18n from 'i18n';
 
 import { Formik } from 'formik';
@@ -38,7 +38,7 @@ export const PetForm = ({ closeModal }) => {
 
     if (!e.target.files.length || !chosenImg) {
       setSelectedFile(null);
-      toast.warning(i18n.t('Chose_image'));
+      toast.warning(i18n.t('Choose an image to change avatar your pet!'));
       return;
     }
     setSelectedFile(chosenImg);
@@ -52,9 +52,8 @@ export const PetForm = ({ closeModal }) => {
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Відправити форму!!!!!!!!!!');
-
     const { name, birthDate, breed, comments } = values;
-    console.log('values', values);
+
     if (!selectedFile) {
       console.log('CHOOSE FILE PLS');
       return;
@@ -69,13 +68,11 @@ export const PetForm = ({ closeModal }) => {
     dispatch(addPet(data));
 
     console.log('selectedFile', selectedFile);
-    console.log('values', values);
-    console.log('data', data);
-
-    // dispatch(addPet(values));
 
     resetForm();
     closeModal();
+
+    toast.success(`You successfully deleted your pet ${name}`);
   };
 
   const steps = [

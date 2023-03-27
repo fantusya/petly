@@ -108,7 +108,7 @@ const authSlice = createSlice({
       state.error = false;
     },
     [addPet.fulfilled](state, action) {
-      state.user.myPets.push(action.payload);
+      state.user.myPets.unshift(action.payload);
 
       state.isRefreshing = false;
       state.error = false;

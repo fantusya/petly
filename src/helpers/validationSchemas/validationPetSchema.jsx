@@ -16,7 +16,7 @@ export const validationPetSchema = yup.object().shape({
     .max(16, 'Maximum 16 symbols')
     .trim()
     .required('Required breed'),
-  // photoURL: yup.string(),
+  photoURL: yup.string(),
   comments: yup
     .string()
     .min(8, 'Minimum 8 symbols')
