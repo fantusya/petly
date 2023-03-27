@@ -26,20 +26,25 @@ export const Main = styled.main`
 `;
 
 export const HomeTitle = styled.h1`
-  max-width: 280px;
+  max-width: 291px;
+  padding-left: 20px;
   font-size: ${p => theme.fontSizes[7]};
   line-height: ${p => theme.lineHeights.text};
-  font-family: ${p => p.theme.fonts.textMedium};
+  font-family: ${p => p.theme.fonts.bold};
+
   color: ${p => theme.colors.black};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 607px;
+    padding-left: 32px;
     font-size: ${p => theme.fontSizes[10]};
     line-height: 1.47;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     padding-left: 16px;
+    font-family: ${p => p.theme.fonts.textMedium};
+    font-size: ${p => theme.fontSizes[10]};
   }
 `;
 
