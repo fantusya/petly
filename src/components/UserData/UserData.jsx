@@ -1,6 +1,6 @@
 import UserPhoto from 'components/UserData/UserPhoto';
-import { Box } from 'components/Box/Box';
 import {
+  UserWrapper,
   TitleContainer,
   Title,
   UserSection,
@@ -13,7 +13,7 @@ import Logout from 'components/Logout';
 
 export const UserData = () => {
   return (
-    <Box pt={['61px', '61px', '88px', '58px']} flex="0 0 100%" as="section">
+    <UserWrapper>
       <TitleContainer>
         <Title>My information:</Title>
       </TitleContainer>
@@ -31,7 +31,7 @@ export const UserData = () => {
           </UserThumb>
         </UserSection>
       </UserContainer>
-    </Box>
+    </UserWrapper>
   );
 };
 

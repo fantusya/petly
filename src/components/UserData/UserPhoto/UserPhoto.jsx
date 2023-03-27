@@ -4,6 +4,7 @@ import { useAuth } from 'hooks/useAuth';
 import { updateAvatar } from 'redux/auth/operations';
 import toast from 'react-hot-toast';
 import {
+  AvatarWrapper,
   Avatar,
   AddAvatarBtn,
   HiddenInput,
@@ -52,13 +53,13 @@ export const UserPhoto = () => {
   };
 
   return (
-    <>
+    <AvatarWrapper>
       {avatarURL ? (
         <Avatar>
           <img srcSet={avatarURL} alt={name} width="233px" />
         </Avatar>
       ) : (
-        <div>
+        <>
           <AddAvatarBtn onClick={() => filePicker.current.click()}>
             {isFileSelected ? <Check /> : <AvatarPlus />}
           </AddAvatarBtn>
@@ -70,13 +71,13 @@ export const UserPhoto = () => {
             onChange={handleChange}
             accept="image/*,.png,.jpg,.gif,.web"
           />
-          <EditPhotoBtn type="submit" onClick={handleUpload}>
-            <Kamera />
-            <span>Edit photo</span>
-          </EditPhotoBtn>
-        </div>
+        </>
       )}
-    </>
+      <EditPhotoBtn type="submit" onClick={handleUpload}>
+        <Kamera />
+        <span>Edit photo</span>
+      </EditPhotoBtn>
+    </AvatarWrapper>
   );
 };
 
