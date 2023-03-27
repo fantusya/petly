@@ -63,18 +63,19 @@ export const LoginPage = () => {
                     touched={touched}
                     required
                   />
-                  <Error name="email" component="div" />
-                  <Div>
-                    <CustomField
-                      type={passwordShown ? 'text' : 'password'}
-                      name="password"
-                      placeholder={t('Password')}
-                      autoComplete="off"
-                      errors={errors}
-                      touched={touched}
-                      required
-                    />
 
+                  <Error name="email" component="div" />
+
+                  <CustomField
+                    type={passwordShown ? 'text' : 'password'}
+                    name="password"
+                    placeholder={t('Password')}
+                    autoComplete="off"
+                    errors={errors}
+                    touched={touched}
+                    required
+                  />
+                  <Div>
                     <ButtonImg onClick={togglePassword}>
                       {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
                     </ButtonImg>

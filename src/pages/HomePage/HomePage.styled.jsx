@@ -17,6 +17,7 @@ import WaveT2x from 'images/hero/waves/WaveT@2x.webp';
 
 import WaveD1 from 'images/hero/waves/WaveD1.webp';
 import Wavve2x from 'images/hero/waves/Wavve@2x.webp';
+import { theme } from 'globalStyles/theme';
 // import wave_lg2x from "images/hero/waves/wave_lg@2x.webp";
 
 export const Main = styled.main`
@@ -24,23 +25,26 @@ export const Main = styled.main`
 `;
 
 export const HomeTitle = styled.h1`
-  max-width: 280px;
-  font-size: ${p => p.theme.fontSizes[7]};
-  //   34px
-  line-height: ${p => p.theme.lineHeights.text};
-  font-family: ${p => p.theme.fonts.textMedium};
-  color: ${p => p.theme.fonts.black};
+  max-width: 291px;
+  padding-left: 20px;
+  font-size: ${p => theme.fontSizes[7]};
+  line-height: ${p => theme.lineHeights.text};
+  font-family: ${p => p.theme.fonts.bold};
+
+  color: ${p => theme.colors.black};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 607px;
-    font-size: ${p => p.theme.fontSizes[8]};
-    font-family: ${p => p.theme.fonts.text};
+    padding-left: 32px;
+    font-size: ${p => theme.fontSizes[10]};
     line-height: 1.47;
     padding: 0, 32px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     padding-left: 16px;
+    font-family: ${p => p.theme.fonts.textMedium};
+    font-size: ${p => theme.fontSizes[10]};
   }
 `;
 

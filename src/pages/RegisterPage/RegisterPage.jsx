@@ -54,21 +54,22 @@ export const RegisterPage = () => {
 
   const dispatch = useDispatch();
 
-  const handleNextStep = () => {
-    // console.log(password);
-    // if (password === confirm) {
-    setCarrentStep(prev => prev + 1);
-    // }
+  const handleNextStep = async () => {
+    setCarrentStep(currentStep + 1);
   };
 
   const handlePrevStep = () => {
-    setCarrentStep(prev => prev - 1);
+    setCarrentStep(currentStep - 1);
   };
 
   const handleSubmit = async (
     { email, password, name, city, phone },
-    { resetForm }
+    {
+      // setSubmitting,
+      resetForm,
+    }
   ) => {
+    // setSubmitting(false);
     const resultSignup = await dispatch(
       signup({ email, password, name, city, phone })
     );
@@ -90,18 +91,39 @@ export const RegisterPage = () => {
 
             <Formik
               initialValues={initialValues}
-              onSubmit={handleSubmit}
               validationSchema={
                 currentStep === 0
                   ? registerValidationSchemaOne
                   : registerValidationSchemaTwo
               }
-              autoComplete="off"
+              onSubmit={handleSubmit}
+              // autoComplete="off"
+              // validate={values => {
+              //   console.log(values.email);
+              //   if (values.password === values.confirm) {
+              //     console.log('OK');
+              //   }
+              // }}
             >
+              {/* {({ isSubmitting, values, setFieldValue }) => {
+                return ( */}
               <FormCustom autoComplete="off">
-                {currentStep === 0 && <StepOne next={handleNextStep} />}
-                {currentStep === 1 && <StepTwo back={handlePrevStep} />}
+                {currentStep === 0 && (
+                  <StepOne
+                    next={handleNextStep}
+                    // isSubmitting={isSubmitting}
+                  />
+                )}
+                {currentStep === 1 && (
+                  <StepTwo
+                    back={handlePrevStep}
+                    // value={values.city}
+                    // setFieldValue={setFieldValue}
+                  />
+                )}
               </FormCustom>
+              {/* );
+              }} */}
             </Formik>
 
             <RouteFormLoginRegister

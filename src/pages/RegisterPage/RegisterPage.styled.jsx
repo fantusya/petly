@@ -22,13 +22,13 @@ export const ButtonImg = styled.button`
   @media (min-width: ${theme.breakpoints[1]}) {
     width: 20px;
     height: 20px;
-    top: 20px;
+
     left: 330px;
   }
   @media (min-width: ${theme.breakpoints[2]}) {
     width: 25px;
     height: 25px;
-    top: 20px;
+
     left: 430px;
   }
 `;

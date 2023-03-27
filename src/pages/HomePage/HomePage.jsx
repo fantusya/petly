@@ -21,9 +21,9 @@ export const HomePage = () => {
             <Fragment>
               {matches.small && (
                 <HomeSection>
-                  <Container>
-                    <HomeTitle>{t('Title')}</HomeTitle>
-                  </Container>
+                  {/* <Container> */}
+                  <HomeTitle>{t('Title')}</HomeTitle>
+                  {/* </Container> */}
                 </HomeSection>
               )}
 
