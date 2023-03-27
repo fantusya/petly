@@ -19,6 +19,8 @@ export const Navigation = () => {
         queries={{
           small: '(max-width: 767.99px)',
           medium: '(min-width: 768px) and (max-width: 1279.98px)',
+          // small: '(max-width: 767px)',
+          // medium: '(min-width: 768px) and (max-width: 1279px)',
           large: '(min-width: 1280px)',
         }}
       >
