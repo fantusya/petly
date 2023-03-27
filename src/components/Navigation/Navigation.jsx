@@ -7,6 +7,7 @@ import { BurgerZone } from 'components/BurgerMenu/BurgerMenu';
 import React, { Fragment } from 'react';
 import Media from 'react-media';
 import { useAuth } from 'hooks';
+import { LangSwitcher } from 'components/LangSwitcher';
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -25,18 +26,22 @@ export const Navigation = () => {
         {matches => (
           <Fragment>
             {matches.small && (
-              <BurgerZone setOpen={setOpen} open={open}>
-                {!isLoggedIn ? (
-                  <AuthNav setOpen={setOpen} />
-                ) : (
-                  <UserNav setOpen={setOpen} />
-                )}
-                <Nav setOpen={setOpen} />
-              </BurgerZone>
+              <>
+                <LangSwitcher />
+                <BurgerZone setOpen={setOpen} open={open}>
+                  {!isLoggedIn ? (
+                    <AuthNav setOpen={setOpen} />
+                  ) : (
+                    <UserNav setOpen={setOpen} />
+                  )}
+                  <Nav setOpen={setOpen} />
+                </BurgerZone>
+              </>
             )}
 
             {matches.medium && (
               <>
+                <LangSwitcher />
                 <BurgerZone setOpen={setOpen} open={open}>
                   <Nav setOpen={setOpen} />
                 </BurgerZone>
@@ -47,6 +52,7 @@ export const Navigation = () => {
             {matches.large && (
               <>
                 <Nav />
+                <LangSwitcher />
                 {!isLoggedIn ? <AuthNav /> : <UserNav />}
               </>
             )}
