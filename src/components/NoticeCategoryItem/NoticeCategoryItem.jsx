@@ -34,6 +34,8 @@ import {
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
+  console.log('USER', user);
+
   const [isFavorite, setIsFavorite] = useState(false);
   const { favoriteNotices, ownNotices } = useNotices();
 

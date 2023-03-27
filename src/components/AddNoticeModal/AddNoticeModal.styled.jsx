@@ -52,13 +52,13 @@ export const RadioGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
   column-gap: ${p => p.theme.space[3]}px;
-  row-gap: ${p => p.theme.space[3] + 4 }px;
+  row-gap: ${p => p.theme.space[3] + 4}px;
   margin-bottom: ${p => p.theme.space[5]}px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 448px;
     margin-bottom: 28px;
-    column-gap: ${p => p.theme.space[3] + 4 }px;
+    column-gap: ${p => p.theme.space[3] + 4}px;
     row-gap: ${p => p.theme.space[4]}px;
   }
 `;
@@ -90,7 +90,7 @@ export const RadioButton = styled.div`
   justify-content: center;
   align-items: center;
   padding: ${p => p.theme.space[3]}px 25px;
-  
+
   font-size: ${p => p.theme.fontSizes[1]}px;
   font-weight: ${p => p.theme.fontWeights.medium};
   letter-spacing: ${p => p.theme.letterSpacing.text};
@@ -290,9 +290,9 @@ export const MaleIconBox = styled.div`
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-//   background-image: url(${maleIcon});
-//   background-repeat: no-repeat;
-//   background-size: contain, cover;
+  //   background-image: url(${maleIcon});
+  //   background-repeat: no-repeat;
+  //   background-size: contain, cover;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 60px;
@@ -305,9 +305,9 @@ export const FemaleIconBox = styled.div`
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-//   background-image: url(${femaleIcon});
-//   background-repeat: no-repeat;
-//   background-size: contain, cover;
+  //   background-image: url(${femaleIcon});
+  //   background-repeat: no-repeat;
+  //   background-size: contain, cover;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 60px;
@@ -344,8 +344,8 @@ export const PhotoAddContainer = styled.label`
   cursor: pointer;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-  width: 140px;
-  height: 140px;
+    width: 140px;
+    height: 140px;
   }
 `;
 
@@ -416,8 +416,6 @@ export const ActionButton = styled(ModalButton)`
     transition: ${p => p.theme.transition.main};
   }
 `;
-
-
 
 // export const CloseBtn = styled(CloseButton)`
 //   position: absolute;

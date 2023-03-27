@@ -18,9 +18,9 @@ export const HomePage = () => {
             <Fragment>
               {matches.small && (
                 <HomeSection>
-                  <Container>
-                    <HomeTitle>Take good care of your small pets</HomeTitle>
-                  </Container>
+                  {/* <Container> */}
+                  <HomeTitle>Take good care of your small pets</HomeTitle>
+                  {/* </Container> */}
                 </HomeSection>
               )}
 
