@@ -60,8 +60,11 @@ export const LoginPage = () => {
                     touched={touched}
                     required
                   />
+
+                 
+
                   <Error name="email" component="div" />
-                  <Div>
+                 
                     <CustomField
                       type={passwordShown ? 'text' : 'password'}
                       name="password"
@@ -71,6 +74,7 @@ export const LoginPage = () => {
                       touched={touched}
                       required
                     />
+                     <Div>
 
                     <ButtonImg onClick={togglePassword}>
                       {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
