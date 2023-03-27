@@ -28,7 +28,7 @@ export const StepOne = props => {
       <Div>
         <Input
           // type="password"
-          id="password"
+
           name="password"
           placeholder="Password"
           type={passwordVisibility ? 'text' : 'password'}
