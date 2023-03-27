@@ -7,12 +7,12 @@ import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
-
+import CustomField from '../authFormStyle.styled';
 import {
   TitleAuth,
   FormCustom,
   Button,
-  Input,
+  // Input,
   Error,
   BoxAuth,
   LogoBg,
@@ -51,35 +51,41 @@ export const LoginPage = () => {
               onSubmit={handleSubmit}
               validationSchema={schema}
             >
-              <FormCustom>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  autoComplete="off"
-                />
-                <Error name="email" component="div" />
-                <Div>
-                  <Input
+              {({ errors, touched }) => (
+                <FormCustom>
+                  <CustomField
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    autoComplete="off"
+                    errors={errors}
+                    touched={touched}
+                  />
+                  <Error name="email" component="div" />
+
+                  <CustomField
                     type={passwordShown ? 'text' : 'password'}
                     name="password"
                     placeholder="Password"
                     autoComplete="off"
+                    errors={errors}
+                    touched={touched}
                     required
                   />
 
-                  <ButtonImg onClick={togglePassword}>
+                  <Icon onClick={togglePassword}>
                     {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-                  </ButtonImg>
+                  </Icon>
                   <Error name="password" component="div" />
-                </Div>
-                <Button type="submit">Login</Button>
-                <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
-                  <GoogleImg src={GooglePic} alt="Google" />
-                  Login with Google
-                </GoogleLoginButton>
-              </FormCustom>
+
+                  <Button type="submit">Login</Button>
+                  <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
+                    <GoogleImg src={GooglePic} alt="Google" />
+                    Login with Google
+                  </GoogleLoginButton>
+                </FormCustom>
+              )}
             </Formik>
 
             <RouteFormLoginRegister
