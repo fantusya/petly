@@ -31,7 +31,6 @@ export const StepOne = props => {
   console.log(props.isValid);
   return (
     <>
-      fix/register
       <CustomField
         type="email"
         name="email"
