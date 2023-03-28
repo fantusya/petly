@@ -21,6 +21,7 @@ export const InfoForm = styled.form`
 `;
 
 export const InfoField = styled.label`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,7 +41,7 @@ export const InfoProp = styled.p`
 
 export const InfoInput = styled.input`
   max-width: 159px;
-  padding: 4px 18px;
+  padding: 4px 14px;
   border: ${({ theme, disabled }) =>
     disabled ? theme.borders.transparent : theme.borders.input};
   border-radius: ${p => p.theme.radii.big};
@@ -54,7 +55,8 @@ export const InfoInput = styled.input`
     disabled ? theme.colors.transparent : theme.colors.background};
 
   ::placeholder {
-    color: ${theme.colors.text};
+    color: ${({ theme, disabled }) =>
+      disabled ? theme.colors.text : theme.colors.inputTxt};
   }
 
   @media (min-width: ${theme.breakpoints[1]}) {
@@ -114,5 +116,25 @@ export const Check = styled(CheckIcon)`
   @media (min-width: ${theme.breakpoints[1]}) {
     width: 20px;
     height: 20px;
+  }
+`;
+
+export const Error = styled.p`
+  position: absolute;
+  left: 81px;
+  bottom: -13px;
+
+  font-size: 10px;
+
+  color: ${theme.colors.error};
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    left: 125px;
+    bottom: -15px;
+    font-size: ${theme.fontSizes[0]};
+  }
+
+  @media (min-width: ${theme.breakpoints[2]}) {
+    left: 129px;
   }
 `;

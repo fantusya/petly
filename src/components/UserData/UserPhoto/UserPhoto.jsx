@@ -59,7 +59,7 @@ export const UserPhoto = () => {
           <img srcSet={avatarURL} alt={name} width="233px" />
         </Avatar>
       ) : (
-        <>
+        <div>
           <AddAvatarBtn onClick={() => filePicker.current.click()}>
             {isFileSelected ? <Check /> : <AvatarPlus />}
           </AddAvatarBtn>
@@ -71,12 +71,13 @@ export const UserPhoto = () => {
             onChange={handleChange}
             accept="image/*,.png,.jpg,.gif,.web"
           />
-        </>
+
+          <EditPhotoBtn type="submit" onClick={handleUpload}>
+            <Kamera />
+            <span>Edit photo</span>
+          </EditPhotoBtn>
+        </div>
       )}
-      <EditPhotoBtn type="submit" onClick={handleUpload}>
-        <Kamera />
-        <span>Edit photo</span>
-      </EditPhotoBtn>
     </AvatarWrapper>
   );
 };
