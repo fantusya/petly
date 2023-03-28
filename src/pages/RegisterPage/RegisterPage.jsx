@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
+
 // import { useFetchingData } from 'hooks';
 
 import { signup, logIn } from 'redux/auth/operations';
@@ -36,6 +38,7 @@ const initialValues = {
 
 export const RegisterPage = () => {
   const [currentStep, setCarrentStep] = useState(0);
+  const { t } = useTranslation();
 
   //////////// CITIES LOGIC
   // const query = 'Dnipro';
@@ -80,7 +83,7 @@ export const RegisterPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
-            <TitleAuth>Registration</TitleAuth>
+            <TitleAuth>{t('Registration')}</TitleAuth>
 
             <Formik
               initialValues={initialValues}
@@ -114,8 +117,8 @@ export const RegisterPage = () => {
 
             <RouteFormLoginRegister
               link="/login"
-              question="Already have an account??"
-              pageName="login"
+              question={t('Is_account')}
+              pageName={t('Log_in')}
             />
           </BoxAuth>
         </Container>

@@ -6,8 +6,7 @@ export const NavigationWrapper = styled.nav`
   flex-direction: column;
   padding-top: 40px;
   align-items: center;
-  // display: flex;
-  //   align-items: center;
+
   //   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
@@ -53,9 +52,10 @@ export const StyledNavLink = styled(NavLink)`
     font-size: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
 
-    &:last-of-type {
-      margin-right: 0;
-    }
+  &:last-of-type {
+    margin-right: 0;
   }
 `;

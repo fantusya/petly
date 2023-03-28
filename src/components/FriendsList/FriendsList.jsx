@@ -1,4 +1,9 @@
-// import FriendsPopUp from "components/FriendsPopUp";
+import FriendsPopUp from "components/FriendsPopUp";
+
+import { DEFAULT_IMAGE_FRIENDS } from "constants/urls";
+import { EMPTY_FIELD } from "constants/emptyField";
+
+import { useTranslation } from 'react-i18next';
 
 import {
   ListFriends,
@@ -11,6 +16,8 @@ import {
 } from './FriendsList.styled';
 
 export const FriendsList = ({ results }) => {
+  const { t } = useTranslation();
+
   const elements = results.map(
     ({
       title,
@@ -23,12 +30,7 @@ export const FriendsList = ({ results }) => {
       workDays,
       _id,
     }) => {
-      const emptyField = '-----------------';
-      const placeholder =
-        'https://ucarecdn.com/63e1c87e-c59a-4af0-85f9-2eea65e645f3/placeholder_friend.png';
       let workTime = {};
-
-      console.log(results.length % 2);
 
       if (workDays && workDays.length !== 0) {
         workTime = workDays.find(item => item.isOpen === true);
@@ -47,48 +49,53 @@ export const FriendsList = ({ results }) => {
           )}
           <ItemFriendBox>
             <div>
-              <ItemFriendLogo src={imageUrl ? imageUrl : placeholder} alt={title} />
+              <ItemFriendLogo src={imageUrl ? imageUrl : DEFAULT_IMAGE_FRIENDS} alt={title} />
             </div>
             <div>
               <ul>
                 <InfoFriendsItem>
-                  <p>Time:</p>
+                  <p>{t('Time')}:</p>
                   {from && to ? (
                     <p>
                       {from} - {to}
                     </p>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
+                  <FriendsPopUp workDays={workDays}/>
                 </InfoFriendsItem>
                 <InfoFriendsItem>
-                <p>Address:</p>
+                  <p>{t('Address')}:</p>
                   {address ? (
-                    <InfoFriendsLink target="_blank" rel="noreferrer" href={addressUrl}>
+                    <InfoFriendsLink
+                      target="_blank"
+                      rel="noreferrer"
+                      href={addressUrl}
+                    >
                       {address}
                     </InfoFriendsLink>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
                 </InfoFriendsItem>
                 <InfoFriendsItem>
-                  <p>Email:</p>
+                  <p>{t('Email')}:</p>
                   {email ? (
                     <InfoFriendsLink href={`mailto:${email}`}>
                       {email}
                     </InfoFriendsLink>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
                 </InfoFriendsItem>
                 <InfoFriendsItem>
-                  <p>Phone:</p>
+                  <p>{t('Phone')}:</p>
                   {phone ? (
                     <InfoFriendsLink href={`tel:${phone}`}>
                       {phone}
                     </InfoFriendsLink>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
                 </InfoFriendsItem>
               </ul>

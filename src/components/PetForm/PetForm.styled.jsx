@@ -78,12 +78,14 @@ export const Input = styled(Field)`
 `;
 
 export const TextInput = styled(Input)`
+  height: 100px;
   margin-top: ${p => p.theme.space[3]}px;
   border-radius: ${p => p.theme.radii.small};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: ${p => p.theme.space[4]}px;
     margin-top: ${p => p.theme.space[4] - 4}px;
+    height: 116px;
     // margin-left: ${p => p.theme.space[5] - 4}px;
     // width: 394px;
   }
@@ -124,6 +126,8 @@ export const Button = styled.button`
   font-size: ${p => p.theme.fontSizes[2]};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: ${p => p.theme.lineHeights.text};
+
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -170,6 +174,8 @@ export const PetAvatarBtn = styled.button`
 
   background-color: ${p => p.theme.colors.background};
 
+  cursor: pointer;
+
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: ${p => p.theme.space[0]}px;
     width: 182px;
@@ -192,4 +198,68 @@ export const HiddenInput = styled.input`
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   margin: -1px;
+`;
+
+export const RemoveImgBtn = styled.button`
+  opacity: 0;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+
+  width: 30px;
+  height: 30px;
+
+  font-size: ${p => p.theme.fontSizes[7]};
+
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.transparent};
+  border-bottom-left-radius: 10px;
+
+  color: ${p => p.theme.colors.black};
+  background-color: ${p => p.theme.colors.cardLabelBg};
+
+  cursor: pointer;
+
+  transition: opacity ${p => p.theme.transition.main},
+    color ${p => p.theme.transition.main};
+
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.accent};
+  }
+`;
+
+export const PreviewContainer = styled.div`
+  display: inline-block;
+  position: relative;
+
+  &:hover ${RemoveImgBtn}, &:focus ${RemoveImgBtn} {
+    opacity: 1;
+    /* pointer-events: visible;
+    color: ${p => p.theme.transition.accent}; */
+  }
+`;
+
+export const PreviewImg = styled.img`
+  display: block;
+  object-fit: cover;
+
+  width: 208px;
+  height: 208px;
+
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.small};
+  cursor: pointer;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: ${p => p.theme.space[0]}px;
+    width: 182px;
+    height: 182px;
+  }
 `;

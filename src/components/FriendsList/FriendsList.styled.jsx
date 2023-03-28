@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const ListFriends = styled.ul`
     a {
         display: block;
+
+        text-decoration: none;
     }
 
     @media (min-width: ${p => p.theme.breakpoints[1]}) {
@@ -12,8 +14,12 @@ export const ListFriends = styled.ul`
 `
 
 export const ItemFriend = styled.li`
-    padding: ${p => p.theme.space[3] + 4}px ${p => p.theme.space[2]}px;
+    &:first-child {
+        position: relative;
+    };
     
+    padding: ${p => p.theme.space[3] + 4}px ${p => p.theme.space[2]}px;
+
     justify-content: center;
 
     border-radius: ${p => p.theme.radii.small};
@@ -74,27 +80,38 @@ export const ItemFriendBox = styled.div`
 `
 
 export const ItemFriendName = styled.a`
-    text-align: center;
-
     color: ${p => p.theme.colors.accent};
 
+    text-align: center;
     font-weight: ${p => p.theme.fontWeights.bold};
     line-height: ${p => p.theme.lineHeights.text};
     letter-spacing: ${p => p.theme.letterSpacing.text};
 
+    transition: all ${p => p.theme.transition.main};
+
+    &:hover {
+        text-decoration: underline;
+
+        transition: all ${p => p.theme.transition.main};
+    }
+
     @media (min-width: ${p => p.theme.breakpoints[0]}) {
         margin-bottom: ${p => p.theme.space[3] + 4}px;
+        height: 32px;
 
         font-size: ${p => p.theme.fontSizes[2]};
     }
 
     @media (min-width: ${p => p.theme.breakpoints[1]}) {
         margin-bottom: ${p => p.theme.space[4]}px;
+        height: 44px;
 
         font-size: ${p => p.theme.fontSizes[2]};
     }
 
     @media (min-width: ${p => p.theme.breakpoints[2]}) {
+        height: 54px;
+
         font-size: ${p => p.theme.fontSizes[4]};
     }
 `
@@ -122,6 +139,20 @@ export const InfoFriendsItem = styled.li`
         margin-bottom: ${p => p.theme.space[2]}px;
     }
 
+    transition: all ${p => p.theme.transition.main};
+
+    &:first-child:hover, &:first-child:focus {
+        &:first-child ul {
+            display: block;
+        }
+
+        & > p:last-of-type {
+            color: ${p => p.theme.colors.accent};
+
+            transition: all ${p => p.theme.transition.main};
+        };
+    }
+
     @media (min-width: ${p => p.theme.breakpoints[1]}) {
         &:not(:last-child) {
             margin-bottom: ${p => p.theme.space[3]}px;
@@ -137,4 +168,12 @@ export const InfoFriendsItem = styled.li`
 
 export const InfoFriendsLink = styled.a`
     color: ${p => p.theme.colors.black};
+
+    transition: all ${p => p.theme.transition.main};
+
+    &:hover, &:focus {
+        color: ${p => p.theme.colors.accent};
+
+        transition: all ${p => p.theme.transition.main};
+    }
 `

@@ -1,6 +1,6 @@
 import UserPhoto from 'components/UserData/UserPhoto';
-import { Box } from 'components/Box/Box';
 import {
+  UserWrapper,
   TitleContainer,
   Title,
   UserSection,
@@ -10,12 +10,15 @@ import {
 } from './UserData.styled';
 import UserDataItem from 'components/UserDataItem';
 import Logout from 'components/Logout';
+import { useTranslation } from 'react-i18next';
 
 export const UserData = () => {
+  const { t } = useTranslation();
+
   return (
-    <Box pt={['61px', '61px', '88px', '58px']} flex="0 0 100%" as="section">
+    <UserWrapper>
       <TitleContainer>
-        <Title>My information:</Title>
+        <Title>{t('My_information')}:</Title>
       </TitleContainer>
 
       <UserContainer>
@@ -31,7 +34,7 @@ export const UserData = () => {
           </UserThumb>
         </UserSection>
       </UserContainer>
-    </Box>
+    </UserWrapper>
   );
 };
 

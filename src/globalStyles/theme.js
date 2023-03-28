@@ -60,6 +60,8 @@ export const theme = {
     bold: '2px solid',
     transparent: '1px solid transparent',
     input: '1px solid rgba(245, 146, 86, 0.5)',
+    inputError: '1px solid #E2001A',
+    inputSuccess: '1px solid #3CBC81',
   },
   radii: {
     none: '0',
@@ -76,4 +78,3 @@ export const theme = {
   },
   breakpoints: ['320px', '768px', '1280px'],
 };
-

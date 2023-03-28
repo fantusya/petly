@@ -19,7 +19,7 @@ const Modal = ({ onClose, children }) => {
   }, [onClose]);
 
   const handleBackdropClick = e => {
-    if (e.currentTarget === e.target || e.target.nodeName === 'A') onClose();
+    if (e.currentTarget === e.target) onClose();
   };
 
   return createPortal(

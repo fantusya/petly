@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
   Backdrop,
@@ -12,6 +13,8 @@ import {
 import PetForm from '../PetForm/PetForm';
 
 export const ModalAddsPet = ({ onCloseModal }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const onEscapeClose = e => {
       if (e.code === 'Escape') onCloseModal();
@@ -31,7 +34,7 @@ export const ModalAddsPet = ({ onCloseModal }) => {
   return (
     <Backdrop onClick={onBackdropClose}>
       <Modal>
-        <Title>Add pet</Title>
+        <Title>{t('Add_pet')}</Title>
         <ButtonClose type="button" onClick={onCloseModal}>
           <ModalCloseIcon width={28} height={28} />
         </ButtonClose>

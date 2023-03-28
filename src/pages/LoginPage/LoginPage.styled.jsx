@@ -73,3 +73,14 @@ export const GoogleImg = styled.img`
   width: 26px;
   margin-right: 10px;
 `;
+
+export const LoginPOsitionBtn = styled.div`
+  position: absolute;
+  top: -70px;
+  @media (min-width: ${theme.breakpoints[1]}) {
+    top: -70px;
+  }
+  @media (min-width: ${theme.breakpoints[2]}) {
+    top: -70px;
+  }
+`;

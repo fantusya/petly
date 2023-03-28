@@ -24,8 +24,8 @@ export const UserPage = () => {
   return (
     <Box
       display={['block', 'block', ' block', 'flex']}
-      justifyContent="center"
       pt={['58px', '58px', '72px', '68px']}
+      pr={[0, 0, 0, 'max(16px, calc((100% - 1248px) / 2))']}
       gridGap="32px"
     >
       {/* <Helmet> */}
