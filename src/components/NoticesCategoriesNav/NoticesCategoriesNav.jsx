@@ -1,6 +1,10 @@
 import React from 'react';
 import { useAuth } from 'hooks';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
+
 // import { useNavigate } from 'react-router-dom';
 import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
@@ -13,49 +17,55 @@ import {
 import AddNoticeButton from 'components/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
-  const [extended, setExtended] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
   const { isLoggedIn } = useAuth();
 
   // const navigate = useNavigate();
 
   const handleModalToggle = () => {
-    setExtended(prev => {
-      return !prev;
-    });
+    if (isLoggedIn) {
+      setOpen(true);
+    } else {
+      toast.error(i18n.t('Please_login'));
+    }
+  };
+
+  const handleButtonToggle = () => {
+    setOpen(false);
   };
 
   return (
     <NavBox>
       <NavUl>
         <li>
-          <NavBtn to="sell">sell</NavBtn>
+          <NavBtn to="sell">{t('sell')}</NavBtn>
         </li>
         <li>
           {' '}
-          <NavBtn to="lost-found">lost/found</NavBtn>
+          <NavBtn to="lost-found">{t('lost_found')}</NavBtn>
         </li>
         <li>
-          <NavBtn to="for-free">in good hands</NavBtn>
+          <NavBtn to="for-free">{t('in_good_hands')}</NavBtn>
         </li>
         {isLoggedIn && (
           <>
             <li>
-              <NavBtn to="favorite">favorite ads</NavBtn>
+              <NavBtn to="favorite">{t('favorite_ads')}</NavBtn>
             </li>
             <li>
-              <NavBtn to="own">my ads</NavBtn>
+              <NavBtn to="own">{t('my_ads')}</NavBtn>
             </li>
           </>
         )}
       </NavUl>
-      <AddNoticeButton
-        handleModalToggle={handleModalToggle}
-        // onClick={e => {
-        //   e.preventDefault();
-        //   isLoggedIn ? handleModalToggle() : navigate('/login');
-        // }}
-      />
-      {extended && <AddNoticeModal handleModalToggle={handleModalToggle} />}
+      {/* {visibleBtn && <AddNoticeButton handleModalToggle={handleModalToggle} />} */}
+      {open ? (
+        <AddNoticeModal handleButtonToggle={handleButtonToggle} />
+      ) : (
+        <AddNoticeButton handleModalToggle={handleModalToggle} />
+      )}
     </NavBox>
   );
 };

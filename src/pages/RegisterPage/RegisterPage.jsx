@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
+
 // import { useFetchingData } from 'hooks';
 
 import { signup, logIn } from 'redux/auth/operations';
@@ -36,6 +38,7 @@ const initialValues = {
 
 export const RegisterPage = () => {
   const [currentStep, setCarrentStep] = useState(0);
+  const { t } = useTranslation();
 
   //////////// CITIES LOGIC
   // const query = 'Dnipro';
@@ -52,14 +55,11 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleNextStep = () => {
-    // console.log(password);
-    // if (password === confirm) {
-    setCarrentStep(prev => prev + 1);
-    // }
+    setCarrentStep(currentStep + 1);
   };
 
   const handlePrevStep = () => {
-    setCarrentStep(prev => prev - 1);
+    setCarrentStep(currentStep - 1);
   };
 
   const handleSubmit = async (
@@ -83,7 +83,7 @@ export const RegisterPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
-            <TitleAuth>Registration</TitleAuth>
+            <TitleAuth>{t('Registration')}</TitleAuth>
 
             <Formik
               initialValues={initialValues}
@@ -93,18 +93,31 @@ export const RegisterPage = () => {
                   ? registerValidationSchemaOne
                   : registerValidationSchemaTwo
               }
-              autoComplete="off"
             >
-              <FormCustom autoComplete="off">
-                {currentStep === 0 && <StepOne next={handleNextStep} />}
-                {currentStep === 1 && <StepTwo back={handlePrevStep} />}
-              </FormCustom>
+              {({ errors, touched }) => (
+                <FormCustom autoComplete="off">
+                  {currentStep === 0 && (
+                    <StepOne
+                      next={handleNextStep}
+                      errors={errors}
+                      touched={touched}
+                    />
+                  )}
+                  {currentStep === 1 && (
+                    <StepTwo
+                      back={handlePrevStep}
+                      errors={errors}
+                      touched={touched}
+                    />
+                  )}
+                </FormCustom>
+              )}
             </Formik>
 
             <RouteFormLoginRegister
               link="/login"
-              question="Already have an account??"
-              pageName="login"
+              question={t('Is_account')}
+              pageName={t('Log_in')}
             />
           </BoxAuth>
         </Container>

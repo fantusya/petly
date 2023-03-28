@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  margin-top: ${p => p.theme.space[5]}px;
+  margin-top: ${p => p.theme.space[5] - 10}px;
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    margin-bottom: ${p => p.theme.space[5] - 8}px;
+    margin-top: ${p => p.theme.space[5] - 8}px;
 `;
 
 export const Items = styled.li`

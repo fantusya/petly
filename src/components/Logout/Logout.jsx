@@ -1,9 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { LogoutButton, LogoutIcon } from './Logout.styled';
+import { useTranslation } from 'react-i18next';
+
 // import { ReactComponent as LogoutIcon } from 'images/svg/logout.svg';
 
 export const Logout = () => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -13,7 +17,7 @@ export const Logout = () => {
   return (
     <LogoutButton onClick={handleLogOut}>
       <LogoutIcon />
-      <span>Log Out</span>
+      <span>{t('Log_out')}</span>
     </LogoutButton>
   );
 };

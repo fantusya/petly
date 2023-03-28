@@ -3,6 +3,8 @@ import FriendsPopUp from "components/FriendsPopUp";
 import { DEFAULT_IMAGE_FRIENDS } from "constants/urls";
 import { EMPTY_FIELD } from "constants/emptyField";
 
+import { useTranslation } from 'react-i18next';
+
 import {
   ListFriends,
   ItemFriend,
@@ -14,6 +16,8 @@ import {
 } from './FriendsList.styled';
 
 export const FriendsList = ({ results }) => {
+  const { t } = useTranslation();
+
   const elements = results.map(
     ({
       title,
@@ -50,7 +54,7 @@ export const FriendsList = ({ results }) => {
             <div>
               <ul>
                 <InfoFriendsItem>
-                  <p>Time:</p>
+                  <p>{t('Time')}:</p>
                   {from && to ? (
                     <p>
                       {from} - {to}
@@ -61,9 +65,13 @@ export const FriendsList = ({ results }) => {
                   <FriendsPopUp workDays={workDays}/>
                 </InfoFriendsItem>
                 <InfoFriendsItem>
-                <p>Address:</p>
+                  <p>{t('Address')}:</p>
                   {address ? (
-                    <InfoFriendsLink target="_blank" rel="noreferrer" href={addressUrl}>
+                    <InfoFriendsLink
+                      target="_blank"
+                      rel="noreferrer"
+                      href={addressUrl}
+                    >
                       {address}
                     </InfoFriendsLink>
                   ) : (
@@ -71,7 +79,7 @@ export const FriendsList = ({ results }) => {
                   )}
                 </InfoFriendsItem>
                 <InfoFriendsItem>
-                  <p>Email:</p>
+                  <p>{t('Email')}:</p>
                   {email ? (
                     <InfoFriendsLink href={`mailto:${email}`}>
                       {email}
@@ -81,7 +89,7 @@ export const FriendsList = ({ results }) => {
                   )}
                 </InfoFriendsItem>
                 <InfoFriendsItem>
-                  <p>Phone:</p>
+                  <p>{t('Phone')}:</p>
                   {phone ? (
                     <InfoFriendsLink href={`tel:${phone}`}>
                       {phone}

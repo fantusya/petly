@@ -1,25 +1,20 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
-
+import { useTranslation } from 'react-i18next';
 import { Box } from 'components/Box/Box';
 import { ModalAddsPet } from 'components/ModalAddsPet/ModalAddsPet';
 import PetsList from '../PetsList';
 import {
   PetsWrapper,
+  PetsContainer,
   Title,
   TitleBtn,
   Button,
   AddIcon,
 } from './PetsData.styled';
 
-import { Container } from 'globalStyles/globalStyle';
-
 export const PetsData = () => {
   const [showModal, setShowModal] = useState(false);
-
-  const pets = useSelector(selectUser).myPets;
-  console.log('pets', pets);
+  const { t } = useTranslation();
 
   const toogleModal = () => {
     setShowModal(!showModal);
@@ -27,12 +22,12 @@ export const PetsData = () => {
 
   return (
     <PetsWrapper>
-      <Container>
+      <PetsContainer>
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Title>My pets:</Title>
+          <Title>{t('My_pets')}:</Title>
           <Box display="flex" alignItems="center" gridGap="15px">
             <div>
-              <TitleBtn>Add pet</TitleBtn>
+              <TitleBtn>{t('Add_pet')}</TitleBtn>
             </div>
             <Button type="button" onClick={toogleModal}>
               <AddIcon width={24} height={24} />
@@ -42,7 +37,7 @@ export const PetsData = () => {
 
         {showModal && <ModalAddsPet onCloseModal={toogleModal} />}
         <PetsList />
-      </Container>
+      </PetsContainer>
     </PetsWrapper>
   );
 };

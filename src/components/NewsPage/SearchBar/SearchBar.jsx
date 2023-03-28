@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { search } from 'redux/notices/slice';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-hot-toast';
+
 import {
   SearchBarForm,
   SearchInput,
@@ -14,6 +17,7 @@ import {
 const SearchBar = ({ onSubmit }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
+  const { t } = useTranslation();
 
   const location = useLocation();
   const currentPage = location.pathname.split('/')[1];
@@ -23,6 +27,10 @@ const SearchBar = ({ onSubmit }) => {
     event.preventDefault();
 
     onSubmit(searchTerm);
+    if (searchTerm.trim() === '') {
+      toast.error(`Введіть пошуковий запит! Поле пошуку не може бути порожнім`);
+    }
+
     if (currentPage === 'notices') {
       dispatch(search(searchTerm));
     }
@@ -51,14 +59,14 @@ const SearchBar = ({ onSubmit }) => {
         type="text"
         value={searchTerm}
         onChange={handleSearchInputChange}
-        placeholder="Search"
+        placeholder={t('Search')}
       />
 
-      <SearchIconContainer onClick={handleSearchButtonClick}>
-        <SearchIcon />
-      </SearchIconContainer>
-
-      {!isSearchEmpty && (
+      {isSearchEmpty ? (
+        <SearchIconContainer onClick={handleSearchButtonClick}>
+          <SearchIcon />
+        </SearchIconContainer>
+      ) : (
         <ResetIconContainer onClick={handleResetSearch}>
           <ResetIcon />
         </ResetIconContainer>

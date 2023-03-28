@@ -7,6 +7,7 @@ import { store, persistor } from 'redux/store';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'globalStyles/theme';
+import './i18n';
 
 import { App } from 'components/App';
 

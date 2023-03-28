@@ -23,6 +23,8 @@ import { Label } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
 import { useAuth, useNotices } from 'hooks';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 import {
   addToFavorites,
   getFavorites,
@@ -33,6 +35,9 @@ import {
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
+  const { t } = useTranslation();
+
+  console.log('USER', user);
 
   const [isFavorite, setIsFavorite] = useState(false);
   const { favoriteNotices, ownNotices } = useNotices();
@@ -49,32 +54,29 @@ export const NoticeCategoryItem = ({ notice }) => {
     _id: id,
   } = notice;
 
-  //Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  //Category Switch
   let categoryName = '';
 
   switch (category) {
     case 'for-free':
-      categoryName = 'in good hands';
+      categoryName = i18n.t('in_good_hands');
       break;
 
     case 'lost-found':
-      categoryName = 'lost/found';
+      categoryName = i18n.t('lost_found');
       break;
     case 'sell':
-      categoryName = 'sell';
+      categoryName = i18n.t('sell');
       break;
 
     default:
       break;
   }
-  //
 
   useEffect(() => {
     if (
@@ -82,17 +84,19 @@ export const NoticeCategoryItem = ({ notice }) => {
       favoriteNotices.some(item => item._id === id)
     ) {
       setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
     }
   }, [favoriteNotices, ownNotices, id, user.favorites]);
 
-  const notify = () => toast('Please login or register');
+  const notify = () => toast(i18n.t('Please_login_or_register'));
 
   const handleFavorites = id => {
     if (isLoggedIn) {
       isFavorite
         ? dispatch(removeFromFavorites(id))
         : dispatch(addToFavorites(id));
-      dispatch(getFavorites);
+      dispatch(getFavorites());
       return;
     }
     notify();
@@ -124,25 +128,25 @@ export const NoticeCategoryItem = ({ notice }) => {
             <Box>
               <ItemRecords isOwn={owner?.id === user._id}>
                 <Record>
-                  <RecordName>Breed:</RecordName>
+                  <RecordName>{t('Breed')}:</RecordName>
                   <RecordContent>{breed}</RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Place:</RecordName>
+                  <RecordName>{t('Place')}:</RecordName>
                   <RecordContent>{location}</RecordContent>
                 </Record>
                 <Record>
-                  <RecordName>Age:</RecordName>
+                  <RecordName>{t('Age')}:</RecordName>
                   <RecordContent>
                     {birthDate
-                      ? moment(birthDate, 'YYYYMMDD').fromNow()
+                      ? moment(birthDate, 'YYYYMMDD').fromNow(true)
                       : 'N/A'}
                   </RecordContent>
                 </Record>
                 {categoryName === 'sell' && (
                   <Record>
                     <RecordName>Price:</RecordName>
-                    <RecordContent>${price ? price : '0'}</RecordContent>
+                    <RecordContent>{price ? price : '0'} грн</RecordContent>
                   </Record>
                 )}
               </ItemRecords>
@@ -156,14 +160,14 @@ export const NoticeCategoryItem = ({ notice }) => {
                   onClick={() => handleModalToggle()}
                   isLogged={isLoggedIn}
                 >
-                  Learn more
+                  {t('Learn_more')}
                 </NoticeButton>
                 {owner?.id === user._id ? (
                   <NoticeButton
                     isLogged={isLoggedIn}
                     onClick={() => dispatch(removeUserNotice(id))}
                   >
-                    Delete <DeleteIcon />
+                    {t('Delete')} <DeleteIcon />
                   </NoticeButton>
                 ) : null}
               </Box>

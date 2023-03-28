@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-// import { theme } from 'globalStyles/theme';
+import { theme } from 'globalStyles/theme';
 import { ReactComponent as Icon } from 'images/svg/addCard.svg';
+import { Container } from 'globalStyles/globalStyle';
 
 export const PetsWrapper = styled.section`
   padding-top: ${p => p.theme.space[5] + 14}px;
@@ -12,10 +13,20 @@ export const PetsWrapper = styled.section`
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    padding-top: ${p => p.theme.space[6] + 5}px;
-    padding-bottom: ${p => p.theme.space[5] + 8}px;
+    flex-shrink: 0;
+    width: 821px;
+    padding-top: ${p => p.theme.space[6] - 6}px;
+    // padding-bottom: ${p => p.theme.space[5] + 8}px;
     // padding-left: ${p => p.theme.space[5]}px;
     // padding-right: ${p => p.theme.space[4]}px;
+  }
+`;
+
+export const PetsContainer = styled(Container)`
+  @media (min-width: ${theme.breakpoints[2]}) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 `;
 
@@ -37,7 +48,9 @@ export const Title = styled.h2`
 `;
 
 export const TitleBtn = styled.h2`
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
+  font-weight: ${p => p.theme.fontWeights.medium};
 `;
 
 export const Button = styled.button`
@@ -55,6 +68,13 @@ export const Button = styled.button`
   background-color: ${p => p.theme.colors.accent};
 
   cursor: pointer;
+
+  transition: background-color ${p => p.theme.transition.main};
+
+  &:hover,
+  &:focus {
+    background-color: ${p => p.theme.colors.hintTxt};
+  }
 `;
 
 export const AddIcon = styled(Icon)`

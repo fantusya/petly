@@ -11,25 +11,18 @@ export const GoogleImg = styled.img`
 export const ButtonImg = styled.button`
   position: absolute;
   top: 15px;
-  left: 240px;
+  left: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 18px;
-  height: 18px;
+
   border: none;
   background-color: inherit;
   @media (min-width: ${theme.breakpoints[1]}) {
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    left: 330px;
+    left: 380px;
   }
   @media (min-width: ${theme.breakpoints[2]}) {
-    width: 25px;
-    height: 25px;
-    top: 20px;
-    left: 430px;
+    left: 490px;
   }
 `;
 export const Div = styled.div`

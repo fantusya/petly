@@ -1,20 +1,64 @@
-import { Error, Input, Button } from 'pages/authFormStyle.styled';
+
+import { Error, Button } from 'pages/authFormStyle.styled';
+import CustomField from 'pages/authFormStyle.styled';
+// import { useEffect } from 'react';
 
 const StepTwo = props => {
+
+  // const query = 'Dnipro';
+  // const { status, results } = useFetchingData('api/cities', query);
+
+  // const array = results.map(({ useCounty, stateEn, cityEn, countyEn }) => {
+  //   return Number(useCounty)
+  //     ? `${cityEn}, ${countyEn}, ${stateEn} region`
+  //     : `${cityEn}, ${stateEn} region`;
+  // });
+  // console.log('array', array);
+
+  // useEffect(() => {
+  //   const inputValue = value || '';
+  //   if (inputValue) {
+  //     console.log(inputValue);
+  //   }
+  // });
+
   return (
     <>
-      <Input type="text" name="name" placeholder="Name" />
+
+      <CustomField
+        type="text"
+        name="name"
+        placeholder="Name"
+        errors={props.errors}
+        touched={props.touched}
+        required
+      />
       <Error name="name" component="div" />
 
-      <Input type="text" name="city" placeholder="City, region" />
+      <CustomField
+        type="text"
+        name="city"
+        placeholder="City, region"
+        errors={props.errors}
+        touched={props.touched}
+        required
+      />
       <Error name="city" component="div" />
 
-      <Input type="tel" name="phone" placeholder="Mobile phone" />
+      <CustomField
+        type="tel"
+        name="phone"
+        placeholder="Mobile phone"
+        errors={props.errors}
+        touched={props.touched}
+        required
+      />
       <Error name="phone" component="div" />
 
       <Button type="submit">Register</Button>
       <Button type="button" onClick={props.back}>
         Back
+
       </Button>
     </>
   );
