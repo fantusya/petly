@@ -17,7 +17,7 @@ import { GoogleLoginButton } from 'pages/LoginPage/LoginPage.styled';
 export const StepOne = props => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [confirmVisibility, setConfirmVisibility] = useState(false);
-  
+
   const { t } = useTranslation();
 
   const toggleShowPassword = () => {
@@ -71,7 +71,6 @@ export const StepOne = props => {
         </ButtonImg>
         <Error name="confirm" component="div" />
       </Div>
-
       <Button type="submit" onClick={props.next} disabled={props.isValid}>
         Next
       </Button>

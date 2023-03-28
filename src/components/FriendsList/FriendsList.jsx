@@ -1,7 +1,7 @@
-import FriendsPopUp from "components/FriendsPopUp";
+import FriendsPopUp from 'components/FriendsPopUp';
 
-import { DEFAULT_IMAGE_FRIENDS } from "constants/urls";
-import { EMPTY_FIELD } from "constants/emptyField";
+import { DEFAULT_IMAGE_FRIENDS } from 'constants/urls';
+import { EMPTY_FIELD } from 'constants/emptyField';
 
 import { useTranslation } from 'react-i18next';
 
@@ -49,7 +49,10 @@ export const FriendsList = ({ results }) => {
           )}
           <ItemFriendBox>
             <div>
-              <ItemFriendLogo src={imageUrl ? imageUrl : DEFAULT_IMAGE_FRIENDS} alt={title} />
+              <ItemFriendLogo
+                src={imageUrl ? imageUrl : DEFAULT_IMAGE_FRIENDS}
+                alt={title}
+              />
             </div>
             <div>
               <ul>
@@ -62,7 +65,7 @@ export const FriendsList = ({ results }) => {
                   ) : (
                     <p>{EMPTY_FIELD}</p>
                   )}
-                  <FriendsPopUp workDays={workDays}/>
+                  <FriendsPopUp workDays={workDays} />
                 </InfoFriendsItem>
                 <InfoFriendsItem>
                   <p>{t('Address')}:</p>

@@ -23,12 +23,12 @@ const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
     <b>LOADING</b>
