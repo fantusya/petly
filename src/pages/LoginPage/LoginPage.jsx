@@ -56,7 +56,7 @@ export const LoginPage = () => {
               onSubmit={handleSubmit}
               validationSchema={schema}
             >
-              {({ errors, touched }) => (
+              {({ errors, touched, values }) => (
                 <FormCustom>
                   <CustomField
                     type="email"
@@ -65,6 +65,7 @@ export const LoginPage = () => {
                     autoComplete="off"
                     errors={errors}
                     touched={touched}
+                    values={values.email}
                     required
                   />
 
@@ -77,6 +78,7 @@ export const LoginPage = () => {
                     autoComplete="off"
                     errors={errors}
                     touched={touched}
+                    values={values.password}
                     required
                   />
                   <Div>
