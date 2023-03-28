@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
+
 // import { useFetchingData } from 'hooks';
 
 import { signup, logIn } from 'redux/auth/operations';
@@ -36,6 +38,7 @@ const initialValues = {
 
 export const RegisterPage = () => {
   const [currentStep, setCarrentStep] = useState(0);
+  const { t } = useTranslation();
 
   //////////// CITIES LOGIC
   // const query = 'Dnipro';
@@ -51,7 +54,7 @@ export const RegisterPage = () => {
 
   const dispatch = useDispatch();
 
-  const handleNextStep = async () => {
+  const handleNextStep = () => {
     setCarrentStep(currentStep + 1);
   };
 
@@ -61,12 +64,8 @@ export const RegisterPage = () => {
 
   const handleSubmit = async (
     { email, password, name, city, phone },
-    {
-      // setSubmitting,
-      resetForm,
-    }
+    { resetForm }
   ) => {
-    // setSubmitting(false);
     const resultSignup = await dispatch(
       signup({ email, password, name, city, phone })
     );
@@ -84,49 +83,42 @@ export const RegisterPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
-            <TitleAuth>Registration</TitleAuth>
+            <TitleAuth>{t('Registration')}</TitleAuth>
 
             <Formik
               initialValues={initialValues}
+              onSubmit={handleSubmit}
               validationSchema={
                 currentStep === 0
                   ? registerValidationSchemaOne
                   : registerValidationSchemaTwo
               }
-              onSubmit={handleSubmit}
-              // autoComplete="off"
-              // validate={values => {
-              //   console.log(values.email);
-              //   if (values.password === values.confirm) {
-              //     console.log('OK');
-              //   }
-              // }}
             >
-              {/* {({ isSubmitting, values, setFieldValue }) => {
-                return ( */}
-              <FormCustom autoComplete="off">
-                {currentStep === 0 && (
-                  <StepOne
-                    next={handleNextStep}
-                    // isSubmitting={isSubmitting}
-                  />
-                )}
-                {currentStep === 1 && (
-                  <StepTwo
-                    back={handlePrevStep}
-                    // value={values.city}
-                    // setFieldValue={setFieldValue}
-                  />
-                )}
-              </FormCustom>
-              {/* );
-              }} */}
+              {({ errors, touched, isValid }) => (
+                <FormCustom autoComplete="off">
+                  {currentStep === 0 && (
+                    <StepOne
+                      next={handleNextStep}
+                      errors={errors}
+                      touched={touched}
+                      isValid={!isValid}
+                    />
+                  )}
+                  {currentStep === 1 && (
+                    <StepTwo
+                      back={handlePrevStep}
+                      errors={errors}
+                      touched={touched}
+                    />
+                  )}
+                </FormCustom>
+              )}
             </Formik>
 
             <RouteFormLoginRegister
               link="/login"
-              question="Already have an account??"
-              pageName="login"
+              question={t('Is_account')}
+              pageName={t('Log_in')}
             />
           </BoxAuth>
         </Container>

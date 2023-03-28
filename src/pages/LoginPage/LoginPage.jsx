@@ -8,6 +8,8 @@ import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
 import CustomField from '../authFormStyle.styled';
+import { useTranslation } from 'react-i18next';
+
 import {
   TitleAuth,
   FormCustom,
@@ -17,7 +19,11 @@ import {
   LogoBg,
 } from '../authFormStyle.styled';
 
-import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
+import {
+  GoogleLoginButton,
+  GoogleImg,
+  LoginPOsitionBtn,
+} from './LoginPage.styled.jsx';
 import {
   ButtonImg,
   ClosedEyaIcon,
@@ -28,6 +34,7 @@ import {
 export const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Привет я твой боди', values);
@@ -43,56 +50,58 @@ export const LoginPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
-            <TitleAuth>Login</TitleAuth>
+            <TitleAuth>{t('Login')}</TitleAuth>
             <Formik
               initialValues={{ email: '', password: '' }}
               onSubmit={handleSubmit}
               validationSchema={schema}
             >
-              {({ errors, touched }) => (
+              {({ errors, touched, values }) => (
                 <FormCustom>
                   <CustomField
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t('Email')}
                     autoComplete="off"
                     errors={errors}
                     touched={touched}
+                    values={values.email}
                     required
                   />
 
-                 
-
                   <Error name="email" component="div" />
-                 
-                    <CustomField
-                      type={passwordShown ? 'text' : 'password'}
-                      name="password"
-                      placeholder="Password"
-                      autoComplete="off"
-                      errors={errors}
-                      touched={touched}
-                      required
-                    />
-                     <Div>
 
-                    <ButtonImg onClick={togglePassword}>
-                      {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
-                    </ButtonImg>
+                  <CustomField
+                    type={passwordShown ? 'text' : 'password'}
+                    name="password"
+                    placeholder={t('Password')}
+                    autoComplete="off"
+                    errors={errors}
+                    touched={touched}
+                    values={values.password}
+                    required
+                  />
+                  <Div>
+                    <LoginPOsitionBtn>
+                      <ButtonImg type="button" onClick={togglePassword}>
+                        {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
+                      </ButtonImg>
+                    </LoginPOsitionBtn>
+
                     <Error name="password" component="div" />
                   </Div>
-                  <Button type="submit">Login</Button>
+                  <Button type="submit">{t('Login')}</Button>
                   <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
                     <GoogleImg src={GooglePic} alt="Google" />
-                    Login with Google
+                    {t('Login_with_Google')}
                   </GoogleLoginButton>
                 </FormCustom>
               )}
             </Formik>
             <RouteFormLoginRegister
               link="/register"
-              question="Don't have an account?"
-              pageName="Register"
+              question={t('No_account')}
+              pageName={t('Register')}
             />
             {/* <LoginButton type="submit">Login</LoginButton> */}
           </BoxAuth>

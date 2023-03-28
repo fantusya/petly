@@ -10,12 +10,15 @@ import {
 } from './UserData.styled';
 import UserDataItem from 'components/UserDataItem';
 import Logout from 'components/Logout';
+import { useTranslation } from 'react-i18next';
 
 export const UserData = () => {
+  const { t } = useTranslation();
+
   return (
     <UserWrapper>
       <TitleContainer>
-        <Title>My information:</Title>
+        <Title>{t('My_information')}:</Title>
       </TitleContainer>
 
       <UserContainer>

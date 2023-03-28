@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 export const registerValidationSchemaOne = Yup.object().shape({
   email: Yup.string()
     .matches(
+      // /^((([0-9A-Za-z]{1}[-0-9A-z.]{1,}[0-9A-Za-z]{1})))@([-A-Za-z]{1,}.){1,2}[-A-Za-z]{2,})$/,
       /^(?=.{1,63}$)(?=.{2,}@)[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
       'Error! Email must be in a format: aaaaa@aaa.aaa'
     )
