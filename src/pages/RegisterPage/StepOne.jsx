@@ -29,6 +29,7 @@ export const StepOne = props => {
   };
 
   console.log(props.isValid);
+
   return (
     <>
       <CustomField
@@ -39,6 +40,7 @@ export const StepOne = props => {
         touched={props.touched}
         values={props.values.email}
         required
+        autoFocus={true}
       />
       <Error name="email" component="div" />
       <Div>
@@ -73,7 +75,7 @@ export const StepOne = props => {
         </ButtonImg>
         <Error name="confirm" component="div" />
       </Div>
-      <Button type="submit" onClick={props.next} disabled={props.isValid}>
+      <Button type="button" onClick={props.next} disabled={props.isValid}>
         Next
       </Button>
       <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">

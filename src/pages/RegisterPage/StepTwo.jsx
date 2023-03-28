@@ -1,9 +1,11 @@
 import { Error, Button } from 'pages/authFormStyle.styled';
 import CustomField from 'pages/authFormStyle.styled';
 // import { useEffect } from 'react';
+// import { useFetchingData } from 'hooks';
 
 const StepTwo = props => {
   // const query = 'Dnipro';
+  // const query = props.values.city;
   // const { status, results } = useFetchingData('api/cities', query);
 
   // const array = results.map(({ useCounty, stateEn, cityEn, countyEn }) => {
@@ -19,7 +21,7 @@ const StepTwo = props => {
   //     console.log(inputValue);
   //   }
   // });
-
+  console.log(props.values.city);
   return (
     <>
       <CustomField
