@@ -28,6 +28,7 @@ const StepTwo = props => {
         placeholder="Name"
         errors={props.errors}
         touched={props.touched}
+        values={props.values.name}
         required
       />
       <Error name="name" component="div" />
@@ -38,6 +39,7 @@ const StepTwo = props => {
         placeholder="City, region"
         errors={props.errors}
         touched={props.touched}
+        values={props.values.city}
         required
       />
       <Error name="city" component="div" />
@@ -48,6 +50,7 @@ const StepTwo = props => {
         placeholder="Mobile phone"
         errors={props.errors}
         touched={props.touched}
+        values={props.values.phone}
         required
       />
       <Error name="phone" component="div" />

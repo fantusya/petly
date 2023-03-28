@@ -31,13 +31,13 @@ export const StepOne = props => {
   console.log(props.isValid);
   return (
     <>
-      fix/register
       <CustomField
         type="email"
         name="email"
         placeholder="Email"
         errors={props.errors}
         touched={props.touched}
+        values={props.values.email}
         required
       />
       <Error name="email" component="div" />
@@ -49,6 +49,7 @@ export const StepOne = props => {
           type={passwordVisibility ? 'text' : 'password'}
           errors={props.errors}
           touched={props.touched}
+          values={props.values.password}
           required
         />
         <ButtonImg type="button" onClick={toggleShowPassword}>
@@ -64,6 +65,7 @@ export const StepOne = props => {
           placeholder="Confirm Password"
           errors={props.errors}
           touched={props.touched}
+          values={props.values.confirm}
           required
         />
         <ButtonImg type="button" onClick={toggleShowcConfirm}>
