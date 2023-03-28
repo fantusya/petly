@@ -31,3 +31,29 @@ export const Div = styled.div`
 
 export const OpenEyaIcon = styled(Open)``;
 export const ClosedEyaIcon = styled(Closed)``;
+
+export const List = styled.ul`
+  position: absolute;
+  top: 269px;
+  left: 100px;
+  max-height: 90px;
+  min-height: 20px;
+  overflow-y: scroll;
+  width: 420px;
+
+  border: 2px solid red;
+  border-radius: 8px;
+
+  z-index: 1;
+`;
+
+export const ListItem = styled.li`
+  padding: 4px 8px;
+  font-size: 14px;
+  line-height: 1.5;
+
+  cursor: pointer;
+  &:hover {
+    background-color: orange;
+  }
+`;

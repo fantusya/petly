@@ -17,7 +17,7 @@ import { GoogleLoginButton } from 'pages/LoginPage/LoginPage.styled';
 export const StepOne = props => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [confirmVisibility, setConfirmVisibility] = useState(false);
-  
+
   const { t } = useTranslation();
 
   const toggleShowPassword = () => {
@@ -31,7 +31,6 @@ export const StepOne = props => {
   console.log(props.isValid);
   return (
     <>
-      fix/register
       <CustomField
         type="email"
         name="email"
