@@ -26,8 +26,6 @@ export const UserEmail = ({ onUpdate, isDisabled }) => {
   const { user } = useAuth();
   const dispatch = useDispatch();
 
-  console.log(user, 'user');
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {

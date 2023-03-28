@@ -57,6 +57,7 @@ export const InfoInput = styled.input`
   ::placeholder {
     color: ${({ theme, disabled }) =>
       disabled ? theme.colors.text : theme.colors.inputTxt};
+    opacity: 1;
   }
 
   @media (min-width: ${theme.breakpoints[1]}) {

@@ -30,12 +30,10 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
   const { user } = useAuth();
   const dispatch = useDispatch();
 
-  console.log(user, 'user');
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
-        city: user?.city || 'City',
+        city: user?.city,
       },
       validationSchema: basicSchema,
       onSubmit: ({ city }, { resetForm }) => {
@@ -48,7 +46,7 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
           return;
         }
 
-        dispatch(updateInfo(city));
+        dispatch(updateInfo({ city }));
 
         onUpdate();
         setIsUpdating(false);
