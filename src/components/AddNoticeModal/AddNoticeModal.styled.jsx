@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form, Field, ErrorMessage } from 'formik';
 
 import maleIcon from 'images/male-icon.png';
 import femaleIcon from 'images/female-icon.png';
@@ -67,7 +68,7 @@ export const RadioLabel = styled.label`
   /* margin-bottom: ${p => p.theme.space[2]}px; */
 `;
 
-export const RadioInput = styled.input`
+export const RadioInput = styled(Field)`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -116,6 +117,7 @@ export const RadioButton = styled.div`
 export const InputCont = styled.div`
   /* width: 100%; */
   box-sizing: border-box;
+  position: relative;
 
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[4]}px;
@@ -140,14 +142,13 @@ export const TextLabel = styled.label`
   }
 `;
 
-export const TextInput = styled.input`
+export const TextInput = styled(Field)`
   display: block;
   box-sizing: border-box;
   align-items: center;
   display: flex;
   outline: none;
   border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
-  /* width: 240px; */
   width: 100%;
   height: 40px;
   margin-top: ${p => p.theme.space[3]}px;
@@ -172,6 +173,21 @@ export const TextInput = styled.input`
     ::placeholder {
       font-size: ${p => p.theme.fontSizes[2]}px;
     }
+  }
+`;
+
+export const ErrorStyle = styled(ErrorMessage)`
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  font-size: ${p => p.theme.fontSizes[0]};
+  color: ${p => p.theme.colors.error};
+  @media (max-width: 767.9px {
+    transform: translate(0px, 0px);
+  }
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size:  ${p => p.theme.fontSizes[0]};
+    bottom: -10px;
   }
 `;
 
@@ -222,7 +238,7 @@ export const InputContTextArea = styled.div`
   // }
 `;
 
-export const TextAreaInput = styled.textarea`
+export const TextAreaInput = styled(Field)`
   display: block;
   outline: none;
   box-sizing: border-box;
@@ -243,6 +259,13 @@ export const TextAreaInput = styled.textarea`
 `;
 
 //!======SECOND PAGE===============
+export const FormWrapper = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+`;
+
 export const SexFormBox = styled.fieldset`
   display: flex;
   margin-bottom: ${p => p.theme.space[5]}px;
@@ -316,7 +339,7 @@ export const FemaleIconBox = styled.div`
   }
 `;
 
-export const InputRadio = styled.input`
+export const InputRadio = styled(Field)`
   opacity: 0;
   width: 0;
   height: 0;
@@ -398,11 +421,14 @@ export const ActionButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 40px;
+  align-items: center;
+  margin-top: 24px;
   gap: 12px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
     // gap: ${p => p.theme.space[3]}px;
   }
 `;
