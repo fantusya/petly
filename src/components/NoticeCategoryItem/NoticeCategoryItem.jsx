@@ -18,9 +18,10 @@ import {
   AddFavoriteIcon,
   RemoveFavoriteIcon,
   AddFavoriteButton,
-  ConfirmWrapper,
+  // ConfirmWrapper,
 } from './NoticeCategoryItem.styled';
-import { Label, ModalButton } from 'components/commonComponents';
+import { Label } from 'components/commonComponents';
+// import { Label, ModalButton } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
 import { useAuth, useNotices } from 'hooks';
@@ -99,11 +100,11 @@ export const NoticeCategoryItem = ({ notice }) => {
     return;
   };
 
-  const [deletionConfirmation, setDeletionConfirmation] = useState(false);
+  // const [deletionConfirmation, setDeletionConfirmation] = useState(false);
 
-  const handleDeletion = () => {
-    setDeletionConfirmation(!deletionConfirmation);
-  };
+  // const handleDeletion = () => {
+  //   setDeletionConfirmation(!deletionConfirmation);
+  // };
 
   return (
     <>
