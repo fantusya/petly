@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { addPet } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import i18n from 'i18n';
 
 import { Formik } from 'formik';
 import { OneStep, TwoStep } from './Steps';
@@ -22,7 +21,6 @@ export const PetForm = ({ closeModal }) => {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
-  // const [previewImg, setPreviewImg] = useState(null);
 
   const handleNextStep = () => {
     setCurrentStep(prev => prev + 1);
@@ -30,24 +28,6 @@ export const PetForm = ({ closeModal }) => {
 
   const handlePrevStep = () => {
     setCurrentStep(prev => prev - 1);
-  };
-
-  const handleChange = e => {
-    const chosenImg = e.target.files[0];
-    console.log('chosenImg', chosenImg);
-
-    if (!e.target.files.length || !chosenImg) {
-      setSelectedFile(null);
-      toast.warning(i18n.t('Choose an image to change avatar your pet!'));
-      return;
-    }
-    setSelectedFile(chosenImg);
-
-    // const reader = new FileReader();
-    // reader.onload = e => {
-    //   setPreviewImg(e.target.result);
-    // };
-    // reader.readAsDataURL(chosenImg);
   };
 
   const handleSubmit = (values, { resetForm }) => {
@@ -77,7 +57,7 @@ export const PetForm = ({ closeModal }) => {
 
   const steps = [
     <OneStep next={handleNextStep} closeModal={closeModal} />,
-    <TwoStep back={handlePrevStep} handleChange={handleChange} />,
+    <TwoStep back={handlePrevStep} onSelectedImg={setSelectedFile} />,
   ];
 
   return (

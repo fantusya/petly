@@ -7,7 +7,7 @@ import PetCard from '../PetCard';
 export const PetsList = () => {
   const pets = useSelector(selectUser).myPets;
 
-  const card = pets.map(pet => {
+  const card = pets?.map(pet => {
     return (
       <Items key={pet._id}>
         <PetCard pet={pet} />

@@ -54,11 +54,11 @@ export const PetInfo = styled.p`
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    &:nth-child(3): {
+    &:nth-child(3) {
       margin-bottom: ${p => p.theme.space[0]}px;
     }
 
-    &:last-child: {
+    &:last-child {
       margin-top: ${p => p.theme.space[4]}px;
     }
   }
@@ -81,7 +81,7 @@ export const BtnDelete = styled.button`
 
   cursor: pointer;
 
-  transition: color ${p => p.theme.transition.accent};
+  transition: color ${p => p.theme.transition.main};
 
   &:hover,
   &:focus {
