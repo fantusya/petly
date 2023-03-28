@@ -101,8 +101,8 @@ const NewsPage = () => {
     <Box
       as="section"
       pt={['100px', '100px', '160px', '126px']}
-      pl={['20px', '20px', '32px', '16px']}
-      pr={['20px', '20px', '32px', '16px']}
+      // pl={['20px', '20px', '32px', '16px']}
+      // pr={['20px', '20px', '32px', '16px']}
       pb={['100px', '100px', '100px', '200px']}
     >
       <Container>
