@@ -16,8 +16,9 @@ import { GoogleLoginButton } from 'pages/LoginPage/LoginPage.styled';
 
 export const StepOne = props => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  
   const [confirmVisibility, setConfirmVisibility] = useState(false);
+  
+  const { t } = useTranslation();
 
   const toggleShowPassword = () => {
     setPasswordVisibility(!passwordVisibility);
@@ -30,7 +31,7 @@ export const StepOne = props => {
   console.log(props.isValid);
   return (
     <>
- fix/register
+      fix/register
       <CustomField
         type="email"
         name="email"
@@ -39,7 +40,6 @@ export const StepOne = props => {
         touched={props.touched}
         required
       />
-
       <Error name="email" component="div" />
       <Div>
         <CustomField
@@ -61,13 +61,10 @@ export const StepOne = props => {
           id="confirm"
           type={confirmVisibility ? 'text' : 'password'}
           name="confirm"
-
           placeholder="Confirm Password"
           errors={props.errors}
           touched={props.touched}
           required
-
-
         />
         <ButtonImg type="button" onClick={toggleShowcConfirm}>
           {confirmVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
@@ -76,9 +73,7 @@ export const StepOne = props => {
       </Div>
 
       <Button type="submit" onClick={props.next} disabled={props.isValid}>
-
         Next
-
       </Button>
       <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
         <GoogleImg src={GooglePic} alt="Google" />

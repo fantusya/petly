@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Status } from 'constants/status';
 import { getNoticeByCategory } from 'api/notice';
 import NoticeCategoryItem from '../NoticeCategoryItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NoticesCardsList } from './NoticesCategoriesList.styled';
 import { useLocation } from 'react-router-dom';
 import { useNotices } from 'hooks/useNotices';
@@ -20,7 +20,8 @@ export const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const categoryName = location.pathname.split('/').reverse()[0];
-  const { query: search, isLoading, error } = useNotices();
+  const { query: search, error, isLoading } = useNotices();
+  const favoriteisLoading = useSelector(state => state.notices.favoriteAction);
 
   useEffect(() => {
     async function getNotices() {
@@ -44,6 +45,8 @@ export const NoticesCategoriesList = () => {
             page,
           });
 
+          dispatch(getFavorites({ search, page }));
+
           setResults(notices.results);
         }
 
@@ -63,7 +66,7 @@ export const NoticesCategoriesList = () => {
       {status === Status.PENDING && isLoading && (
         <Box
           display="flex"
-          justifyContent="center"
+          justifyContent="start"
           alignItems="center"
           p="20px 50px"
         >
@@ -71,7 +74,7 @@ export const NoticesCategoriesList = () => {
         </Box>
       )}
       {status === Status.RESOLVED && (
-        <NoticesCardsList>
+        <NoticesCardsList isLoading={favoriteisLoading}>
           {categoryName === 'favorite'
             ? favoriteNotices.map(item => (
                 <NoticeCategoryItem key={item._id} notice={item} />

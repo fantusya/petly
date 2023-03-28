@@ -1,10 +1,8 @@
-
 import { Error, Button } from 'pages/authFormStyle.styled';
 import CustomField from 'pages/authFormStyle.styled';
 // import { useEffect } from 'react';
 
 const StepTwo = props => {
-
   // const query = 'Dnipro';
   // const { status, results } = useFetchingData('api/cities', query);
 
@@ -24,7 +22,6 @@ const StepTwo = props => {
 
   return (
     <>
-
       <CustomField
         type="text"
         name="name"
@@ -58,7 +55,6 @@ const StepTwo = props => {
       <Button type="submit">Register</Button>
       <Button type="button" onClick={props.back}>
         Back
-
       </Button>
     </>
   );
