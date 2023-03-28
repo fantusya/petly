@@ -2,9 +2,14 @@
 
 import { LogoText, HomeLink, LogoSpan } from './Logo.styled';
 
-const Logo = () => {
+const Logo = ({ setOpen }) => {
   return (
-    <HomeLink to="/">
+    <HomeLink
+      to="/"
+      onClick={() => {
+        setOpen(false);
+      }}
+    >
       <LogoText>
         pe<LogoSpan>t</LogoSpan>ly
       </LogoText>
