@@ -20,6 +20,6 @@ export const validationPetSchema = yup.object().shape({
   comments: yup
     .string()
     .min(8, 'Minimum 8 symbols')
-    .max(120, 'Maximum 120 symbols')
-    .required('Required comments'),
+    .max(120, 'Maximum 120 symbols'),
+  // .required('Required comments'),
 });

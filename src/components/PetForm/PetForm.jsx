@@ -55,18 +55,27 @@ export const PetForm = ({ closeModal }) => {
     toast.success(`You successfully deleted your pet ${name}`);
   };
 
-  const steps = [
-    <OneStep next={handleNextStep} closeModal={closeModal} />,
-    <TwoStep back={handlePrevStep} onSelectedImg={setSelectedFile} />,
-  ];
-
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={validationPetSchema}
     >
-      <Forma autoComplete="off">{steps[currentStep]}</Forma>
+      {({ errors, isValid }) => (
+        <Forma autoComplete="off">
+          {currentStep === 0 && (
+            <OneStep
+              next={handleNextStep}
+              closeModal={closeModal}
+              isValid={!isValid}
+            />
+          )}
+
+          {currentStep === 1 && (
+            <TwoStep back={handlePrevStep} onSelectedImg={setSelectedFile} />
+          )}
+        </Forma>
+      )}
     </Formik>
   );
 };
