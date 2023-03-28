@@ -15,8 +15,8 @@ export const PetsWrapper = styled.section`
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     flex-shrink: 0;
     width: 821px;
-    padding-top: ${p => p.theme.space[6] + 5}px;
-    padding-bottom: ${p => p.theme.space[5] + 8}px;
+    padding-top: ${p => p.theme.space[6] - 6}px;
+    // padding-bottom: ${p => p.theme.space[5] + 8}px;
     // padding-left: ${p => p.theme.space[5]}px;
     // padding-right: ${p => p.theme.space[4]}px;
   }
@@ -35,6 +35,7 @@ export const Title = styled.h2`
 
   color: ${p => p.theme.colors.black};
 
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: ${p => p.theme.lineHeights.text};
@@ -47,7 +48,9 @@ export const Title = styled.h2`
 `;
 
 export const TitleBtn = styled.h2`
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
+  font-weight: ${p => p.theme.fontWeights.medium};
 `;
 
 export const Button = styled.button`
@@ -65,6 +68,13 @@ export const Button = styled.button`
   background-color: ${p => p.theme.colors.accent};
 
   cursor: pointer;
+
+  transition: background-color ${p => p.theme.transition.main};
+
+  &:hover,
+  &:focus {
+    background-color: ${p => p.theme.colors.hintTxt};
+  }
 `;
 
 export const AddIcon = styled(Icon)`

@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
 import { useTranslation } from 'react-i18next';
 import { Box } from 'components/Box/Box';
 import { ModalAddsPet } from 'components/ModalAddsPet/ModalAddsPet';
@@ -17,9 +15,6 @@ import {
 export const PetsData = () => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
-
-  const pets = useSelector(selectUser).myPets;
-  console.log('pets', pets);
 
   const toogleModal = () => {
     setShowModal(!showModal);

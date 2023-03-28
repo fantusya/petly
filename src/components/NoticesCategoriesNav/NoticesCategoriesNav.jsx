@@ -2,6 +2,9 @@ import React from 'react';
 import { useAuth } from 'hooks';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
+
 // import { useNavigate } from 'react-router-dom';
 import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
 import {
@@ -15,6 +18,7 @@ import AddNoticeButton from 'components/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const { isLoggedIn } = useAuth();
 
@@ -24,7 +28,7 @@ export const NoticesCategoriesNav = () => {
     if (isLoggedIn) {
       setOpen(true);
     } else {
-      toast.error('Please log in to add your notice!');
+      toast.error(i18n.t('Please_login'));
     }
   };
 
@@ -36,22 +40,22 @@ export const NoticesCategoriesNav = () => {
     <NavBox>
       <NavUl>
         <li>
-          <NavBtn to="sell">sell</NavBtn>
+          <NavBtn to="sell">{t('sell')}</NavBtn>
         </li>
         <li>
           {' '}
-          <NavBtn to="lost-found">lost/found</NavBtn>
+          <NavBtn to="lost-found">{t('lost_found')}</NavBtn>
         </li>
         <li>
-          <NavBtn to="for-free">in good hands</NavBtn>
+          <NavBtn to="for-free">{t('in_good_hands')}</NavBtn>
         </li>
         {isLoggedIn && (
           <>
             <li>
-              <NavBtn to="favorite">favorite ads</NavBtn>
+              <NavBtn to="favorite">{t('favorite_ads')}</NavBtn>
             </li>
             <li>
-              <NavBtn to="own">my ads</NavBtn>
+              <NavBtn to="own">{t('my_ads')}</NavBtn>
             </li>
           </>
         )}

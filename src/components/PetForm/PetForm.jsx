@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { addPet } from 'redux/auth/operations';
-import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import i18n from 'i18n';
+import toast from 'react-hot-toast';
 
 import { Formik } from 'formik';
 import { OneStep, TwoStep } from './Steps';
@@ -22,7 +21,6 @@ export const PetForm = ({ closeModal }) => {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
-  // const [previewImg, setPreviewImg] = useState(null);
 
   const handleNextStep = () => {
     setCurrentStep(prev => prev + 1);
@@ -32,29 +30,10 @@ export const PetForm = ({ closeModal }) => {
     setCurrentStep(prev => prev - 1);
   };
 
-  const handleChange = e => {
-    const chosenImg = e.target.files[0];
-    console.log('chosenImg', chosenImg);
-
-    if (!e.target.files.length || !chosenImg) {
-      setSelectedFile(null);
-      toast.warning(i18n.t('Chose_image'));
-      return;
-    }
-    setSelectedFile(chosenImg);
-
-    // const reader = new FileReader();
-    // reader.onload = e => {
-    //   setPreviewImg(e.target.result);
-    // };
-    // reader.readAsDataURL(chosenImg);
-  };
-
   const handleSubmit = (values, { resetForm }) => {
     console.log('Відправити форму!!!!!!!!!!');
-
     const { name, birthDate, breed, comments } = values;
-    console.log('values', values);
+
     if (!selectedFile) {
       console.log('CHOOSE FILE PLS');
       return;
@@ -69,18 +48,16 @@ export const PetForm = ({ closeModal }) => {
     dispatch(addPet(data));
 
     console.log('selectedFile', selectedFile);
-    console.log('values', values);
-    console.log('data', data);
-
-    // dispatch(addPet(values));
 
     resetForm();
     closeModal();
+
+    toast.success(`You successfully deleted your pet ${name}`);
   };
 
   const steps = [
     <OneStep next={handleNextStep} closeModal={closeModal} />,
-    <TwoStep back={handlePrevStep} handleChange={handleChange} />,
+    <TwoStep back={handlePrevStep} onSelectedImg={setSelectedFile} />,
   ];
 
   return (
