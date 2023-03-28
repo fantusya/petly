@@ -78,12 +78,14 @@ export const Input = styled(Field)`
 `;
 
 export const TextInput = styled(Input)`
+  height: 100px;
   margin-top: ${p => p.theme.space[3]}px;
   border-radius: ${p => p.theme.radii.small};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: ${p => p.theme.space[4]}px;
     margin-top: ${p => p.theme.space[4] - 4}px;
+    height: 116px;
     // margin-left: ${p => p.theme.space[5] - 4}px;
     // width: 394px;
   }

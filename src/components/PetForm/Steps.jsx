@@ -104,7 +104,8 @@ const TwoStep = ({ back, handleChange }) => {
           {' '}
           {t('Comments')}
           <TextInput
-            as="textarea"
+            // as="textarea"
+            type="text"
             name="comments"
             rows="4"
             placeholder={t('Type_comments')}
