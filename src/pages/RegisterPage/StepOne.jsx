@@ -25,6 +25,7 @@ export const StepOne = props => {
     setConfirmVisibility(!confirmVisibility);
   };
 
+  console.log(props.isValid);
   return (
     <>
       <CustomField
@@ -66,7 +67,7 @@ export const StepOne = props => {
         </ButtonImg>
         <Error name="confirm" component="div" />
       </Div>
-      <Button type="submit" onClick={props.next} disabled={false}>
+      <Button type="submit" onClick={props.next} disabled={props.isValid}>
         Next
       </Button>
       <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
