@@ -81,7 +81,7 @@ export const LoginPage = () => {
                   />
                   <Div>
                     <LoginPOsitionBtn>
-                      <ButtonImg onClick={togglePassword}>
+                      <ButtonImg type="button" onClick={togglePassword}>
                         {passwordShown ? <OpenEyaIcon /> : <ClosedEyaIcon />}
                       </ButtonImg>
                     </LoginPOsitionBtn>
