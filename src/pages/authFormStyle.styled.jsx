@@ -234,7 +234,7 @@ export const LinkToOtherPage = styled(Link)`
 
 const CustomField = props => {
   const [isError, setIsError] = useState(false);
-  const { errors, touched, name } = props;
+  const { errors, touched, name, values } = props;
 
   useEffect(() => {
     if (Object.keys(errors).includes(name)) {
@@ -242,7 +242,13 @@ const CustomField = props => {
     }
     setIsError(false);
   }, [errors, name, touched]);
-
+  if (values === '') {
+    return (
+      <>
+        <Input {...props} />
+      </>
+    );
+  }
   return (
     <>
       <Input
