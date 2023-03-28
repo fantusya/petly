@@ -75,11 +75,7 @@ export const NoticeCategoryItem = ({ notice }) => {
   }
 
   useEffect(() => {
-    console.log(user.favorites);
-    if (
-      user.favorites.includes(id) ||
-      favoriteNotices.some(item => item._id === id)
-    ) {
+    if (favoriteNotices.some(item => item._id === id)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
@@ -98,7 +94,6 @@ export const NoticeCategoryItem = ({ notice }) => {
       dispatch(addToFavorites(id));
     }
     dispatch(getFavorites({}));
-    //Lena added {}
     return;
   };
 
@@ -122,7 +117,7 @@ export const NoticeCategoryItem = ({ notice }) => {
             >
               <Label>{categoryName}</Label>
               <AddFavoriteButton
-                onClick={() => handleFavorites(id)}
+                onClick={() => (isLoggedIn ? handleFavorites(id) : notify())}
                 isFavorite={isFavorite}
               >
                 {isFavorite ? <RemoveFavoriteIcon /> : <AddFavoriteIcon />}

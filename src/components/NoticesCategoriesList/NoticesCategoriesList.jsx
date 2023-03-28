@@ -45,6 +45,8 @@ export const NoticesCategoriesList = () => {
             page,
           });
 
+          dispatch(getFavorites({ search, page }));
+
           setResults(notices.results);
         }
 
@@ -64,7 +66,7 @@ export const NoticesCategoriesList = () => {
       {status === Status.PENDING && isLoading && (
         <Box
           display="flex"
-          justifyContent="center"
+          justifyContent="start"
           alignItems="center"
           p="20px 50px"
         >
