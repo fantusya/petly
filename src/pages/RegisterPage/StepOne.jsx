@@ -29,7 +29,7 @@ export const StepOne = props => {
 
   return (
     <>
- fix/register
+      fix/register
       <CustomField
         type="email"
         name="email"
@@ -38,7 +38,6 @@ export const StepOne = props => {
         touched={props.touched}
         required
       />
-
       <Error name="email" component="div" />
       <Div>
         <CustomField
@@ -60,23 +59,18 @@ export const StepOne = props => {
           id="confirm"
           type={confirmVisibility ? 'text' : 'password'}
           name="confirm"
-
           placeholder="Confirm Password"
           errors={props.errors}
           touched={props.touched}
           required
-
-
         />
         <ButtonImg type="button" onClick={toggleShowcConfirm}>
           {confirmVisibility ? <OpenEyaIcon /> : <ClosedEyaIcon />}
         </ButtonImg>
         <Error name="confirm" component="div" />
       </Div>
-
       <Button type="submit" onClick={props.next} disabled={false}>
         Next
-
       </Button>
       <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">
         <GoogleImg src={GooglePic} alt="Google" />

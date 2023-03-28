@@ -18,8 +18,9 @@ import {
   AddFavoriteIcon,
   RemoveFavoriteIcon,
   AddFavoriteButton,
+  ConfirmWrapper,
 } from './NoticeCategoryItem.styled';
-import { Label } from 'components/commonComponents';
+import { Label, ModalButton } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
 import { useAuth, useNotices } from 'hooks';
@@ -79,10 +80,7 @@ export const NoticeCategoryItem = ({ notice }) => {
   }
 
   useEffect(() => {
-    if (
-      user.favorites.includes(id) ||
-      favoriteNotices.some(item => item._id === id)
-    ) {
+    if (favoriteNotices.some(item => item._id === id)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
@@ -91,15 +89,20 @@ export const NoticeCategoryItem = ({ notice }) => {
 
   const notify = () => toast(i18n.t('Please_login_or_register'));
 
-  const handleFavorites = id => {
-    if (isLoggedIn) {
-      isFavorite
-        ? dispatch(removeFromFavorites(id))
-        : dispatch(addToFavorites(id));
-      dispatch(getFavorites());
-      return;
+  const handleFavorites = async id => {
+    if (isFavorite) {
+      dispatch(removeFromFavorites(id));
+    } else {
+      dispatch(addToFavorites(id));
     }
-    notify();
+    dispatch(getFavorites({}));
+    return;
+  };
+
+  const [deletionConfirmation, setDeletionConfirmation] = useState(false);
+
+  const handleDeletion = () => {
+    setDeletionConfirmation(!deletionConfirmation);
   };
 
   return (
@@ -116,7 +119,7 @@ export const NoticeCategoryItem = ({ notice }) => {
             >
               <Label>{categoryName}</Label>
               <AddFavoriteButton
-                onClick={() => handleFavorites(id)}
+                onClick={() => (isLoggedIn ? handleFavorites(id) : notify())}
                 isFavorite={isFavorite}
               >
                 {isFavorite ? <RemoveFavoriteIcon /> : <AddFavoriteIcon />}
