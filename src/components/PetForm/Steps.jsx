@@ -1,5 +1,8 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import i18n from 'i18n';
+import toast from 'react-hot-toast';
 
 import {
   PetBox,
@@ -14,6 +17,9 @@ import {
   AddPhotoIcon,
   HiddenInput,
   PetAvatarBtn,
+  PreviewContainer,
+  PreviewImg,
+  RemoveImgBtn,
 } from './PetForm.styled';
 
 import { Box } from 'components/Box/Box';
@@ -71,32 +77,69 @@ const OneStep = ({ next, closeModal }) => {
   );
 };
 
-const TwoStep = ({ back, handleChange }) => {
+const TwoStep = ({ back, onSelectedImg }) => {
   const { t } = useTranslation();
 
+  // const [selectedFile, setSelectedFile] = useState(null);
+  const [previewImg, setPreviewImg] = useState(null);
+
   const filePicker = useRef(null);
+
+  const handleChange = e => {
+    const chosenImg = e.target.files[0];
+    console.log('chosenImg', chosenImg);
+
+    if (!e.target.files.length || !chosenImg) {
+      // setSelectedFile(null);
+      toast.warning(i18n.t('Choose an image to change avatar your pet!'));
+      return;
+    }
+    // setSelectedFile(chosenImg);
+
+    onSelectedImg(chosenImg);
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      setPreviewImg(e.target.result);
+    };
+    reader.readAsDataURL(chosenImg);
+  };
+
+  const handleDeleteImg = e => {
+    onSelectedImg(null);
+    setPreviewImg(null);
+  };
 
   return (
     <>
       <PetWrap>
-        <LabelText htmlFor="photoURL">
-          {' '}
-          {t('Add_photo_comments')}
-          <PetAvatarBtn
-            type="button"
-            onClick={() => filePicker.current.click()}
-          >
-            <AddPhotoIcon width={48} height={48} />
-          </PetAvatarBtn>
-          <HiddenInput
-            ref={filePicker}
-            type="file"
-            name="photoURL"
-            onChange={handleChange}
-            accept="image/*,.png,.jpg,.gif,.web"
-          />
-          <ErrorValidation name="photoURL" component="div" />
-        </LabelText>
+        {previewImg ? (
+          <PreviewContainer>
+            <RemoveImgBtn type="button" onClick={handleDeleteImg}>
+              &times;
+            </RemoveImgBtn>
+            <PreviewImg src={previewImg} alt="Preview" />
+          </PreviewContainer>
+        ) : (
+          <LabelText htmlFor="photoURL">
+            {' '}
+            {t('Add_photo_comments')}
+            <PetAvatarBtn
+              type="button"
+              onClick={() => filePicker.current.click()}
+            >
+              <AddPhotoIcon width={48} height={48} />
+            </PetAvatarBtn>
+            <HiddenInput
+              ref={filePicker}
+              type="file"
+              name="photoURL"
+              onChange={handleChange}
+              accept="image/*,.png,.jpg,.gif,.web"
+            />
+            <ErrorValidation name="photoURL" component="div" />
+          </LabelText>
+        )}
       </PetWrap>
 
       <Box mb={40}>

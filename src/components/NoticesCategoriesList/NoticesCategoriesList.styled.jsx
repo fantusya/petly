@@ -5,4 +5,5 @@ export const NoticesCardsList = styled.ul`
   flex-wrap: wrap;
   gap: 32px;
   align-items: stretch;
+  cursor: ${p => (p.isLoading ? 'wait' : 'default')};
 `;

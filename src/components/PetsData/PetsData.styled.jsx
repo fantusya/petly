@@ -35,6 +35,7 @@ export const Title = styled.h2`
 
   color: ${p => p.theme.colors.black};
 
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: ${p => p.theme.lineHeights.text};
@@ -47,7 +48,9 @@ export const Title = styled.h2`
 `;
 
 export const TitleBtn = styled.h2`
+  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
+  font-weight: ${p => p.theme.fontWeights.medium};
 `;
 
 export const Button = styled.button`
@@ -65,6 +68,13 @@ export const Button = styled.button`
   background-color: ${p => p.theme.colors.accent};
 
   cursor: pointer;
+
+  transition: background-color ${p => p.theme.transition.main};
+
+  &:hover,
+  &:focus {
+    background-color: ${p => p.theme.colors.hintTxt};
+  }
 `;
 
 export const AddIcon = styled(Icon)`

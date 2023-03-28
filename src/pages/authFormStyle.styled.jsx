@@ -237,10 +237,7 @@ const CustomField = props => {
   const { errors, touched, name } = props;
 
   useEffect(() => {
-    if (
-      Object.keys(errors).includes(name) &&
-      Object.keys(touched).includes(name)
-    ) {
+    if (Object.keys(errors).includes(name)) {
       return setIsError(true);
     }
     setIsError(false);
