@@ -13,6 +13,8 @@ import Modal from 'components/Modal';
 import { ModalCloseButton } from 'components/commonComponents';
 import { CloseButtonWrapper } from 'components/NoticeModal/NoticeModal.styled';
 import { ReactComponent as Cross } from '../../images/svg/cross.svg';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 
 import {
   Container,
@@ -49,49 +51,53 @@ import { ReactComponent as FemaleIcon } from '../../images/svg/female.svg';
 import { addUserNotice } from 'api/notice';
 
 const validationSchema = Yup.object({
-  category: Yup.string().required('Choose category'),
+  category: Yup.string().required(i18n.t('Choose_category')),
   title: Yup.string()
-    .required('Title is required')
-    .min(2, 'Min 2 characters')
+    .required(i18n.t('Title_is_required'))
+    .min(2, i18n.t('Min_char'))
     .matches(
       /^([А-Яа-яЁёЇїІіЄєҐґ'\s]+|[a-zA-Z\s]+){2,}$/,
-      'Must contain only cahracters and spaces'
+      i18n.t('Must_contain_char')
     )
     .trim()
-    .max(48, '48 characters max'),
+    .max(48, i18n.t('Char_max')),
   name: Yup.string()
     .trim()
-    .min(2, 'Min 2 characters')
-    .required('Name is required')
+    .min(2, i18n.t('Min_char'))
+    .required(i18n.t('Name_required'))
     .matches(
       /^([А-Яа-яЁёЇїІіЄєҐґ'\s]+|[a-zA-Z\s]+){2,}$/,
-      'Must contain only cahracters and spaces'
+      i18n.t('Must_contain_char')
     )
-    .max(16, '16 characters max'),
+    .max(16, i18n.t('Sixteen_char_max')),
   birthDate: Yup.date()
-    .required('Choose date of birth')
-    .max(new Date(), 'Date must be in the past'),
+    .required(i18n.t('Choose_date_birth'))
+    .max(new Date(), i18n.t('Date_past')),
   breed: Yup.string()
-    .required('Breed is required')
-    .min(2, 'Min 2 characters')
-    .matches(/^([А-Яа-яЁёЇїІіЄєҐґ'\s]+|[a-zA-Z\s]+){2,}$/, 'only letters')
+    .required(i18n.t('Breed_required'))
+    .min(2, i18n.t('Min_char'))
+    .matches(
+      /^([А-Яа-яЁёЇїІіЄєҐґ'\s]+|[a-zA-Z\s]+){2,}$/,
+      i18n.t('Only_letters')
+    )
     .trim()
-    .max(24, '24 characters max'),
-  location: Yup.string().required('Type the location'),
-  sex: Yup.string().required('Choose sex'),
+    .max(24, i18n.t('Tw_char_max')),
+  location: Yup.string().required(i18n.t('Type_location')),
+  sex: Yup.string().required(i18n.t('Choose_sex')),
   price: Yup.string()
-    .required('Set price')
-    .matches(/^[0-9][0-9]*$/, 'Numbers only'),
+    .required(i18n.t('Set_price'))
+    .matches(/^[0-9][0-9]*$/, i18n.t('Numbers_only')),
   comments: Yup.string()
     .trim()
-    .required('Type comments')
-    .min(8, 'Min 8 characters')
-    .max(120, '120 characters max'),
+    .required(i18n.t('Type_comments'))
+    .min(8, i18n.t('Eight_char_min'))
+    .max(120, i18n.t('Oh_char_max')),
 });
 
 const AddNoticeModal = ({ handleButtonToggle }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [showModal, setShowModal] = useState(true);
   const [isFirstRegStep, setIsFirstRegStep] = useState(true);
@@ -167,7 +173,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
             </ModalCloseButton>
           </CloseButtonWrapper>
 
-          <Title>Add pet</Title>
+          <Title>{t('Add_pet')}</Title>
           <form
             encType="multipart/form-data"
             onSubmit={e => {
@@ -177,10 +183,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
           >
             {isFirstRegStep && (
               <FirstForm>
-                <UserComment>
-                  You can add a pet for others to buy or take it into good
-                  hands.
-                </UserComment>
+                <UserComment>{t('You_can_add_pet')}</UserComment>
 
                 <RadioGroup onChange={formik.handleChange} required>
                   <RadioLabel>
@@ -193,7 +196,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                       value="lost/found"
                       id="lost/found"
                     />
-                    <RadioButton>lost/found</RadioButton>
+                    <RadioButton>{t('lost_found')}</RadioButton>
                   </RadioLabel>
                   <RadioLabel>
                     <RadioInput
@@ -205,7 +208,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                       value="in good hands"
                       id="in good hands"
                     />
-                    <RadioButton>in good hands</RadioButton>
+                    <RadioButton>{t('in_good_hands')}</RadioButton>
                   </RadioLabel>
                   <RadioLabel>
                     <RadioInput
@@ -217,63 +220,63 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                       value="sell"
                       id="sell"
                     />
-                    <RadioButton>sell</RadioButton>
+                    <RadioButton>{t('sell')}</RadioButton>
                   </RadioLabel>
                 </RadioGroup>
 
                 <InputCont>
                   <TextLabel>
-                    Title of ad
+                    {t('Title_of_ad')}
                     <TextInput
                       value={formik.values.title}
                       onChange={formik.handleChange}
                       name="title"
-                      placeholder="Type name"
+                      placeholder={t('Type_name')}
                       required
                       minLength="2"
                       maxLength="48"
-                      title="Length of title should be 2-16 letters"
+                      title={t('Length_title')}
                     />
                   </TextLabel>
                 </InputCont>
                 <InputCont>
                   <TextLabel>
-                    Name pet
+                    {t('Name_pet')}
                     <TextInput
                       value={formik.values.name}
                       onChange={formik.handleChange}
                       name="name"
-                      placeholder="Type name pet"
+                      placeholder={t('Type_name_pet')}
                       required
                       minLength="2"
                       maxLength="48"
-                      title="Length of title should be 2-16 letters"
+                      title={t('Length_name')}
                     />
                   </TextLabel>
                 </InputCont>
                 <InputCont>
                   <TextLabel>
-                    Date of birth
+                    {t('Date_of_birth')}
                     <DateInput
                       value={formik.values.birthDate}
                       onChange={formik.handleChange}
                       name="birthDate"
                       type="date"
-                      placeholder="Type date of birth"
+                      placeholder={t('Type_date_of_birth')}
                       required
                       pattern="^(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)[0-9]{2}$"
-                      title="birthDate should be in format dd.mm.yyyy"
+                      title={t('birthDate_format')}
                     />
                   </TextLabel>
                 </InputCont>
                 <InputCont>
                   <TextLabel>
-                    Breed
+                    {t('Breed')}
                     <TextInput
                       value={formik.values.breed}
                       onChange={formik.handleChange}
                       name="breed"
-                      placeholder="Type breed"
+                      placeholder={t('Type_breed')}
                       required
                       minLength="2"
                       maxLength="24"
@@ -286,7 +289,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
             {!isFirstRegStep && (
               <>
                 <SexFormBox>
-                  <BoxQuestion>The sex:</BoxQuestion>
+                  <BoxQuestion>{t('The_sex')}:</BoxQuestion>
 
                   <InputRadio
                     id="malePet"
@@ -300,7 +303,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                     <MaleIconBox>
                       <MaleIcon />
                     </MaleIconBox>
-                    Male
+                    {t('Male')}
                   </SexLabel>
 
                   <InputRadio
@@ -315,12 +318,12 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                     <FemaleIconBox>
                       <FemaleIcon />
                     </FemaleIconBox>
-                    Female
+                    {t('Female')}
                   </SexLabel>
                 </SexFormBox>
                 <InputCont>
                   <TextLabel htmlFor="locationPet">
-                    Location:
+                    {t('Location')}:
                     {formik.values.location !== '' && formik.errors.location ? (
                       <p>{formik.errors.location}</p>
                     ) : null}
@@ -330,14 +333,14 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                       name="location"
                       type="text"
                       onChange={formik.handleChange}
-                      placeholder="Type Location (City, Region)"
+                      placeholder={t('Type_Location')}
                     />
                   </TextLabel>
                 </InputCont>
                 <InputCont>
                   {formik.values.category === 'sell' && (
                     <TextLabel htmlFor="pricePet">
-                      Price:
+                      {t('Price')}:
                       {formik.values.price !== '' && formik.errors.price ? (
                         <p>{formik.errors.price}</p>
                       ) : null}
@@ -347,14 +350,14 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.price}
-                        placeholder="Type price"
+                        placeholder={t('Type_price')}
                       />
                     </TextLabel>
                   )}
                 </InputCont>
 
                 <ImageInputWrapper>
-                  <ImageTitle>Load the pet's image:</ImageTitle>
+                  <ImageTitle>{t('Load_img')}:</ImageTitle>
                   {formik.values.photoURL === null ? (
                     <PhotoAddContainer htmlFor="imagePet">
                       <svg
@@ -390,7 +393,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
                 </ImageInputWrapper>
                 <InputContTextArea>
                   <TextLabel htmlFor="commentsAd">
-                    Comments
+                    {t('Comments')}
                     {formik.values.comments !== '' && formik.errors.comments ? (
                       <p>{formik.errors.comments}</p>
                     ) : null}
@@ -410,14 +413,20 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
 
             <ActionButtonsWrapper>
               {isFirstRegStep ? (
-                <ActionButton onClick={handleModalToggle}>Cancel</ActionButton>
+                <ActionButton onClick={handleModalToggle}>
+                  {t('Cancel')}
+                </ActionButton>
               ) : (
-                <ActionButton onClick={moveNextRegStep}>Back</ActionButton>
+                <ActionButton onClick={moveNextRegStep}>
+                  {t('Back')}
+                </ActionButton>
               )}
               {isFirstRegStep ? (
-                <ActionButton onClick={moveNextRegStep}> Next</ActionButton>
+                <ActionButton onClick={moveNextRegStep}>
+                  {t('Next')}
+                </ActionButton>
               ) : (
-                <ActionButton type="submit">Done</ActionButton>
+                <ActionButton type="submit">{t('Done')}</ActionButton>
               )}
             </ActionButtonsWrapper>
           </form>

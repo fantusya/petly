@@ -6,6 +6,7 @@ import { PageTitle } from 'components/commonComponents/PageTitle.styled';
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
 import { useState, useEffect, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // import { useDispatch } from 'react-redux';
 // import { getFavorites } from 'redux/notices/operations';
@@ -13,6 +14,7 @@ import { useState, useEffect, Suspense } from 'react';
 export const NoticesPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (location.pathname === '/notices') {
@@ -34,7 +36,7 @@ export const NoticesPage = () => {
     <main>
       <Box as="section" pt={['100px', null, '160px', '127px']}>
         <Container>
-          <PageTitle>Find your favorite pet</PageTitle>
+          <PageTitle>{t('Find_pet')}</PageTitle>
           <SearchBar onSubmit={handleFormSubmit} />
           <NoticesCategoriesNav />
           <NoticesPageMain>
