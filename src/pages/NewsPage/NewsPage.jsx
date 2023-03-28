@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-hot-toast';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Container } from 'globalStyles/globalStyle';
 
 const NewsPage = () => {
   const { t } = useTranslation();
@@ -104,21 +105,23 @@ const NewsPage = () => {
       pr={['20px', '20px', '32px', '16px']}
       pb={['100px', '100px', '100px', '200px']}
     >
-      <PageTitle>{t('News')}</PageTitle>
+      <Container>
+        <PageTitle>{t('News')}</PageTitle>
 
-      <SearchBar onSubmit={handleFormSubmit} />
-      <NewsList>
-        {publicNews.map(article => (
-          <NewsItem
-            key={article._id}
-            title={article.title}
-            description={article.description}
-            date={article.date}
-            url={article.url}
-          />
-        ))}
-      </NewsList>
-      <ToastContainer />
+        <SearchBar onSubmit={handleFormSubmit} />
+        <NewsList>
+          {publicNews.map(article => (
+            <NewsItem
+              key={article._id}
+              title={article.title}
+              description={article.description}
+              date={article.date}
+              url={article.url}
+            />
+          ))}
+        </NewsList>
+        <ToastContainer />
+      </Container>
     </Box>
   );
 };
