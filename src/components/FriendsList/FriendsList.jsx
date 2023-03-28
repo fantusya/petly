@@ -1,4 +1,7 @@
-// import FriendsPopUp from "components/FriendsPopUp";
+import FriendsPopUp from "components/FriendsPopUp";
+
+import { DEFAULT_IMAGE_FRIENDS } from "constants/urls";
+import { EMPTY_FIELD } from "constants/emptyField";
 
 import {
   ListFriends,
@@ -23,12 +26,7 @@ export const FriendsList = ({ results }) => {
       workDays,
       _id,
     }) => {
-      const emptyField = '-----------------';
-      const placeholder =
-        'https://ucarecdn.com/63e1c87e-c59a-4af0-85f9-2eea65e645f3/placeholder_friend.png';
       let workTime = {};
-
-      console.log(results.length % 2);
 
       if (workDays && workDays.length !== 0) {
         workTime = workDays.find(item => item.isOpen === true);
@@ -47,7 +45,7 @@ export const FriendsList = ({ results }) => {
           )}
           <ItemFriendBox>
             <div>
-              <ItemFriendLogo src={imageUrl ? imageUrl : placeholder} alt={title} />
+              <ItemFriendLogo src={imageUrl ? imageUrl : DEFAULT_IMAGE_FRIENDS} alt={title} />
             </div>
             <div>
               <ul>
@@ -58,8 +56,9 @@ export const FriendsList = ({ results }) => {
                       {from} - {to}
                     </p>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
+                  <FriendsPopUp workDays={workDays}/>
                 </InfoFriendsItem>
                 <InfoFriendsItem>
                 <p>Address:</p>
@@ -68,7 +67,7 @@ export const FriendsList = ({ results }) => {
                       {address}
                     </InfoFriendsLink>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
                 </InfoFriendsItem>
                 <InfoFriendsItem>
@@ -78,7 +77,7 @@ export const FriendsList = ({ results }) => {
                       {email}
                     </InfoFriendsLink>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
                 </InfoFriendsItem>
                 <InfoFriendsItem>
@@ -88,7 +87,7 @@ export const FriendsList = ({ results }) => {
                       {phone}
                     </InfoFriendsLink>
                   ) : (
-                    <p>{emptyField}</p>
+                    <p>{EMPTY_FIELD}</p>
                   )}
                 </InfoFriendsItem>
               </ul>

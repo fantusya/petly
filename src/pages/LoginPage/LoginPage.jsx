@@ -16,7 +16,7 @@ import {
   Error,
   BoxAuth,
   LogoBg,
-  // Icon,
+  Icon,
 } from '../authFormStyle.styled';
 
 import { GoogleLoginButton, GoogleImg } from './LoginPage.styled.jsx';
