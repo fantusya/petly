@@ -70,7 +70,7 @@ const noticesSlice = createSlice({
       );
       state.favoriteNotices = res;
 
-      state.isLoading = false;
+      state.favoriteAction = false;
       state.error = false;
     },
     [removeFromFavorites.rejected](state) {

@@ -34,7 +34,6 @@ import {
 export const NoticeCategoryItem = ({ notice }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
-  console.log('USER', user);
 
   const [isFavorite, setIsFavorite] = useState(false);
   const { favoriteNotices, ownNotices } = useNotices();
@@ -76,6 +75,7 @@ export const NoticeCategoryItem = ({ notice }) => {
   }
 
   useEffect(() => {
+    console.log(user.favorites);
     if (
       user.favorites.includes(id) ||
       favoriteNotices.some(item => item._id === id)
@@ -91,15 +91,15 @@ export const NoticeCategoryItem = ({ notice }) => {
       position: 'top-center',
     });
 
-  const handleFavorites = id => {
-    if (isLoggedIn) {
-      isFavorite
-        ? dispatch(removeFromFavorites(id))
-        : dispatch(addToFavorites(id));
-      dispatch(getFavorites());
-      return;
+  const handleFavorites = async id => {
+    if (isFavorite) {
+      dispatch(removeFromFavorites(id));
+    } else {
+      dispatch(addToFavorites(id));
     }
-    notify();
+    dispatch(getFavorites({}));
+    //Lena added {}
+    return;
   };
 
   const [deletionConfirmation, setDeletionConfirmation] = useState(false);
