@@ -32,11 +32,9 @@ import {
   removeFromFavorites,
   removeUserNotice,
 } from 'redux/notices/operations';
-import { useNavigate } from 'react-router';
 
-export const NoticeCategoryItem = ({ notice }) => {
+export const NoticeCategoryItem = ({ notice, deleteCard }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { isLoggedIn, user } = useAuth();
   const { t } = useTranslation();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -176,15 +174,17 @@ export const NoticeCategoryItem = ({ notice }) => {
                     {deletionConfirmation ? (
                       <>
                         <ModalButton
+                          confirm={true}
                           onClick={() => {
                             handleDeletion();
-                            dispatch(removeUserNotice(id));
-                            navigate('/notices/own');
+                            dispatch(removeUserNotice(id)).then(() =>
+                              deleteCard(id)
+                            );
                           }}
                         >
                           {t('yes')}
                         </ModalButton>
-                        <ModalButton onClick={handleDeletion}>
+                        <ModalButton confirm={true} onClick={handleDeletion}>
                           {t('no')}
                         </ModalButton>
                       </>

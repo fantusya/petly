@@ -197,6 +197,7 @@ export const ConfirmWrapper = styled(Box)`
   margin-bottom: ${props => (props.isLogged ? '12px' : '0px')};
 
   display: flex;
+  justify-content: space-between;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 248px;
