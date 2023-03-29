@@ -21,7 +21,12 @@ export const PetCard = ({ pet }) => {
   const dispatch = useDispatch();
 
   const { _id, name, birthDate, breed, photoURL, comments } = pet;
+  const birthDateToObject = new Date(birthDate);
+  const stringifiedToDate = birthDateToObject.toLocaleDateString('ua');
+  // console.log('birthDate', birthDate);
+  // console.log(typeof birthDate);
 
+  //
   const handleDelete = () => {
     dispatch(removePet(_id));
 
@@ -41,7 +46,7 @@ export const PetCard = ({ pet }) => {
         </PetInfo>
         <PetInfo>
           <PetTitle>{t('Date_of_birth')}: </PetTitle>
-          {birthDate}
+          {stringifiedToDate}
         </PetInfo>
         <PetInfo>
           <PetTitle>{t('Breed')}: </PetTitle>

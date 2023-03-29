@@ -1,1 +1,1 @@
-export { default } from './UserBirthday';
+export { UserBirthday } from './UserBirthday';
