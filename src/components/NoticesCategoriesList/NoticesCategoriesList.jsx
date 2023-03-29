@@ -48,6 +48,7 @@ export const NoticesCategoriesList = () => {
           dispatch(getFavorites({ search, page }));
 
           setResults(notices.results);
+          console.log(notices.results);
         }
 
         // setResults(prevState => [...prevState, ...notices.results]);

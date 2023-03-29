@@ -42,6 +42,8 @@ export const NoticeCategoryItem = ({ notice }) => {
   // console.log('USER', user);
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isOwn, setIsOwn] = useState(false);
+
   const { favoriteNotices, ownNotices } = useNotices();
 
   const {
@@ -85,6 +87,12 @@ export const NoticeCategoryItem = ({ notice }) => {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
+    }
+
+    if (ownNotices.some(item => item._id === id)) {
+      setIsOwn(true);
+    } else {
+      setIsOwn(false);
     }
   }, [favoriteNotices, ownNotices, id, user.favorites]);
 
@@ -166,7 +174,7 @@ export const NoticeCategoryItem = ({ notice }) => {
                 >
                   {t('Learn_more')}
                 </NoticeButton>
-                {owner?.id === user._id ? (
+                {isOwn ? (
                   <NoticeButton
                     isLogged={isLoggedIn}
                     onClick={() => dispatch(removeUserNotice(id))}

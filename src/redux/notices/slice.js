@@ -95,9 +95,12 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [removeUserNotice.fulfilled](state, action) {
-      const index = state.ownNotices.indexOf(action.payload.result);
-      state.ownNotices.splice(index, 1);
-
+      // const index = state.ownNotices.indexOf(action.payload.result);
+      // state.ownNotices.splice(index, 1);
+      const res = state.ownNotices.filter(
+        item => action.payload.result !== item._id
+      );
+      state.ownNotices = res;
       state.isLoading = false;
       state.error = false;
     },
