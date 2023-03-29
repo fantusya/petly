@@ -190,8 +190,8 @@ border-radius: ${p => p.theme.radii.big};
 
 export const ErrorStyle = styled(ErrorMessage)`
   position: absolute;
-  left: 0;
-  bottom: -3px;
+  left: 20px;
+  bottom: -17px;
   font-size: ${p => p.theme.fontSizes[0]};
   color: ${p => p.theme.colors.error};
   @media (max-width: 767.9px {

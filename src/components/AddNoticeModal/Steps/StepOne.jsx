@@ -55,13 +55,13 @@ const StepOne = props => {
           <InputCont>
             <TextLabel htmlFor="title">Title of ad</TextLabel>
             <TextInput name="title" placeholder="Type notice title" />
-            <ErrorStyle name="title" />          
+            <ErrorStyle name="title" component="div"/>          
           </InputCont>
 
           <InputCont>         
             <TextLabel htmlFor="name">Name pet</TextLabel>
             <TextInput name="name" placeholder="Type name pet" />
-            <ErrorStyle name="name" />
+            <ErrorStyle name="name" component="div"/>
           </InputCont>
 
           <InputCont>
@@ -79,13 +79,13 @@ const StepOne = props => {
               }}  
               placeholder="Select the date"
               />  
-            <ErrorStyle name="birthDate" />
+            <ErrorStyle name="birthDate" component="div"/>
           </InputCont>
 
           <InputCont>
             <TextLabel htmlFor="breed">Breed</TextLabel>
             <TextInput name="breed" placeholder="Type breed" />
-            <ErrorStyle name="breed" />
+            <ErrorStyle name="breed" component="div"/>
           </InputCont>
 
           <ActionButtonsWrapper>
