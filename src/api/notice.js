@@ -20,11 +20,11 @@ export const getNoticeById = async id => {
 };
 
 export const addUserNotice = async credentials => {
-  const { data } = await privateRoutes.post(`api/notices`, credentials, {
+  const res = await privateRoutes.post(`api/notices`, credentials, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   });
-  console.log('addUserNotice', data);
-  return data;
+  console.log('addUserNotice', res);
+  return res;
 };

@@ -60,7 +60,6 @@ export const NoticesCategoriesNav = () => {
           </>
         )}
       </NavUl>
-      {/* {visibleBtn && <AddNoticeButton handleModalToggle={handleModalToggle} />} */}
       {open ? (
         <AddNoticeModal handleButtonToggle={handleButtonToggle} />
       ) : (

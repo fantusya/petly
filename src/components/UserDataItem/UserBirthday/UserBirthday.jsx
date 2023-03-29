@@ -5,6 +5,7 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
   InfoField,
@@ -18,8 +19,9 @@ import {
 
 const basicSchema = yup.object().shape({
   // birthDate: yup
-  //     .min(2, 'Too Short!')
-  //     .max(30, 'Too Long!'),
+  //   .date()
+  //   .typeError('Please enter a valid date')
+  //   .nullable(),
 });
 
 export const UserBirthday = ({ onUpdate, isDisabled }) => {
@@ -27,8 +29,7 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
 
   const { user } = useAuth();
   const dispatch = useDispatch();
-
-  console.log(user, 'user');
+  const { t } = useTranslation();
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -59,12 +60,12 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
   return (
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
-        <InfoProp>Birthday:</InfoProp>
+        <InfoProp>{t('Birthday')}:</InfoProp>
         <InfoInput
-          type="text"
+          type="date"
           name="birthday"
           value={values.birthDate}
-          placeholder={values.birthDate}
+          placeholder={user?.birthDate || '00.00.0000'}
           disabled={isDisabled || !isUpdating}
           onChange={handleChange}
           onBlur={handleBlur}

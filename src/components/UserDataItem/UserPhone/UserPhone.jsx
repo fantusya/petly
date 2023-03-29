@@ -5,6 +5,7 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
   InfoField,
@@ -19,9 +20,7 @@ import {
 const basicSchema = yup.object().shape({
   phone: yup
     .string()
-    .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
-    .min(13, 'Too Short!')
-    .max(13, 'Too Long!')
+    .matches(/^\+380\d{9}$/, 'Invalid phone number')
     .required('Phone is required'),
 });
 
@@ -30,13 +29,12 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
 
   const { user } = useAuth();
   const dispatch = useDispatch();
-
-  console.log(user, 'user');
+  const { t } = useTranslation();
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
-        phone: user?.phone || '+38000000000',
+        phone: user?.phone,
       },
       validationSchema: basicSchema,
       onSubmit: ({ phone }, { resetForm }) => {
@@ -49,7 +47,7 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
           return;
         }
 
-        dispatch(updateInfo(phone));
+        dispatch(updateInfo({ phone }));
 
         onUpdate();
         setIsUpdating(false);
@@ -62,7 +60,7 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
   return (
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
-        <InfoProp>Phone:</InfoProp>
+        <InfoProp>{t('Phone')}:</InfoProp>
         <InfoInput
           type="tel"
           name="phone"

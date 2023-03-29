@@ -82,6 +82,8 @@ export const ItemFriendBox = styled.div`
 `;
 
 export const ItemFriendName = styled.a`
+  padding-left: ${p => p.theme.space[1]}px;
+  padding-right: ${p => p.theme.space[1]}px;
   color: ${p => p.theme.colors.accent};
 
   text-align: center;
@@ -99,7 +101,7 @@ export const ItemFriendName = styled.a`
 
   @media (min-width: ${p => p.theme.breakpoints[0]}) {
     margin-bottom: ${p => p.theme.space[3] + 4}px;
-    height: 32px;
+    height: 44px;
 
     font-size: ${p => p.theme.fontSizes[2]};
   }
