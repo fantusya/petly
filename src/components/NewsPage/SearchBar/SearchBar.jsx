@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { search } from 'redux/notices/slice';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-hot-toast';
+// import { toast } from 'react-hot-toast';
 
 import {
   SearchBarForm,

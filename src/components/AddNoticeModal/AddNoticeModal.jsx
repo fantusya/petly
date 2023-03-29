@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import { getUserNotices } from 'redux/notices/operations';
-import { useDispatch } from 'react-redux';
+// import { getUserNotices } from 'redux/notices/operations';
+// import { useDispatch } from 'react-redux';
 
 import { addUserNotice } from 'api/notice';
 import StepOne from './Steps/StepOne';
