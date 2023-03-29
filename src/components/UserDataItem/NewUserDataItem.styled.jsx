@@ -3,7 +3,7 @@ import { up } from 'styled-breakpoints';
 import { Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ReactComponent as EditPenIcon } from 'images/userPage/editPenIcon.svg';
+import { ReactComponent as EditPenIcon } from '../../images/svg/pensil.svg';
 
 export const DataInputWrapp = styled.div`
   display: flex;
