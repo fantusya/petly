@@ -85,12 +85,12 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
       setIsFavorite(false);
     }
 
-    if (ownNotices.some(item => item._id === id) || owner?._id === user?._id) {
+    if (ownNotices.some(item => item?._id === id) || owner?._id === user?._id) {
       setIsOwn(true);
     } else {
       setIsOwn(false);
     }
-  }, [favoriteNotices, id, ownNotices, owner._id, user._id]);
+  }, [favoriteNotices, id, ownNotices, owner?._id, user?._id]);
 
   const notify = () => toast(i18n.t('Please_login_or_register'));
 
@@ -148,7 +148,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
                   <RecordContent>
                     {birthDate
                       ? moment(birthDate, 'YYYYMMDD').fromNow(true)
-                      : '00.00.0000'}
+                      : ''}
                   </RecordContent>
                 </Record>
                 {categoryName === 'sell' && (
