@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Flatpickr from 'react-flatpickr';
+import 'flatpickr/dist/themes/material_orange.css';
 import { theme } from 'globalStyles/theme';
 import { ReactComponent as PensilIcon } from 'images/svg/pensil.svg';
 import { ReactComponent as CheckIcon } from 'images/svg/check.svg';
@@ -40,6 +42,34 @@ export const InfoProp = styled.p`
 `;
 
 export const InfoInput = styled.input`
+  max-width: 159px;
+  padding: 4px 14px;
+  border: ${({ theme, disabled }) =>
+    disabled ? theme.borders.transparent : theme.borders.input};
+  border-radius: ${p => p.theme.radii.big};
+  outline: ${p => p.theme.colors.transparent};
+
+  font-size: ${p => p.theme.fontSizes[0]};
+  font-weight: ${p => p.theme.fontWeights.normal};
+
+  color: ${p => p.theme.colors.text};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.colors.transparent : theme.colors.background};
+
+  ::placeholder {
+    color: ${({ theme, disabled }) =>
+      disabled ? theme.colors.text : theme.colors.inputTxt};
+    opacity: 1;
+  }
+
+  @media (min-width: ${theme.breakpoints[1]}) {
+    max-width: 216px;
+    padding: 3px 12px 4px 12px;
+    font-size: ${theme.fontSizes[3]};
+  }
+`;
+
+export const FlatpickrStyled = styled(Flatpickr)`
   max-width: 159px;
   padding: 4px 14px;
   border: ${({ theme, disabled }) =>
