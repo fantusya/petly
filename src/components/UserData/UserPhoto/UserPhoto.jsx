@@ -22,8 +22,7 @@ export const UserPhoto = () => {
   const [isFileSelected, setIsFileSelected] = useState(false);
   const { t } = useTranslation();
 
-  const { user, name } = useAuth();
-  const { avatarURL } = user;
+  const { user } = useAuth();
 
   const dispatch = useDispatch();
   const filePicker = useRef(null);
@@ -59,8 +58,8 @@ export const UserPhoto = () => {
   return (
     <AvatarWrapper>
       <AddAvatarBtn onClick={() => filePicker.current.click()}>
-        {avatarURL ? (
-          <AvatarImg srcSet={avatarURL} alt={name} width="233px" />
+        {user.avatarURL ? (
+          <AvatarImg src={user.avatarURL} alt={user.name} width="233px" />
         ) : (
           <AvatarPlus />
         )}
