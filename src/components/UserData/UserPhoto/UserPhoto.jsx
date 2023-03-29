@@ -78,14 +78,14 @@ export const UserPhoto = () => {
 
           <EditPhotoBtn type="submit" onClick={handleUpload}>
             <Kamera />
-            <span>Edit photo</span>
+            <span>{t('Edit_photo')}</span>
           </EditPhotoBtn>
         </div>
       )}
-      <EditPhotoBtn type="submit" onClick={handleUpload}>
+      {/* <EditPhotoBtn type="submit" onClick={handleUpload}>
         <Kamera />
         <span>{t('Edit_photo')}</span>
-      </EditPhotoBtn>
+      </EditPhotoBtn> */}
     </AvatarWrapper>
   );
 };
