@@ -1,4 +1,5 @@
 // import * as yup from 'yup';
+import PhoneInput from 'react-phone-input-2';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Formik } from 'formik';
@@ -93,8 +94,8 @@ const UserDataItem = () => {
   const onSubmit = event => {
     // console.log('startDate', startDate);
     // console.log(typeof startDate);
-    console.log('event.birthDate', event.birthDate);
-    console.log(typeof event.birthDate);
+    console.log('event.phone', event.phone);
+    console.log(typeof event.phone);
 
     dispatch(
       updateInfo({
@@ -282,8 +283,26 @@ const UserDataItem = () => {
               </InputWrapper>
 
               <InputWrapper>
-                <Label htmlFor="phone">{t('Phone')}:</Label>
-                <Input
+                {/* <Label htmlFor="phone">{t('Phone')}:</Label> */}
+                <PhoneInput
+                  // name="phone"
+                  type="tel"
+                  disabled={isPhoneDisabled}
+                  // className={css}
+                  onlyCountries={['ua']}
+                  country={'ua'}
+                  countryCodeEditable={false}
+                  // defaultCountry={'ua'}
+                  errors={errors}
+                  value={user?.phone}
+                  onChange={phone => {
+                    console.log('phone', `+${phone}`);
+
+                    setFieldValue('phone', `+${phone}`);
+                  }}
+                />
+
+                {/* <Input
                   type="text"
                   name="phone"
                   disabled={isPhoneDisabled}
@@ -302,7 +321,7 @@ const UserDataItem = () => {
                       isPhoneDisabled ? 'transparent' : '#FDF7F2'
                     }`,
                   }}
-                />
+                /> */}
                 {isPhoneDisabled && (
                   <EditBtn
                     type="submit"
