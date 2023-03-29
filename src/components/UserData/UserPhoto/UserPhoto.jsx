@@ -8,7 +8,7 @@ import i18n from 'i18n';
 
 import {
   AvatarWrapper,
-  Avatar,
+  AvatarImg,
   AddAvatarBtn,
   HiddenInput,
   EditPhotoBtn,
@@ -58,30 +58,27 @@ export const UserPhoto = () => {
 
   return (
     <AvatarWrapper>
-      {avatarURL ? (
-        <Avatar>
-          <img srcSet={avatarURL} alt={name} width="233px" />
-        </Avatar>
-      ) : (
-        <div>
-          <AddAvatarBtn onClick={() => filePicker.current.click()}>
-            {isFileSelected ? <Check /> : <AvatarPlus />}
-          </AddAvatarBtn>
+      <AddAvatarBtn onClick={() => filePicker.current.click()}>
+        {avatarURL ? (
+          <AvatarImg srcSet={avatarURL} alt={name} width="233px" />
+        ) : (
+          <AvatarPlus />
+        )}
+        {/* {isFileSelected ? <Check /> : <AvatarPlus />} */}
+      </AddAvatarBtn>
 
-          <HiddenInput
-            ref={filePicker}
-            type="file"
-            name="avatar"
-            onChange={handleChange}
-            accept="image/*,.png,.jpg,.gif,.web"
-          />
+      <HiddenInput
+        ref={filePicker}
+        type="file"
+        name="avatar"
+        onChange={handleChange}
+        accept="image/*,.png,.jpg,.gif,.web"
+      />
 
-          <EditPhotoBtn type="submit" onClick={handleUpload}>
-            <Kamera />
-            <span>{t('Edit_photo')}</span>
-          </EditPhotoBtn>
-        </div>
-      )}
+      <EditPhotoBtn type="submit" onClick={handleUpload}>
+        <Kamera />
+        <span>{t('Edit_photo')}</span>
+      </EditPhotoBtn>
     </AvatarWrapper>
   );
 };
