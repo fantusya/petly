@@ -5,8 +5,20 @@ import { ReactComponent as Heart } from '../../images/svg/notFavorite.svg';
 import { Label, ModalButton } from 'components/commonComponents';
 
 export const ModalContainer = styled(Box)`
-  padding: 20px;
+  // width: 280px;
+
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
   cursor: default;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 100%;
+
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
 `;
 
 export const Wrapper = styled(Box)`
@@ -157,13 +169,9 @@ export const CloseButtonWrapper = styled(Box)`
   position: absolute;
   top: 20px;
   right: 20px;
-  // @media (min-width: ${p => p.theme.breakpoints[1]}) {
-
-  // }
 `;
 
 export const ContactButton = styled.a`
-  width: 100%;
   height: 40px;
 
   margin-bottom: 12px;
@@ -196,5 +204,6 @@ export const ContactButton = styled.a`
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 160px;
     margin-bottom: 0px;
+    margin-right: 12px;
   }
 `;
