@@ -1,8 +1,25 @@
 import { useRef } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { stepTwoSchema } from 'helpers/validationSchemas/addNotice';
 
 import { PreviewContainer, RemoveImgBtn, PreviewImg } from './Steps.styled';
+import {
+  BoxQuestion, FormWrapper, InputRadio, SexFormBox, SexLabel,
+  MaleIconBox,
+  FemaleIconBox,
+  ActionButtonsWrapper,
+  ActionButton,
+  TextAreaInput,
+  ErrorStyle,
+  TextLabel,
+  InputCont,
+  TextInput,
+  PhotoPetBtn,
+  InputContTextArea, 
+} from '../AddNoticeModal.styled';
+
+import { AddPhotoIcon } from 'components/PetForm/PetForm.styled';
+
 
 const StepTwo = props => {
   const filePicker = useRef(null);
@@ -18,26 +35,38 @@ const StepTwo = props => {
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue }) => (
-        <Form>
-          <p>The sex</p>
-          <span>male</span>
-          <Field type="radio" name="sex" value="male" checked />
-          <span>female</span>
-          <Field type="radio" name="sex" value="female" />
+        <FormWrapper>
 
-          <p>Location</p>
-          <Field name="location" />
-          <ErrorMessage name="location" placeholder="Type pet location" />
+          <SexFormBox>
+            <BoxQuestion>The sex:</BoxQuestion>
+              <SexLabel checkedSex={values.sex === "male"}>
+                <MaleIconBox/>
+                Male
+                <InputRadio type="radio" name="sex" value="male" checked />
+              </SexLabel>
+
+              <SexLabel checkedSex={values.sex === "female"}>
+                <FemaleIconBox/>
+                Female
+                <InputRadio type="radio" name="sex" value="female" />
+              </SexLabel>
+          </SexFormBox>
+
+          <InputCont>
+            <TextLabel htmlFor="location">Location:</TextLabel>
+            <TextInput name="location" placeholder="Type pet location"/>
+            <ErrorStyle name="location"/>
+          </InputCont>
 
           {props.data.category === 'sell' && (
-            <>
-              <p>Price</p>
-              <Field name="price" />
-              <ErrorMessage name="price" placeholder="Type pet price" />
-            </>
+            <InputCont>
+              <TextLabel htmlFor="price">Price:</TextLabel>
+              <TextInput name="price" placeholder="Type pet price" />
+              <ErrorStyle name="price"/>
+            </InputCont>
           )}
 
-          <p>Load the pet's image</p>
+          <TextLabel>Load the pet's image</TextLabel>
           <input
             hidden
             ref={filePicker}
@@ -69,23 +98,37 @@ const StepTwo = props => {
               <PreviewImg src={values?.preview} alt="Preview" />
             </PreviewContainer>
           ) : (
-            <button type="button" onClick={() => filePicker.current.click()}>
-              Здесь будет плюсик / превью картинки
-            </button>
+            <PhotoPetBtn type="button" onClick={() => filePicker.current.click()} >
+              <AddPhotoIcon width={48} height={48} />
+            </PhotoPetBtn>
           )}
 
-          <p>Comments</p>
-          <Field name="comments" />
-          <ErrorMessage
-            name="comments"
-            placeholder="Tell us anything about your pet:)"
-          />
+          <InputContTextArea>
+            <TextLabel htmlFor="comments">
+                Comments
+            </TextLabel>
+            <TextAreaInput
+              name="comments"
+              // as="textarea"
+              type="text" 
+              rows="4"
+              placeholder="Type comments"
+              required="Required comments"
+              />
+            <ErrorStyle
+              name="comments"
+              component="div"
+              // placeholder="Tell us anything about your pet:)"
+            />
+          </InputContTextArea>
 
-          <button type="button" onClick={() => props.prev(values)}>
-            Back
-          </button>
-          <button type="submit">Done</button>
-        </Form>
+          <ActionButtonsWrapper>
+            <ActionButton type="button" onClick={() => props.prev(values)}>
+              Back
+            </ActionButton>
+            <ActionButton type="submit">Done</ActionButton>
+          </ActionButtonsWrapper>
+        </FormWrapper>
       )}
     </Formik>
   );

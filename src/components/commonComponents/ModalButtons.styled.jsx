@@ -30,7 +30,7 @@ export const ModalButton = styled.button`
 
   transition: ${p => p.theme.transition.main};
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     max-width: 160px;
 
     &:not(:last-child) {

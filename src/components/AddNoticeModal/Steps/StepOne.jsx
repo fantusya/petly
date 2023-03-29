@@ -1,9 +1,19 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import Flatpickr from 'react-flatpickr';
-import 'flatpickr/dist/themes/material_orange.css';
+import { Formik } from 'formik';
 
 import { stepOneSchema } from 'helpers/validationSchemas/addNotice';
 import { TextField } from 'helpers/addNoticeCustomField/noticeInput';
+import {
+  ActionButton,
+  ActionButtonsWrapper,
+  DateInput,
+  ErrorStyle,
+  FormWrapper,
+  InputCont,
+  RadioGroup,
+  TextInput,
+  TextLabel,
+  UserComment,
+} from '../AddNoticeModal.styled';
 
 const StepOne = props => {
   const handleSubmit = values => {
@@ -17,9 +27,10 @@ const StepOne = props => {
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue }) => (
-        <Form>
-          <p>Choose category of notice</p>
-          <div>
+        <FormWrapper>
+          <UserComment>You can add a pet for others to buy or take it into good
+              hands.</UserComment>
+          <RadioGroup>
             <TextField
               type="radio"
               name="category"
@@ -39,40 +50,51 @@ const StepOne = props => {
               value="lost-found"
               label="lost-found"
             />
-          </div>
+          </RadioGroup>
 
-          <p>Tittle of ad</p>
-          <Field name="title" placeholder="Type notice title" />
-          <ErrorMessage name="title" />
+          <InputCont>
+            <TextLabel htmlFor="title">Title of ad</TextLabel>
+            <TextInput name="title" placeholder="Type notice title" />
+            <ErrorStyle name="title" />          
+          </InputCont>
 
-          <p>Name pet</p>
-          <Field name="name" placeholder="Type name pet" />
-          <ErrorMessage name="name" />
+          <InputCont>         
+            <TextLabel htmlFor="name">Name pet</TextLabel>
+            <TextInput name="name" placeholder="Type name pet" />
+            <ErrorStyle name="name" />
+          </InputCont>
 
-          <p>Date of birth</p>
-          <Flatpickr
-            data-enable-time
-            value={values?.birthDate}
-            options={{
-              maxDate: 'today',
-              enableTime: false,
-              dateFormat: 'd.m.Y',
-            }}
-            onChange={date => {
-              setFieldValue('birthDate', date[0].toLocaleDateString());
-            }}
-          />
-          <ErrorMessage name="birthDate" />
+          <InputCont>
+            <TextLabel htmlFor="birthDate">Date of birth</TextLabel>
+            <DateInput
+                data-enable-time
+                value={values?.birthDate}
+                options={{
+                  maxDate: 'today',
+                  enableTime: false,
+                  dateFormat: 'd.m.Y',
+                }}
+                onChange={date => {
+                  setFieldValue('birthDate', date[0].toLocaleDateString());
+              }}  
+              placeholder="Select the date"
+              />  
+            <ErrorStyle name="birthDate" />
+          </InputCont>
 
-          <p>Breed</p>
-          <Field name="breed" placeholder="Type breed" />
-          <ErrorMessage name="breed" />
+          <InputCont>
+            <TextLabel htmlFor="breed">Breed</TextLabel>
+            <TextInput name="breed" placeholder="Type breed" />
+            <ErrorStyle name="breed" />
+          </InputCont>
 
-          <button type="submit">Next</button>
-          <button type="button" onClick={props.handleModalToggle}>
-            Cancel
-          </button>
-        </Form>
+          <ActionButtonsWrapper>
+            <ActionButton type="button" onClick={props.handleModalToggle}>
+              Cancel
+            </ActionButton>
+            <ActionButton type="submit">Next</ActionButton>
+          </ActionButtonsWrapper>
+        </FormWrapper>
       )}
     </Formik>
   );
