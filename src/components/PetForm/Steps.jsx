@@ -4,6 +4,8 @@ import { useState } from 'react';
 import i18n from 'i18n';
 import toast from 'react-hot-toast';
 
+// import flatpickr from "flatpickr";
+
 import {
   PetBox,
   PetWrap,
@@ -27,6 +29,23 @@ import { Box } from 'components/Box/Box';
 const OneStep = ({ next, closeModal, errors, isValid }) => {
   const { t } = useTranslation();
 
+  // const fp = flatpickr("#birthDate", {
+  //   altInput: true,
+  //     altFormat: "j F Y",
+  //     dateFormat: "Y-m-d",
+  //     disable: [
+  //       {
+  //           from: new Date(),
+  //           to: "2030-01-01",
+  //       }
+  //   ],
+  // });
+
+  // // console.log('fp', fp);
+
+  //  date-вибрана дата, не можна покласти в стейт
+  // const date = fp?.selectedDates?.[0];
+
   return (
     <>
       <PetBox>
@@ -34,6 +53,7 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
           {' '}
           {t('Name_pet')}
           <Input
+            id="name"
             type="text"
             name="name"
             placeholder={t('Type_name_pet')}
@@ -48,8 +68,12 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
           {' '}
           {t('Date_of_birth')}
           <Input
+            id="birthDate"
             type="date"
             name="birthDate"
+            // value={date}
+            // onChange={() => {console.log(fp.current.flatpickr.selectedDates[0])}}
+
             placeholder={t('Type_date_of_birth')}
             autoFocus
           />
@@ -62,6 +86,7 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
           {' '}
           {t('Breed')}
           <Input
+            id="breed"
             type="text"
             name="breed"
             placeholder={t('Type_breed')}

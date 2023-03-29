@@ -8,7 +8,7 @@ export const validationPetSchema = yup.object().shape({
     .max(16, 'Maximum 16 symbols')
     .trim()
     .required('Required name'),
-  birthDate: yup.date().max(new Date()).required('Required birthDate'),
+  birthDate: yup.date().max(new Date()).required('Required birth date'),
   breed: yup
     .string()
     .matches(/[a-zA-Zа-яА-ЯіІїЇґҐёЁєЄ]/, 'Use only letters.')

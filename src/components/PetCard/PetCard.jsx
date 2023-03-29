@@ -41,7 +41,7 @@ export const PetCard = ({ pet }) => {
         </PetInfo>
         <PetInfo>
           <PetTitle>{t('Date_of_birth')}: </PetTitle>
-          {birthDate}
+          {birthDate.slice(0, 10)}
         </PetInfo>
         <PetInfo>
           <PetTitle>{t('Breed')}: </PetTitle>
