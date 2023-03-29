@@ -102,6 +102,7 @@ export const RegisterPage = () => {
                       errors={errors}
                       touched={touched}
                       isValid={!isValid}
+                      values={values}
                     />
                   )}
                   {currentStep === 1 && (
@@ -109,7 +110,7 @@ export const RegisterPage = () => {
                       back={handlePrevStep}
                       errors={errors}
                       touched={touched}
-                      values={values.phone}
+                      values={values}
                       setFieldValue={setFieldValue}
                     />
                   )}
