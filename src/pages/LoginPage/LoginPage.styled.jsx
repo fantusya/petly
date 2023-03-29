@@ -101,6 +101,6 @@ export const StyledContainer = styled(ToastContainer)`
   .Toastify__toast-body {
   }
   .Toastify__progress-bar {
-    border-radius: 3px solid red;
+    background-color: ${p => p.theme.colors.accent};
   }
 `;
