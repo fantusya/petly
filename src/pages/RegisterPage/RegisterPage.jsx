@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
 
 // import { useFetchingData } from 'hooks';
 
@@ -66,9 +67,19 @@ export const RegisterPage = () => {
     { email, password, name, city, phone },
     { resetForm }
   ) => {
+    // console.log('phone', phone);
+    // if (!phone) {
+    //   toast.error('Please enter your phone');
+    // }
+    if (phone.length !== 13) {
+      console.log('INVALID');
+      toast.error('Please enter your phone');
+      return;
+    }
     const resultSignup = await dispatch(
       signup({ email, password, name, city, phone })
     );
+
     if (resultSignup.type === 'auth/signup/fulfilled') {
       console.log('resultSignup', resultSignup);
       const resultLogIn = await dispatch(logIn({ email, password }));
