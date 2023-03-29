@@ -58,6 +58,11 @@ export const NoticesCategoriesList = () => {
     getNotices();
   }, [categoryName, search, page, dispatch]);
 
+  const deleteCard = id => {
+    const res = results.filter(c => c._id !== id);
+    setResults(res);
+  };
+
   return (
     <>
       {status === Status.PENDING && isLoading && (
@@ -83,7 +88,11 @@ export const NoticesCategoriesList = () => {
               ))
             : null}
           {results.map(item => (
-            <NoticeCategoryItem key={item._id} notice={item} />
+            <NoticeCategoryItem
+              key={item._id}
+              notice={item}
+              deleteCard={deleteCard}
+            />
           ))}
         </NoticesCardsList>
       )}

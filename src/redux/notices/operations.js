@@ -68,7 +68,6 @@ export const removeUserNotice = createAsyncThunk(
   async (noticeId, thunkAPI) => {
     try {
       const { data } = await privateRoutes.delete(`api/notices/id/${noticeId}`);
-      console.log('removeUserNotice', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
