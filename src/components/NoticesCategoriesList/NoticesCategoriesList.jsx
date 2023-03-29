@@ -13,7 +13,7 @@ import { Box } from 'components/Box/Box';
 export const NoticesCategoriesList = () => {
   const [status, setStatus] = useState(Status.IDLE);
   const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   const { ownNotices, favoriteNotices } = useNotices();
 
