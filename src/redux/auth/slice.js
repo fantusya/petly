@@ -103,7 +103,10 @@ const authSlice = createSlice({
       state.error = false;
     },
     [updateInfo.fulfilled](state, action) {
-      state.user = action.payload;
+      state.user = {
+        ...state.user,
+        ...action.payload,
+      };
 
       state.isRefreshing = false;
       state.error = false;
