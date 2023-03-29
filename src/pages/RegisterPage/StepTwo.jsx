@@ -1,5 +1,8 @@
 import { Error, Button } from 'pages/authFormStyle.styled';
 import CustomField from 'pages/authFormStyle.styled';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+
 // import { useEffect } from 'react';
 // import { useFetchingData } from 'hooks';
 
@@ -34,7 +37,6 @@ const StepTwo = props => {
         required
       />
       <Error name="name" component="div" />
-
       <CustomField
         type="text"
         name="city"
@@ -45,8 +47,7 @@ const StepTwo = props => {
         required
       />
       <Error name="city" component="div" />
-
-      <CustomField
+      {/* <CustomField
         type="tel"
         name="phone"
         placeholder="Mobile phone"
@@ -54,9 +55,21 @@ const StepTwo = props => {
         touched={props.touched}
         values={props.values.phone}
         required
+      /> */}
+      <PhoneInput
+        name="phone"
+        onlyCountries={['ua']}
+        country={'ua'}
+        // defaultCountry={'ua'}
+        value={props.values.phone}
+        onChange={phone => {
+          console.log('phone', `+${phone}`);
+          console.log('phone', typeof phone);
+          props.setFieldValue('phone', `+${phone}`);
+        }}
       />
-      <Error name="phone" component="div" />
 
+      <Error name="phone" component="div" />
       <Button type="submit">Register</Button>
       <Button type="button" onClick={props.back}>
         Back

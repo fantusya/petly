@@ -5,6 +5,7 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
   InfoField,
@@ -29,6 +30,7 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
 
   const { user } = useAuth();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   console.log(user, 'user');
 
@@ -61,7 +63,7 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
   return (
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
-        <InfoProp>City:</InfoProp>
+        <InfoProp>{t('City')}:</InfoProp>
         <InfoInput
           type="text"
           name="city"
