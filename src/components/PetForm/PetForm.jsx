@@ -31,7 +31,7 @@ export const PetForm = ({ closeModal }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('Відправити форму!!!!!!!!!!');
+    // console.log('Відправити форму!!!!!!!!!!');
     const { name, birthDate, breed, comments } = values;
 
     if (!selectedFile) {
