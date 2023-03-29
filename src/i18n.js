@@ -38,7 +38,7 @@ i18n
           Length_name: 'Length of name should be 2-16 letters',
           //   Add_notice: 'Add pet',
           //   Add_notice_m: 'Add pet',
-          Time: 'Time:',
+          Time: 'Time',
           Address: 'Address',
           Email: 'Email',
           Phone: 'Phone',

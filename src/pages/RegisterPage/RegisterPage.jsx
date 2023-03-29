@@ -94,7 +94,7 @@ export const RegisterPage = () => {
                   : registerValidationSchemaTwo
               }
             >
-              {({ errors, touched, isValid }) => (
+              {({ errors, touched, isValid, setFieldValue, values }) => (
                 <FormCustom autoComplete="off">
                   {currentStep === 0 && (
                     <StepOne
@@ -102,6 +102,7 @@ export const RegisterPage = () => {
                       errors={errors}
                       touched={touched}
                       isValid={!isValid}
+                      values={values}
                     />
                   )}
                   {currentStep === 1 && (
@@ -109,6 +110,8 @@ export const RegisterPage = () => {
                       back={handlePrevStep}
                       errors={errors}
                       touched={touched}
+                      values={values}
+                      setFieldValue={setFieldValue}
                     />
                   )}
                 </FormCustom>

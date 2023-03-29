@@ -17,7 +17,7 @@ export const PetsList = () => {
 
   return (
     <>
-      {card.length < 0 && (
+      {card?.length < 0 && (
         <h2>
           You do not have any pets added to your profile page yet. Please, add
           your pet!

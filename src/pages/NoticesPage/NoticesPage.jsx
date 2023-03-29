@@ -21,6 +21,7 @@ export const NoticesPage = () => {
       navigate('/notices/sell', { replace: true });
     }
   }, [location.pathname, navigate]);
+
   const [request, setRequest] = useState('');
 
   const handleFormSubmit = value => {

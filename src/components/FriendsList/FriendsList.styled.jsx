@@ -33,15 +33,13 @@ export const ItemFriend = styled.li`
   line-height: ${p => p.theme.lineHeights.text};
   letter-spacing: ${p => p.theme.letterSpacing.text};
 
-  @media only screen and (min-width: ${p =>
-      p.theme.breakpoints[0]}) and (max-width: 767px) {
+  @media only screen and (min-width: ${p => p.theme.breakpoints[0]}) and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: ${p => p.theme.space[3] + 4}px;
     }
   }
 
-  @media only screen and (min-width: ${p =>
-      p.theme.breakpoints[1]}) and (max-width: 1279px) {
+  @media only screen and (min-width: ${p => p.theme.breakpoints[1]}) and (max-width: 1279px) {
     padding: ${p => p.theme.space[4]}px ${p => p.theme.space[2]}px;
     margin-right: ${p => p.theme.space[5]}px;
     &:nth-child(2n) {
@@ -82,6 +80,8 @@ export const ItemFriendBox = styled.div`
 `;
 
 export const ItemFriendName = styled.a`
+  padding-left: ${p => p.theme.space[1]}px;
+  padding-right: ${p => p.theme.space[1]}px;
   color: ${p => p.theme.colors.accent};
 
   text-align: center;
@@ -99,7 +99,7 @@ export const ItemFriendName = styled.a`
 
   @media (min-width: ${p => p.theme.breakpoints[0]}) {
     margin-bottom: ${p => p.theme.space[3] + 4}px;
-    height: 32px;
+    height: 44px;
 
     font-size: ${p => p.theme.fontSizes[2]};
   }

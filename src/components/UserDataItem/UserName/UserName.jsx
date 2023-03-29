@@ -5,6 +5,7 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
   InfoField,
@@ -27,6 +28,7 @@ const basicSchema = yup.object().shape({
 export const UserName = ({ onUpdate, isDisabled }) => {
   const [isUpdating, setIsUpdating] = useState(false);
 
+  const { t } = useTranslation();
   const { user } = useAuth();
   const dispatch = useDispatch();
 
@@ -59,7 +61,7 @@ export const UserName = ({ onUpdate, isDisabled }) => {
   return (
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
-        <InfoProp>Name:</InfoProp>
+        <InfoProp>{t('Name')}:</InfoProp>
         <InfoInput
           type="text"
           name="name"
