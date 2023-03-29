@@ -44,7 +44,7 @@ export const UserName = ({ onUpdate, isDisabled }) => {
         if (isDisabled) {
           onUpdate();
           setIsUpdating(true);
-          console.log('Not submit');
+          console.log('Change input');
           return;
         }
 
