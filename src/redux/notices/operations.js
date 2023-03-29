@@ -49,7 +49,7 @@ export const removeFromFavorites = createAsyncThunk(
 
 export const getUserNotices = createAsyncThunk(
   'notices/getUserNotices',
-  async ({ search, page = 1 }, thunkAPI) => {
+  async ({ search = '', page = 1 }, thunkAPI) => {
     try {
       const url = search
         ? `api/notices?page=${page}&search=${search}`
