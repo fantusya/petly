@@ -51,7 +51,8 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [addToFavorites.fulfilled](state, action) {
-      state.favoriteNotices = [action.payload, ...state.favoriteNotices];
+      // state.favoriteNotices = [action.payload, ...state.favoriteNotices];
+      state.favoriteNotices.unshift(action.payload);
 
       state.favoriteAction = false;
       state.error = false;

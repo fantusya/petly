@@ -39,7 +39,7 @@ export const NoticeCategoryItem = ({ notice }) => {
   const { isLoggedIn, user } = useAuth();
   const { t } = useTranslation();
 
-  console.log('USER', user);
+  // console.log('USER', user);
 
   const [isFavorite, setIsFavorite] = useState(false);
   const { favoriteNotices, ownNotices } = useNotices();

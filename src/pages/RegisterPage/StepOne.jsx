@@ -17,7 +17,7 @@ import { GoogleLoginButton } from 'pages/LoginPage/LoginPage.styled';
 export const StepOne = props => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [confirmVisibility, setConfirmVisibility] = useState(false);
-  
+
   const { t } = useTranslation();
 
   const toggleShowPassword = () => {
@@ -29,16 +29,18 @@ export const StepOne = props => {
   };
 
   console.log(props.isValid);
+
   return (
     <>
-      fix/register
       <CustomField
         type="email"
         name="email"
         placeholder="Email"
         errors={props.errors}
         touched={props.touched}
+        values={props.values.email}
         required
+        autoFocus={true}
       />
       <Error name="email" component="div" />
       <Div>
@@ -49,6 +51,7 @@ export const StepOne = props => {
           type={passwordVisibility ? 'text' : 'password'}
           errors={props.errors}
           touched={props.touched}
+          values={props.values.password}
           required
         />
         <ButtonImg type="button" onClick={toggleShowPassword}>
@@ -64,6 +67,7 @@ export const StepOne = props => {
           placeholder="Confirm Password"
           errors={props.errors}
           touched={props.touched}
+          values={props.values.confirm}
           required
         />
         <ButtonImg type="button" onClick={toggleShowcConfirm}>
@@ -71,8 +75,7 @@ export const StepOne = props => {
         </ButtonImg>
         <Error name="confirm" component="div" />
       </Div>
-
-      <Button type="submit" onClick={props.next} disabled={props.isValid}>
+      <Button type="button" onClick={props.next} disabled={props.isValid}>
         Next
       </Button>
       <GoogleLoginButton href="https://petly-gd7x.onrender.com/api/users/google">

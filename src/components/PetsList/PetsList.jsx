@@ -17,13 +17,12 @@ export const PetsList = () => {
 
   return (
     <>
-      {pets.length < 0 && (
+      {pets?.length < 0 && (
         <h2>
           You do not have any pets added to your profile page yet. Please, add
           your pet!
         </h2>
       )}
-
       <List>{card}</List>
     </>
   );
