@@ -27,9 +27,9 @@ const SearchBar = ({ onSubmit }) => {
     event.preventDefault();
 
     onSubmit(searchTerm);
-    if (searchTerm.trim() === '') {
-      toast.error(`Введіть пошуковий запит! Поле пошуку не може бути порожнім`);
-    }
+    // if (searchTerm.trim() === '') {
+    //   toast.error(`Введіть пошуковий запит! Поле пошуку не може бути порожнім`);
+    // }
 
     if (currentPage === 'notices') {
       dispatch(search(searchTerm));
