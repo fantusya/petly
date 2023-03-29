@@ -46,14 +46,9 @@ export const NoticesCategoriesList = () => {
           });
 
           dispatch(getFavorites({ search, page }));
-
+          dispatch(getUserNotices({ search, page }));
           setResults(notices.results);
-          console.log(notices.results);
         }
-
-        // setResults(prevState => [...prevState, ...notices.results]);
-        // setResults(notices.results);
-        // setTotal(movies.total);
         setStatus(Status.RESOLVED);
       } catch (error) {
         setStatus(Status.REJECTED);
