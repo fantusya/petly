@@ -20,6 +20,7 @@ export const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const categoryName = location.pathname.split('/').reverse()[0];
+
   const { query: search, error, isLoading } = useNotices();
   const favoriteisLoading = useSelector(state => state.notices.favoriteAction);
 

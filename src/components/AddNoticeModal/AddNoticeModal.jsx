@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { getUserNotices } from 'redux/notices/operations';
+import { useDispatch } from 'react-redux';
 
 import { addUserNotice } from 'api/notice';
 import StepOne from './Steps/StepOne';
@@ -54,6 +56,9 @@ import {
 const AddNoticeModal = ({ handleButtonToggle }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPage = location.pathname.split('/').reverse()[0];
+
   const [showModal, setShowModal] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -72,8 +77,6 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
 
   const handleNextStep = async (newData, final = false) => {
     setData(prev => ({ ...prev, ...newData }));
-    console.log('newData.price', newData.price);
-    console.log('newData.price', typeof newData.price);
 
     if (final) {
       const formattedDate = new Date(
@@ -97,11 +100,16 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
       }
 
       const res = await addUserNotice(formData);
+
       if (res.status === 201) {
         navigate('/notices/own');
+        if (currentPage === 'own') {
+          window.location.reload();
+        }
       } else {
         toast.error('Please, try again!');
       }
+
       handleModalToggle();
 
       return;
