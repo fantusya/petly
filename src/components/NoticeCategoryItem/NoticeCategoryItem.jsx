@@ -51,6 +51,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
     breed,
     price,
     _id: id,
+    owner,
   } = notice;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -84,7 +85,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
       setIsFavorite(false);
     }
 
-    if (ownNotices.some(item => item._id === id)) {
+    if (ownNotices.some(item => item._id === id) || owner?._id === user?._id) {
       setIsOwn(true);
     } else {
       setIsOwn(false);
