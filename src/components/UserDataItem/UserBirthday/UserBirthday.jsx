@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import PropTypes from 'prop-types';
 // import Flatpickr from 'react-flatpickr';
 // import 'flatpickr/dist/themes/material_orange.css';
+
 import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
@@ -20,10 +21,7 @@ import {
 } from '../UserDataItem.styled';
 
 const basicSchema = yup.object().shape({
-  // birthDate: yup
-  //   .date()
-  //   .typeError('Please enter a valid date')
-  //   .nullable(),
+  birthDate: yup.date().typeError('Please enter a valid date').nullable(),
 });
 
 export const UserBirthday = ({ onUpdate, isDisabled }) => {
@@ -43,7 +41,7 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      birthDate: user?.birthDate || '00.00.0000',
+      birthDate: user?.birthDate,
     },
     validationSchema: basicSchema,
     onSubmit: ({ birthDate }, { resetForm }) => {
@@ -66,6 +64,7 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
     },
 
     onChange: ({ birthDate }) => {
+      console.log('birthDate', birthDate);
       setFieldValue('birthday', birthDate);
     },
   });
@@ -78,7 +77,7 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
           data-enable-time
           type="date"
           name="birthday"
-          value={values.birthDate}
+          value={values['birthday']}
           // placeholder={user?.birthDate || '00.00.0000'}
           disabled={isDisabled || !isUpdating}
           options={{
