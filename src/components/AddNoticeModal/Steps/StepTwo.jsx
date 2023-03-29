@@ -39,10 +39,11 @@ const StepTwo = props => {
 
           <SexFormBox>
             <BoxQuestion>The sex:</BoxQuestion>
+    
               <SexLabel checkedSex={values.sex === "male"}>
                 <MaleIconBox/>
                 Male
-                <InputRadio type="radio" name="sex" value="male" checked />
+                <InputRadio type="radio" name="sex" value="male" />
               </SexLabel>
 
               <SexLabel checkedSex={values.sex === "female"}>
@@ -109,7 +110,7 @@ const StepTwo = props => {
             </TextLabel>
             <TextAreaInput
               name="comments"
-              // as="textarea"
+              as="textarea"
               type="text" 
               rows="4"
               placeholder="Type comments"
@@ -118,7 +119,6 @@ const StepTwo = props => {
             <ErrorStyle
               name="comments"
               component="div"
-              // placeholder="Tell us anything about your pet:)"
             />
           </InputContTextArea>
 
