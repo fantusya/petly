@@ -90,7 +90,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
     } else {
       setIsOwn(false);
     }
-  }, [favoriteNotices, ownNotices, id, user.favorites]);
+  }, [favoriteNotices, id, ownNotices, owner._id, user._id]);
 
   const notify = () => toast(i18n.t('Please_login_or_register'));
 
