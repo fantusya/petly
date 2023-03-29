@@ -148,7 +148,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
                   <RecordContent>
                     {birthDate
                       ? moment(birthDate, 'YYYYMMDD').fromNow(true)
-                      : '00.00.0000'}
+                      : ''}
                   </RecordContent>
                 </Record>
                 {categoryName === 'sell' && (
