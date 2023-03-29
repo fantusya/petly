@@ -13,13 +13,12 @@ import {
   HiddenInput,
   EditPhotoBtn,
   Kamera,
-  Check,
 } from './UserPhoto.styled';
 import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserPhoto = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [isFileSelected, setIsFileSelected] = useState(false);
+  // const [isFileSelected, setIsFileSelected] = useState(false);
   const { t } = useTranslation();
 
   const { user } = useAuth();
@@ -51,7 +50,7 @@ export const UserPhoto = () => {
       return;
     }
     setSelectedFile(chosenImg);
-    setIsFileSelected(true);
+    // setIsFileSelected(true);
     toast.success(i18n.t('Photo_selected'));
   };
 
