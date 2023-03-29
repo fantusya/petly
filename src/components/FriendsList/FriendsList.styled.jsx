@@ -33,15 +33,13 @@ export const ItemFriend = styled.li`
   line-height: ${p => p.theme.lineHeights.text};
   letter-spacing: ${p => p.theme.letterSpacing.text};
 
-  @media only screen and (min-width: ${p =>
-      p.theme.breakpoints[0]}) and (max-width: 767px) {
+  @media only screen and (min-width: ${p => p.theme.breakpoints[0]}) and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: ${p => p.theme.space[3] + 4}px;
     }
   }
 
-  @media only screen and (min-width: ${p =>
-      p.theme.breakpoints[1]}) and (max-width: 1279px) {
+  @media only screen and (min-width: ${p => p.theme.breakpoints[1]}) and (max-width: 1279px) {
     padding: ${p => p.theme.space[4]}px ${p => p.theme.space[2]}px;
     margin-right: ${p => p.theme.space[5]}px;
     &:nth-child(2n) {
@@ -93,7 +91,8 @@ export const ItemFriendName = styled.a`
 
   transition: all ${p => p.theme.transition.main};
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
 
     transition: all ${p => p.theme.transition.main};
@@ -141,20 +140,20 @@ export const ItemFriendLogo = styled.img`
 export const InfoFriendsItem = styled.li`
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[2]}px;
-  }
+  };
 
-  transition: all ${p => p.theme.transition.main};
+  & p.time {
+    transition: all ${p => p.theme.transition.main};
+  };
 
-  &:first-child:hover,
-  &:first-child:focus {
-    &:first-child ul {
+  & p.time:hover,
+  & p.time:focus {
+    color: ${p => p.theme.colors.accent};
+
+    transition: all ${p => p.theme.transition.main};
+
+    & ~ ul {
       display: block;
-    }
-
-    & > p:last-of-type {
-      color: ${p => p.theme.colors.accent};
-
-      transition: all ${p => p.theme.transition.main};
     }
   }
 
