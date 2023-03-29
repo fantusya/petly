@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import Flatpickr from 'react-flatpickr';
+import 'flatpickr/dist/themes/material_orange.css';
 
-import maleIcon from 'images/male-icon.png';
-import femaleIcon from 'images/female-icon.png';
 import { ModalButton } from 'components/commonComponents';
+import { ErrorMessage, Field, Form } from 'formik';
+import { ReactComponent as MaleIcon } from '../../images/svg/male.svg';
+import { ReactComponent as FemaleIcon } from '../../images/svg/female.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -10,7 +13,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 40px 20px;
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     padding: 40px 80px;
   }
 `;
@@ -33,18 +36,28 @@ export const FirstForm = styled.div`
   margin-bottom: 40px; */
 `;
 
+export const FormWrapper = styled(Form)`   //Yes
+  display: flex;
+  flex-direction: column;
+  // gap: 10px;
+  width: 100%;
+`;
+
 export const UserComment = styled.p`
-  text-align: center;
   margin-bottom: 20px;
+  text-align: center;
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${p => p.theme.fontSizes[2]}px;
   line-height: ${p => p.theme.lineHeights.text};
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 448px;
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     margin-bottom: 28px;
     font-size: ${p => p.theme.fontSizes[4]}px;
+  }
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 448px;
+
   }
 `;
 
@@ -116,66 +129,81 @@ export const RadioButton = styled.div`
 export const InputCont = styled.div`
   /* width: 100%; */
   box-sizing: border-box;
+  position: relative;
 
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[4]}px;
   }
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     &:not(:last-child) {
       margin-bottom: 28px;
     }
-  }
+}
 `;
 
 export const TextLabel = styled.label`
   display: inline-block;
   width: 100%;
-  font-family: ${p => p.theme.fonts.text};
+  font-family: ${p => p.theme.fonts.textMedium};
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${p => p.theme.fontSizes[3]}px;
-  line-height: ${p => p.theme.lineHeights.logo};
+  line-height: ${p => p.theme.lineHeights.text};
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: 24px;
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+    font-size: ${p => p.theme.fontSizes[5]}px;
   }
 `;
 
-export const TextInput = styled.input`
-  display: block;
-  box-sizing: border-box;
-  align-items: center;
-  display: flex;
-  outline: none;
-  border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
-  /* width: 240px; */
+export const TextInput = styled(Field)`
+display: block;
+box-sizing: border-box;
+align-items: center;
+display: flex;
+outline: none;
+border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
+width: 100%;
+height: 40px;
+margin-top: ${p => p.theme.space[3]}px;
+padding: 0;
+padding-left: 14px;
+border-radius: ${p => p.theme.radii.big};
+
+::placeholder {
+  font-family: ${p => p.theme.fonts.text};
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes[1]}px;
+  line-height: ${p => p.theme.lineHeights.text};
+  color: rgba(27, 27, 27, 0.6);
+}
+@media (min-width: ${p => p.theme.breakpoints[1]}) {
+  margin-top: 12px;
+  /* width: 448px; */
   width: 100%;
-  height: 40px;
-  margin-top: ${p => p.theme.space[3]}px;
-  padding: 0;
-  padding-left: 14px;
-  border-radius: ${p => p.theme.radii.big};
-
+  height: 48px;
+  padding-left: ${p => p.theme.space[4]}px;
   ::placeholder {
-    font-family: ${p => p.theme.fonts.text};
-    font-style: normal;
-    font-weight: ${p => p.theme.fontWeights.normal};
-    font-size: ${p => p.theme.fontSizes[1]}px;
-    line-height: ${p => p.theme.lineHeights.text};
-    color: rgba(27, 27, 27, 0.6);
+    font-size: ${p => p.theme.fontSizes[2]}px;
+  }
+}
+`;
+
+export const ErrorStyle = styled(ErrorMessage)`
+  position: absolute;
+  left: 20px;
+  bottom: -17px;
+  font-size: ${p => p.theme.fontSizes[0]};
+  color: ${p => p.theme.colors.error};
+  @media (max-width: 767.9px {
+    transform: translate(0px, 0px);
   }
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-top: 12px;
-    /* width: 448px; */
-    width: 100%;
-    height: 48px;
-    padding-left: ${p => p.theme.space[4]}px;
-    ::placeholder {
-      font-size: ${p => p.theme.fontSizes[2]}px;
-    }
+    font-size:  ${p => p.theme.fontSizes[0]};
+    bottom: -10px;
   }
 `;
 
-export const DateInput = styled.input`
+export const DateInput = styled(Flatpickr)`
   position: relative;
   display: block;
   box-sizing: border-box;
@@ -216,19 +244,21 @@ export const DateInput = styled.input`
 `;
 
 export const InputContTextArea = styled.div`
+  box-sizing: border-box;
+  position: relative;
   // margin-bottom: ${p => p.theme.space[4]}px;
   // @media (min-width: ${p => p.theme.breakpoints[1]}) {
   //   margin-bottom: 28px;
   // }
 `;
 
-export const TextAreaInput = styled.textarea`
+export const TextAreaInput = styled(Field)`
   display: block;
   outline: none;
   box-sizing: border-box;
   resize: none;
 
-  width: 240px;
+  width: 100%;
   // height: 40px;
   margin-top: ${p => p.theme.space[3]}px;
   padding: 12px 5px 12px 14px;
@@ -237,8 +267,12 @@ export const TextAreaInput = styled.textarea`
   border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
   background-color: ${p => p.theme.colors.background};
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: 448px;
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+    // width: 448px;
+    height: 116px;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: ${p => p.theme.fontSizes[2]};
   }
 `;
 
@@ -246,11 +280,18 @@ export const TextAreaInput = styled.textarea`
 export const SexFormBox = styled.fieldset`
   display: flex;
   margin-bottom: ${p => p.theme.space[5]}px;
-  border: none;
+  margin-left: ${p => p.theme.space[0]}px;
+  margin-right: ${p => p.theme.space[0]}px;
+  border: ${p => p.theme.borders.none};
   padding: 0;
+  font-family: ${p => p.theme.fonts.textMedium};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes[3]}px;
+  line-height: ${p => p.theme.lineHeights.text};
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     margin-bottom: 40px;
+    font-size: ${p => p.theme.fontSizes[5]}px;;
   }
 `;
 
@@ -272,13 +313,22 @@ export const SexLabel = styled.label`
   flex-direction: column;
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${p => p.theme.fontSizes[3]}px;
-  line-height: ${p => p.theme.lineHeights.logo};
+  line-height: 1.325;
   cursor: pointer;
+
+  color: ${p => p.checkedSex && '#F59256'};
 
   &:not(:last-child) {
     margin-right: 40px;
   }
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  transition: transform ${p => p.theme.transition.main}, color ${p => p.theme.transition.main};
+  
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     font-size: ${p => p.theme.fontSizes[4]}px;
     &:not(:last-child) {
       margin-right: 80px;
@@ -286,37 +336,31 @@ export const SexLabel = styled.label`
   }
 `;
 
-export const MaleIconBox = styled.div`
+export const MaleIconBox = styled(MaleIcon)`
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-  //   background-image: url(${maleIcon});
-  //   background-repeat: no-repeat;
-  //   background-size: contain, cover;
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     width: 60px;
     height: 60px;
     margin-bottom: 20px;
   }
 `;
 
-export const FemaleIconBox = styled.div`
+export const FemaleIconBox = styled(FemaleIcon)`
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
-  //   background-image: url(${femaleIcon});
-  //   background-repeat: no-repeat;
-  //   background-size: contain, cover;
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     width: 60px;
     height: 60px;
     margin-bottom: 20px;
   }
 `;
 
-export const InputRadio = styled.input`
+export const InputRadio = styled(Field)`
   opacity: 0;
   width: 0;
   height: 0;
@@ -325,10 +369,29 @@ export const InputRadio = styled.input`
   }
 `;
 
-export const PhotoPetInput = styled.input`
-  visibility: hidden;
-  width: 0;
-  height: 0;
+export const PhotoPetBtn = styled.button`
+  margin: 20px auto 20px 0;
+  margin-top: ${p => p.theme.space[4] + 4}px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 208px;
+  height: 208px;
+
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.small};
+  cursor: pointer;
+
+  background-color: ${p => p.theme.colors.background};
+
+  cursor: pointer;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    // margin-bottom: ${p => p.theme.space[0]}px;
+    width: 182px;
+    height: 182px;
+  }
 `;
 
 export const PhotoAddContainer = styled.label`
@@ -354,7 +417,7 @@ export const ImageInputWrapper = styled.fieldset`
   flex-direction: column;
   // align-items: center;
   box-sizing: border-box;
-  border: none;
+  border: ${p => p.theme.borders.none};
   padding: 0;
   margin-bottom: 28px;
 `;
@@ -401,13 +464,14 @@ export const ActionButtonsWrapper = styled.div`
   margin-top: 40px;
   gap: 12px;
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
     flex-direction: row;
     // gap: ${p => p.theme.space[3]}px;
   }
 `;
 
 export const ActionButton = styled(ModalButton)`
+  margin-bottom: 0;
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.white};
@@ -415,7 +479,20 @@ export const ActionButton = styled(ModalButton)`
 
     transition: ${p => p.theme.transition.main};
   }
+
+  &:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+    flex-direction: row;
+    max-width: 180px;
+    height: 44px;
+    // gap: ${p => p.theme.space[3]}px;
+  }
 `;
+
+
 
 // export const CloseBtn = styled(CloseButton)`
 //   position: absolute;

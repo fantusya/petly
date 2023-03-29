@@ -17,31 +17,6 @@ import { ReactComponent as Cross } from 'images/svg/cross.svg';
 import {
   Container,
   Title,
-  // FirstForm,
-  // UserComment,
-  // InputCont,
-  // InputContTextArea,
-  // TextAreaInput,
-  // TextLabel,
-  // TextInput,
-  // ActionButton,
-  // RadioGroup,
-  // RadioLabel,
-  // RadioInput,
-  // RadioButton,
-  // DateInput,
-  // SexFormBox,
-  // BoxQuestion,
-  // // InputRadio,
-  // SexLabel,
-  // MaleIconBox,
-  // FemaleIconBox,
-  // PhotoPetInput,
-  // PhotoAddContainer,
-  // ImageInputWrapper,
-  // ImageTitle,
-  // AddedImage,
-  // ActionButtonsWrapper,
 } from './AddNoticeModal.styled';
 
 // import {
@@ -49,9 +24,6 @@ import {
 //   PreviewContainer,
 //   PreviewImg,
 // } from './AddNoticeModal.styled';
-
-// import { ReactComponent as MaleIcon } from 'images/svg/male.svg';
-// import { ReactComponent as FemaleIcon } from 'images/svg/female.svg';
 
 const AddNoticeModal = ({ handleButtonToggle }) => {
   const { t } = useTranslation();
