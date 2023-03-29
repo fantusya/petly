@@ -159,7 +159,7 @@ export const LogoBg = styled.div`
 export const Icon = styled.span`
   position: absolute;
   top: 43%;
-  right: 9px;
+  right: 3px;
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
