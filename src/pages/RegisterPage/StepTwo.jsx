@@ -80,6 +80,13 @@ const StepTwo = props => {
             e.currentTarget.style.border = '1px solid #3CBC81';
           }
         }}
+        onFocus={e => {
+          if (e.currentTarget.value.length !== 19) {
+            e.currentTarget.style.border = '1px solid #E2001A';
+          } else {
+            e.currentTarget.style.border = '1px solid #3CBC81';
+          }
+        }}
         // isValid={(value, country) => {
         //   if (value.match(/^\380\d{9}$/)) {
         //     return 'Invalid value: ' + value + ', ' + country.name;
