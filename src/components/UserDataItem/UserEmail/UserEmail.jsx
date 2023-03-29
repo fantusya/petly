@@ -28,8 +28,6 @@ export const UserEmail = ({ onUpdate, isDisabled }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  console.log(user, 'user');
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {

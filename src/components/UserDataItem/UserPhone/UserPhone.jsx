@@ -20,9 +20,7 @@ import {
 const basicSchema = yup.object().shape({
   phone: yup
     .string()
-    .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
-    .min(13, 'Too Short!')
-    .max(13, 'Too Long!')
+    .matches(/^\+380\d{9}$/, 'Invalid phone number')
     .required('Phone is required'),
 });
 
@@ -33,12 +31,10 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  console.log(user, 'user');
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
-        phone: user?.phone || '+38000000000',
+        phone: user?.phone,
       },
       validationSchema: basicSchema,
       onSubmit: ({ phone }, { resetForm }) => {
@@ -51,7 +47,7 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
           return;
         }
 
-        dispatch(updateInfo(phone));
+        dispatch(updateInfo({ phone }));
 
         onUpdate();
         setIsUpdating(false);

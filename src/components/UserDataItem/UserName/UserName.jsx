@@ -32,8 +32,6 @@ export const UserName = ({ onUpdate, isDisabled }) => {
   const { user } = useAuth();
   const dispatch = useDispatch();
 
-  console.log(user, 'user');
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
@@ -50,7 +48,7 @@ export const UserName = ({ onUpdate, isDisabled }) => {
           return;
         }
 
-        dispatch(updateInfo(name));
+        dispatch(updateInfo({ name }));
 
         onUpdate();
         setIsUpdating(false);
