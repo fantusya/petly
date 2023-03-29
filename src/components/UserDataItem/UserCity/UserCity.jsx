@@ -5,6 +5,7 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
   InfoField,
@@ -29,13 +30,12 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
 
   const { user } = useAuth();
   const dispatch = useDispatch();
-
-  console.log(user, 'user');
+  const { t } = useTranslation();
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
-        city: user?.city || 'City',
+        city: user?.city,
       },
       validationSchema: basicSchema,
       onSubmit: ({ city }, { resetForm }) => {
@@ -48,7 +48,7 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
           return;
         }
 
-        dispatch(updateInfo(city));
+        dispatch(updateInfo({ city }));
 
         onUpdate();
         setIsUpdating(false);
@@ -61,7 +61,7 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
   return (
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
-        <InfoProp>City:</InfoProp>
+        <InfoProp>{t('City')}:</InfoProp>
         <InfoInput
           type="text"
           name="city"

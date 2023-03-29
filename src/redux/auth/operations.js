@@ -136,10 +136,7 @@ export const updateInfo = createAsyncThunk(
   'auth/updateUser',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await privateRoutes.patch(
-        `api/users/avatars`,
-        credentials
-      );
+      const { data } = await privateRoutes.patch(`api/users/edit`, credentials);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

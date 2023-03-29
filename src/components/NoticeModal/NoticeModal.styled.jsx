@@ -154,11 +154,12 @@ export const ButtonsWrapper = styled(Box)`
 export const CloseButtonWrapper = styled(Box)`
   display: flex;
   justify-content: end;
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  // @media (min-width: ${p => p.theme.breakpoints[1]}) {
+
+  // }
 `;
 
 export const ContactButton = styled.a`

@@ -24,7 +24,7 @@ import {
 
 import { Box } from 'components/Box/Box';
 
-const OneStep = ({ next, closeModal }) => {
+const OneStep = ({ next, closeModal, errors, isValid }) => {
   const { t } = useTranslation();
 
   return (
@@ -51,6 +51,7 @@ const OneStep = ({ next, closeModal }) => {
             type="date"
             name="birthDate"
             placeholder={t('Type_date_of_birth')}
+            autoFocus
           />
           <ErrorValidation name="birthDate" component="div" />
         </Label>
@@ -60,13 +61,18 @@ const OneStep = ({ next, closeModal }) => {
         <Label htmlFor="breed">
           {' '}
           {t('Breed')}
-          <Input type="text" name="breed" placeholder={t('Type_breed')} />
+          <Input
+            type="text"
+            name="breed"
+            placeholder={t('Type_breed')}
+            autoFocus
+          />
           <ErrorValidation name="breed" component="div" />
         </Label>
       </Box>
 
       <ButtonBox>
-        <Button type="button" onClick={next}>
+        <Button type="button" disabled={isValid} onClick={next}>
           {t('Next')}
         </Button>
         <Button mb={0} type="button" onClick={closeModal}>
@@ -152,6 +158,7 @@ const TwoStep = ({ back, onSelectedImg }) => {
             name="comments"
             rows="4"
             placeholder={t('Type_comments')}
+            required="Required comments"
           />
           <ErrorValidation name="comments" component="div" />
         </Label>

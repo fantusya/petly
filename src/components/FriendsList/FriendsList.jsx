@@ -59,7 +59,7 @@ export const FriendsList = ({ results }) => {
                 <InfoFriendsItem>
                   <p>{t('Time')}:</p>
                   {from && to ? (
-                    <p>
+                    <p class="time">
                       {from} - {to}
                     </p>
                   ) : (

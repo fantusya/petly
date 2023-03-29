@@ -49,7 +49,7 @@ export const removeFromFavorites = createAsyncThunk(
 
 export const getUserNotices = createAsyncThunk(
   'notices/getUserNotices',
-  async ({ search, page = 1 }, thunkAPI) => {
+  async ({ search = '', page = 1 }, thunkAPI) => {
     try {
       const url = search
         ? `api/notices?page=${page}&search=${search}`
@@ -68,7 +68,6 @@ export const removeUserNotice = createAsyncThunk(
   async (noticeId, thunkAPI) => {
     try {
       const { data } = await privateRoutes.delete(`api/notices/id/${noticeId}`);
-      console.log('removeUserNotice', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

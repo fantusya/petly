@@ -18,10 +18,9 @@ import {
   AddFavoriteIcon,
   RemoveFavoriteIcon,
   AddFavoriteButton,
-  // ConfirmWrapper,
+  ConfirmWrapper,
 } from './NoticeCategoryItem.styled';
-import { Label } from 'components/commonComponents';
-// import { Label, ModalButton } from 'components/commonComponents';
+import { Label, ModalButton } from 'components/commonComponents';
 import NoticeModal from 'components/NoticeModal';
 import Modal from 'components/Modal';
 import { useAuth, useNotices } from 'hooks';
@@ -34,14 +33,13 @@ import {
   removeUserNotice,
 } from 'redux/notices/operations';
 
-export const NoticeCategoryItem = ({ notice }) => {
+export const NoticeCategoryItem = ({ notice, deleteCard }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
   const { t } = useTranslation();
-
-  console.log('USER', user);
-
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isOwn, setIsOwn] = useState(false);
+
   const { favoriteNotices, ownNotices } = useNotices();
 
   const {
@@ -51,7 +49,6 @@ export const NoticeCategoryItem = ({ notice }) => {
     title,
     photoURL,
     breed,
-    owner,
     price,
     _id: id,
   } = notice;
@@ -86,6 +83,12 @@ export const NoticeCategoryItem = ({ notice }) => {
     } else {
       setIsFavorite(false);
     }
+
+    if (ownNotices.some(item => item._id === id)) {
+      setIsOwn(true);
+    } else {
+      setIsOwn(false);
+    }
   }, [favoriteNotices, ownNotices, id, user.favorites]);
 
   const notify = () => toast(i18n.t('Please_login_or_register'));
@@ -100,11 +103,11 @@ export const NoticeCategoryItem = ({ notice }) => {
     return;
   };
 
-  // const [deletionConfirmation, setDeletionConfirmation] = useState(false);
+  const [deletionConfirmation, setDeletionConfirmation] = useState(false);
 
-  // const handleDeletion = () => {
-  //   setDeletionConfirmation(!deletionConfirmation);
-  // };
+  const handleDeletion = () => {
+    setDeletionConfirmation(!deletionConfirmation);
+  };
 
   return (
     <>
@@ -130,7 +133,7 @@ export const NoticeCategoryItem = ({ notice }) => {
           <ItemContent isLogged={isLoggedIn}>
             <ItemTitle>{title}</ItemTitle>
             <Box>
-              <ItemRecords isOwn={owner?.id === user._id}>
+              <ItemRecords isOwn={isOwn}>
                 <Record>
                   <RecordName>{t('Breed')}:</RecordName>
                   <RecordContent>{breed}</RecordContent>
@@ -144,7 +147,7 @@ export const NoticeCategoryItem = ({ notice }) => {
                   <RecordContent>
                     {birthDate
                       ? moment(birthDate, 'YYYYMMDD').fromNow(true)
-                      : 'N/A'}
+                      : '00.00.0000'}
                   </RecordContent>
                 </Record>
                 {categoryName === 'sell' && (
@@ -166,14 +169,35 @@ export const NoticeCategoryItem = ({ notice }) => {
                 >
                   {t('Learn_more')}
                 </NoticeButton>
-                {owner?.id === user._id ? (
-                  <NoticeButton
-                    isLogged={isLoggedIn}
-                    onClick={() => dispatch(removeUserNotice(id))}
-                  >
-                    {t('Delete')} <DeleteIcon />
-                  </NoticeButton>
-                ) : null}
+                {isOwn && (
+                  <ConfirmWrapper>
+                    {deletionConfirmation ? (
+                      <>
+                        <ModalButton
+                          confirm={true}
+                          onClick={() => {
+                            handleDeletion();
+                            dispatch(removeUserNotice(id)).then(() =>
+                              deleteCard(id)
+                            );
+                          }}
+                        >
+                          {t('yes')}
+                        </ModalButton>
+                        <ModalButton confirm={true} onClick={handleDeletion}>
+                          {t('no')}
+                        </ModalButton>
+                      </>
+                    ) : (
+                      <NoticeButton
+                        isLogged={isLoggedIn}
+                        onClick={handleDeletion}
+                      >
+                        {t('Delete')} <DeleteIcon />
+                      </NoticeButton>
+                    )}
+                  </ConfirmWrapper>
+                )}
               </Box>
             </Box>
           </ItemContent>

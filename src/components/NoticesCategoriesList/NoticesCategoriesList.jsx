@@ -20,6 +20,7 @@ export const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const categoryName = location.pathname.split('/').reverse()[0];
+
   const { query: search, error, isLoading } = useNotices();
   const favoriteisLoading = useSelector(state => state.notices.favoriteAction);
 
@@ -46,13 +47,9 @@ export const NoticesCategoriesList = () => {
           });
 
           dispatch(getFavorites({ search, page }));
-
+          dispatch(getUserNotices({ search, page }));
           setResults(notices.results);
         }
-
-        // setResults(prevState => [...prevState, ...notices.results]);
-        // setResults(notices.results);
-        // setTotal(movies.total);
         setStatus(Status.RESOLVED);
       } catch (error) {
         setStatus(Status.REJECTED);
@@ -60,6 +57,11 @@ export const NoticesCategoriesList = () => {
     }
     getNotices();
   }, [categoryName, search, page, dispatch]);
+
+  const deleteCard = id => {
+    const res = results.filter(c => c._id !== id);
+    setResults(res);
+  };
 
   return (
     <>
@@ -86,7 +88,11 @@ export const NoticesCategoriesList = () => {
               ))
             : null}
           {results.map(item => (
-            <NoticeCategoryItem key={item._id} notice={item} />
+            <NoticeCategoryItem
+              key={item._id}
+              notice={item}
+              deleteCard={deleteCard}
+            />
           ))}
         </NoticesCardsList>
       )}

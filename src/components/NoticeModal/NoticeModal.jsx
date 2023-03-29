@@ -99,7 +99,7 @@ export const NoticeModal = ({
                 <Record>
                   <RecordName>{t('Name')}:</RecordName>
                   <RecordContent>
-                    {notice?.name ? notice.name : 'N/A'}
+                    {notice?.name ? notice.name : ''}
                   </RecordContent>
                 </Record>
                 <Record>
@@ -113,20 +113,18 @@ export const NoticeModal = ({
                 <Record>
                   <RecordName>{t('Breed')}:</RecordName>
                   <RecordContent>
-                    {notice?.breed ? notice.breed : 'N/A'}
+                    {notice?.breed ? notice.breed : ''}
                   </RecordContent>
                 </Record>
                 <Record>
                   <RecordName>{t('Location')}:</RecordName>
                   <RecordContent>
-                    {notice?.location ? notice.location : 'N/A'}
+                    {notice?.location ? notice.location : ''}
                   </RecordContent>
                 </Record>
                 <Record>
                   <RecordName>{t('The_sex')}:</RecordName>
-                  <RecordContent>
-                    {notice?.sex ? notice.sex : 'N/A'}
-                  </RecordContent>
+                  <RecordContent>{notice?.sex ? notice.sex : ''}</RecordContent>
                 </Record>
                 <Record>
                   <RecordName>{t('Email')}:</RecordName>

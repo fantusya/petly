@@ -51,7 +51,8 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [addToFavorites.fulfilled](state, action) {
-      state.favoriteNotices = [action.payload, ...state.favoriteNotices];
+      // state.favoriteNotices = [action.payload, ...state.favoriteNotices];
+      state.favoriteNotices.unshift(action.payload);
 
       state.favoriteAction = false;
       state.error = false;
@@ -82,11 +83,6 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [getUserNotices.fulfilled](state, action) {
-      // if (
-      //   !action.payload.results.some(item => state.ownNotices.includes(item))
-      // ) {
-      //   state.ownNotices.push(...action.payload.results);
-      // }
       state.ownNotices = action.payload.results;
       state.totalItems = action.payload.totalItems;
 
@@ -94,9 +90,10 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [removeUserNotice.fulfilled](state, action) {
-      const index = state.ownNotices.indexOf(action.payload.result);
-      state.ownNotices.splice(index, 1);
-
+      const res = state.ownNotices.filter(
+        item => action.payload.result !== item._id
+      );
+      state.ownNotices = res;
       state.isLoading = false;
       state.error = false;
     },

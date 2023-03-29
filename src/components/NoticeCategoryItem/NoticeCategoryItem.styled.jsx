@@ -66,7 +66,7 @@ export const ItemTitle = styled(Box)`
 `;
 
 export const ItemRecords = styled.ul`
-  margin-bottom: ${props => (props.isLogged ? '20px' : '50px')};
+  margin-bottom: ${props => (props.isOwn ? '20px' : '50px')};
 
   color: ${p => p.theme.colors.text};
 
@@ -197,6 +197,7 @@ export const ConfirmWrapper = styled(Box)`
   margin-bottom: ${props => (props.isLogged ? '12px' : '0px')};
 
   display: flex;
+  justify-content: space-between;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 248px;

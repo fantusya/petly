@@ -10,29 +10,8 @@ export const AvatarWrapper = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 233px;
-  height: 233px;
-  margin: 0 auto 12px;
-
-  border: none;
-  border-radius: ${p => p.theme.radii.circular};
-  box-shadow: ${p => p.theme.shadows.avatar};
-  cursor: pointer;
-
-  color: ${theme.colors.accent};
-  background-color: ${p => p.theme.colors.background};
-
-  @media (min-width: ${theme.breakpoints[1]}) {
-    margin-bottom: 8px;
-  }
-
-  @media (min-width: ${theme.breakpoints[2]}) {
-    margin-bottom: 0;
-  }
+export const AvatarImg = styled.img`
+  object-fit: cover;
 `;
 
 export const AddAvatarBtn = styled.button`
@@ -47,6 +26,7 @@ export const AddAvatarBtn = styled.button`
   border-radius: ${p => p.theme.radii.circular};
   box-shadow: ${p => p.theme.shadows.avatar};
   cursor: pointer;
+  overflow: hidden;
 
   color: ${theme.colors.accent};
   background-color: ${p => p.theme.colors.background};

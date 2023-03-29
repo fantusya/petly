@@ -5,11 +5,14 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+// import Flatpickr from 'react-flatpickr';
+// import 'flatpickr/dist/themes/material_orange.css';
+import { useTranslation } from 'react-i18next';
 import {
   InfoForm,
   InfoField,
   InfoProp,
-  InfoInput,
+  FlatpickrStyled,
   InfoButton,
   Pensil,
   Check,
@@ -18,8 +21,9 @@ import {
 
 const basicSchema = yup.object().shape({
   // birthDate: yup
-  //     .min(2, 'Too Short!')
-  //     .max(30, 'Too Long!'),
+  //   .date()
+  //   .typeError('Please enter a valid date')
+  //   .nullable(),
 });
 
 export const UserBirthday = ({ onUpdate, isDisabled }) => {
@@ -27,45 +31,61 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
 
   const { user } = useAuth();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  console.log(user, 'user');
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      birthDate: user?.birthDate || '00.00.0000',
+    },
+    validationSchema: basicSchema,
+    onSubmit: ({ birthDate }, { resetForm }) => {
+      console.log(birthDate);
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: {
-        birthDate: user?.birthDate || '00.00.0000',
-      },
-      validationSchema: basicSchema,
-      onSubmit: ({ birthDate }, { resetForm }) => {
-        console.log(birthDate);
-
-        if (isDisabled) {
-          onUpdate();
-          setIsUpdating(true);
-          console.log('Not submit');
-          return;
-        }
-
-        dispatch(updateInfo({ birthDate }));
-
+      if (isDisabled) {
         onUpdate();
-        setIsUpdating(false);
+        setIsUpdating(true);
+        console.log('Not submit');
+        return;
+      }
 
-        console.log('Submit');
-        resetForm();
-      },
-    });
+      dispatch(updateInfo({ birthDate }));
+
+      onUpdate();
+      setIsUpdating(false);
+
+      console.log('Submit');
+      resetForm();
+    },
+
+    onChange: ({ birthDate }) => {
+      setFieldValue('birthday', birthDate);
+    },
+  });
 
   return (
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
-        <InfoProp>Birthday:</InfoProp>
-        <InfoInput
-          type="text"
+        <InfoProp>{t('Birthday')}:</InfoProp>
+        <FlatpickrStyled
+          data-enable-time
+          type="date"
           name="birthday"
           value={values.birthDate}
-          placeholder={values.birthDate}
+          // placeholder={user?.birthDate || '00.00.0000'}
           disabled={isDisabled || !isUpdating}
+          options={{
+            maxDate: 'today',
+            enableTime: false,
+            dateFormat: 'd.m.Y',
+          }}
           onChange={handleChange}
           onBlur={handleBlur}
         />

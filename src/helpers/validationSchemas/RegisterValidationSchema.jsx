@@ -34,10 +34,10 @@ export const registerValidationSchemaTwo = Yup.object().shape({
       'Should be "City, Region" separated by comma, only letters can be accepted'
     )
     .required('Required field '),
-  phone: Yup.string()
+  // phone: Yup.string()
 
-    .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
-    .min(13)
-    .max(13)
-    .required('Required field'),
+  //   .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
+  //   .min(13)
+  //   .max(13)
+  //   .required('Required field'),
 });
