@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 // import { getUserNotices } from 'redux/notices/operations';
 // import { useDispatch } from 'react-redux';
 
@@ -14,10 +15,7 @@ import { ModalCloseButton } from 'components/commonComponents';
 import { CloseButtonWrapper } from 'components/NoticeModal/NoticeModal.styled';
 import { ReactComponent as Cross } from 'images/svg/cross.svg';
 
-import {
-  Container,
-  Title,
-} from './AddNoticeModal.styled';
+import { Container, Title } from './AddNoticeModal.styled';
 
 // import {
 //   RemoveImgBtn,
@@ -79,7 +77,7 @@ const AddNoticeModal = ({ handleButtonToggle }) => {
           window.location.reload();
         }
       } else {
-        toast.error('Please, try again!');
+        toast.error(i18n.t('Try_again'));
       }
 
       handleModalToggle();

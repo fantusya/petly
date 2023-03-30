@@ -26,10 +26,10 @@ export const stepOneSchema = Yup.object({
 export const stepTwoSchema = Yup.object({
   sex: Yup.string().required(i18n.t('Choose_sex')),
   location: Yup.string().required(i18n.t('Type_location')),
-  price: Yup.number('Use only numbers!')
+  price: Yup.number(i18n.t('only_numbers'))
     .positive()
     .truncate()
-    .min(0.01, 'Type a number greater than 0!'),
+    .min(0.01, i18n.t('greater_zero')),
   // .required(i18n.t('Set_price')),
   // .matches(/^[0-9][0-9]*$/, i18n.t('Numbers_only')),
   photoURL: Yup.string().required(),

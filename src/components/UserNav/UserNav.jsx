@@ -1,7 +1,10 @@
 import { StyledNavLink, AvatarIcon } from 'components/UserNav/UserNav.styled';
-import Avatar from '../../images/Avatar.png';
+import Avatar from 'images/Avatar.png';
+import { useTranslation } from 'react-i18next';
 
 export const UserNav = ({ setOpen }) => {
+  const { t } = useTranslation();
+
   return (
     <StyledNavLink
       to="/user"
@@ -10,7 +13,7 @@ export const UserNav = ({ setOpen }) => {
       }}
     >
       <AvatarIcon src={Avatar} alt="avatar" />
-      Account
+      {t('Account')}
     </StyledNavLink>
   );
 };

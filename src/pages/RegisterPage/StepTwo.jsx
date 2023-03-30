@@ -1,5 +1,6 @@
 import { Error, Button } from 'pages/authFormStyle.styled';
 import CustomField from 'pages/authFormStyle.styled';
+import { useTranslation } from 'react-i18next';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import css from './PhoneInput.css';
@@ -8,6 +9,8 @@ import css from './PhoneInput.css';
 // import { useFetchingData } from 'hooks';
 
 const StepTwo = props => {
+  const { t } = useTranslation();
+
   // const query = 'Dnipro';
   // const query = props.values.city;
   // const { status, results } = useFetchingData('api/cities', query);
@@ -31,7 +34,7 @@ const StepTwo = props => {
       <CustomField
         type="text"
         name="name"
-        placeholder="Name"
+        placeholder={t('Name')}
         errors={props.errors}
         touched={props.touched}
         values={props.values.name}
@@ -41,7 +44,7 @@ const StepTwo = props => {
       <CustomField
         type="text"
         name="city"
-        placeholder="City, region"
+        placeholder={t('City_region')}
         errors={props.errors}
         touched={props.touched}
         values={props.values.city}
@@ -100,9 +103,9 @@ const StepTwo = props => {
       />
       <Error name="phone" component="div" />
 
-      <Button type="submit">Register</Button>
+      <Button type="submit">{t('Register')}</Button>
       <Button type="button" onClick={props.back}>
-        Back
+        {t('Back')}
       </Button>
     </>
   );

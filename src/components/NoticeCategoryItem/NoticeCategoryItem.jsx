@@ -153,7 +153,13 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
                 </Record>
                 {categoryName === 'sell' && (
                   <Record>
-                    <RecordName>Price:</RecordName>
+                    <RecordName>{t('Price')}:</RecordName>
+                    <RecordContent>{price ? price : '0'} UAH</RecordContent>
+                  </Record>
+                )}
+                {categoryName === 'продаж' && (
+                  <Record>
+                    <RecordName>{t('Price')}:</RecordName>
                     <RecordContent>{price ? price : '0'} грн</RecordContent>
                   </Record>
                 )}
