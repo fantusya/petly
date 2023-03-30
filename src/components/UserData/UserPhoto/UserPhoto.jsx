@@ -19,7 +19,6 @@ import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 export const UserPhoto = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const { t } = useTranslation();
-  // console.log('selectedFile', selectedFile);
   const { user } = useAuth();
 
   const dispatch = useDispatch();
@@ -54,7 +53,7 @@ export const UserPhoto = () => {
 
   return (
     <AvatarWrapper onSubmit={handleSubmit}>
-      <AddAvatarBtn onClick={() => filePicker.current.click()}>
+      <AddAvatarBtn>
         {user.avatarURL ? (
           <AvatarImg src={user.avatarURL} alt={user.name} width="233px" />
         ) : (

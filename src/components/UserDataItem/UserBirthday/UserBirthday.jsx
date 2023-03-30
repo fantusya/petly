@@ -5,6 +5,7 @@ import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { getFormatedDate } from 'helpers/getFormatedDate';
 import {
   InfoForm,
   InfoField,
@@ -23,11 +24,6 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  console.log(user.birthDate, 'birthDate from backend');
-
-  const birthDateToObject = new Date(user.birthDate);
-  const formatedDate = birthDateToObject.toLocaleDateString('ua');
-
   const { values, errors, touched, handleSubmit, setFieldValue } = useFormik({
     initialValues: {
       birthDate: user?.birthDate,
@@ -42,7 +38,12 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
         return;
       }
 
-      if (birthDate === user.birthday) {
+      if (birthDate === user.birthDate) {
+        onUpdate();
+        setIsUpdating(false);
+
+        console.log('Not request');
+        resetForm();
         return;
       }
 
@@ -64,7 +65,7 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
           data-enable-time
           name="birthDate"
           values={values?.birthDate}
-          placeholder={formatedDate}
+          placeholder={getFormatedDate(user)}
           disabled={isDisabled || !isUpdating}
           options={{
             maxDate: 'today',

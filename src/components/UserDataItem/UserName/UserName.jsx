@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+import { nameValidationSchema } from 'helpers/validationSchemas/userValidationSchema';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import {
@@ -17,14 +17,6 @@ import {
   Error,
 } from '../UserDataItem.styled';
 
-const basicSchema = yup.object().shape({
-  name: yup
-    .string()
-    .min(2, 'Too Short!')
-    .max(30, 'Too Long!')
-    .required('Name is required'),
-});
-
 export const UserName = ({ onUpdate, isDisabled }) => {
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -37,14 +29,23 @@ export const UserName = ({ onUpdate, isDisabled }) => {
       initialValues: {
         name: user?.name,
       },
-      validationSchema: basicSchema,
+      validationSchema: nameValidationSchema,
       onSubmit: ({ name }, { resetForm }) => {
         console.log(name);
 
         if (isDisabled) {
           onUpdate();
           setIsUpdating(true);
-          console.log('Not submit');
+          console.log('Change input');
+          return;
+        }
+
+        if (name === user.name) {
+          onUpdate();
+          setIsUpdating(false);
+
+          console.log('Not request');
+          resetForm();
           return;
         }
 
