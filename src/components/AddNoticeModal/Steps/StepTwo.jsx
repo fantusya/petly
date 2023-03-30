@@ -4,7 +4,11 @@ import { stepTwoSchema } from 'helpers/validationSchemas/addNotice';
 
 import { PreviewContainer, RemoveImgBtn, PreviewImg } from './Steps.styled';
 import {
-  BoxQuestion, FormWrapper, InputRadio, SexFormBox, SexLabel,
+  BoxQuestion,
+  FormWrapper,
+  InputRadio,
+  SexFormBox,
+  SexLabel,
   MaleIconBox,
   FemaleIconBox,
   ActionButtonsWrapper,
@@ -15,11 +19,10 @@ import {
   InputCont,
   TextInput,
   PhotoPetBtn,
-  InputContTextArea, 
+  InputContTextArea,
 } from '../AddNoticeModal.styled';
 
 import { AddPhotoIcon } from 'components/PetForm/PetForm.styled';
-
 
 const StepTwo = props => {
   const filePicker = useRef(null);
@@ -36,34 +39,33 @@ const StepTwo = props => {
     >
       {({ values, setFieldValue }) => (
         <FormWrapper>
-
           <SexFormBox>
             <BoxQuestion>The sex:</BoxQuestion>
-    
-              <SexLabel checkedSex={values.sex === "male"}>
-                <MaleIconBox/>
-                Male
-                <InputRadio type="radio" name="sex" value="male" />
-              </SexLabel>
 
-              <SexLabel checkedSex={values.sex === "female"}>
-                <FemaleIconBox/>
-                Female
-                <InputRadio type="radio" name="sex" value="female" />
-              </SexLabel>
+            <SexLabel checkedSex={values.sex === 'male'}>
+              <MaleIconBox />
+              Male
+              <InputRadio type="radio" name="sex" value="male" />
+            </SexLabel>
+
+            <SexLabel checkedSex={values.sex === 'female'}>
+              <FemaleIconBox />
+              Female
+              <InputRadio type="radio" name="sex" value="female" />
+            </SexLabel>
           </SexFormBox>
 
           <InputCont>
             <TextLabel htmlFor="location">Location:</TextLabel>
-            <TextInput name="location" placeholder="Type pet location"/>
-            <ErrorStyle name="location" component="div"/>
+            <TextInput name="location" placeholder="Type pet location" />
+            <ErrorStyle name="location" component="div" />
           </InputCont>
 
           {props.data.category === 'sell' && (
             <InputCont>
               <TextLabel htmlFor="price">Price:</TextLabel>
               <TextInput name="price" placeholder="Type pet price" />
-              <ErrorStyle name="price" component="div"/>
+              <ErrorStyle name="price" component="div" />
             </InputCont>
           )}
 
@@ -99,27 +101,25 @@ const StepTwo = props => {
               <PreviewImg src={values?.preview} alt="Preview" />
             </PreviewContainer>
           ) : (
-            <PhotoPetBtn type="button" onClick={() => filePicker.current.click()} >
+            <PhotoPetBtn
+              type="button"
+              onClick={() => filePicker.current.click()}
+            >
               <AddPhotoIcon width={48} height={48} />
             </PhotoPetBtn>
           )}
 
           <InputContTextArea>
-            <TextLabel htmlFor="comments">
-                Comments
-            </TextLabel>
+            <TextLabel htmlFor="comments">Comments</TextLabel>
             <TextAreaInput
               name="comments"
-              as="textarea"
-              type="text" 
+              // as="textarea"
+              type="text"
               rows="4"
               placeholder="Type comments"
               required="Required comments"
-              />
-            <ErrorStyle
-              name="comments"
-              component="div"
             />
+            <ErrorStyle name="comments" component="div" />
           </InputContTextArea>
 
           <ActionButtonsWrapper>

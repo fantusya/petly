@@ -92,7 +92,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
     }
   }, [favoriteNotices, id, ownNotices, owner, user]);
 
-  const notify = () => toast(i18n.t('Please_login_or_register'));
+  const notify = () => toast.error(i18n.t('Please_login'));
 
   const handleFavorites = async id => {
     if (isFavorite) {
