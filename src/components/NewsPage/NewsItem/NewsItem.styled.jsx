@@ -101,4 +101,11 @@ export const NewsLink = styled.a`
 
   text-align: right;
   text-decoration-line: underline;
+
+  &:hover {
+    color: ${p => p.theme.colors.white};
+    background-color: #f59256;
+    cursor: pointer;
+    transition: ${p => p.theme.transition.main};
+    box-shadow: ${p => p.theme.shadows.section};
 `;
