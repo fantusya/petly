@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { blink } from 'keyframes';
 
 export const HeaderElement = styled.header`
   z-index: 1;
@@ -13,6 +14,8 @@ export const HeaderElement = styled.header`
   position: fixed;
 
   background-color: ${p => p.theme.colors.background};
+
+  animation: ${blink} 2s both;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding-top: 24px;

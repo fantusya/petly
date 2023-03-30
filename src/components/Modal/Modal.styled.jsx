@@ -19,7 +19,8 @@ export const Backdrop = styled.div`
 
 export const ModalWindow = styled.div`
   overflow: auto;
-  width: 100%;
+  // width: 100%;
+  width: 280px;
   max-width: 608px;
   position: absolute;
   top: 50%;
@@ -34,8 +35,8 @@ export const ModalWindow = styled.div`
   } */
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    /* min-width: 608px;
-    width: auto; */
+    min-width: 608px;
+    /* width: auto; */
     border-radius: ${p => p.theme.radii.big};
   }
 `;

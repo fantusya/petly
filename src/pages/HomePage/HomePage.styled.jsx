@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { focusIn, blink } from 'keyframes';
 
 import golden1 from 'images/hero/dog/golden1.webp';
 import golden2x from 'images/hero/dog/golden@2x.webp';
@@ -33,6 +34,8 @@ export const HomeTitle = styled.h1`
 
   color: ${p => p.theme.colors.black};
 
+  animation: ${focusIn} 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 607px;
     padding-left: 32px;
@@ -61,6 +64,8 @@ export const HomeSection = styled.section`
 
   height: calc(100% - 56px);
   background-size: 265px 350px, 100vw 442px;
+
+  animation: ${blink} 2s both;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),

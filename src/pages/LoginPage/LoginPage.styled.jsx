@@ -1,5 +1,7 @@
 import { theme } from 'globalStyles/theme';
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
+
 // import { Field, Form } from 'formik';
 // import { theme } from 'globalStyles/theme';
 
@@ -41,7 +43,7 @@ export const GoogleLoginButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 9px 0 9px 0;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
   text-decoration: none;
@@ -82,5 +84,23 @@ export const LoginPOsitionBtn = styled.div`
   }
   @media (min-width: ${theme.breakpoints[2]}) {
     top: -70px;
+  }
+`;
+
+export const StyledContainer = styled(ToastContainer)`
+  &&&.Toastify__toast-container {
+    font-size: ${p => p.theme.fontSizes[1]};
+    line-height: ${p => p.theme.lineHeights.text};
+  }
+  .Toastify__toast {
+    background-color: ${p => p.theme.colors.background};
+    font-family: ${p => p.theme.fonts.text};
+    border-radius: ${p => p.theme.radii.small};
+    border: ${p => p.theme.borders.normal}${p => p.theme.colors.accent};
+  }
+  .Toastify__toast-body {
+  }
+  .Toastify__progress-bar {
+    background-color: ${p => p.theme.colors.accent};
   }
 `;

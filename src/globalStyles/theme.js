@@ -1,4 +1,6 @@
-export const theme = {
+import { createTheme } from 'styled-breakpoints';
+
+const themeStyles = {
   colors: {
     white: '#fff',
     black: '#000',
@@ -78,3 +80,16 @@ export const theme = {
   },
   breakpoints: ['320px', '768px', '1280px'],
 };
+
+const themeBreakpoints = createTheme({
+  mobile: '320px',
+  mobileSizeM: '575px',
+  tablet: '768px',
+  tabletM: '820px',
+  pcSizeS: '912px',
+  pcSizeM: '1024px',
+  pcSizeL: '1200px',
+  pc: '1280px',
+});
+
+export const theme = { ...themeStyles, ...themeBreakpoints };
