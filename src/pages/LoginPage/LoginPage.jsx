@@ -9,7 +9,9 @@ import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import { useState } from 'react';
 import CustomField from '../authFormStyle.styled';
 import { useTranslation } from 'react-i18next';
-
+import { toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// ToastContainer;
 import {
   TitleAuth,
   FormCustom,
@@ -23,7 +25,9 @@ import {
   GoogleLoginButton,
   GoogleImg,
   LoginPOsitionBtn,
+  StyledContainer,
 } from './LoginPage.styled.jsx';
+
 import {
   ButtonImg,
   ClosedEyaIcon,
@@ -36,11 +40,28 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log('Привет я твой боди', values);
-    dispatch(logIn(values));
+  const handleSubmit = async (values, { resetForm }) => {
+    const resultLogin = await dispatch(logIn(values));
+
+    console.log(resultLogin);
+
+    if (resultLogin.type === 'auth/login/rejected') {
+      toast.error('Email or password is wrong !!!', {
+        position: 'top-right',
+        transition: Zoom,
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light ',
+      });
+    }
+
     resetForm();
   };
+
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
@@ -50,6 +71,7 @@ export const LoginPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
+            <StyledContainer />
             <TitleAuth>{t('Login')}</TitleAuth>
             <Formik
               initialValues={{ email: '', password: '' }}
