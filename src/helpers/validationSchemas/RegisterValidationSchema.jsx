@@ -7,8 +7,7 @@ export const registerValidationSchemaOne = Yup.object().shape({
       /^(?=.{1,63}$)(?=.{2,}@)[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
       'Error! Email must be in a format: aaaaa@aaa.aaa'
     )
-    .min(12, 'At least 12 symbols')
-    .max(50, 'Maximum 50 symbols')
+    .min(5, 'At least 5 symbols')
     .required('Required field'),
   password: Yup.string()
     .matches(/^\S+$/, 'Space is not allowed')
