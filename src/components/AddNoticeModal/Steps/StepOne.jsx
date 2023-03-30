@@ -15,8 +15,11 @@ import {
   UserComment,
 } from '../AddNoticeModal.styled';
 import { Box } from 'components/Box/Box';
+import { useTranslation } from 'react-i18next';
 
 const StepOne = props => {
+  const { t } = useTranslation();
+
   const handleSubmit = values => {
     props.next({ ...values });
   };
@@ -29,9 +32,7 @@ const StepOne = props => {
     >
       {({ values, setFieldValue }) => (
         <FormWrapper>
-          <UserComment>
-            You can add a pet for others to buy or take it into good hands.
-          </UserComment>
+          <UserComment>{t('Step_one_comment')}</UserComment>
           <RadioGroup>
             <TextField
               type="radio"
@@ -56,19 +57,19 @@ const StepOne = props => {
 
           <Box>
             <InputCont>
-              <TextLabel htmlFor="title">Title of ad</TextLabel>
-              <TextInput name="title" placeholder="Type notice title" />
+              <TextLabel htmlFor="title">{t('Title_of_ad')}</TextLabel>
+              <TextInput name="title" placeholder={t('Type_notice_title')} />
               <ErrorStyle name="title" component="div" />
             </InputCont>
 
             <InputCont>
-              <TextLabel htmlFor="name">Name pet</TextLabel>
-              <TextInput name="name" placeholder="Type name pet" />
+              <TextLabel htmlFor="name">{t('Name_pet')}</TextLabel>
+              <TextInput name="name" placeholder={t('Type_name_pet')} />
               <ErrorStyle name="name" component="div" />
             </InputCont>
 
             <InputCont>
-              <TextLabel htmlFor="birthDate">Date of birth</TextLabel>
+              <TextLabel htmlFor="birthDate">{t('Date_of_birth')}</TextLabel>
               <DateInput
                 data-enable-time
                 value={values?.birthDate}
@@ -80,23 +81,23 @@ const StepOne = props => {
                 onChange={date => {
                   setFieldValue('birthDate', date[0].toLocaleDateString());
                 }}
-                placeholder="Select the date"
+                placeholder={t('Select_the_date')}
               />
               <ErrorStyle name="birthDate" component="div" />
             </InputCont>
 
             <InputCont>
-              <TextLabel htmlFor="breed">Breed</TextLabel>
-              <TextInput name="breed" placeholder="Type breed" />
+              <TextLabel htmlFor="breed">{t('Breed')}</TextLabel>
+              <TextInput name="breed" placeholder={t('Type_breed')} />
               <ErrorStyle name="breed" component="div" />
             </InputCont>
           </Box>
 
           <ActionButtonsWrapper>
             <ActionButton type="button" onClick={props.handleModalToggle}>
-              Cancel
+              {t('Cancel')}
             </ActionButton>
-            <ActionButton type="submit">Next</ActionButton>
+            <ActionButton type="submit">{t('Next')}</ActionButton>
           </ActionButtonsWrapper>
         </FormWrapper>
       )}

@@ -140,6 +140,13 @@ i18n
           Read_more: 'Read more',
           only_numbers: 'Use only numbers!',
           greater_zero: 'Type a number greater than 0!',
+          Try_again: 'Please, try again!',
+          Type_pet_location: 'Type pet location',
+          Load_pet_image: `Load the pet's image`,
+          Step_one_comment:
+            'You can add a pet for others to buy or take it into good hands.',
+          Type_notice_title: 'Type notice title',
+          Select_the_date: 'Select the date',
         },
       },
       uk: {
@@ -266,6 +273,13 @@ i18n
           Read_more: 'Більше...',
           only_numbers: 'Використайте тільки цифри!',
           greater_zero: 'Введіть число більше за 0!',
+          Try_again: 'Будь ласка, спробуйте ще раз!',
+          Type_pet_location: 'Вкажіть місцезнаходження улюбленця',
+          Load_pet_image: `Завантажте фото улюбленця`,
+          Step_one_comment:
+            'Ви можете додати тванику, щоб інші люди могли її придбати, або взяти в добрі руки',
+          Type_notice_title: 'Вкажіть заголовок оголошення',
+          Select_the_date: 'Оберіть дату',
         },
       },
     },

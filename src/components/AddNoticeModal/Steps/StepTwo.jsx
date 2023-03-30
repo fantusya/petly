@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Formik } from 'formik';
 import { stepTwoSchema } from 'helpers/validationSchemas/addNotice';
-
+import { useTranslation } from 'react-i18next';
 import { PreviewContainer, RemoveImgBtn, PreviewImg } from './Steps.styled';
 import {
   BoxQuestion,
@@ -25,6 +25,8 @@ import {
 import { AddPhotoIcon } from 'components/PetForm/PetForm.styled';
 
 const StepTwo = props => {
+  const { t } = useTranslation();
+
   const filePicker = useRef(null);
 
   const handleSubmit = values => {
@@ -40,36 +42,36 @@ const StepTwo = props => {
       {({ values, setFieldValue }) => (
         <FormWrapper>
           <SexFormBox>
-            <BoxQuestion>The sex:</BoxQuestion>
+            <BoxQuestion>{t('The_sex')}:</BoxQuestion>
 
             <SexLabel checkedSex={values.sex === 'male'}>
               <MaleIconBox />
-              Male
+              {t('Male')}
               <InputRadio type="radio" name="sex" value="male" />
             </SexLabel>
 
             <SexLabel checkedSex={values.sex === 'female'}>
               <FemaleIconBox />
-              Female
+              {t('Female')}
               <InputRadio type="radio" name="sex" value="female" />
             </SexLabel>
           </SexFormBox>
 
           <InputCont>
-            <TextLabel htmlFor="location">Location:</TextLabel>
-            <TextInput name="location" placeholder="Type pet location" />
+            <TextLabel htmlFor="location">{t('Location')}:</TextLabel>
+            <TextInput name="location" placeholder={t('Type_pet_location')} />
             <ErrorStyle name="location" component="div" />
           </InputCont>
 
           {props.data.category === 'sell' && (
             <InputCont>
-              <TextLabel htmlFor="price">Price:</TextLabel>
+              <TextLabel htmlFor="price">{t('Price')}:</TextLabel>
               <TextInput name="price" placeholder="Type pet price" />
               <ErrorStyle name="price" component="div" />
             </InputCont>
           )}
 
-          <TextLabel>Load the pet's image</TextLabel>
+          <TextLabel>{t('Load_pet_image')}</TextLabel>
           <input
             hidden
             ref={filePicker}
@@ -110,13 +112,13 @@ const StepTwo = props => {
           )}
 
           <InputContTextArea>
-            <TextLabel htmlFor="comments">Comments</TextLabel>
+            <TextLabel htmlFor="comments">{t('Comments')}</TextLabel>
             <TextAreaInput
               name="comments"
               // as="textarea"
               type="text"
               rows="4"
-              placeholder="Type comments"
+              placeholder={t('Type_comments')}
               required="Required comments"
             />
             <ErrorStyle name="comments" component="div" />
@@ -124,9 +126,9 @@ const StepTwo = props => {
 
           <ActionButtonsWrapper>
             <ActionButton type="button" onClick={() => props.prev(values)}>
-              Back
+              {t('Back')}
             </ActionButton>
-            <ActionButton type="submit">Done</ActionButton>
+            <ActionButton type="submit">{t('Done')}</ActionButton>
           </ActionButtonsWrapper>
         </FormWrapper>
       )}
