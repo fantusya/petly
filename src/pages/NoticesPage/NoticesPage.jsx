@@ -8,9 +8,6 @@ import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
 import { useState, useEffect, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// import { useDispatch } from 'react-redux';
-// import { getFavorites } from 'redux/notices/operations';
-
 export const NoticesPage = () => {
   const location = useLocation();
   const navigate = useNavigate();

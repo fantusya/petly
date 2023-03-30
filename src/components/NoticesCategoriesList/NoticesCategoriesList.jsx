@@ -5,7 +5,7 @@ import NoticeCategoryItem from '../NoticeCategoryItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { NoticesCardsList } from './NoticesCategoriesList.styled';
 import { useLocation } from 'react-router-dom';
-import { useNotices } from 'hooks/useNotices';
+import { useAuth, useNotices } from 'hooks';
 import { getFavorites } from 'redux/notices/operations';
 import { getUserNotices } from 'redux/notices/operations';
 import { Box } from 'components/Box/Box';
@@ -16,12 +16,12 @@ export const NoticesCategoriesList = () => {
   const [page, setPage] = useState(0);
 
   const { ownNotices, favoriteNotices } = useNotices();
-
+  const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
   const location = useLocation();
   const categoryName = location.pathname.split('/').reverse()[0];
 
-  const { query: search, error, isLoading } = useNotices();
+  const { query: search, error } = useNotices();
   const favoriteisLoading = useSelector(state => state.notices.favoriteAction);
 
   useEffect(() => {
@@ -46,8 +46,11 @@ export const NoticesCategoriesList = () => {
             page,
           });
 
-          dispatch(getFavorites({ search, page }));
-          dispatch(getUserNotices({ search, page }));
+          if (isLoggedIn) {
+            dispatch(getFavorites({ search, page }));
+            dispatch(getUserNotices({ search, page }));
+          }
+
           setResults(notices.results);
         }
         setStatus(Status.RESOLVED);
@@ -56,7 +59,7 @@ export const NoticesCategoriesList = () => {
       }
     }
     getNotices();
-  }, [categoryName, search, page, dispatch]);
+  }, [categoryName, search, page, dispatch, isLoggedIn]);
 
   const deleteCard = id => {
     const res = results.filter(c => c._id !== id);
@@ -65,7 +68,7 @@ export const NoticesCategoriesList = () => {
 
   return (
     <>
-      {status === Status.PENDING && isLoading && (
+      {status === Status.PENDING && (
         <Box
           display="flex"
           justifyContent="start"
@@ -94,6 +97,17 @@ export const NoticesCategoriesList = () => {
               deleteCard={deleteCard}
             />
           ))}
+          {((categoryName === 'favorite' && favoriteNotices.length === 0) ||
+            (categoryName === 'own' && ownNotices.length === 0)) && (
+            <Box
+              display="flex"
+              justifyContent="start"
+              alignItems="center"
+              p="20px 50px"
+            >
+              Please add your first notice.
+            </Box>
+          )}
         </NoticesCardsList>
       )}
       {status === Status.REJECTED && error && <b>ERROR</b>}

@@ -5,8 +5,6 @@ import { ReactComponent as Heart } from '../../images/svg/notFavorite.svg';
 import { Label, ModalButton } from 'components/commonComponents';
 
 export const ModalContainer = styled(Box)`
-  // width: 280px;
-
   padding-top: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
@@ -173,7 +171,7 @@ export const CloseButtonWrapper = styled(Box)`
 
 export const ContactButton = styled.a`
   height: 40px;
-
+  width: 100%;
   margin-bottom: 12px;
 
   display: flex;
