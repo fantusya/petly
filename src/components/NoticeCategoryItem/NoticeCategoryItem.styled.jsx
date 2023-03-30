@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Box } from 'components/Box/Box';
 import { ReactComponent as Trash } from 'images/svg/hoveredTrash.svg';
 import { ReactComponent as Heart } from 'images/svg/notFavorite.svg';
@@ -178,14 +178,10 @@ export const AddFavoriteButton = styled.button`
 
   cursor: pointer;
 
-  animation: ${p =>
-    p.isFavorite &&
-    css`
-      ${heartbeat} 2s linear infinite
-    `};
-
   &:hover {
-    animation: ${p => p.isFavorite && null} ${AddFavoriteIcon} path {
+    animation: ${heartbeat} 2s linear infinite;
+
+    ${AddFavoriteIcon} path {
       fill: ${p => p.theme.colors.accent};
       transition: ${p => p.theme.transition.main};
     }
