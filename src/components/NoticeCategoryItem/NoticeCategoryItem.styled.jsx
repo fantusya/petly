@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Box } from 'components/Box/Box';
 import { ReactComponent as Trash } from 'images/svg/hoveredTrash.svg';
 import { ReactComponent as Heart } from 'images/svg/notFavorite.svg';
+import { heartbeat } from 'keyframes';
 
 export const NoticesItem = styled.li`
   width: 280px;
@@ -178,6 +179,8 @@ export const AddFavoriteButton = styled.button`
   cursor: pointer;
 
   &:hover {
+    animation: ${heartbeat} 2s linear infinite;
+
     ${AddFavoriteIcon} path {
       fill: ${p => p.theme.colors.accent};
       transition: ${p => p.theme.transition.main};

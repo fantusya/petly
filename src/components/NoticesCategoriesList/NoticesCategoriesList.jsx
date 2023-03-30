@@ -88,12 +88,20 @@ export const NoticesCategoriesList = () => {
         <NoticesCardsList isLoading={favoriteisLoading}>
           {categoryName === 'favorite'
             ? favoriteNotices.map(item => (
-                <NoticeCategoryItem key={item._id} notice={item} />
+                <NoticeCategoryItem
+                  key={item._id}
+                  notice={item}
+                  deleteCard={deleteCard}
+                />
               ))
             : null}
           {categoryName === 'own'
             ? ownNotices.map(item => (
-                <NoticeCategoryItem key={item._id} notice={item} />
+                <NoticeCategoryItem
+                  key={item._id}
+                  notice={item}
+                  deleteCard={deleteCard}
+                />
               ))
             : null}
           {results.map(item => (

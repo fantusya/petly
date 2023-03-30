@@ -33,7 +33,7 @@ import {
   removeUserNotice,
 } from 'redux/notices/operations';
 
-export const NoticeCategoryItem = ({ notice, deleteCard }) => {
+export const NoticeCategoryItem = ({ notice, deleteCard, categName }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
   const { t } = useTranslation();
@@ -191,6 +191,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
                         >
                           {t('yes')}
                         </ModalButton>
+                        <Box width="20px" />
                         <ModalButton confirm={true} onClick={handleDeletion}>
                           {t('no')}
                         </ModalButton>

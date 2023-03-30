@@ -39,7 +39,7 @@ export const removeFromFavorites = createAsyncThunk(
       const { data } = await privateRoutes.delete(
         `api/notices/favorite/${noticeId}`
       );
-      console.log('REMOVE FROM FAVORITE', data);
+      // console.log('REMOVE FROM FAVORITE', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
