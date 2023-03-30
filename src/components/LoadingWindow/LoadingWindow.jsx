@@ -6,6 +6,8 @@ const LoadingWindow = () => {
     <Box
       width="100vw"
       height="100vh"
+      // opacity="0.5"
+      // backgroundColor="transparent"
       background="linear-gradient(to right, #f46b45, #eea849)"
       display="flex"
       alignItems="center"

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { InfoItem } from './UserDataItem.styled';
 import UserName from './UserName';
 import UserEmail from './UserEmail';
-import { UserBirthday } from './UserBirthday';
+import UserBirthday from './UserBirthday';
 import UserPhone from './UserPhone';
 import UserCity from './UserCity';
 

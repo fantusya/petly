@@ -1,10 +1,12 @@
-// import * as yup from 'yup';
+import * as yup from 'yup';
 import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import css from './UserPhoneInput.css';
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Formik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
-// import { registerSchema } from '../../../../schemas/authValidationSchemas';
+import { userUpdateSchema } from 'helpers/validationSchemas';
 import {
   DataInputWrapp,
   Label,
@@ -18,7 +20,6 @@ import {
   IconPen,
 } from './NewUserDataItem.styled';
 import { updateInfo } from '../../redux/auth/operations';
-// import { selectUser } from '../../redux/auth/selectors';
 
 import { ReactComponent as EditSaveIcon } from '../../images/svg/save.svg';
 import { useTranslation } from 'react-i18next';
@@ -26,18 +27,18 @@ import { useAuth } from 'hooks';
 
 const UserDataItem = () => {
   const { t } = useTranslation();
+  const { user } = useAuth();
 
   const [isNameDisabled, setIsNameDisabled] = useState(true);
   const [isEmailDisabled, setIsEmailDisabled] = useState(true);
   const [isBirthdayDisabled, setIsBirthdayDisabled] = useState(true);
   const [isPhoneDisabled, setIsPhoneDisabled] = useState(true);
   const [isCityDisabled, setIsCityDisabled] = useState(true);
-  // const [startDate, setStartDate] = useState();
+  const [startDate, setStartDate] = useState(new Date(user?.birthDate));
 
   const iconColorDisabled = 'rgba(0,0,0,0.6)';
 
   const dispatch = useDispatch();
-  const { user } = useAuth();
 
   const isAnyEditing =
     !isNameDisabled ||
@@ -69,6 +70,9 @@ const UserDataItem = () => {
   );
 
   const onSubmit = event => {
+    console.log('event.birthDate', event.birthDate);
+    console.log(typeof event.birthDate);
+
     dispatch(
       updateInfo({
         name: event.name,
@@ -91,12 +95,12 @@ const UserDataItem = () => {
             phone: user.phone || '+380000000000',
             city: user.city || 'City, Region',
           }}
-          // validationSchema={yup.object().shape({
-          //   name: registerSchema.fields.name,
-          //   email: registerSchema.fields.email,
-          //   phone: registerSchema.fields.phone,
-          //   location: registerSchema.fields.location,
-          // })}
+          validationSchema={yup.object().shape({
+            name: userUpdateSchema.fields.name,
+            email: userUpdateSchema.fields.email,
+            phone: userUpdateSchema.fields.phone,
+            city: userUpdateSchema.fields.city,
+          })}
           onSubmit={event => onSubmit(event)}
         >
           {({ errors, touched, setFieldValue }) => (
@@ -209,7 +213,8 @@ const UserDataItem = () => {
                 </LabelDatePicker>
                 <InputDatePickerWrapp>
                   <InputDatePicker
-                    selected={new Date(user?.birthDate)}
+                    selected={startDate}
+                    // selected={new Date(user?.birthDate)}
                     openToDate={new Date(1993, 0, 1)}
                     active={!isBirthdayDisabled}
                     dateFormat="dd.MM.yyyy"
@@ -217,8 +222,11 @@ const UserDataItem = () => {
                     placeholderText={'00.00.0000'}
                     disabled={isBirthdayDisabled}
                     onChange={date => {
+                      console.log('date', date);
+                      console.log(typeof date);
+
                       setFieldValue('birthDate', date);
-                      // setStartDate(date);
+                      setStartDate(date);
                     }}
                     minDate={new Date('01.01.1900')}
                     maxDate={new Date()}
@@ -255,12 +263,12 @@ const UserDataItem = () => {
               </InputWrapper>
 
               <InputWrapper>
-                {/* <Label htmlFor="phone">{t('Phone')}:</Label> */}
+                <Label htmlFor="phone">{t('Phone')}:</Label>
                 <PhoneInput
                   // name="phone"
                   type="tel"
                   disabled={isPhoneDisabled}
-                  // className={css}
+                  className={css}
                   onlyCountries={['ua']}
                   country={'ua'}
                   countryCodeEditable={false}
