@@ -21,7 +21,7 @@ export const NoticesCategoriesList = () => {
   const location = useLocation();
   const categoryName = location.pathname.split('/').reverse()[0];
 
-  const { query: search, error, isLoading } = useNotices();
+  const { query: search, error } = useNotices();
   const favoriteisLoading = useSelector(state => state.notices.favoriteAction);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export const NoticesCategoriesList = () => {
 
   return (
     <>
-      {(status === Status.PENDING || isLoading) && (
+      {status === Status.PENDING && (
         <Box
           display="flex"
           justifyContent="start"
@@ -97,18 +97,17 @@ export const NoticesCategoriesList = () => {
               deleteCard={deleteCard}
             />
           ))}
-          {isLoggedIn &&
-            (categoryName === 'favorite' || categoryName === 'own') &&
-            (favoriteNotices.length === 0 || ownNotices.length === 0) && (
-              <Box
-                display="flex"
-                justifyContent="start"
-                alignItems="center"
-                p="20px 50px"
-              >
-                Please add your first notice.
-              </Box>
-            )}
+          {((categoryName === 'favorite' && favoriteNotices.length === 0) ||
+            (categoryName === 'own' && ownNotices.length === 0)) && (
+            <Box
+              display="flex"
+              justifyContent="start"
+              alignItems="center"
+              p="20px 50px"
+            >
+              Please add your first notice.
+            </Box>
+          )}
         </NoticesCardsList>
       )}
       {status === Status.REJECTED && error && <b>ERROR</b>}
