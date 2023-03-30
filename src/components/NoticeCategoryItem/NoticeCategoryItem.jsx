@@ -1,7 +1,7 @@
 import moment from 'moment';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box } from 'components/Box/Box';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import {
@@ -41,6 +41,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
   const [isOwn, setIsOwn] = useState(false);
 
   const { favoriteNotices, ownNotices } = useNotices();
+  const error = useSelector(state => state.notices.error);
 
   const {
     category,
@@ -110,6 +111,14 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
     setDeletionConfirmation(!deletionConfirmation);
   };
 
+  const deleteHandler = () => {
+    handleDeletion();
+    dispatch(removeUserNotice(id));
+    if (!error) {
+      deleteCard(id);
+    }
+  };
+
   return (
     <>
       <NoticesItem>
@@ -176,12 +185,7 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
                       <>
                         <ModalButton
                           confirm={true}
-                          onClick={() => {
-                            handleDeletion();
-                            dispatch(removeUserNotice(id)).then(() =>
-                              deleteCard(id)
-                            );
-                          }}
+                          onClick={() => deleteHandler()}
                         >
                           {t('yes')}
                         </ModalButton>
