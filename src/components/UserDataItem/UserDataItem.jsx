@@ -1,6 +1,6 @@
 // import * as yup from 'yup';
 import PhoneInput from 'react-phone-input-2';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Formik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -32,35 +32,12 @@ const UserDataItem = () => {
   const [isBirthdayDisabled, setIsBirthdayDisabled] = useState(true);
   const [isPhoneDisabled, setIsPhoneDisabled] = useState(true);
   const [isCityDisabled, setIsCityDisabled] = useState(true);
-  const [startDate, setStartDate] = useState();
+  // const [startDate, setStartDate] = useState();
 
   const iconColorDisabled = 'rgba(0,0,0,0.6)';
 
   const dispatch = useDispatch();
   const { user } = useAuth();
-
-  // useEffect(() => {
-  //   if (user.birthDate) {
-  // console.log('user', user);
-  // console.log('user.birthDate', user.birthDate);
-  // console.log(
-  //   'user.birthDate',
-  //   typeof new Date(user.birthDate).toLocaleDateString('ua')
-  // );
-
-  // const parts = new Date(user.birthDate);
-  // const time = parts.toLocaleDateString('ua');
-
-  // if (time.length === 3) {
-  //   const year = parseInt(parts[2]);
-  //   const month = parseInt(parts[1] - 1);
-  //   const day = parseInt(parts[0]);
-
-  // if (year === 0) setStartDate();
-  // else setStartDate(new Date(year, month, day));
-  //     }
-  //   }
-  // }, [user]);
 
   const isAnyEditing =
     !isNameDisabled ||
@@ -92,11 +69,6 @@ const UserDataItem = () => {
   );
 
   const onSubmit = event => {
-    // console.log('startDate', startDate);
-    // console.log(typeof startDate);
-    console.log('event.phone', event.phone);
-    console.log(typeof event.phone);
-
     dispatch(
       updateInfo({
         name: event.name,
@@ -246,7 +218,7 @@ const UserDataItem = () => {
                     disabled={isBirthdayDisabled}
                     onChange={date => {
                       setFieldValue('birthDate', date);
-                      setStartDate(date);
+                      // setStartDate(date);
                     }}
                     minDate={new Date('01.01.1900')}
                     maxDate={new Date()}
