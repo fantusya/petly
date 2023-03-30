@@ -3,12 +3,14 @@ import { Status } from 'constants/status';
 import { getNoticeByCategory } from 'api/notice';
 import NoticeCategoryItem from '../NoticeCategoryItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { NoticesCardsList } from './NoticesCategoriesList.styled';
+import { NoticesCardsList, EmptyArray } from './NoticesCategoriesList.styled';
 import { useLocation } from 'react-router-dom';
 import { useNotices } from 'hooks/useNotices';
 import { getFavorites } from 'redux/notices/operations';
 import { getUserNotices } from 'redux/notices/operations';
 import { Box } from 'components/Box/Box';
+import emptyArray from 'images/empty.jpg';
+import { RotatingTriangles } from 'react-loader-spinner';
 
 export const NoticesCategoriesList = () => {
   const [status, setStatus] = useState(Status.IDLE);
@@ -65,14 +67,30 @@ export const NoticesCategoriesList = () => {
 
   return (
     <>
-      {status === Status.PENDING && isLoading && (
-        <Box
-          display="flex"
-          justifyContent="start"
-          alignItems="center"
-          p="20px 50px"
-        >
-          LOADING
+      {status === Status.PENDING && !results.length && (
+        <Box display="flex" alignItems="center" justifyContent="center">
+          <RotatingTriangles
+            visible={true}
+            height="120"
+            width="120"
+            ariaLabel="rotating-triangels-loading"
+            wrapperStyle={{}}
+            wrapperClass="rotating-triangels-wrapper"
+            colors={['#241d1d', '#f5cd56', '#ff4073']}
+          />
+        </Box>
+      )}
+      {isLoading && (
+        <Box display="flex" alignItems="center" justifyContent="center">
+          <RotatingTriangles
+            visible={true}
+            height="120"
+            width="120"
+            ariaLabel="rotating-triangels-loading"
+            wrapperStyle={{}}
+            wrapperClass="rotating-triangels-wrapper"
+            colors={['#241d1d', '#f5cd56', '#ff4073']}
+          />
         </Box>
       )}
       {status === Status.RESOLVED && (
@@ -96,7 +114,12 @@ export const NoticesCategoriesList = () => {
           ))}
         </NoticesCardsList>
       )}
-      {status === Status.REJECTED && error && <b>ERROR</b>}
+      {results.length === 0 && (
+        <EmptyArray alt="nothing was found" src={emptyArray} />
+      )}
+      {status === Status.REJECTED && error && (
+        <EmptyArray alt="nothing was found" src={emptyArray} />
+      )}
     </>
   );
 };

@@ -95,7 +95,7 @@ export const refreshUser = createAsyncThunk(
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
-    console.log('persisted token', persistedToken);
+    // console.log('persisted token', persistedToken);
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
@@ -106,7 +106,7 @@ export const refreshUser = createAsyncThunk(
       // If there is a token, add it to the HTTP header and perform the request
       token.set(persistedToken);
       const { data } = await privateRoutes.get('api/users/current');
-      console.log('CURRENT', data);
+      // console.log('CURRENT', data);
       return data;
     } catch (error) {
       console.log('ERROR', error);
