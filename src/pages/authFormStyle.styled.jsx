@@ -225,10 +225,20 @@ export const SpanText = styled.span`
   font-size: ${p => p.theme.fontSizes[0]};
 `;
 export const LinkToOtherPage = styled(Link)`
-  margin-left: 6px;
-  color: ${p => p.theme.colors.linc};
+  /* margin-left: 6px; */
+  padding: 0 6px;
+  border-radius: ${p => p.theme.radii.small};
+  color: ${p => p.theme.colors.linlTxt};
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[0]};
+  transition: color ${p => p.theme.transition.main},
+    background-color ${p => p.theme.transition.main};
+
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.white};
+    background-color: ${p => p.theme.colors.linlTxt};
+  }
 `;
 // ------------- логика подсветки бордера инпута ----------
 

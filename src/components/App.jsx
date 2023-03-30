@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
+import LoadingWindow from './LoadingWindow';
 
 import { ROUTES } from 'constants/routes';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
@@ -31,7 +32,7 @@ export const App = () => {
   }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
-    <b>LOADING</b>
+    <LoadingWindow />
   ) : (
     <>
       <Routes>

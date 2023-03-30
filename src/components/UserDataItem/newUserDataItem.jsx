@@ -1,10 +1,9 @@
-// import * as yup from 'yup';
-import PhoneInput from 'react-phone-input-2';
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
-// import { registerSchema } from '../../../../schemas/authValidationSchemas';
+import { registerSchema } from '../../../../schemas/authValidationSchemas';
 import {
   DataInputWrapp,
   Label,
@@ -17,14 +16,13 @@ import {
   ErrorMessage,
   IconPen,
 } from './NewUserDataItem.styled';
-import { updateInfo } from '../../redux/auth/operations';
-// import { selectUser } from '../../redux/auth/selectors';
+import { updateUser } from 'redux/auth/authOperations';
+import { selectUser } from 'redux/auth/authSelectors';
 
-import { ReactComponent as EditSaveIcon } from '../../images/svg/save.svg';
+import { ReactComponent as EditSaveIcon } from 'images/userPage/editSaveIcon.svg';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from 'hooks';
 
-const UserDataItem = () => {
+export const NewUserDataItem = () => {
   const { t } = useTranslation();
 
   const [isNameDisabled, setIsNameDisabled] = useState(true);
@@ -32,12 +30,27 @@ const UserDataItem = () => {
   const [isBirthdayDisabled, setIsBirthdayDisabled] = useState(true);
   const [isPhoneDisabled, setIsPhoneDisabled] = useState(true);
   const [isCityDisabled, setIsCityDisabled] = useState(true);
-  // const [startDate, setStartDate] = useState();
+  const [startDate, setStartDate] = useState();
 
   const iconColorDisabled = 'rgba(0,0,0,0.6)';
 
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  const currentUser = useSelector(selectUser);
+
+  useEffect(() => {
+    if (currentUser.birthday) {
+      const parts = currentUser.birthday.split('.');
+
+      if (parts.length === 3) {
+        const year = parseInt(parts[2]);
+        const month = parseInt(parts[1] - 1);
+        const day = parseInt(parts[0]);
+
+        if (year === 0) setStartDate();
+        else setStartDate(new Date(year, month, day));
+      }
+    }
+  }, [currentUser.birthday]);
 
   const isAnyEditing =
     !isNameDisabled ||
@@ -52,9 +65,9 @@ const UserDataItem = () => {
       setTimeout(() => {
         if (field === 'name') setIsNameDisabled(!isNameDisabled);
         if (field === 'email') setIsEmailDisabled(!isEmailDisabled);
-        if (field === 'birthDate') setIsBirthdayDisabled(!isBirthdayDisabled);
+        if (field === 'birthday') setIsBirthdayDisabled(!isBirthdayDisabled);
         if (field === 'phone') setIsPhoneDisabled(!isPhoneDisabled);
-        if (field === 'city') setIsCityDisabled(!isCityDisabled);
+        if (field === 'location') setIsCityDisabled(!isCityDisabled);
       }, 0);
 
       return true;
@@ -70,14 +83,21 @@ const UserDataItem = () => {
 
   const onSubmit = event => {
     dispatch(
-      updateInfo({
+      updateUser({
         name: event.name,
         email: event.email,
-        birthDate: event.birthDate,
+        birthday: startDate.toLocaleString().slice(0, 10),
         phone: event.phone,
-        city: event.city,
+        location: event.location,
       })
     );
+    console.log('onSubmit', {
+      name: event.name,
+      email: event.email,
+      birthday: startDate.toLocaleString().slice(0, 10),
+      phone: event.phone,
+      location: event.location,
+    });
   };
 
   return (
@@ -85,18 +105,18 @@ const UserDataItem = () => {
       <DataInputWrapp>
         <Formik
           initialValues={{
-            name: user.name || 'New User',
-            email: user.email,
-            birthDate: user.birthDate || '00.00.0000',
-            phone: user.phone || '+380000000000',
-            city: user.city || 'City, Region',
+            name: currentUser.name || 'New User',
+            email: currentUser.email,
+            birthday: currentUser.birthday || '00.00.0000',
+            phone: currentUser.phone || '+380000000000',
+            location: currentUser.location || 'City, Region',
           }}
-          // validationSchema={yup.object().shape({
-          //   name: registerSchema.fields.name,
-          //   email: registerSchema.fields.email,
-          //   phone: registerSchema.fields.phone,
-          //   location: registerSchema.fields.location,
-          // })}
+          validationSchema={yup.object().shape({
+            name: registerSchema.fields.name,
+            email: registerSchema.fields.email,
+            phone: registerSchema.fields.phone,
+            location: registerSchema.fields.location,
+          })}
           onSubmit={event => onSubmit(event)}
         >
           {({ errors, touched, setFieldValue }) => (
@@ -204,22 +224,19 @@ const UserDataItem = () => {
               )}
 
               <InputWrapper>
-                <LabelDatePicker htmlFor="birthDate">
-                  {t('birthDate')}:
+                <LabelDatePicker htmlFor="birthday">
+                  {t('Birthday')}:
                 </LabelDatePicker>
                 <InputDatePickerWrapp>
                   <InputDatePicker
-                    selected={new Date(user?.birthDate)}
-                    openToDate={new Date(1993, 0, 1)}
+                    selected={startDate}
+                    openToDate={new Date(2000, 0, 1)}
                     active={!isBirthdayDisabled}
                     dateFormat="dd.MM.yyyy"
-                    name="birthDate"
+                    name="birthday"
                     placeholderText={'00.00.0000'}
                     disabled={isBirthdayDisabled}
-                    onChange={date => {
-                      setFieldValue('birthDate', date);
-                      // setStartDate(date);
-                    }}
+                    onChange={date => setStartDate(date)}
                     minDate={new Date('01.01.1900')}
                     maxDate={new Date()}
                     showDisabledMonthNavigation
@@ -229,7 +246,7 @@ const UserDataItem = () => {
                 {isBirthdayDisabled && (
                   <EditBtn
                     type="submit"
-                    name="birthDate"
+                    name="birthday"
                     onClick={() => setIsBirthdayDisabled(!isBirthdayDisabled)}
                     disabled={isAnyEditing}
                     className={isAnyEditing ? '' : 'btn-active'}
@@ -246,7 +263,7 @@ const UserDataItem = () => {
                   <EditBtn
                     type="submit"
                     className="btn-active"
-                    onClick={e => onSubmitClick(e, 'birthDate', errors)}
+                    onClick={e => onSubmitClick(e, 'birthday', errors)}
                     isDateEdit={true}
                   >
                     <EditSaveIcon width="20" height="20" />
@@ -255,26 +272,8 @@ const UserDataItem = () => {
               </InputWrapper>
 
               <InputWrapper>
-                {/* <Label htmlFor="phone">{t('Phone')}:</Label> */}
-                <PhoneInput
-                  // name="phone"
-                  type="tel"
-                  disabled={isPhoneDisabled}
-                  // className={css}
-                  onlyCountries={['ua']}
-                  country={'ua'}
-                  countryCodeEditable={false}
-                  // defaultCountry={'ua'}
-                  errors={errors}
-                  value={user?.phone}
-                  onChange={phone => {
-                    console.log('phone', `+${phone}`);
-
-                    setFieldValue('phone', `+${phone}`);
-                  }}
-                />
-
-                {/* <Input
+                <Label htmlFor="phone">{t('Phone')}:</Label>
+                <Input
                   type="text"
                   name="phone"
                   disabled={isPhoneDisabled}
@@ -293,7 +292,7 @@ const UserDataItem = () => {
                       isPhoneDisabled ? 'transparent' : '#FDF7F2'
                     }`,
                   }}
-                /> */}
+                />
                 {isPhoneDisabled && (
                   <EditBtn
                     type="submit"
@@ -323,10 +322,10 @@ const UserDataItem = () => {
               )}
 
               <InputWrapper>
-                <Label htmlFor="city">{t('City')}:</Label>
+                <Label htmlFor="location">{t('City')}:</Label>
                 <Input
                   type="text"
-                  name="city"
+                  name="location"
                   disabled={isCityDisabled}
                   onChange={e => {
                     setFieldValue(e.target.name, e.target.value);
@@ -362,14 +361,14 @@ const UserDataItem = () => {
                   <EditBtn
                     type="submit"
                     className="btn-active"
-                    onClick={e => onSubmitClick(e, 'city', errors)}
+                    onClick={e => onSubmitClick(e, 'location', errors)}
                   >
                     <EditSaveIcon width="20" height="20" />
                   </EditBtn>
                 )}
               </InputWrapper>
-              {touched.city && errors.city && (
-                <ErrorMessage>{errors.city}</ErrorMessage>
+              {touched.location && errors.location && (
+                <ErrorMessage>{errors.location}</ErrorMessage>
               )}
             </Form>
           )}
@@ -378,5 +377,3 @@ const UserDataItem = () => {
     </div>
   );
 };
-
-export default UserDataItem;
