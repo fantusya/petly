@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
-// import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import {
