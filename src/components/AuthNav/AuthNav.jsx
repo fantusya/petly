@@ -1,6 +1,9 @@
 import { AuthNavWrapp, StyledNavLink } from 'components/AuthNav/AuthNav.styled';
+import { useTranslation } from 'react-i18next';
 
 export const AuthNav = ({ setOpen }) => {
+  const { t } = useTranslation();
+
   return (
     <AuthNavWrapp>
       <StyledNavLink
@@ -9,7 +12,7 @@ export const AuthNav = ({ setOpen }) => {
           setOpen(false);
         }}
       >
-        Login
+        {t('Login')}
       </StyledNavLink>
       <StyledNavLink
         to="/register"
@@ -17,7 +20,7 @@ export const AuthNav = ({ setOpen }) => {
           setOpen(false);
         }}
       >
-        Registration
+        {t('Registration')}
       </StyledNavLink>
     </AuthNavWrapp>
   );

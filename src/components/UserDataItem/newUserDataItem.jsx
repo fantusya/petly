@@ -21,6 +21,7 @@ import { selectUser } from 'redux/auth/authSelectors';
 
 import { ReactComponent as EditSaveIcon } from 'images/userPage/editSaveIcon.svg';
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 
 export const NewUserDataItem = () => {
   const { t } = useTranslation();
@@ -105,11 +106,11 @@ export const NewUserDataItem = () => {
       <DataInputWrapp>
         <Formik
           initialValues={{
-            name: currentUser.name || 'New User',
+            name: currentUser.name || i18n.t('New_User'),
             email: currentUser.email,
             birthday: currentUser.birthday || '00.00.0000',
             phone: currentUser.phone || '+380000000000',
-            location: currentUser.location || 'City, Region',
+            location: currentUser.location || i18n.t('City_region'),
           }}
           validationSchema={yup.object().shape({
             name: registerSchema.fields.name,

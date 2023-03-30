@@ -8,6 +8,7 @@ import { PageTitle } from 'components/commonComponents/PageTitle.styled';
 import { toISODate } from 'helpers/newsHelpers/dateConverting';
 import { stringMax } from 'helpers/newsHelpers/stringConverting';
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 
 // -------------------------------------------------
 import { toast } from 'react-hot-toast';
@@ -44,7 +45,7 @@ const NewsPage = () => {
         date:
           toISODate(news.date) !== 'NaN/NaN/NaN'
             ? toISODate(news.date)
-            : 'Two or three weeks ago',
+            : i18n.t('Two_or_three_weeks_ago'),
       }));
       setNews(NewDateNews);
       setPublicNews(NewDateNews);

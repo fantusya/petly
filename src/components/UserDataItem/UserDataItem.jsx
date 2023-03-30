@@ -22,6 +22,7 @@ import { updateInfo } from '../../redux/auth/operations';
 
 import { ReactComponent as EditSaveIcon } from '../../images/svg/save.svg';
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18n';
 import { useAuth } from 'hooks';
 
 const UserDataItem = () => {
@@ -85,11 +86,11 @@ const UserDataItem = () => {
       <DataInputWrapp>
         <Formik
           initialValues={{
-            name: user.name || 'New User',
+            name: user.name || i18n.t('New_User'),
             email: user.email,
             birthDate: user.birthDate || '00.00.0000',
             phone: user.phone || '+380000000000',
-            city: user.city || 'City, Region',
+            city: user.city || i18n.t('City_region'),
           }}
           // validationSchema={yup.object().shape({
           //   name: registerSchema.fields.name,
@@ -205,7 +206,7 @@ const UserDataItem = () => {
 
               <InputWrapper>
                 <LabelDatePicker htmlFor="birthDate">
-                  {t('birthDate')}:
+                  {t('Birthday')}:
                 </LabelDatePicker>
                 <InputDatePickerWrapp>
                   <InputDatePicker
