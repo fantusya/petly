@@ -1,7 +1,7 @@
 import moment from 'moment';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Box } from 'components/Box/Box';
 import { DEFAULT_IMAGE } from 'constants/urls';
 import {
@@ -33,7 +33,7 @@ import {
   removeUserNotice,
 } from 'redux/notices/operations';
 
-export const NoticeCategoryItem = ({ notice, deleteCard }) => {
+export const NoticeCategoryItem = ({ notice, deleteCard, categName }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, user } = useAuth();
   const { t } = useTranslation();
@@ -41,7 +41,6 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
   const [isOwn, setIsOwn] = useState(false);
 
   const { favoriteNotices, ownNotices } = useNotices();
-  const error = useSelector(state => state.notices.error);
 
   const {
     category,
@@ -111,14 +110,6 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
     setDeletionConfirmation(!deletionConfirmation);
   };
 
-  const deleteHandler = () => {
-    handleDeletion();
-    dispatch(removeUserNotice(id));
-    if (!error) {
-      deleteCard(id);
-    }
-  };
-
   return (
     <>
       <NoticesItem>
@@ -185,10 +176,16 @@ export const NoticeCategoryItem = ({ notice, deleteCard }) => {
                       <>
                         <ModalButton
                           confirm={true}
-                          onClick={() => deleteHandler()}
+                          onClick={() => {
+                            handleDeletion();
+                            dispatch(removeUserNotice(id)).then(() =>
+                              deleteCard(id)
+                            );
+                          }}
                         >
                           {t('yes')}
                         </ModalButton>
+                        <Box width="20px" />
                         <ModalButton confirm={true} onClick={handleDeletion}>
                           {t('no')}
                         </ModalButton>
