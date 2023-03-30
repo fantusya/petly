@@ -1,4 +1,4 @@
-import { NAV_LIST } from '../../constants/navlist';
+import { NAV_LIST } from 'constants/navlist';
 import { NavigationWrapper, StyledNavLink } from 'components/Nav/Nav.styled';
 // import Media from 'react-media';
 

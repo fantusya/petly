@@ -41,7 +41,7 @@ export const GoogleLoginButton = styled.a`
   align-items: center;
   justify-content: center;
   padding: 9px 0 9px 0;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
   text-decoration: none;

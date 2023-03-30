@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { jelloHorizontal } from 'keyframes';
 
 export const LogoText = styled.div`
   width: 82px;
@@ -28,6 +29,11 @@ export const LogoSpan = styled.span`
 export const HomeLink = styled(NavLink)`
   text-decoration: none;
   //  z-index: 100;
+
+  &:hover,
+  &:focus {
+    animation: ${jelloHorizontal} 0.9s both;
+  }
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-right: auto;
