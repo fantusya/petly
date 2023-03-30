@@ -18,22 +18,21 @@ import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
 export const UserPhoto = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  // const [isFileSelected, setIsFileSelected] = useState(false);
   const { t } = useTranslation();
-
+  // console.log('selectedFile', selectedFile);
   const { user } = useAuth();
 
   const dispatch = useDispatch();
   const filePicker = useRef(null);
 
-  const handleUpload = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (!selectedFile) {
-      console.log('CHOOSE FILE PLS');
-      toast.error('Choose an image to change your avatar!');
-      return;
+      filePicker.current.click();
+      handleChange();
     }
+
     console.log('selectedFile', selectedFile);
     const data = new FormData();
     data.append('avatarURL', selectedFile);
@@ -42,20 +41,19 @@ export const UserPhoto = () => {
 
   const handleChange = e => {
     const chosenImg = e.target.files[0];
-    console.log(chosenImg);
+    console.log(chosenImg, 'chosen image');
 
     if (!e.target.files.length || !chosenImg) {
-      setSelectedFile(null);
       toast.error(i18n.t('Chose_image'));
       return;
     }
+
     setSelectedFile(chosenImg);
-    // setIsFileSelected(true);
     toast.success(i18n.t('Photo_selected'));
   };
 
   return (
-    <AvatarWrapper>
+    <AvatarWrapper onSubmit={handleSubmit}>
       <AddAvatarBtn onClick={() => filePicker.current.click()}>
         {user.avatarURL ? (
           <AvatarImg src={user.avatarURL} alt={user.name} width="233px" />
@@ -73,7 +71,7 @@ export const UserPhoto = () => {
         accept="image/*,.png,.jpg,.gif,.web"
       />
 
-      <EditPhotoBtn type="submit" onClick={handleUpload}>
+      <EditPhotoBtn type="submit">
         <Kamera />
         <span>{t('Edit_photo')}</span>
       </EditPhotoBtn>

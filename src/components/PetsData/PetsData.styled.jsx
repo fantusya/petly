@@ -35,7 +35,6 @@ export const Title = styled.h2`
 
   color: ${p => p.theme.colors.black};
 
-  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: ${p => p.theme.lineHeights.text};
@@ -48,7 +47,6 @@ export const Title = styled.h2`
 `;
 
 export const TitleBtn = styled.h2`
-  font-family: ${p => p.theme.fonts.textMedium};
   font-size: ${p => p.theme.fontSizes[4]};
   font-weight: ${p => p.theme.fontWeights.medium};
 `;

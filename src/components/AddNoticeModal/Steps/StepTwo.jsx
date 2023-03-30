@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { Formik } from 'formik';
 import { stepTwoSchema } from 'helpers/validationSchemas/addNotice';
 import { useTranslation } from 'react-i18next';
+import { Box } from 'components/Box/Box';
+
 import { PreviewContainer, RemoveImgBtn, PreviewImg } from './Steps.styled';
 import {
   BoxQuestion,
@@ -90,18 +92,20 @@ const StepTwo = props => {
           />
 
           {values?.preview ? (
-            <PreviewContainer>
-              <RemoveImgBtn
-                type="button"
-                onClick={() => {
-                  setFieldValue('photoURL', null);
-                  setFieldValue('preview', null);
-                }}
-              >
-                &times;
-              </RemoveImgBtn>
-              <PreviewImg src={values?.preview} alt="Preview" />
-            </PreviewContainer>
+            <Box>
+              <PreviewContainer>
+                <RemoveImgBtn
+                  type="button"
+                  onClick={() => {
+                    setFieldValue('photoURL', null);
+                    setFieldValue('preview', null);
+                  }}
+                >
+                  &times;
+                </RemoveImgBtn>
+                <PreviewImg src={values?.preview} alt="Preview" />
+              </PreviewContainer>
+            </Box>
           ) : (
             <PhotoPetBtn
               type="button"

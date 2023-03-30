@@ -28,7 +28,7 @@ export const NoticesCategoriesList = () => {
 
   useEffect(() => {
     async function getNotices() {
-      // setResults([]);
+      setResults([]);
       setStatus(Status.PENDING);
 
       try {
@@ -110,20 +110,22 @@ export const NoticesCategoriesList = () => {
               justifyContent="start"
               alignItems="center"
               p="20px 50px"
+              margin="0 auto"
             >
-              Please add your first notice.
+              <EmptyArray alt="nothing was found" src={emptyArray} />
             </Box>
           )}
         </NoticesCardsList>
       )}
 
-      {results.length === 0 && (
-        <EmptyArray alt="nothing was found" src={emptyArray} />
-      )}
+      {results.length === 0 &&
+        status !== Status.PENDING &&
+        categoryName !== 'favorite' &&
+        categoryName !== 'own' && (
+          <EmptyArray alt="nothing was found" src={emptyArray} />
+        )}
 
-      {status === Status.REJECTED && error && (
-        <EmptyArray alt="nothing was found" src={emptyArray} />
-      )}
+      {status === Status.REJECTED && error && <b>error</b>}
     </>
   );
 };
