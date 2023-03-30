@@ -43,13 +43,13 @@ const StepOne = props => {
               type="radio"
               name="category"
               value="for-free"
-              label="for-free"
+              label="in good hands"
             />
             <TextField
               type="radio"
               name="category"
               value="lost-found"
-              label="lost-found"
+              label="lost/found"
             />
           </RadioGroup>
 
