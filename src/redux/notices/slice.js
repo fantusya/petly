@@ -37,13 +37,6 @@ const noticesSlice = createSlice({
   },
   extraReducers: {
     [getFavorites.fulfilled](state, action) {
-      // if (
-      //   !action.payload.results.some(item =>
-      //     state.favoriteNotices.includes(item)
-      //   )
-      // ) {
-      //   state.favoriteNotices.push(...action.payload.results);
-      // }
       state.favoriteNotices = action.payload.results;
       state.totalItems = action.payload.totalItems;
 
@@ -51,7 +44,6 @@ const noticesSlice = createSlice({
       state.error = false;
     },
     [addToFavorites.fulfilled](state, action) {
-      // state.favoriteNotices = [action.payload, ...state.favoriteNotices];
       state.favoriteNotices.unshift(action.payload);
 
       state.favoriteAction = false;
@@ -97,17 +89,10 @@ const noticesSlice = createSlice({
       state.isLoading = false;
       state.error = false;
     },
-    // [getByCategory.pending]: handlePending,
     [getFavorites.pending]: handlePending,
-    // [addToFavorites.pending]: handlePending,
-    // [removeFromFavorites.pending]: handlePending,
     [getUserNotices.pending]: handlePending,
     [removeUserNotice.pending]: handlePending,
-
-    // [getByCategory.rejected]: handleRejected,
     [getFavorites.rejected]: handleRejected,
-    // [addToFavorites.rejected]: handleRejected,
-    // [removeFromFavorites.rejected]: handleRejected,
     [getUserNotices.rejected]: handleRejected,
     [removeUserNotice.rejected]: handleRejected,
   },
