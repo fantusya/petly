@@ -16,7 +16,7 @@ export const validationPetSchema = yup.object().shape({
     .min(2, i18n.t('Min_char'))
     .max(16, i18n.t('Sixteen_char_max'))
     .trim()
-    .required('Required breed'),
+    .required(i18n.t('Breed_required')),
   photoURL: yup.string(),
   comments: yup
     .string()
