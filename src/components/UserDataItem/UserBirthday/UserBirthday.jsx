@@ -1,104 +1,94 @@
-import { Formik } from 'formik';
-
-import { stepOneSchema } from 'helpers/validationSchemas/addNotice';
-import { TextField } from 'helpers/addNoticeCustomField/noticeInput';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
+import { updateInfo } from 'redux/auth/operations';
+import { useFormik } from 'formik';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
-  ActionButton,
-  ActionButtonsWrapper,
-  DateInput,
-  ErrorStyle,
-  FormWrapper,
-  InputCont,
-  RadioGroup,
-  TextInput,
-  TextLabel,
-  UserComment,
-} from '../../AddNoticeModal.styled';
+  InfoForm,
+  InfoField,
+  InfoProp,
+  FlatpickrStyled,
+  InfoButton,
+  Pensil,
+  Check,
+  Error,
+} from '../UserDataItem.styled';
 
-const StepOne = props => {
-  const handleSubmit = values => {
-    props.next({ ...values });
-  };
+export const UserBirthday = ({ onUpdate, isDisabled }) => {
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  const { user } = useAuth();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  console.log(user.birthDate, 'birthDate from backend');
+
+  const birthDateToObject = new Date(user.birthDate);
+  const formatedDate = birthDateToObject.toLocaleDateString('ua');
+
+  const { values, errors, touched, handleSubmit, setFieldValue } = useFormik({
+    initialValues: {
+      birthDate: user?.birthDate,
+    },
+    onSubmit: ({ birthDate }, { resetForm }) => {
+      console.log(birthDate);
+
+      if (isDisabled) {
+        onUpdate();
+        setIsUpdating(true);
+        console.log('Change input');
+        return;
+      }
+
+      if (birthDate === user.birthday) {
+        return;
+      }
+
+      dispatch(updateInfo({ birthDate }));
+
+      onUpdate();
+      setIsUpdating(false);
+
+      console.log('Submit');
+      resetForm();
+    },
+  });
 
   return (
-    <Formik
-      validationSchema={stepOneSchema}
-      initialValues={props.data}
-      onSubmit={handleSubmit}
-    >
-      {({ values, setFieldValue }) => (
-        <FormWrapper>
-          <UserComment>
-            You can add a pet for others to buy or take it into good hands.
-          </UserComment>
-          <RadioGroup>
-            <TextField
-              type="radio"
-              name="category"
-              value="sell"
-              label="sell"
-              checked
-            />
-            <TextField
-              type="radio"
-              name="category"
-              value="for-free"
-              label="for-free"
-            />
-            <TextField
-              type="radio"
-              name="category"
-              value="lost-found"
-              label="lost-found"
-            />
-          </RadioGroup>
-
-          <InputCont>
-            <TextLabel htmlFor="title">Title of ad</TextLabel>
-            <TextInput name="title" placeholder="Type notice title" />
-            <ErrorStyle name="title" component="div" />
-          </InputCont>
-
-          <InputCont>
-            <TextLabel htmlFor="name">Name pet</TextLabel>
-            <TextInput name="name" placeholder="Type name pet" />
-            <ErrorStyle name="name" component="div" />
-          </InputCont>
-
-          <InputCont>
-            <TextLabel htmlFor="birthDate">Date of birth</TextLabel>
-            <DateInput
-              data-enable-time
-              value={values?.birthDate}
-              options={{
-                maxDate: 'today',
-                enableTime: false,
-                dateFormat: 'd.m.Y',
-              }}
-              onChange={date => {
-                setFieldValue('birthDate', date[0].toLocaleDateString());
-              }}
-              placeholder="Select the date"
-            />
-            <ErrorStyle name="birthDate" component="div" />
-          </InputCont>
-
-          <InputCont>
-            <TextLabel htmlFor="breed">Breed</TextLabel>
-            <TextInput name="breed" placeholder="Type breed" />
-            <ErrorStyle name="breed" component="div" />
-          </InputCont>
-
-          <ActionButtonsWrapper>
-            <ActionButton type="button" onClick={props.handleModalToggle}>
-              Cancel
-            </ActionButton>
-            <ActionButton type="submit">Next</ActionButton>
-          </ActionButtonsWrapper>
-        </FormWrapper>
-      )}
-    </Formik>
+    <InfoForm onSubmit={handleSubmit}>
+      <InfoField>
+        <InfoProp>{t('Birthday')}:</InfoProp>
+        <FlatpickrStyled
+          data-enable-time
+          name="birthDate"
+          values={values?.birthDate}
+          placeholder={formatedDate}
+          disabled={isDisabled || !isUpdating}
+          options={{
+            maxDate: 'today',
+            enableTime: false,
+            dateFormat: 'd.m.Y',
+          }}
+          onChange={date => {
+            setFieldValue('birthDate', date[0]);
+          }}
+        />
+        {errors.birthDate && touched.birthDate && (
+          <Error>{errors.birthDate}</Error>
+        )}
+      </InfoField>
+      <InfoButton type="submit" disabled={!isDisabled && !isUpdating}>
+        {isUpdating ? <Check /> : <Pensil />}
+      </InfoButton>
+    </InfoForm>
   );
 };
 
-export default StepOne;
+export default UserBirthday;
+
+UserBirthday.propsType = {
+  onUpdate: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+};
