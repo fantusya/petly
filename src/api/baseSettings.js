@@ -1,24 +1,24 @@
 import axios from 'axios';
-// import { LOCALHOST_URL } from 'constants/urls';
-import { HOST_URL } from 'constants/urls';
+import { LOCALHOST_URL } from 'constants/urls';
+// import { HOST_URL } from 'constants/urls';
 // import { useDispatch } from 'react-redux';
 // import { setToken } from 'redux/auth/slice';
 
-// export const privateRoutes = axios.create({
-//   baseURL: LOCALHOST_URL,
-// });
-
-// export const commonRoutes = axios.create({
-//   baseURL: LOCALHOST_URL,
-// });
+export const privateRoutes = axios.create({
+  baseURL: LOCALHOST_URL,
+});
 
 export const commonRoutes = axios.create({
-  baseURL: HOST_URL,
+  baseURL: LOCALHOST_URL,
 });
 
-export const privateRoutes = axios.create({
-  baseURL: HOST_URL,
-});
+// export const commonRoutes = axios.create({
+//   baseURL: HOST_URL,
+// });
+
+// export const privateRoutes = axios.create({
+//   baseURL: HOST_URL,
+// });
 
 export const token = {
   set(token) {
