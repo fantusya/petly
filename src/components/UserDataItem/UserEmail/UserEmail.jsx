@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateInfo } from 'redux/auth/operations';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+import { emailValidationSchema } from 'helpers/validationSchemas/userValidationSchema';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import {
@@ -17,10 +17,6 @@ import {
   Error,
 } from '../UserDataItem.styled';
 
-const basicSchema = yup.object().shape({
-  email: yup.string().email('Invalid email').required('Email is required'),
-});
-
 export const UserEmail = ({ onUpdate, isDisabled }) => {
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -33,14 +29,23 @@ export const UserEmail = ({ onUpdate, isDisabled }) => {
       initialValues: {
         email: user?.email,
       },
-      validationSchema: basicSchema,
+      validationSchema: emailValidationSchema,
       onSubmit: ({ email }, { resetForm }) => {
         console.log(email);
 
         if (isDisabled) {
           onUpdate();
           setIsUpdating(true);
-          console.log('Not submit');
+          console.log('Change input');
+          return;
+        }
+
+        if (email === user.email) {
+          onUpdate();
+          setIsUpdating(false);
+
+          console.log('Not request');
+          resetForm();
           return;
         }
 
