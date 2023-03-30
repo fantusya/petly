@@ -83,6 +83,7 @@ export const NoticesCategoriesList = () => {
           />
         </Box>
       )}
+
       {status === Status.RESOLVED && (
         <NoticesCardsList isLoading={favoriteisLoading}>
           {categoryName === 'favorite'
@@ -115,9 +116,11 @@ export const NoticesCategoriesList = () => {
           )}
         </NoticesCardsList>
       )}
+
       {results.length === 0 && (
         <EmptyArray alt="nothing was found" src={emptyArray} />
       )}
+
       {status === Status.REJECTED && error && (
         <EmptyArray alt="nothing was found" src={emptyArray} />
       )}
