@@ -4,8 +4,8 @@ export const RemoveImgBtn = styled.button`
   opacity: 0;
 
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 7px;
+  right: 0px;
 
   display: flex;
   align-items: center;
@@ -13,8 +13,8 @@ export const RemoveImgBtn = styled.button`
 
   padding: 10px;
 
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 
   font-size: ${p => p.theme.fontSizes[7]};
 
@@ -33,6 +33,11 @@ export const RemoveImgBtn = styled.button`
   &:focus {
     color: ${p => p.theme.colors.accent};
   }
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const PreviewContainer = styled.div`
@@ -47,16 +52,19 @@ export const PreviewContainer = styled.div`
 export const PreviewImg = styled.img`
   display: block;
   object-fit: cover;
+  /* margin: 0 auto; */
+  margin-top: 8px;
+  margin-bottom: 28px;
 
-  width: 208px;
-  height: 208px;
+  width: 116px;
+  height: 116px;
 
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.small};
   cursor: pointer;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    margin-bottom: ${p => p.theme.space[0]}px;
+    /* margin-bottom: ${p => p.theme.space[0]}px; */
     width: 182px;
     height: 182px;
   }

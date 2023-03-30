@@ -37,7 +37,8 @@ export const FirstForm = styled.div`
   margin-bottom: 40px; */
 `;
 
-export const FormWrapper = styled(Form)`   //Yes
+export const FormWrapper = styled(Form)`
+  //Yes
   display: flex;
   flex-direction: column;
   // gap: 10px;
@@ -136,7 +137,7 @@ export const InputCont = styled.div`
     &:not(:last-child) {
       margin-bottom: 28px;
     }
-}
+  }
 `;
 
 export const TextLabel = styled.label`
@@ -153,51 +154,53 @@ export const TextLabel = styled.label`
 `;
 
 export const TextInput = styled(Field)`
-display: block;
-box-sizing: border-box;
-align-items: center;
-display: flex;
-outline: none;
-border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
-width: 100%;
-height: 40px;
-margin-top: ${p => p.theme.space[3]}px;
-padding: 0;
-padding-left: 14px;
-border-radius: ${p => p.theme.radii.big};
-
-::placeholder {
-  font-family: ${p => p.theme.fonts.text};
-  font-style: normal;
-  font-weight: ${p => p.theme.fontWeights.normal};
-  font-size: ${p => p.theme.fontSizes[1]};
-  line-height: ${p => p.theme.lineHeights.text};
-  color: rgba(27, 27, 27, 0.6);
-}
-@media (min-width: ${p => p.theme.breakpoints[1]}) {
-  margin-top: 12px;
-  /* width: 448px; */
+  display: block;
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  outline: none;
+  border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
   width: 100%;
-  height: 48px;
-  padding-left: ${p => p.theme.space[4]}px;
+  height: 40px;
+  margin-top: ${p => p.theme.space[3]}px;
+  padding: 0;
+  padding-left: 14px;
+  border-radius: ${p => p.theme.radii.big};
+
   ::placeholder {
-    font-size: ${p => p.theme.fontSizes[2]};
+    font-family: ${p => p.theme.fonts.text};
+    font-style: normal;
+    font-weight: ${p => p.theme.fontWeights.normal};
+    font-size: ${p => p.theme.fontSizes[1]};
+    line-height: ${p => p.theme.lineHeights.text};
+    color: rgba(27, 27, 27, 0.6);
   }
-}
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-top: 12px;
+    /* width: 448px; */
+    width: 100%;
+    height: 48px;
+    padding-left: ${p => p.theme.space[4]}px;
+    ::placeholder {
+      font-size: ${p => p.theme.fontSizes[2]};
+    }
+  }
 `;
 
 export const ErrorStyle = styled(ErrorMessage)`
   position: absolute;
-  left: 20px;
-  bottom: -17px;
+  left: 15px;
+  bottom: -20px;
   font-size: ${p => p.theme.fontSizes[0]};
   color: ${p => p.theme.colors.error};
-  @media (max-width: 767.9px {
+
+  @media (max-width: 767.9px) {
     transform: translate(0px, 0px);
   }
+
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size:  ${p => p.theme.fontSizes[0]};
-    bottom: -10px;
+    font-size: ${p => p.theme.fontSizes[0]};
+    bottom: -22px;
   }
 `;
 
@@ -319,8 +322,9 @@ export const SexLabel = styled.label`
   &:not(:last-child) {
     margin-right: 40px;
   }
-  transition: transform ${p => p.theme.transition.main}, color ${p => p.theme.transition.main};
-  
+  transition: transform ${p => p.theme.transition.main},
+    color ${p => p.theme.transition.main};
+
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -374,8 +378,8 @@ export const PhotoPetBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 208px;
-  height: 208px;
+  width: 116px;
+  height: 116px;
 
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.small};
@@ -490,8 +494,6 @@ export const ActionButton = styled(ModalButton)`
     // gap: ${p => p.theme.space[3]}px;
   }
 `;
-
-
 
 // export const CloseBtn = styled(CloseButton)`
 //   position: absolute;
