@@ -13,21 +13,22 @@ export const Container = styled.div`
   align-items: center;
   padding: 40px 20px;
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 40px 80px;
   }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h2`
   text-align: center;
   margin-bottom: 20px;
   font-family: ${p => p.theme.fonts.textBold};
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[5]}px;
+  font-size: ${p => p.theme.fontSizes[5]};
   line-height: ${p => p.theme.lineHeights.text};
+  letter-spacing: ${p => p.theme.letterSpacing.text};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[8]}px;
+    font-size: ${p => p.theme.fontSizes[8]};
   }
 `;
 
@@ -48,16 +49,13 @@ export const UserComment = styled.p`
   text-align: center;
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[2]}px;
+  font-size: ${p => p.theme.fontSizes[2]};
   line-height: ${p => p.theme.lineHeights.text};
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
-    margin-bottom: 28px;
-    font-size: ${p => p.theme.fontSizes[4]}px;
-  }
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-bottom: 28px;
+    font-size: ${p => p.theme.fontSizes[4]};
     width: 448px;
-
   }
 `;
 
@@ -104,7 +102,7 @@ export const RadioButton = styled.div`
   align-items: center;
   padding: ${p => p.theme.space[3]}px 25px;
 
-  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-size: ${p => p.theme.fontSizes[1]};
   font-weight: ${p => p.theme.fontWeights.medium};
   letter-spacing: ${p => p.theme.letterSpacing.text};
   line-height: ${p => p.theme.lineHeights.text};
@@ -122,7 +120,7 @@ export const RadioButton = styled.div`
   }
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[4]}px;
+    font-size: ${p => p.theme.fontSizes[4]};
   }
 `;
 
@@ -134,7 +132,7 @@ export const InputCont = styled.div`
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[4]}px;
   }
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     &:not(:last-child) {
       margin-bottom: 28px;
     }
@@ -146,11 +144,11 @@ export const TextLabel = styled.label`
   width: 100%;
   font-family: ${p => p.theme.fonts.textMedium};
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: ${p => p.theme.fontSizes[3]};
   line-height: ${p => p.theme.lineHeights.text};
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
-    font-size: ${p => p.theme.fontSizes[5]}px;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: ${p => p.theme.fontSizes[5]};
   }
 `;
 
@@ -172,7 +170,7 @@ border-radius: ${p => p.theme.radii.big};
   font-family: ${p => p.theme.fonts.text};
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.normal};
-  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-size: ${p => p.theme.fontSizes[1]};
   line-height: ${p => p.theme.lineHeights.text};
   color: rgba(27, 27, 27, 0.6);
 }
@@ -183,7 +181,7 @@ border-radius: ${p => p.theme.radii.big};
   height: 48px;
   padding-left: ${p => p.theme.space[4]}px;
   ::placeholder {
-    font-size: ${p => p.theme.fontSizes[2]}px;
+    font-size: ${p => p.theme.fontSizes[2]};
   }
 }
 `;
@@ -218,7 +216,7 @@ export const DateInput = styled(Flatpickr)`
     font-family: ${p => p.theme.fonts.text};
     font-style: normal;
     font-weight: ${p => p.theme.fontWeights.normal};
-    font-size: ${p => p.theme.fontSizes[1]}px;
+    font-size: ${p => p.theme.fontSizes[1]};
     line-height: ${p => p.theme.lineHeights.text};
     color: rgba(27, 27, 27, 0.6);
   }
@@ -238,7 +236,7 @@ export const DateInput = styled(Flatpickr)`
     /* width: 448px; */
     height: 48px;
     ::placeholder {
-      font-size: ${p => p.theme.fontSizes[2]}px;
+      font-size: ${p => p.theme.fontSizes[2]};
     }
   }
 `;
@@ -262,12 +260,12 @@ export const TextAreaInput = styled(Field)`
   // height: 40px;
   margin-top: ${p => p.theme.space[3]}px;
   padding: 12px 5px 12px 14px;
-  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-size: ${p => p.theme.fontSizes[1]};
   border-radius: ${p => p.theme.radii.small};
   border: ${p => p.theme.borders.normal} rgba(245, 146, 86, 0.5);
   background-color: ${p => p.theme.colors.background};
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     // width: 448px;
     height: 116px;
     padding-left: 18px;
@@ -286,24 +284,24 @@ export const SexFormBox = styled.fieldset`
   padding: 0;
   font-family: ${p => p.theme.fonts.textMedium};
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: ${p => p.theme.fontSizes[3]};
   line-height: ${p => p.theme.lineHeights.text};
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: 40px;
-    font-size: ${p => p.theme.fontSizes[5]}px;;
+    font-size: ${p => p.theme.fontSizes[5]};
   }
 `;
 
 export const BoxQuestion = styled.legend`
   margin-bottom: ${p => p.theme.space[4]}px;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: ${p => p.theme.fontSizes[3]};
   line-height: ${p => p.theme.lineHeights.logo};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: 28px;
-    font-size: ${p => p.theme.fontSizes[5]}px;
+    font-size: ${p => p.theme.fontSizes[5]};
     line-height: 1.04;
   }
 `;
@@ -312,11 +310,11 @@ export const SexLabel = styled.label`
   display: flex;
   flex-direction: column;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: ${p => p.theme.fontSizes[3]};
   line-height: 1.325;
   cursor: pointer;
 
-  color: ${p => p.checkedSex && '#F59256'};
+  color: ${p => p.checkedSex && p.theme.colors.accent};
 
   &:not(:last-child) {
     margin-right: 40px;
@@ -328,8 +326,8 @@ export const SexLabel = styled.label`
     transform: scale(1.1);
   }
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
-    font-size: ${p => p.theme.fontSizes[4]}px;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-size: ${p => p.theme.fontSizes[4]};
     &:not(:last-child) {
       margin-right: 80px;
     }
@@ -341,7 +339,7 @@ export const MaleIconBox = styled(MaleIcon)`
   height: 40px;
   margin-bottom: 12px;
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 60px;
     height: 60px;
     margin-bottom: 20px;
@@ -353,7 +351,7 @@ export const FemaleIconBox = styled(FemaleIcon)`
   height: 40px;
   margin-bottom: 12px;
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 60px;
     height: 60px;
     margin-bottom: 20px;
@@ -426,12 +424,12 @@ export const ImageTitle = styled.label`
   // text-align: center;
   margin-bottom: ${p => p.theme.space[3]}px;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: ${p => p.theme.fontSizes[3]};
   line-height: 1.2;
   letter-spacing: ${p => p.theme.letterSpacing.title};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[5]}px;
+    font-size: ${p => p.theme.fontSizes[5]};
     line-height: 1.04;
   }
 `;
@@ -464,7 +462,7 @@ export const ActionButtonsWrapper = styled.div`
   margin-top: 40px;
   gap: 12px;
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     flex-direction: row;
     // gap: ${p => p.theme.space[3]}px;
   }
@@ -472,6 +470,7 @@ export const ActionButtonsWrapper = styled.div`
 
 export const ActionButton = styled(ModalButton)`
   margin-bottom: 0;
+  max-width: 240px;
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.white};
@@ -484,7 +483,7 @@ export const ActionButton = styled(ModalButton)`
     margin-bottom: 0;
   }
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     flex-direction: row;
     max-width: 180px;
     height: 44px;
