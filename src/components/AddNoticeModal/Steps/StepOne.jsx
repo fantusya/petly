@@ -29,8 +29,9 @@ const StepOne = props => {
     >
       {({ values, setFieldValue }) => (
         <FormWrapper>
-          <UserComment>You can add a pet for others to buy or take it into good
-              hands.</UserComment>
+          <UserComment>
+            You can add a pet for others to buy or take it into good hands.
+          </UserComment>
           <RadioGroup>
             <TextField
               type="radio"
@@ -57,37 +58,37 @@ const StepOne = props => {
             <InputCont>
               <TextLabel htmlFor="title">Title of ad</TextLabel>
               <TextInput name="title" placeholder="Type notice title" />
-              <ErrorStyle name="title" component="div"/>          
+              <ErrorStyle name="title" component="div" />
             </InputCont>
 
-            <InputCont>         
+            <InputCont>
               <TextLabel htmlFor="name">Name pet</TextLabel>
               <TextInput name="name" placeholder="Type name pet" />
-              <ErrorStyle name="name" component="div"/>
+              <ErrorStyle name="name" component="div" />
             </InputCont>
 
             <InputCont>
               <TextLabel htmlFor="birthDate">Date of birth</TextLabel>
               <DateInput
-                  data-enable-time
-                  value={values?.birthDate}
-                  options={{
-                    maxDate: 'today',
-                    enableTime: false,
-                    dateFormat: 'd.m.Y',
-                  }}
-                  onChange={date => {
-                    setFieldValue('birthDate', date[0].toLocaleDateString());
-                }}  
+                data-enable-time
+                value={values?.birthDate}
+                options={{
+                  maxDate: 'today',
+                  enableTime: false,
+                  dateFormat: 'd.m.Y',
+                }}
+                onChange={date => {
+                  setFieldValue('birthDate', date[0].toLocaleDateString());
+                }}
                 placeholder="Select the date"
-                />  
-              <ErrorStyle name="birthDate" component="div"/>
+              />
+              <ErrorStyle name="birthDate" component="div" />
             </InputCont>
 
             <InputCont>
               <TextLabel htmlFor="breed">Breed</TextLabel>
               <TextInput name="breed" placeholder="Type breed" />
-              <ErrorStyle name="breed" component="div"/>
+              <ErrorStyle name="breed" component="div" />
             </InputCont>
           </Box>
 
