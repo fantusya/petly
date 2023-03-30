@@ -28,7 +28,7 @@ export const NoticesCategoriesList = () => {
 
   useEffect(() => {
     async function getNotices() {
-      setResults([]);
+      // setResults([]);
       setStatus(Status.PENDING);
 
       try {
