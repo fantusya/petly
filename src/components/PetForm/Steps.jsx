@@ -97,11 +97,12 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
       </Box>
 
       <ButtonBox>
-        <Button type="button" disabled={isValid} onClick={next}>
-          {t('Next')}
-        </Button>
         <Button mb={0} type="button" onClick={closeModal}>
           {t('Cancel')}
+        </Button>
+
+        <Button type="button" disabled={isValid} onClick={next}>
+          {t('Next')}
         </Button>
       </ButtonBox>
     </>
@@ -190,10 +191,10 @@ const TwoStep = ({ back, onSelectedImg }) => {
       </Box>
 
       <ButtonBox>
-        <Button type="submit">{t('Done')}</Button>
         <Button type="button" onClick={back}>
           {t('Back')}
         </Button>
+        <Button type="submit">{t('Done')}</Button>
       </ButtonBox>
     </>
   );
