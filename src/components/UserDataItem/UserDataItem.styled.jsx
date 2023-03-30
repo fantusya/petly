@@ -57,9 +57,7 @@ export const InfoInput = styled.input`
     disabled ? theme.colors.transparent : theme.colors.background};
 
   ::placeholder {
-    color: ${({ theme, disabled }) =>
-      disabled ? theme.colors.text : theme.colors.inputTxt};
-    opacity: 1;
+    color: ${({ theme, disabled }) => disabled && theme.colors.text};
   }
 
   @media (min-width: ${theme.breakpoints[1]}) {
@@ -85,9 +83,7 @@ export const FlatpickrStyled = styled(Flatpickr)`
     disabled ? theme.colors.transparent : theme.colors.background};
 
   ::placeholder {
-    color: ${({ theme, disabled }) =>
-      disabled ? theme.colors.text : theme.colors.inputTxt};
-    opacity: 1;
+    color: ${({ theme, disabled }) => disabled && theme.colors.text};
   }
 
   @media (min-width: ${theme.breakpoints[1]}) {
