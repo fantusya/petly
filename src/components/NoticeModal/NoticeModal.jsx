@@ -31,6 +31,7 @@ import i18n from 'i18n';
 
 import { ModalCloseButton } from 'components/commonComponents';
 import { toast } from 'react-hot-toast';
+import { useAuth } from 'hooks';
 
 export const NoticeModal = ({
   id,
@@ -38,9 +39,12 @@ export const NoticeModal = ({
   onClose,
   isFavorite,
   handleFavorites,
+  notify,
 }) => {
   const [notice, setNotice] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const { isLoggedIn } = useAuth();
+
   const { t } = useTranslation();
 
   // const { isLoggedIn } = useAuth();
@@ -134,7 +138,7 @@ export const NoticeModal = ({
                         {notice.owner.email}
                       </Link>
                     ) : (
-                      'N/A'
+                      ''
                     )}
                   </RecordContent>
                 </Record>
@@ -146,7 +150,7 @@ export const NoticeModal = ({
                         {notice.owner.phone}
                       </Link>
                     ) : (
-                      'N/A'
+                      ''
                     )}
                   </RecordContent>
                 </Record>
@@ -177,7 +181,9 @@ export const NoticeModal = ({
                 {t('Contact')}
               </ModalButton>
             )}
-            <ModalFavoriteButton onClick={() => handleFavorites(id)}>
+            <ModalFavoriteButton
+              onClick={() => (isLoggedIn ? handleFavorites(id) : notify())}
+            >
               {isFavorite ? i18n.t('Remove_from') : i18n.t('Add_to')}{' '}
               <AddFavoriteIcon />
             </ModalFavoriteButton>

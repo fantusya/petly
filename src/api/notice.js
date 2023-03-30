@@ -15,7 +15,6 @@ export const getNoticeByCategory = async ({
 
 export const getNoticeById = async id => {
   const { data } = await commonRoutes.get(`api/notices/id/${id}`);
-  console.log('getNoticeById', data);
   return data;
 };
 
@@ -25,6 +24,5 @@ export const addUserNotice = async credentials => {
       'Content-Type': 'multipart/form-data',
     },
   });
-  console.log('addUserNotice', res);
   return res;
 };
