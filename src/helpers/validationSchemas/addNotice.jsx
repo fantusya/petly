@@ -30,7 +30,6 @@ export const stepTwoSchema = Yup.object({
     .positive()
     .truncate()
     .min(0.01, 'Type a number greater than 0!'),
-  // .max(100000, 'Price must be greater than 0!'),
   // .required(i18n.t('Set_price')),
   // .matches(/^[0-9][0-9]*$/, i18n.t('Numbers_only')),
   photoURL: Yup.string().required(),

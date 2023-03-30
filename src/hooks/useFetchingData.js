@@ -15,7 +15,6 @@ export const useFetchingData = (url, query = '') => {
 
       try {
         const { data } = await commonRoutes.get(newUrl);
-        console.log('data', data);
         setResults(data);
         setStatus(Status.RESOLVED);
       } catch (error) {

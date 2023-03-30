@@ -46,6 +46,9 @@ const SearchBar = ({ onSubmit }) => {
     setSearchTerm('');
     setIsSearchEmpty(true);
     onSubmit('');
+    if (currentPage === 'notices') {
+      dispatch(search(''));
+    }
   };
 
   const handleSearchInputChange = event => {
