@@ -1,21 +1,12 @@
-import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/auth/operations';
 import { LogoutButton, LogoutIcon } from './Logout.styled';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
-// import { ReactComponent as LogoutIcon } from 'images/svg/logout.svg';
-
-export const Logout = () => {
+export const Logout = ({ onOpen }) => {
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
-
-  const handleLogOut = () => {
-    dispatch(logOut());
-  };
-
   return (
-    <LogoutButton onClick={handleLogOut}>
+    <LogoutButton onClick={onOpen}>
       <LogoutIcon />
       <span>{t('Log_out')}</span>
     </LogoutButton>
@@ -23,3 +14,7 @@ export const Logout = () => {
 };
 
 export default Logout;
+
+Logout.propsType = {
+  onOpen: PropTypes.func.isRequired,
+};

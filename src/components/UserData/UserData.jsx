@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import UserPhoto from 'components/UserData/UserPhoto';
+import Modal from 'components/Modal';
+import UserModal from './UserModal';
 import {
   UserWrapper,
   TitleContainer,
@@ -13,7 +16,12 @@ import Logout from 'components/Logout';
 import { useTranslation } from 'react-i18next';
 
 export const UserData = () => {
+  const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <UserWrapper>
@@ -30,10 +38,23 @@ export const UserData = () => {
               <UserDataItem />
             </UserDataList>
 
-            <Logout />
+            <Logout onOpen={toggleModal} />
           </UserThumb>
         </UserSection>
       </UserContainer>
+      {showModal ? (
+        <Modal onClose={toggleModal}>
+          {/* <NoticeModal
+            id={id}
+            label={categoryName}
+            onClose={handleModalToggle}
+            isFavorite={isFavorite}
+            handleFavorites={handleFavorites}
+            notify={notify}
+          /> */}
+          <UserModal onClose={toggleModal} />
+        </Modal>
+      ) : null}
     </UserWrapper>
   );
 };

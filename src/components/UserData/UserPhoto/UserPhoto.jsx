@@ -29,7 +29,7 @@ export const UserPhoto = () => {
 
     if (!selectedFile) {
       filePicker.current.click();
-      handleChange(e);
+      handleChange();
     }
 
     console.log('selectedFile', selectedFile);
@@ -39,7 +39,7 @@ export const UserPhoto = () => {
   };
 
   const handleChange = e => {
-    const chosenImg = e.currentTarget.files[0];
+    const chosenImg = e.target.files[0];
     console.log(chosenImg, 'chosen image');
 
     if (!e.target.files.length || !chosenImg) {
