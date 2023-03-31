@@ -16,68 +16,74 @@ const initialValues = {
   comments: '',
 };
 
-export const PetForm = ({ closeModal }) => {
-  const dispatch = useDispatch();
+// export const PetForm = ({ closeModal }) => {
+//   const dispatch = useDispatch();
 
-  const [currentStep, setCurrentStep] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
+//   const [currentStep, setCurrentStep] = useState(0);
+//   const [selectedFile, setSelectedFile] = useState(null);
+//   const [img, setImg] = useState(null);
 
-  const handleNextStep = () => {
-    setCurrentStep(prev => prev + 1);
-  };
+//   const handleNextStep = () => {
+//     setCurrentStep(prev => prev + 1);
+//   };
 
-  const handlePrevStep = () => {
-    setCurrentStep(prev => prev - 1);
-  };
+//   const handlePrevStep = () => {
+//     setCurrentStep(prev => prev - 1);
+//   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    // console.log('Відправити форму!!!!!!!!!!');
-    const { name, birthDate, breed, comments } = values;
+//   const handleSubmit = (values, { resetForm }) => {
+//     // console.log('Відправити форму!!!!!!!!!!');
+//     const { name, birthDate, breed, comments, photoUrl } = values;
 
-    if (!selectedFile) {
-      console.log('CHOOSE FILE PLS');
-      return;
-    }
+//     console.log('photoUrl', photoUrl);
 
-    const data = new FormData();
-    data.append('name', name);
-    data.append('birthDate', birthDate);
-    data.append('breed', breed);
-    data.append('photoURL', selectedFile);
-    data.append('comments', comments);
-    dispatch(addPet(data));
+//     if (!selectedFile) {
+//       console.log('CHOOSE FILE PLS');
+//       return;
+//     }
 
-    console.log('selectedFile', selectedFile);
+//     const data = new FormData();
+//     data.append('name', name);
+//     data.append('birthDate', birthDate);
+//     data.append('breed', breed);
+//     data.append('photoURL', selectedFile);
+//     data.append('comments', comments);
+//     dispatch(addPet(data));
 
-    resetForm();
-    closeModal();
+//     resetForm();
+//     closeModal();
 
-    toast.success(`You successfully deleted your pet ${name}`);
-  };
+//     toast.success(`You successfully deleted your pet ${name}`);
+//   };
 
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={validationPetSchema}
-    >
-      {({ errors, isValid }) => (
-        <Forma autoComplete="off">
-          {currentStep === 0 && (
-            <OneStep
-              next={handleNextStep}
-              closeModal={closeModal}
-              isValid={!isValid}
-            />
-          )}
+//   return (
+//     <Formik
+//       initialValues={initialValues}
+//       onSubmit={handleSubmit}
+//       validationSchema={validationPetSchema}
+//     >
+//       {({ errors, isValid, values, setFieldValue }) => (
+//         <Forma autoComplete="off">
+//           {currentStep === 0 && (
+//             <OneStep
+//               next={handleNextStep}
+//               closeModal={closeModal}
+//               isValid={!isValid}
+//             />
+//           )}
 
-          {currentStep === 1 && (
-            <TwoStep back={handlePrevStep} onSelectedImg={setSelectedFile} />
-          )}
-        </Forma>
-      )}
-    </Formik>
-  );
-};
+//           {currentStep === 1 && (
+//             <TwoStep
+//               back={handlePrevStep}
+//               onSelectedImg={setSelectedFile}
+//               setFieldValue={setFieldValue}
+//               values={values}
+//             />
+//           )}
+//         </Forma>
+//       )}
+//     </Formik>
+//   );
+// };
 
-export default PetForm;
+// export default PetForm;

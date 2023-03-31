@@ -5,6 +5,7 @@ export const List = styled.ul`
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     margin-top: ${p => p.theme.space[5] - 8}px;
+  }
 `;
 
 export const Items = styled.li`
@@ -16,6 +17,7 @@ export const Items = styled.li`
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     margin-bottom: ${p => p.theme.space[4] + 6}px;
+  }
 `;
 
 export const UserPetScreen = styled.h2`
@@ -57,4 +59,10 @@ export const Wrapper = styled.div`
     margin-top: ${p => p.theme.space[6] - 4}px;
     width: 800px;
   }
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  margin: 0 auto;
+  // margin-top: 40px;
 `;

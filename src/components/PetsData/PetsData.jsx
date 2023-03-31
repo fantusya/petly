@@ -13,11 +13,17 @@ import {
 } from './PetsData.styled';
 
 export const PetsData = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const { t } = useTranslation();
 
-  const toogleModal = () => {
-    setShowModal(!showModal);
+  const handleModalToggle = () => {
+    console.log('CLICK ON BUTTON');
+    setOpen(true);
+  };
+
+  const handleButtonToggle = () => {
+    setOpen(false);
   };
 
   return (
@@ -29,13 +35,15 @@ export const PetsData = () => {
             <div>
               <TitleBtn>{t('Add_pet')}</TitleBtn>
             </div>
-            <Button type="button" onClick={toogleModal}>
-              <AddIcon width={24} height={24} />
-            </Button>
+            {open ? (
+              <ModalAddsPet handleButtonToggle={handleButtonToggle} />
+            ) : (
+              <Button onClick={handleModalToggle}>
+                <AddIcon width={24} height={24} />
+              </Button>
+            )}
           </Box>
         </Box>
-
-        {showModal && <ModalAddsPet onCloseModal={toogleModal} />}
         <PetsList />
       </PetsContainer>
     </PetsWrapper>

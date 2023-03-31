@@ -248,7 +248,7 @@ i18n
           Type_name: `Введіть назву оголошення`,
           Search: 'Пошук',
           Confirm_Password: 'Підтвердіть пароль',
-          Birthday: 'Дата народження',
+          Birthday: 'Дата народж.',
           email_match: 'Пошта повинна бути в форматі mail@mail.com',
           at_least_five: 'Щонайменше 5 символів',
           required_field: `Поле обов'язкове`,

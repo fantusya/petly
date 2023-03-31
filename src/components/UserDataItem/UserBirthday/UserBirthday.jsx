@@ -16,13 +16,16 @@ import {
   Check,
   Error,
 } from '../UserDataItem.styled';
+import { Ukrainian } from 'flatpickr/dist/l10n/uk.js';
 
 export const UserBirthday = ({ onUpdate, isDisabled }) => {
   const [isUpdating, setIsUpdating] = useState(false);
 
   const { user } = useAuth();
   const dispatch = useDispatch();
+
   const { t } = useTranslation();
+  const language = localStorage.getItem('i18nextLng');
 
   const { values, errors, touched, handleSubmit, setFieldValue } = useFormik({
     initialValues: {
@@ -61,7 +64,7 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
         <InfoProp>{t('Birthday')}:</InfoProp>
-        <FlatpickrStyled
+        {/* <FlatpickrStyled
           data-enable-time
           name="birthDate"
           values={values?.birthDate}
@@ -75,7 +78,42 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
           onChange={date => {
             setFieldValue('birthDate', date[0]);
           }}
-        />
+        /> */}
+        {language === 'uk' && (
+          <FlatpickrStyled
+            data-enable-time
+            name="birthDate"
+            values={values?.birthDate}
+            placeholder={getFormatedDate(user)}
+            disabled={isDisabled || !isUpdating}
+            options={{
+              maxDate: 'today',
+              enableTime: false,
+              dateFormat: 'd.m.Y',
+              locale: Ukrainian,
+            }}
+            onChange={date => {
+              setFieldValue('birthDate', date[0]);
+            }}
+          />
+        )}
+        {language !== 'uk' && (
+          <FlatpickrStyled
+            data-enable-time
+            name="birthDate"
+            values={values?.birthDate}
+            placeholder={getFormatedDate(user)}
+            disabled={isDisabled || !isUpdating}
+            options={{
+              maxDate: 'today',
+              enableTime: false,
+              dateFormat: 'd.m.Y',
+            }}
+            onChange={date => {
+              setFieldValue('birthDate', date[0]);
+            }}
+          />
+        )}
         {errors.birthDate && touched.birthDate && (
           <Error>{errors.birthDate}</Error>
         )}

@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+import emptyPets from 'images/emptyPets.jpg';
 
-import { List, Items, Wrapper, UserPetScreen } from './PetsList.styled';
+import { List, Items, Img } from './PetsList.styled';
 import PetCard from '../PetCard';
 
 export const PetsList = () => {
@@ -17,16 +18,7 @@ export const PetsList = () => {
 
   return (
     <>
-      {pets?.length === 0 && (
-        <Wrapper p={20}>
-          <UserPetScreen>
-            🐾You do not have any pets added to your profile page yet.
-            <br />
-            <br />
-            Please, add your pet!🐾
-          </UserPetScreen>
-        </Wrapper>
-      )}
+      {pets?.length === 0 && <Img src={emptyPets} alt="No pets were added" />}
       <List>{card}</List>
     </>
   );

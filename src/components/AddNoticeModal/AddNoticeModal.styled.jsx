@@ -38,7 +38,6 @@ export const FirstForm = styled.div`
 `;
 
 export const FormWrapper = styled(Form)`
-  //Yes
   display: flex;
   flex-direction: column;
   // gap: 10px;

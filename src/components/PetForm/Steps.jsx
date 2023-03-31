@@ -109,7 +109,7 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
   );
 };
 
-const TwoStep = ({ back, onSelectedImg }) => {
+const TwoStep = ({ back, onSelectedImg, setFieldValue, values }) => {
   const { t } = useTranslation();
 
   // const [selectedFile, setSelectedFile] = useState(null);
@@ -129,6 +129,8 @@ const TwoStep = ({ back, onSelectedImg }) => {
     // setSelectedFile(chosenImg);
 
     onSelectedImg(chosenImg);
+    setFieldValue('photoURL', chosenImg);
+    console.log('values', values);
 
     const reader = new FileReader();
     reader.onload = e => {

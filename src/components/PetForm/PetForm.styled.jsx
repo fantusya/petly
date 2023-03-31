@@ -1,6 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { ReactComponent as Icon } from 'images/svg/addAvatar.svg';
+import Flatpickr from 'react-flatpickr';
+import 'flatpickr/dist/themes/material_orange.css';
 
 export const PetBox = styled.div`
   margin-top: ${p => p.theme.space[4]}px;
@@ -63,17 +65,35 @@ export const Input = styled(Field)`
   padding: ${p => p.theme.space[3] + 2}px ${p => p.theme.space[4] - 2}px;
 
   width: 240px;
-
+  outline: 1px solid transparent;
   background-color: ${p => p.theme.colors.background};
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: ${p => p.theme.radii.big};
 
   color: ${p => p.theme.colors.black};
 
+  font-size: ${p => p.theme.fontSizes[1]};
+  line-height: 1.6;
+
+  ::placeholder {
+    font-family: ${p => p.theme.fonts.text};
+    font-style: normal;
+    font-weight: ${p => p.theme.fontWeights.normal};
+    font-size: ${p => p.theme.fontSizes[1]};
+    line-height: ${p => p.theme.lineHeights.text};
+    color: rgba(27, 27, 27, 0.6);
+
+    @media (min-width: ${p => p.theme.breakpoints[1]}) {
+      font-size: ${p => p.theme.fontSizes[2]};
+    }
+  }
+
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-top: ${p => p.theme.space[4] - 4}px;
     padding-left: ${p => p.theme.space[4]}px;
     width: 448px;
+
+    font-size: ${p => p.theme.fontSizes[2]};
   }
 `;
 
@@ -134,6 +154,19 @@ export const Button = styled.button`
     color: ${p => p.theme.colors.background};
     background-color: ${p => p.theme.colors.accent};
   }
+
+  ${props =>
+    props.next &&
+    css`
+      background-color: ${p => p.theme.colors.accent};
+      color: ${p => p.theme.colors.background};
+
+      &:hover,
+      &:focus {
+        color: ${p => p.theme.colors.accent};
+        background-color: ${p => p.theme.colors.background};
+      }
+    `};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-bottom: ${p => p.theme.space[0]}px;
@@ -261,5 +294,50 @@ export const PreviewImg = styled.img`
     margin-bottom: ${p => p.theme.space[0]}px;
     width: 182px;
     height: 182px;
+  }
+`;
+
+export const DateInput = styled(Flatpickr)`
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding-left: 14px;
+  margin-top: ${p => p.theme.space[3]}px;
+  outline: 1px solid transparent;
+
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  /* width: 240px; */
+  width: 100%;
+  height: 40px;
+  border-radius: ${p => p.theme.radii.big};
+
+  font-family: ${p => p.theme.fonts.text};
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes[1]};
+  line-height: ${p => p.theme.lineHeights.text};
+  color: ${p => p.theme.colors.text};
+  background-color: ${p => p.theme.colors.background};
+
+  /* &::-webkit-calendar-picker-indicator {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  } */
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    /* width: 448px; */
+    font-size: ${p => p.theme.fontSizes[2]};
+
+    height: 48px;
+    ::placeholder {
+      font-size: ${p => p.theme.fontSizes[2]};
+    }
   }
 `;

@@ -15,8 +15,8 @@ export const Backdrop = styled.div`
   transition: background-color ${p => p.theme.transition};
 `;
 
-export const Modal = styled.div`
-  position: absolute;
+export const ModalCont = styled.div`
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -42,6 +42,15 @@ export const Modal = styled.div`
     padding-bottom: ${p => p.theme.space[5] + 8}px;
 
     width: 608px;
+  } */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    padding: 40px 80px;
   }
 `;
 

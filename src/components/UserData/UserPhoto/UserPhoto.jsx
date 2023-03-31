@@ -28,11 +28,13 @@ export const UserPhoto = () => {
     e.preventDefault();
 
     if (!selectedFile) {
+      // toast.error('Please choose an image to change your avatar!');
+      // return;
       filePicker.current.click();
       handleChange();
     }
 
-    console.log('selectedFile', selectedFile);
+    // console.log('selectedFile', selectedFile);
     const data = new FormData();
     data.append('avatarURL', selectedFile);
     dispatch(updateAvatar(data));
@@ -40,7 +42,7 @@ export const UserPhoto = () => {
 
   const handleChange = e => {
     const chosenImg = e.target.files[0];
-    console.log(chosenImg, 'chosen image');
+    // console.log(chosenImg, 'chosen image');
 
     if (!e.target.files.length || !chosenImg) {
       toast.error(i18n.t('Chose_image'));
