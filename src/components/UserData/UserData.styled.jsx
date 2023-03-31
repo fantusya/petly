@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { theme } from 'globalStyles/theme';
 import { Container } from 'globalStyles/globalStyle';
+import { slideRight } from 'keyframes';
 
 export const UserWrapper = styled.section`
   padding-top: 61px;
@@ -25,6 +26,8 @@ export const TitleContainer = styled(Container)`
 
   @media (min-width: ${theme.breakpoints[1]}) {
     margin-bottom: 40px;
+
+    animation: ${slideRight} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
@@ -53,6 +56,8 @@ export const UserContainer = styled(Container)`
     justify-content: flex-end;
     margin: 0;
     padding: 0;
+
+    animation: ${slideRight} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 
   @media (min-width: ${theme.breakpoints[2]}) {
