@@ -21,7 +21,7 @@ export const emailValidationSchema = yup.object().shape({
 export const phoneValidationSchema = yup.object().shape({
   phone: yup
     .string()
-    .matches(/^\+380\d{9}$/, 'Invalid phone number')
+    .matches(/^\+380\d{9}$/, i18n.t('Invalid_phone_number'))
     .required(i18n.t('Phone_required')),
 });
 
