@@ -5,7 +5,6 @@ import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import LoadingWindow from './LoadingWindow';
-import { RotatingTriangles } from 'react-loader-spinner';
 
 import { ROUTES } from 'constants/routes';
 import { RestrictedRoute } from './Routes/RestrictedRoute';

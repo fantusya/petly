@@ -13,7 +13,6 @@ import {
   HiddenInput,
   EditPhotoBtn,
   Kamera,
-  BackdropImg,
 } from './UserPhoto.styled';
 import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
