@@ -68,7 +68,7 @@ const StepTwo = props => {
           {props.data.category === 'sell' && (
             <InputCont>
               <TextLabel htmlFor="price">{t('Price')}:</TextLabel>
-              <TextInput name="price" placeholder="Type pet price" />
+              <TextInput name="price" placeholder={t('Type_pet_price')} />
               <ErrorStyle name="price" component="div" />
             </InputCont>
           )}

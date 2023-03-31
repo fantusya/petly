@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { ModalText } from './UserModal.styled';
 import { ModalButton } from 'components/commonComponents';
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box/Box';
 
 export const UserModal = ({ onClose }) => {
-  //   const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -18,14 +18,14 @@ export const UserModal = ({ onClose }) => {
 
   return (
     <Box p="32px 16px" textAlign="center">
-      <ModalText>🐾 Do you really want to leave?</ModalText>
+      <ModalText>🐾 {t('Want_leave')}</ModalText>
 
       <Box display="flex" justifyContent="center" gridGap="24px">
         <ModalButton type="button" onClick={onClose}>
-          No
+          {t('No')}
         </ModalButton>
         <ModalButton type="button" onClick={handleLogOut}>
-          Yes 🐾
+          {t('Yes')} 🐾
         </ModalButton>
       </Box>
     </Box>
