@@ -60,7 +60,7 @@ i18n
           lost_found: 'lost/found',
           in_good_hands: 'in good hands',
           sell: 'sell',
-          Tittle_of_ad: 'Tittle of ad ',
+          Title_of_ad: 'Title of ad ',
           Name_pet: 'Name pet',
           Type_name_pet: 'Type name pet',
           Date_of_birth: 'Date of birth',
