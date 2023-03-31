@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import emptyPets from 'images/emptyPets.jpg';
 
-import { List, Items, Img } from './PetsList.styled';
+import { List, Items, Img, ImgContainer } from './PetsList.styled';
 import PetCard from '../PetCard';
 
 export const PetsList = () => {
@@ -18,7 +18,11 @@ export const PetsList = () => {
 
   return (
     <>
-      {pets?.length === 0 && <Img src={emptyPets} alt="No pets were added" />}
+      {pets?.length === 0 && (
+        <ImgContainer>
+          <Img src={emptyPets} alt="No pets were added" />
+        </ImgContainer>
+      )}
       <List>{card}</List>
     </>
   );

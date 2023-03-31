@@ -31,72 +31,55 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch, isLoggedIn]);
 
-  return (
+  return isRefreshing ? (
+    <LoadingWindow />
+  ) : (
     <>
-      {isRefreshing && <LoadingWindow />}
-      <>
-        <Routes>
-          <Route path={ROUTES.home} element={<SharedLayout />}>
-            <Route index element={<HomePage />} />
+      <Routes>
+        <Route path={ROUTES.home} element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
 
-            <Route path={ROUTES.news} element={<NewsPage />} />
+          <Route path={ROUTES.news} element={<NewsPage />} />
 
-            <Route path={ROUTES.friends} element={<OurFriendsPage />} />
+          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
 
-            <Route path={ROUTES.notices} element={<NoticesPage />}>
-              <Route path="sell" element={<NoticesCategoriesList />} />
-              <Route path="for-free" element={<NoticesCategoriesList />} />
-              <Route path="lost-found" element={<NoticesCategoriesList />} />
-              <Route path="favorite" element={<NoticesCategoriesList />} />
-              <Route path="own" element={<NoticesCategoriesList />} />
-            </Route>
-
-            {/* <Route path={`${ROUTES.notices}`}>
-            <Route
-              index
-              element={
-                <Navigate replace to={`${ROUTES_CATEGORY_NAMES.sell}`} />
-              }
-            />
-            <Route
-              path={`:${ROUTES_PARAMS.categoryName}`}
-              element={<NoticesPage />}
-            />
-          </Route> */}
-
-            <Route
-              path={ROUTES.register}
-              element={
-                <RestrictedRoute
-                  redirectTo="/user"
-                  component={<RegisterPage />}
-                />
-              }
-            />
-            <Route
-              path={ROUTES.login}
-              element={
-                <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
-              }
-            />
-            <Route
-              path={ROUTES.user}
-              element={
-                <PrivateRoute redirectTo="/login" component={<UserPage />} />
-              }
-            />
-
-            {/* // MUST BE DELETED LATER */}
-            {/* <Route path="user" element={<UserPage />} /> */}
-
-            <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
+          <Route path={ROUTES.notices} element={<NoticesPage />}>
+            <Route path="sell" element={<NoticesCategoriesList />} />
+            <Route path="for-free" element={<NoticesCategoriesList />} />
+            <Route path="lost-found" element={<NoticesCategoriesList />} />
+            <Route path="favorite" element={<NoticesCategoriesList />} />
+            <Route path="own" element={<NoticesCategoriesList />} />
           </Route>
-        </Routes>
 
-        <FontStyles />
-        <GlobalStyle />
-        <Toaster position="top-right" reverseOrder={false} />
-      </>
+          <Route
+            path={ROUTES.register}
+            element={
+              <RestrictedRoute
+                redirectTo="/user"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path={ROUTES.login}
+            element={
+              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+            }
+          />
+          <Route
+            path={ROUTES.user}
+            element={
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          />
+
+          <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
+        </Route>
+      </Routes>
+
+      <FontStyles />
+      <GlobalStyle />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };

@@ -61,8 +61,19 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const ImgContainer = styled.div`
+  text-align: center;
+  margin-top: 40px;
+
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+    margin-top: 60px;
+  }
+`;
+
 export const Img = styled.img`
   width: 100%;
-  margin: 0 auto;
-  // margin-top: 40px;
+
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    width: 500px;
+  }
 `;
