@@ -29,6 +29,8 @@ import { Box } from 'components/Box/Box';
 const OneStep = ({ next, closeModal, errors, isValid }) => {
   const { t } = useTranslation();
 
+  // const [date, setDate] = useState(selectedDate);
+
   // const fp = flatpickr("#birthDate", {
   //   altInput: true,
   //     altFormat: "j F Y",
@@ -41,10 +43,9 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
   //   ],
   // });
 
-  // // console.log('fp', fp);
-
   //  date-вибрана дата, не можна покласти в стейт
-  // const date = fp?.selectedDates?.[0];
+  // const selectedDate = fp?.selectedDates?.[0];
+  // console.log('selectedDate', selectedDate);
 
   return (
     <>
@@ -72,7 +73,7 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
             type="date"
             name="birthDate"
             // value={date}
-            // onChange={() => {console.log(fp.current.flatpickr.selectedDates[0])}}
+            // onChange={() => {selectedDate()}}
 
             placeholder={t('Type_date_of_birth')}
             autoFocus
@@ -109,24 +110,23 @@ const OneStep = ({ next, closeModal, errors, isValid }) => {
   );
 };
 
-const TwoStep = ({ back, onSelectedImg }) => {
+const TwoStep = ({ back, onSelectedImg, selectedFile }) => {
   const { t } = useTranslation();
 
   // const [selectedFile, setSelectedFile] = useState(null);
-  const [previewImg, setPreviewImg] = useState(null);
+  const [previewImg, setPreviewImg] = useState(selectedFile);
 
   const filePicker = useRef(null);
 
   const handleChange = e => {
     const chosenImg = e.target.files[0];
-    console.log('chosenImg', chosenImg);
+    // console.log('chosenImg', chosenImg);
 
     if (!e.target.files.length || !chosenImg) {
       // setSelectedFile(null);
       toast.warning(i18n.t('Choose an image to change avatar your pet!'));
       return;
     }
-    // setSelectedFile(chosenImg);
 
     onSelectedImg(chosenImg);
 

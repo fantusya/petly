@@ -18,6 +18,12 @@ export const Items = styled.li`
     margin-bottom: ${p => p.theme.space[4] + 6}px;
 `;
 
+export const Img = styled.img`
+  width: 100%;
+  margin: 0 auto;
+  // margin-top: 40px;
+`;
+
 export const UserPetScreen = styled.h2`
   color: ${p => p.theme.colors.accent};
   text-align: center;
@@ -44,9 +50,6 @@ export const Wrapper = styled.div`
   border: ${p => p.theme.colors.transparent};
   border-radius: ${p => p.theme.radii.small};
 
-  background-color: ${p => p.theme.colors.white};
-  box-shadow: ${p => p.theme.shadows.section};
-
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 480px;
     margin: 0 auto;
@@ -55,6 +58,6 @@ export const Wrapper = styled.div`
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     margin-top: ${p => p.theme.space[6] - 4}px;
-    width: 800px;
+    // width: 800px;
   }
 `;

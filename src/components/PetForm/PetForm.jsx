@@ -58,21 +58,27 @@ export const PetForm = ({ closeModal }) => {
   return (
     <Formik
       initialValues={initialValues}
+      nextState
       onSubmit={handleSubmit}
       validationSchema={validationPetSchema}
     >
-      {({ errors, isValid }) => (
+      {({ errors, isValid, values }) => (
         <Forma autoComplete="off">
           {currentStep === 0 && (
             <OneStep
               next={handleNextStep}
               closeModal={closeModal}
               isValid={!isValid}
+              value={values.birthDate}
             />
           )}
 
           {currentStep === 1 && (
-            <TwoStep back={handlePrevStep} onSelectedImg={setSelectedFile} />
+            <TwoStep
+              back={handlePrevStep}
+              onSelectedImg={setSelectedFile}
+              selectedFile={selectedFile}
+            />
           )}
         </Forma>
       )}
