@@ -54,14 +54,14 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await privateRoutes.post('api/users/login', credentials);
       // After successful login, add the token to the HTTP header
-      console.log('data.refreshToken', data.refreshToken);
-      console.log('data.accessToken', data.accessToken);
+      // console.log('data.refreshToken', data.refreshToken);
+      // console.log('data.accessToken', data.accessToken);
 
       token.set(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
-      console.log('ERROR', error);
+      // console.log('ERROR', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -116,7 +116,6 @@ export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (avatar, thunkAPI) => {
     try {
-      console.log('avatar', avatar);
       const { data } = await privateRoutes.put(`api/users/avatars`, avatar, {
         headers: {
           'Content-Type': 'multipart/form-data',

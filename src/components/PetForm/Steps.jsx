@@ -119,8 +119,6 @@ const TwoStep = ({ back, onSelectedImg, setFieldValue, values }) => {
 
   const handleChange = e => {
     const chosenImg = e.target.files[0];
-    console.log('chosenImg', chosenImg);
-
     if (!e.target.files.length || !chosenImg) {
       // setSelectedFile(null);
       toast.warning(i18n.t('Choose an image to change avatar your pet!'));
@@ -130,7 +128,6 @@ const TwoStep = ({ back, onSelectedImg, setFieldValue, values }) => {
 
     onSelectedImg(chosenImg);
     setFieldValue('photoURL', chosenImg);
-    console.log('values', values);
 
     const reader = new FileReader();
     reader.onload = e => {

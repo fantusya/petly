@@ -108,6 +108,7 @@ export const InfoButton = styled.button`
   background-color: ${p => p.theme.colors.background};
 
   transition: ${p => p.theme.transition.main};
+  cursor: pointer;
 
   &:hover {
     color: ${({ theme, disabled }) =>

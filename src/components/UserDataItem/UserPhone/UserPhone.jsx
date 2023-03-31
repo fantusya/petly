@@ -31,12 +31,9 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
       },
       validationSchema: phoneValidationSchema,
       onSubmit: ({ phone }, { resetForm }) => {
-        console.log(phone);
-
         if (isDisabled) {
           onUpdate();
           setIsUpdating(true);
-          console.log('Change input');
           return;
         }
 
@@ -44,7 +41,6 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
           onUpdate();
           setIsUpdating(false);
 
-          console.log('Not request');
           resetForm();
           return;
         }
@@ -54,7 +50,6 @@ export const UserPhone = ({ onUpdate, isDisabled }) => {
         onUpdate();
         setIsUpdating(false);
 
-        console.log('Submit');
         resetForm();
       },
     });

@@ -28,8 +28,6 @@ export const StepOne = props => {
     setConfirmVisibility(!confirmVisibility);
   };
 
-  console.log(props.isValid);
-
   return (
     <>
       <CustomField

@@ -73,7 +73,6 @@ export const RegisterPage = () => {
     //   toast.error('Please enter your phone');
     // }
     if (phone.length !== 13) {
-      console.log('INVALID');
       toast.error(i18n.t('Enter_phone'));
       return;
     }
@@ -82,7 +81,6 @@ export const RegisterPage = () => {
     );
 
     if (resultSignup.type === 'auth/signup/fulfilled') {
-      console.log('resultSignup', resultSignup);
       const resultLogIn = await dispatch(logIn({ email, password }));
       console.log('resultLogIn', resultLogIn);
     }

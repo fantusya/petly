@@ -25,7 +25,6 @@ export const NoticesPage = () => {
     if (request !== value) {
       setRequest(value);
     } else {
-      console.log('ви переглядаєте ' + value);
       return;
     }
   };

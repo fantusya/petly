@@ -5,6 +5,7 @@ import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import LoadingWindow from './LoadingWindow';
+import { RotatingTriangles } from 'react-loader-spinner';
 
 import { ROUTES } from 'constants/routes';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
@@ -31,27 +32,27 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch, isLoggedIn]);
 
-  return isRefreshing ? (
-    <LoadingWindow />
-  ) : (
+  return (
     <>
-      <Routes>
-        <Route path={ROUTES.home} element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
+      {isRefreshing && <LoadingWindow />}
+      <>
+        <Routes>
+          <Route path={ROUTES.home} element={<SharedLayout />}>
+            <Route index element={<HomePage />} />
 
-          <Route path={ROUTES.news} element={<NewsPage />} />
+            <Route path={ROUTES.news} element={<NewsPage />} />
 
-          <Route path={ROUTES.friends} element={<OurFriendsPage />} />
+            <Route path={ROUTES.friends} element={<OurFriendsPage />} />
 
-          <Route path={ROUTES.notices} element={<NoticesPage />}>
-            <Route path="sell" element={<NoticesCategoriesList />} />
-            <Route path="for-free" element={<NoticesCategoriesList />} />
-            <Route path="lost-found" element={<NoticesCategoriesList />} />
-            <Route path="favorite" element={<NoticesCategoriesList />} />
-            <Route path="own" element={<NoticesCategoriesList />} />
-          </Route>
+            <Route path={ROUTES.notices} element={<NoticesPage />}>
+              <Route path="sell" element={<NoticesCategoriesList />} />
+              <Route path="for-free" element={<NoticesCategoriesList />} />
+              <Route path="lost-found" element={<NoticesCategoriesList />} />
+              <Route path="favorite" element={<NoticesCategoriesList />} />
+              <Route path="own" element={<NoticesCategoriesList />} />
+            </Route>
 
-          {/* <Route path={`${ROUTES.notices}`}>
+            {/* <Route path={`${ROUTES.notices}`}>
             <Route
               index
               element={
@@ -64,38 +65,39 @@ export const App = () => {
             />
           </Route> */}
 
-          <Route
-            path={ROUTES.register}
-            element={
-              <RestrictedRoute
-                redirectTo="/user"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path={ROUTES.login}
-            element={
-              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
-            }
-          />
-          <Route
-            path={ROUTES.user}
-            element={
-              <PrivateRoute redirectTo="/login" component={<UserPage />} />
-            }
-          />
+            <Route
+              path={ROUTES.register}
+              element={
+                <RestrictedRoute
+                  redirectTo="/user"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path={ROUTES.login}
+              element={
+                <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path={ROUTES.user}
+              element={
+                <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              }
+            />
 
-          {/* // MUST BE DELETED LATER */}
-          {/* <Route path="user" element={<UserPage />} /> */}
+            {/* // MUST BE DELETED LATER */}
+            {/* <Route path="user" element={<UserPage />} /> */}
 
-          <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
-        </Route>
-      </Routes>
+            <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
+          </Route>
+        </Routes>
 
-      <FontStyles />
-      <GlobalStyle />
-      <Toaster position="top-right" reverseOrder={false} />
+        <FontStyles />
+        <GlobalStyle />
+        <Toaster position="top-right" reverseOrder={false} />
+      </>
     </>
   );
 };

@@ -31,12 +31,9 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
       },
       validationSchema: cityValidationSchema,
       onSubmit: ({ city }, { resetForm }) => {
-        console.log(city);
-
         if (isDisabled) {
           onUpdate();
           setIsUpdating(true);
-          console.log('Change input');
           return;
         }
 
@@ -44,7 +41,6 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
           onUpdate();
           setIsUpdating(false);
 
-          console.log('Not request');
           resetForm();
           return;
         }
@@ -54,7 +50,6 @@ export const UserCity = ({ onUpdate, isDisabled }) => {
         onUpdate();
         setIsUpdating(false);
 
-        console.log('Submit');
         resetForm();
       },
     });

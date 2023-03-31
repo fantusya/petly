@@ -13,6 +13,7 @@ import {
   HiddenInput,
   EditPhotoBtn,
   Kamera,
+  BackdropImg,
 } from './UserPhoto.styled';
 import { ReactComponent as AvatarPlus } from 'images/svg/addAvatar.svg';
 
@@ -26,12 +27,14 @@ export const UserPhoto = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log('CLICK ON EDIT');
 
     if (!selectedFile) {
-      // toast.error('Please choose an image to change your avatar!');
-      // return;
-      filePicker.current.click();
-      handleChange();
+      console.log('FORBIDDEN');
+      toast.error('Please choose an image to change your avatar!');
+      return;
+      // filePicker.current.click();
+      // handleChange();
     }
 
     // console.log('selectedFile', selectedFile);
@@ -46,6 +49,7 @@ export const UserPhoto = () => {
 
     if (!e.target.files.length || !chosenImg) {
       toast.error(i18n.t('Chose_image'));
+      setSelectedFile(null);
       return;
     }
 
@@ -54,10 +58,15 @@ export const UserPhoto = () => {
   };
 
   return (
-    <AvatarWrapper onSubmit={handleSubmit}>
+    <AvatarWrapper>
       <AddAvatarBtn>
         {user.avatarURL ? (
-          <AvatarImg src={user.avatarURL} alt={user.name} width="233px" />
+          <AvatarImg
+            src={user.avatarURL}
+            alt={user.name}
+            width="233px"
+            onClick={() => filePicker.current.click()}
+          />
         ) : (
           <AvatarPlus />
         )}
@@ -72,11 +81,34 @@ export const UserPhoto = () => {
         accept="image/*,.png,.jpg,.gif,.web"
       />
 
-      <EditPhotoBtn type="submit">
+      <EditPhotoBtn type="submit" onClick={handleSubmit}>
         <Kamera />
         <span>{t('Edit_photo')}</span>
       </EditPhotoBtn>
     </AvatarWrapper>
+    // <AvatarWrapper onSubmit={handleSubmit}>
+    //   <AddAvatarBtn>
+    //     {user.avatarURL ? (
+    //       <AvatarImg src={user.avatarURL} alt={user.name} width="233px" />
+    //     ) : (
+    //       <AvatarPlus />
+    //     )}
+    //     {/* {isFileSelected ? <Check /> : <AvatarPlus />} */}
+    //   </AddAvatarBtn>
+
+    //   <HiddenInput
+    //     ref={filePicker}
+    //     type="file"
+    //     name="avatar"
+    //     onChange={handleChange}
+    //     accept="image/*,.png,.jpg,.gif,.web"
+    //   />
+
+    //   <EditPhotoBtn type="submit">
+    //     <Kamera />
+    //     <span>{t('Edit_photo')}</span>
+    //   </EditPhotoBtn>
+    // </AvatarWrapper>
   );
 };
 

@@ -43,8 +43,6 @@ export const LoginPage = () => {
   const handleSubmit = async (values, { resetForm }) => {
     const resultLogin = await dispatch(logIn(values));
 
-    console.log(resultLogin);
-
     if (resultLogin.type === 'auth/login/rejected') {
       toast.error('Email or password is wrong !!!', {
         position: 'top-right',

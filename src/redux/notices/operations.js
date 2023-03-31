@@ -24,7 +24,6 @@ export const addToFavorites = createAsyncThunk(
       const { data } = await privateRoutes.post(
         `api/notices/favorite/${noticeId}`
       );
-      console.log('ADD TO FAVORITE', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

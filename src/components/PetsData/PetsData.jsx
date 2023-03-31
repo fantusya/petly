@@ -18,7 +18,6 @@ export const PetsData = () => {
   const { t } = useTranslation();
 
   const handleModalToggle = () => {
-    console.log('CLICK ON BUTTON');
     setOpen(true);
   };
 

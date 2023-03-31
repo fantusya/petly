@@ -32,12 +32,9 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
       birthDate: user?.birthDate,
     },
     onSubmit: ({ birthDate }, { resetForm }) => {
-      console.log(birthDate);
-
       if (isDisabled) {
         onUpdate();
         setIsUpdating(true);
-        console.log('Change input');
         return;
       }
 
@@ -45,7 +42,6 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
         onUpdate();
         setIsUpdating(false);
 
-        console.log('Not request');
         resetForm();
         return;
       }
@@ -55,7 +51,6 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
       onUpdate();
       setIsUpdating(false);
 
-      console.log('Submit');
       resetForm();
     },
   });

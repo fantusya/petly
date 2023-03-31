@@ -19,7 +19,6 @@ export const useFetchingData = (url, query = '') => {
         setStatus(Status.RESOLVED);
       } catch (error) {
         setStatus(Status.REJECTED);
-        console.log(error);
       }
     }
 
