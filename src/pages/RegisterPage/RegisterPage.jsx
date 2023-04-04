@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
@@ -41,6 +42,11 @@ const initialValues = {
 export const RegisterPage = () => {
   const [currentStep, setCarrentStep] = useState(0);
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = `Registration`;
+  }, [location]);
 
   //////////// CITIES LOGIC
   // const query = 'Dnipro';

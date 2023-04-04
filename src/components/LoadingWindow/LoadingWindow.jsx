@@ -1,13 +1,14 @@
 import { Box } from 'components/Box/Box';
 import { RotatingTriangles } from 'react-loader-spinner';
+import { theme } from 'globalStyles/theme';
 
 const LoadingWindow = () => {
   return (
     <Box
       width="100vw"
       height="100vh"
-      // background="linear-gradient(to right, #f46b45, #eea849)"
-      backgroundColor="transparent"
+      background="linear-gradient(90deg, #FF634E 0%, #FFDF48 105.44%)"
+      // backgroundColor={theme.colors.transparent}
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -19,7 +20,11 @@ const LoadingWindow = () => {
         ariaLabel="rotating-triangels-loading"
         wrapperStyle={{}}
         wrapperClass="rotating-triangels-wrapper"
-        colors={['#241d1d', '#f5cd56', '#ff4073']}
+        colors={[
+          theme.colors.text,
+          theme.colors.background,
+          theme.colors.accentBtn,
+        ]}
       />
     </Box>
   );

@@ -1,5 +1,6 @@
 import { Box } from 'components/Box/Box';
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useFetchingData } from 'hooks/useFetchingData';
 import NewsItem from 'components/NewsPage/NewsItem/NewsItem';
 import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
@@ -18,6 +19,7 @@ import { Container } from 'globalStyles/globalStyle';
 
 const NewsPage = () => {
   const { t } = useTranslation();
+  const location = useLocation();
 
   const [news, setNews] = useState([]);
   const [publicNews, setPublicNews] = useState([]);
@@ -28,6 +30,8 @@ const NewsPage = () => {
   /*сортування новин */
 
   useEffect(() => {
+    document.title = `News`;
+
     if (status === 'resolved') {
       const NewNews = results.map(news => ({
         ...news,
@@ -50,7 +54,7 @@ const NewsPage = () => {
       setNews(NewDateNews);
       setPublicNews(NewDateNews);
     }
-  }, [status, results]);
+  }, [status, results, location]);
 
   /*фільтр новин*/
 
