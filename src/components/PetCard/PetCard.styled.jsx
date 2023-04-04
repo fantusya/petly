@@ -19,6 +19,8 @@ export const CardWrapper = styled.div`
     align-items: flex-start;
     // justify-content: center;
     gap: ${p => p.theme.space[5]}px;
+
+    border-radius: ${p => p.theme.radii.big};
   }
 
   @media (min-width: ${p => p.theme.breakpoints[2]}) {

@@ -42,7 +42,7 @@ export const GoogleLoginButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 0 9px 0;
+  padding: 7px 0 7px 0;
   /* margin-bottom: 40px; */
   font-family: ${p => p.theme.fonts.text};
   font-size: ${p => p.theme.fontSizes[4]};
@@ -67,7 +67,7 @@ export const GoogleLoginButton = styled.a`
   }
   @media (min-width: ${theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[4]};
-    padding: 12px 0 12px 0;
+    padding: 9px 0 9px 0;
   }
 `;
 
