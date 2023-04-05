@@ -59,21 +59,6 @@ export const UserBirthday = ({ onUpdate, isDisabled }) => {
     <InfoForm onSubmit={handleSubmit}>
       <InfoField>
         <InfoProp>{t('Birthday')}:</InfoProp>
-        {/* <FlatpickrStyled
-          data-enable-time
-          name="birthDate"
-          values={values?.birthDate}
-          placeholder={getFormatedDate(user)}
-          disabled={isDisabled || !isUpdating}
-          options={{
-            maxDate: 'today',
-            enableTime: false,
-            dateFormat: 'd.m.Y',
-          }}
-          onChange={date => {
-            setFieldValue('birthDate', date[0]);
-          }}
-        /> */}
         {language === 'uk' && (
           <FlatpickrStyled
             data-enable-time

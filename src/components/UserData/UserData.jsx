@@ -44,14 +44,6 @@ export const UserData = () => {
       </UserContainer>
       {showModal ? (
         <Modal onClose={toggleModal}>
-          {/* <NoticeModal
-            id={id}
-            label={categoryName}
-            onClose={handleModalToggle}
-            isFavorite={isFavorite}
-            handleFavorites={handleFavorites}
-            notify={notify}
-          /> */}
           <UserModal onClose={toggleModal} />
         </Modal>
       ) : null}
