@@ -5,9 +5,8 @@ import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
 import toast from 'react-hot-toast';
 
-// import { useFetchingData } from 'hooks';
-
 import { signup, logIn } from 'redux/auth/operations';
+// import { useAuth } from 'hooks';
 
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
@@ -17,7 +16,6 @@ import {
   registerValidationSchemaTwo,
 } from 'helpers/validationSchemas/RegisterValidationSchema';
 
-// import registerValidationSchema from 'helpers/validationSchemas/RegisterValidationSchema';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 
@@ -39,20 +37,12 @@ const initialValues = {
 };
 
 export const RegisterPage = () => {
+  // const { error } = useAuth();
+  // if (error) {
+  //   toast.error(error);
+  // }
   const [currentStep, setCarrentStep] = useState(0);
   const { t } = useTranslation();
-
-  //////////// CITIES LOGIC
-  // const query = 'Dnipro';
-  // const { status, results } = useFetchingData('api/cities', query);
-
-  // const array = results.map(({ useCounty, stateEn, cityEn, countyEn }) => {
-  //   return Number(useCounty)
-  //     ? `${cityEn}, ${countyEn}, ${stateEn} region`
-  //     : `${cityEn}, ${stateEn} region`;
-  // });
-  // console.log('array', array);
-  ///////////
 
   const dispatch = useDispatch();
 
@@ -68,22 +58,28 @@ export const RegisterPage = () => {
     { email, password, name, city, phone },
     { resetForm }
   ) => {
-    // console.log('phone', phone);
-    // if (!phone) {
-    //   toast.error('Please enter your phone');
-    // }
+    if (!city) {
+      toast.error(i18n.t('City_required'));
+      return;
+    }
     if (phone.length !== 13) {
       toast.error(i18n.t('Enter_phone'));
       return;
     }
+
     const resultSignup = await dispatch(
       signup({ email, password, name, city, phone })
     );
 
+    console.log('resultSignup', resultSignup);
+
     if (resultSignup.type === 'auth/signup/fulfilled') {
-      const resultLogIn = await dispatch(logIn({ email, password }));
-      console.log('resultLogIn', resultLogIn);
+      await dispatch(logIn({ email, password }));
     }
+
+    // if (resultSignup.type === 'auth/signup/rejected') {
+    //   toast.error(resultSignup.payload.message);
+    // }
 
     resetForm();
   };
@@ -122,6 +118,9 @@ export const RegisterPage = () => {
                       touched={touched}
                       values={values}
                       setFieldValue={setFieldValue}
+                      forCity={value => {
+                        setFieldValue('city', value);
+                      }}
                     />
                   )}
                 </FormCustom>

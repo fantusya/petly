@@ -1,34 +1,55 @@
-import { Error, Button } from 'pages/authFormStyle.styled';
-import CustomField from 'pages/authFormStyle.styled';
-import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
+import Select from 'react-select';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import css from './PhoneInput.css';
+import toast from 'react-hot-toast';
+import i18n from 'i18n';
+import { useTranslation } from 'react-i18next';
 
-// import { useEffect } from 'react';
-// import { useFetchingData } from 'hooks';
+import { commonRoutes } from 'api/baseSettings';
+import { getRegionsOfCities } from 'helpers/getRegionsOfCities';
+
+import { Error, Button } from 'pages/authFormStyle.styled';
+import CustomField from 'pages/authFormStyle.styled';
+import css from './PhoneInput.css';
 
 const StepTwo = props => {
   const { t } = useTranslation();
 
-  // const query = 'Dnipro';
-  // const query = props.values.city;
-  // const { status, results } = useFetchingData('api/cities', query);
+  const [cityValue, setCityValue] = useState(null);
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // const array = results.map(({ useCounty, stateEn, cityEn, countyEn }) => {
-  //   return Number(useCounty)
-  //     ? `${cityEn}, ${countyEn}, ${stateEn} region`
-  //     : `${cityEn}, ${stateEn} region`;
-  // });
-  // console.log('array', array);
+  const handleOnInputChange = value => {
+    if (value.length >= 3) {
+      setCityValue(value);
+    }
+  };
 
-  // useEffect(() => {
-  //   const inputValue = value || '';
-  //   if (inputValue) {
-  //     console.log(inputValue);
-  //   }
-  // });
-  // console.log(props.values.city);
+  useEffect(() => {
+    async function getCities() {
+      if (cityValue < 3) {
+        return;
+      }
+
+      try {
+        setIsLoading(true);
+
+        const { data } = await commonRoutes.get(
+          `api/cities?query=${cityValue}`
+        );
+        setResults(getRegionsOfCities(data));
+
+        setIsLoading(false);
+      } catch (error) {
+        console.log('city error', error);
+        toast.error(i18n.t('Try_again'));
+      }
+    }
+
+    getCities();
+  }, [cityValue]);
+
   return (
     <>
       <CustomField
@@ -41,25 +62,31 @@ const StepTwo = props => {
         required
       />
       <Error name="name" component="div" />
-      <CustomField
-        type="text"
-        name="city"
+
+      <Select
+        onInputChange={handleOnInputChange}
+        options={results}
+        onChange={selection => props.forCity(selection.value)}
         placeholder={t('City_region')}
-        errors={props.errors}
-        touched={props.touched}
-        values={props.values.city}
-        required
+        isSearchable="true"
+        isLoading={isLoading}
+        noOptionsMessage={({ inputValue }) =>
+          !inputValue ? t('City_letters') : t('City_notfound')
+        }
+        styles={{
+          control: (baseStyles, state) => ({
+            // ...baseStyles,
+            display: 'flex',
+            padding: '4px',
+            border: '1px solid #F59256',
+            borderRadius: '20px',
+            backgroundColor: '#FDF7F2',
+            borderColor: state.isSelected ? '#3CBC81' : '#F59256',
+          }),
+        }}
       />
       <Error name="city" component="div" />
-      {/* <CustomField
-        type="tel"
-        name="phone"
-        placeholder="Mobile phone"
-        errors={props.errors}
-        touched={props.touched}
-        values={props.values.phone}
-        required
-      /> */}
+
       <PhoneInput
         name="phone"
         type="tel"
@@ -71,37 +98,38 @@ const StepTwo = props => {
         errors={props.errors}
         value={props.values.phone}
         touched={props.touched}
-        onChange={phone => {
-          console.log('phone', `+${phone}`);
-
+        onChange={(phone, _, e) => {
           props.setFieldValue('phone', `+${phone}`);
-        }}
-        onBlur={e => {
-          if (e.currentTarget.value.length !== 19) {
-            e.currentTarget.style.border = '1px solid #E2001A';
+
+          if (phone.length < 12) {
+            e.target.style.border = '1px solid #E2001A';
           } else {
-            e.currentTarget.style.border = '1px solid #3CBC81';
+            e.target.style.border = '1px solid #3CBC81';
           }
         }}
-        onFocus={e => {
-          if (e.currentTarget.value.length !== 19) {
-            e.currentTarget.style.border = '1px solid #E2001A';
-          } else {
-            e.currentTarget.style.border = '1px solid #3CBC81';
-          }
-        }}
-        // isValid={(value, country) => {
-        //   if (value.match(/^\380\d{9}$/)) {
-        //     return 'Invalid value: ' + value + ', ' + country.name;
-        //   }
-        // } else if (value.match(/1234/)) {
-        //   return false;
-        // } else {
-        //   return true;
-        // }
-        // }}
       />
-      <Error name="phone" component="div" />
+
+      {/* <CustomField
+        type="text"
+        name="city"
+        placeholder={t('City_region')}
+        errors={props.errors}
+        touched={props.touched}
+        values={props.values.city}
+        required
+      />
+      <Error name="city" component="div" /> */}
+
+      {/* <CustomField
+        type="tel"
+        name="phone"
+        placeholder="Mobile phone"
+        errors={props.errors}
+        touched={props.touched}
+        values={props.values.phone}
+        required
+      /> */}
+      {/* <Error name="phone" component="div" /> */}
 
       <Button type="submit">{t('Register')}</Button>
       <Button type="button" onClick={props.back}>
