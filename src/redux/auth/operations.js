@@ -1,28 +1,6 @@
-// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { privateRoutes, token } from 'api/baseSettings';
-// import { LOCALHOST_URL, HOST_URL } from 'constants/urls';
-
-// const instance = axios.create({
-//   baseURL: HOST_URL,
-// });
-
-// const instance = axios.create({
-//   baseURL: LOCALHOST_URL,
-// });
-
-// instance.defaults.headers.common['Content-Type'] = 'multipart/form-data';
-
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//     instance.defaults.headers.common.Authorization = '';
-//   },
-// };
+import toast from 'react-hot-toast';
 
 /*
  * POST @ /users/signup
@@ -38,6 +16,8 @@ export const signup = createAsyncThunk(
       );
       return data;
     } catch (error) {
+      console.log('ERROR', error.response.data.message);
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

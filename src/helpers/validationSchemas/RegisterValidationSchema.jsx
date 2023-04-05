@@ -28,16 +28,15 @@ export const registerValidationSchemaTwo = Yup.object().shape({
     )
     .required(i18n.t('required_field')),
 
-  city: Yup.string()
-    .matches(
-      /^[a-zA-Zа-яА-ЯіІїЇґҐ]+(?:[-\s]?[a-zA-Zа-яА-ЯіІїЇґҐ]+)*,\s*[a-zA-Zа-яА-ЯіІїЇґҐ'’\s-]+$/,
-      i18n.t('Should_City')
-    )
-    .required(i18n.t('required_field')),
-  // phone: Yup.string()
-
-  //   .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
-  //   .min(13)
-  //   .max(13)
+  city: Yup.string(),
+  // .matches(
+  //   /^[a-zA-Zа-яА-ЯіІїЇґҐ]+(?:[-\s]?[a-zA-Zа-яА-ЯіІїЇґҐ]+)*,\s*[a-zA-Zа-яА-ЯіІїЇґҐ'’\s-]+$/,
+  //   i18n.t('Should_City')
+  // )
+  // .required(i18n.t('required_field')),
+  phone: Yup.string()
+    .matches(/^\+380\d{9}$/, 'Invalid phone number(+380111111111)')
+    .min(13)
+    .max(13),
   //   .required('Required field'),
 });
