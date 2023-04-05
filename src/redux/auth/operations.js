@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { privateRoutes, token } from 'api/baseSettings';
-import toast from 'react-hot-toast';
 
 /*
  * POST @ /users/signup
@@ -17,7 +16,6 @@ export const signup = createAsyncThunk(
       return data;
     } catch (error) {
       console.log('ERROR', error.response.data.message);
-      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

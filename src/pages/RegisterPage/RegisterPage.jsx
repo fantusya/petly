@@ -6,7 +6,6 @@ import i18n from 'i18n';
 import toast from 'react-hot-toast';
 
 import { signup, logIn } from 'redux/auth/operations';
-// import { useAuth } from 'hooks';
 
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
@@ -37,10 +36,6 @@ const initialValues = {
 };
 
 export const RegisterPage = () => {
-  // const { error } = useAuth();
-  // if (error) {
-  //   toast.error(error);
-  // }
   const [currentStep, setCarrentStep] = useState(0);
   const { t } = useTranslation();
 
@@ -77,9 +72,9 @@ export const RegisterPage = () => {
       await dispatch(logIn({ email, password }));
     }
 
-    // if (resultSignup.type === 'auth/signup/rejected') {
-    //   toast.error(resultSignup.payload.message);
-    // }
+    if (resultSignup.type === 'auth/signup/rejected') {
+      toast.error(resultSignup.payload.message);
+    }
 
     resetForm();
   };
