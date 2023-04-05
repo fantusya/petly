@@ -14,6 +14,8 @@ export const NoticesPage = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    document.title = `Find pet`;
+
     if (location.pathname === '/notices') {
       navigate('/notices/sell', { replace: true });
     }

@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import schema from 'helpers/validationSchemas/loginSchema';
 import { Container } from 'globalStyles/globalStyle';
@@ -6,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations.js';
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
 import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
-import { useState } from 'react';
 import CustomField from '../authFormStyle.styled';
 import { useTranslation } from 'react-i18next';
 import { toast, Zoom } from 'react-toastify';
@@ -39,6 +40,11 @@ export const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = `Login`;
+  }, [location]);
 
   const handleSubmit = async (values, { resetForm }) => {
     const resultLogin = await dispatch(logIn(values));

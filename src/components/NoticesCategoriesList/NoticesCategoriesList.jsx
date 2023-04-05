@@ -71,7 +71,12 @@ export const NoticesCategoriesList = () => {
   return (
     <>
       {status === Status.PENDING && (
-        <Box display="flex" alignItems="center" justifyContent="center">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          mt="32px"
+        >
           <RotatingTriangles
             visible={true}
             height="120"
@@ -79,7 +84,7 @@ export const NoticesCategoriesList = () => {
             ariaLabel="rotating-triangels-loading"
             wrapperStyle={{}}
             wrapperClass="rotating-triangels-wrapper"
-            colors={['#241d1d', '#f5cd56', '#ff4073']}
+            colors={['#111111', '#FFDF48', '#FF634E']}
           />
         </Box>
       )}
