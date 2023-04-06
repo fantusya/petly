@@ -24,6 +24,8 @@ We are pleased to present you a web application about our little tailed🐈, win
 📌 In your personal account you can you can fill in your profile information and add your pets:
 ![Personal page](https://i.postimg.cc/LsnwMfpw/Screenshot-2.png)
 
+**💡 A little hint**: *you can choose your preferred language - English or Ukrainian at the top of the site*
+
 📌 If you wanna read something interesting about the world of animals, you ought to go to the news page:
 ![News page](https://i.postimg.cc/VvF9HYK4/news.png)
 
