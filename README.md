@@ -5,9 +5,9 @@ We are pleased to present you a web application about our little tailed🐈, win
 
 ## 💻 Tech Stack
 
-**Client:** React, Redux Toolkit, Styled Components...
+**Client:** React, Redux Toolkit, Styled Components, Axios, Formik, i18next
 
-**Server:** Node, Express, MongoDB
+**Server:** Node, Express, MongoDB [. . . ](https://github.com/fantusya/petly-backend)
 
 
 ## ✏ Introducing
