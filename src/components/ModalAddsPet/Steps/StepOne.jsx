@@ -13,7 +13,7 @@ import {
   Label,
   Input,
   DateInput,
-} from 'components/PetForm/PetForm.styled';
+} from './Steps.styled.jsx';
 
 const StepOne = props => {
   const { t } = useTranslation();

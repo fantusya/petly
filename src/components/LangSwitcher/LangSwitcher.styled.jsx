@@ -10,13 +10,13 @@ export const Switch = styled.div`
   margin-top: -7px;
   scale: 0.8;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-right: 20px;
     margin-top: 3px;
     scale: 1.15;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
     margin-right: 30px;
     margin-top: -1px;
     scale: 1.15;

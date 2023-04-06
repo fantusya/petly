@@ -30,7 +30,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
 
 import { ModalCloseButton } from 'components/commonComponents';
-import { toast } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useAuth } from 'hooks';
 
 export const NoticeModal = ({

@@ -1,6 +1,5 @@
 import { removePet } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import toast from 'react-hot-toast';
 
 import { DEFAULT_IMAGE } from 'constants/urls';
 import { Box } from 'components/Box/Box';
@@ -23,14 +22,9 @@ export const PetCard = ({ pet }) => {
   const { _id, name, birthDate, breed, photoURL, comments } = pet;
   const birthDateToObject = new Date(birthDate);
   const stringifiedToDate = birthDateToObject.toLocaleDateString('ua');
-  // console.log('birthDate', birthDate);
-  // console.log(typeof birthDate);
 
-  //
   const handleDelete = () => {
     dispatch(removePet(_id));
-
-    toast.success(`You successfully deleted your pet ${name}`);
   };
 
   return (

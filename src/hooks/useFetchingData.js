@@ -28,6 +28,8 @@ export const useFetchingData = (url, query = '') => {
   return { status, results };
 };
 
+// FOR PAGINATION
+
 // export const useFetchingData = (page, url) => {
 //   const [status, setStatus] = useState(Status.IDLE);
 //   const [results, setResults] = useState([]);

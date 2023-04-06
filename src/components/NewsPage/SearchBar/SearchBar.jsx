@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { search } from 'redux/notices/slice';
 import { useTranslation } from 'react-i18next';
-// import { toast } from 'react-hot-toast';
 
 import {
   SearchBarForm,
@@ -27,9 +26,6 @@ const SearchBar = ({ onSubmit }) => {
     event.preventDefault();
 
     onSubmit(searchTerm);
-    // if (searchTerm.trim() === '') {
-    //   toast.error(`Введіть пошуковий запит! Поле пошуку не може бути порожнім`);
-    // }
 
     if (currentPage === 'notices') {
       dispatch(search(searchTerm));

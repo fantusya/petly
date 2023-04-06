@@ -17,7 +17,7 @@ export const InfoForm = styled.form`
   justify-content: flex-end;
   gap: 9px;
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     gap: 24px;
   }
 `;
@@ -36,7 +36,7 @@ export const InfoProp = styled.p`
 
   color: ${p => p.theme.colors.text};
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: ${theme.fontSizes[3]};
   }
 `;
@@ -60,7 +60,7 @@ export const InfoInput = styled.input`
     color: ${({ theme, disabled }) => disabled && theme.colors.text};
   }
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 216px;
     padding: 3px 12px 4px 12px;
     font-size: ${theme.fontSizes[3]};
@@ -86,7 +86,7 @@ export const FlatpickrStyled = styled(Flatpickr)`
     color: ${({ theme, disabled }) => disabled && theme.colors.text};
   }
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 216px;
     padding: 3px 12px 4px 12px;
     font-size: ${theme.fontSizes[3]};
@@ -117,7 +117,7 @@ export const InfoButton = styled.button`
       disabled ? theme.colors.background : theme.colors.accent};
   }
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 32px;
     height: 32px;
   }
@@ -129,7 +129,7 @@ export const Pensil = styled(PensilIcon)`
   height: 12.5px;
   fill: currentColor;
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 20px;
     height: 20px;
   }
@@ -141,7 +141,7 @@ export const Check = styled(CheckIcon)`
   height: 12.5px;
   fill: currentColor;
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 20px;
     height: 20px;
   }
@@ -156,13 +156,13 @@ export const Error = styled.p`
 
   color: ${theme.colors.error};
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     left: 125px;
     bottom: -15px;
     font-size: ${theme.fontSizes[0]};
   }
 
-  @media (min-width: ${theme.breakpoints[2]}) {
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
     left: 129px;
   }
 `;

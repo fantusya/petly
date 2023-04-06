@@ -5,15 +5,8 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
 
-// import { useNavigate } from 'react-router-dom';
 import AddNoticeModal from '../AddNoticeModal/AddNoticeModal';
-import {
-  NavBox,
-  // NavBtnWrapper,
-  NavBtn,
-  // AddButton,
-  NavUl,
-} from './NoticesCategoriesNav.styled';
+import { NavBox, NavBtn, NavUl } from './NoticesCategoriesNav.styled';
 import AddNoticeButton from 'components/AddNoticeButton';
 
 export const NoticesCategoriesNav = () => {
@@ -21,8 +14,6 @@ export const NoticesCategoriesNav = () => {
   const { t } = useTranslation();
 
   const { isLoggedIn } = useAuth();
-
-  // const navigate = useNavigate();
 
   const handleModalToggle = () => {
     if (isLoggedIn) {

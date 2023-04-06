@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
+
 import schema from 'helpers/validationSchemas/loginSchema';
+import { logIn } from 'redux/auth/operations.js';
+
 import { Container } from 'globalStyles/globalStyle';
 import { Box } from 'components/Box/Box';
-import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/operations.js';
+import GooglePic from 'images/svg/google-color-svgrepo-com.svg';
+
 import RouteFormLoginRegister from '../routeFormLoginRegister.jsx';
-import GooglePic from '../../images/svg/google-color-svgrepo-com.svg';
 import CustomField from '../authFormStyle.styled';
-import { useTranslation } from 'react-i18next';
-import { toast, Zoom } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// ToastContainer;
 import {
   TitleAuth,
   FormCustom,
@@ -26,7 +27,6 @@ import {
   GoogleLoginButton,
   GoogleImg,
   LoginPOsitionBtn,
-  StyledContainer,
 } from './LoginPage.styled.jsx';
 
 import {
@@ -50,17 +50,7 @@ export const LoginPage = () => {
     const resultLogin = await dispatch(logIn(values));
 
     if (resultLogin.type === 'auth/login/rejected') {
-      toast.error('Email or password is wrong !!!', {
-        position: 'top-right',
-        transition: Zoom,
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light ',
-      });
+      toast.error(resultLogin.payload.message);
     }
 
     resetForm();
@@ -75,7 +65,6 @@ export const LoginPage = () => {
       <LogoBg>
         <Container>
           <BoxAuth>
-            <StyledContainer />
             <TitleAuth>{t('Login')}</TitleAuth>
             <Formik
               initialValues={{ email: '', password: '' }}
@@ -129,7 +118,6 @@ export const LoginPage = () => {
               question={t('No_account')}
               pageName={t('Register')}
             />
-            {/* <LoginButton type="submit">Login</LoginButton> */}
           </BoxAuth>
         </Container>
       </LogoBg>

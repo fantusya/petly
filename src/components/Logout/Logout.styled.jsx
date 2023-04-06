@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from 'globalStyles/theme';
 import { ReactComponent as Icon } from 'images/svg/logout.svg';
 
 export const LogoutButton = styled.button`
@@ -15,31 +14,30 @@ export const LogoutButton = styled.button`
   font-size: ${p => p.theme.fontSizes[3]};
   font-weight: ${p => p.theme.fontWeights.medium};
 
-  color: rgba(17, 17, 17, 0.6);
-  color: ${theme.colors.accent};
+  color: ${p => p.theme.colors.accent};
   background-color: ${p => p.theme.colors.transparent};
 
-  transition: ${theme.transition.main};
+  transition: ${p => p.theme.transition.main};
 
   span {
-    color: rgba(17, 17, 17, 0.6);
-    transition: ${theme.transition.main};
+    color: ${p => p.theme.colors.modalBackdrop};
+    transition: ${p => p.theme.transition.main};
   }
 
   &:hover,
   :active {
-    background-color: ${theme.colors.accent};
-    color: ${theme.colors.white};
+    background-color: ${p => p.theme.colors.accent};
+    color: ${p => p.theme.colors.white};
 
     span {
-      color: ${theme.colors.white};
+      color: ${p => p.theme.colors.white};
     }
   }
 
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-left: 0;
     padding: 3px 9px;
-    font-size: ${theme.fontSizes[2]};
+    font-size: ${p => p.theme.fontSizes[2]};
   }
 `;
 

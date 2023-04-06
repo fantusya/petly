@@ -42,7 +42,6 @@ const StepTwo = props => {
 
         setIsLoading(false);
       } catch (error) {
-        console.log('city error', error);
         toast.error(i18n.t('Try_again'));
       }
     }

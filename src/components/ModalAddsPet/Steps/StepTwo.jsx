@@ -16,7 +16,7 @@ import {
   AddPhotoIcon,
   Label,
   TextInput,
-} from 'components/PetForm/PetForm.styled';
+} from './Steps.styled.jsx';
 
 const StepTwo = props => {
   const { t } = useTranslation();

@@ -46,17 +46,6 @@ export const ModalAddsPet = ({ handleButtonToggle }) => {
 
       dispatch(addPet(formData));
 
-      // const res = await addUserNotice(formData);
-
-      // if (res.status === 201) {
-      //   navigate('/notices/own');
-      //   if (currentPage === 'own') {
-      //     window.location.reload();
-      //   }
-      // } else {
-      //   toast.error(i18n.t('Try_again'));
-      // }
-
       handleModalToggle();
 
       return;
@@ -100,38 +89,3 @@ export const ModalAddsPet = ({ handleButtonToggle }) => {
 };
 
 export default ModalAddsPet;
-
-// export const ModalAddsPet = ({ onCloseModal }) => {
-//   const { t } = useTranslation();
-
-//   useEffect(() => {
-//     const onEscapeClose = e => {
-//       if (e.code === 'Escape') onCloseModal();
-//     };
-
-//     window.addEventListener('keydown', onEscapeClose);
-
-//     return () => {
-//       window.removeEventListener('keydown', onEscapeClose);
-//     };
-//   }, [onCloseModal]);
-
-//   const onBackdropClose = e => {
-//     if (e.currentTarget === e.target) onCloseModal();
-//   };
-
-//   return (
-//     <Backdrop onClick={onBackdropClose}>
-//       <Modal>
-//         <Title>{t('Add_pet')}</Title>
-//         <ButtonClose type="button" onClick={onCloseModal}>
-//           <ModalCloseIcon width={28} height={28} />
-//         </ButtonClose>
-
-//         <PetForm closeModal={onCloseModal} />
-//       </Modal>
-//     </Backdrop>
-//   );
-// };
-
-// export default ModalAddsPet;

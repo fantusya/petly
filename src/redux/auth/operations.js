@@ -15,7 +15,6 @@ export const signup = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      console.log('ERROR', error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -39,7 +38,6 @@ export const logIn = createAsyncThunk(
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
-      // console.log('ERROR', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

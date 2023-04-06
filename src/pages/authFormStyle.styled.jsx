@@ -21,7 +21,7 @@ export const TitleAuth = styled.h1`
   font-weight: ${p => p.theme.fontWeights.bold};
   line-height: ${p => p.theme.lineHeights.text};
   letter-spacing: ${p => p.theme.letterSpacing.text};
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     padding: 0;
     font-size: ${p => p.theme.fontSizes[8]};
   }
@@ -47,37 +47,6 @@ export const Input = styled(Field)`
   letter-spacing: ${p => p.theme.letterSpacing.text};
   color: ${p => p.theme.colors.text};
   background-color: ${p => p.theme.colors.background};
-  /* 
-  :valid:not(:placeholder-shown) {
-    border-color: ${p => p.theme.colors.success};
-    background: url('${svgSucsess}');
-    background-repeat: no-repeat;
-    background-position: 350px;
-  }
-  :invalid:not(:placeholder-shown) {
-    border-color: ${p => p.theme.colors.error};
-    background: url('${svgError}');
-    background-repeat: no-repeat;
-    background-position: 350px;
-  }
-
-  @media (min-width: ${theme.breakpoints[1]}) {
-    font-size: ${p => p.theme.fontSizes[4]};
-    padding: 14px 32px;
-
-    :valid:not(:placeholder-shown) {
-      border-color: ${p => p.theme.colors.success};
-      background: url('${svgSucsess}');
-      background-repeat: no-repeat;
-      background-position: 450px;
-    }
-    :invalid:not(:placeholder-shown) {
-      border-color: ${p => p.theme.colors.error};
-      background: url('${svgError}');
-      background-repeat: no-repeat;
-      background-position: 450px;
-    }
-  } */
 `;
 
 export const Button = styled.button`
@@ -107,13 +76,11 @@ export const Button = styled.button`
     transition: color ${p => p.theme.transition.main},
       background-color ${p => p.theme.colors.accent};
   }
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     font-size: ${p => p.theme.fontSizes[4]};
     padding: 12px 0 12px 0;
   }
 `;
-
-// ---------- Картинка на заднем плане ------------
 
 export const LogoBg = styled.div`
   background-image: url('${imgPhone}');
@@ -127,7 +94,7 @@ export const LogoBg = styled.div`
     screen and (min-resolution: 2dppx) {
     background-image: url('${img2xPhone}');
   }
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     background-image: url('${imgTab}');
     background-position: 50% 350px;
     padding-bottom: 200px;
@@ -139,7 +106,7 @@ export const LogoBg = styled.div`
       background-position: 50% 450px;
       background-size: 130%;
     }
-    @media (min-width: ${theme.breakpoints[2]}) {
+    @media (min-width: ${p => p.theme.breakpoints[2]}) {
       background-image: url('${imgDesc}');
       background-position: center 350px;
 
@@ -154,8 +121,6 @@ export const LogoBg = styled.div`
   }
 `;
 
-// ------------Иконка показать скрыть пароль ---------
-
 export const Icon = styled.span`
   position: absolute;
   top: 43%;
@@ -168,7 +133,7 @@ export const Icon = styled.span`
   &:focus * {
     fill: ${p => p.theme.colors.primary};
   }
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     top: 42%;
     right: -30px;
   }
@@ -181,7 +146,6 @@ export const Icon = styled.span`
     }
   }
 `;
-// ------------Текст валидации стили -----------
 
 export const Error = styled(ErrorMessage)`
   margin-left: 10px;
@@ -194,16 +158,16 @@ export const Error = styled(ErrorMessage)`
 // ------------- окно для формы ----------------
 
 export const BoxAuth = styled.div`
-  @media (min-width: ${theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-top: 204px;
     margin-left: 80px;
     margin-right: 80px;
     border-radius: ${p => p.theme.radii.small};
     padding: 60px 80px;
     box-shadow: ${p => p.theme.shadows.section};
-    background-color: ${theme.colors.white};
+    background-color: ${p => p.theme.colors.white};
   }
-  @media (min-width: ${theme.breakpoints[2]}) {
+  @media (min-width: ${p => p.theme.breakpoints[2]}) {
     margin-top: 204px;
     max-width: 650px;
     margin-left: auto;
@@ -211,13 +175,9 @@ export const BoxAuth = styled.div`
   }
 `;
 
-//============== стили для компонента "routeFormLogin"----------------
-
 export const TextBox = styled.p`
   margin-top: 28px;
   text-align: center;
-  @media (min-width: ${theme.breakpoints[1]}) {
-  }
 `;
 
 export const SpanText = styled.span`
@@ -225,7 +185,6 @@ export const SpanText = styled.span`
   font-size: ${p => p.theme.fontSizes[0]};
 `;
 export const LinkToOtherPage = styled(Link)`
-  /* margin-left: 6px; */
   padding: 0 6px;
   border-radius: ${p => p.theme.radii.small};
   color: ${p => p.theme.colors.linlTxt};

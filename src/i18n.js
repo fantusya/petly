@@ -20,6 +20,8 @@ i18n
       en: {
         translation: {
           News: 'News',
+          No_news: 'No news was found.',
+          Current_news: 'You are reading the news with such query!',
           Find_pet: 'Find pet',
           Our_friends: 'Our friends',
           Login: 'Login',
@@ -163,6 +165,8 @@ i18n
       uk: {
         translation: {
           News: 'Новини',
+          No_news: 'Новин за таким запитом не знайдено.',
+          Current_news: 'Ви переглядаєте новини за таким запитом!',
           Find_pet: 'Оголошення',
           Our_friends: 'Наші друзі',
           Login: 'Логін',

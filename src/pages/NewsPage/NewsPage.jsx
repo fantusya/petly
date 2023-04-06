@@ -1,21 +1,20 @@
-import { Box } from 'components/Box/Box';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import i18n from 'i18n';
+import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
+
+import { Box } from 'components/Box/Box';
+import { Container } from 'globalStyles/globalStyle';
+
 import { useFetchingData } from 'hooks/useFetchingData';
+import { toISODate } from 'helpers/newsHelpers/dateConverting';
+import { stringMax } from 'helpers/newsHelpers/stringConverting';
+
 import NewsItem from 'components/NewsPage/NewsItem/NewsItem';
 import SearchBar from 'components/NewsPage/SearchBar/SearchBar';
 import { NewsList } from './NewsPage.styled';
 import { PageTitle } from 'components/commonComponents/PageTitle.styled';
-import { toISODate } from 'helpers/newsHelpers/dateConverting';
-import { stringMax } from 'helpers/newsHelpers/stringConverting';
-import { useTranslation } from 'react-i18next';
-import i18n from 'i18n';
-
-// -------------------------------------------------
-import { toast } from 'react-hot-toast';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Container } from 'globalStyles/globalStyle';
 
 const NewsPage = () => {
   const { t } = useTranslation();
@@ -27,8 +26,6 @@ const NewsPage = () => {
 
   const { status, results } = useFetchingData('api/news');
 
-  /*сортування новин */
-
   useEffect(() => {
     document.title = `News`;
 
@@ -39,7 +36,7 @@ const NewsPage = () => {
         date: Date.parse(news.date),
         description: stringMax(news.description, 250) + '...',
       }));
-      //   console.log('NewNews', NewNews);
+
       const SortNews = NewNews.sort(
         (a, b) => b.date - a.date || isNaN(b.date) - isNaN(a.date)
       );
@@ -56,31 +53,19 @@ const NewsPage = () => {
     }
   }, [status, results, location]);
 
-  /*фільтр новин*/
-
   useEffect(() => {
     async function filterArray() {
       const normalisedFilter = request.toLowerCase();
 
-      /*фільтр відсортованого масиву */
       const filterNews = news.filter(item => {
         return item.title.toLowerCase().includes(normalisedFilter);
       });
 
-      /*якщо нічого не знайдено,- рендер всього списку */
       if (filterNews.length === 0) {
-        // console.log('нічого не знайдено');
         setPublicNews(news);
-        // -додано повідомлення про невдалий пошук
         if (request !== '') {
-          toast.error(
-            `Новин за запитом "${request}" не знайдено. Спробуйте інший запит!`
-          );
-          // alert(
-          //   'Новини за вказаним запитом не знайдено. Спробуйте інший запит.'
-          // );
+          toast.error(i18n.t('No_news'));
         }
-
         return;
       }
 
@@ -90,24 +75,19 @@ const NewsPage = () => {
     filterArray();
   }, [request, news]);
 
-  /*перевірка чи запит інший */
   const handleFormSubmit = value => {
     if (request !== value) {
       setRequest(value);
     } else if (value.trim() !== '') {
-      toast.error(`Ви переглядаєте "${value}". Спробуйте інший запит!`);
+      toast(i18n.t('Current_news'), { icon: '⚠️' });
       return;
     }
   };
-
-  /* -------------------------------------------------------------------------------------- */
 
   return (
     <Box
       as="section"
       pt={['100px', '100px', '160px', '126px']}
-      // pl={['20px', '20px', '32px', '16px']}
-      // pr={['20px', '20px', '32px', '16px']}
       pb={['100px', '100px', '100px', '200px']}
     >
       <Container>
@@ -125,7 +105,6 @@ const NewsPage = () => {
             />
           ))}
         </NewsList>
-        <ToastContainer />
       </Container>
     </Box>
   );

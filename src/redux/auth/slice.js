@@ -15,7 +15,6 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
-  // console.log('action.payload', action.payload);
   state.isRefreshing = false;
   state.error = action.payload.message || false;
 };
@@ -62,8 +61,6 @@ const authSlice = createSlice({
     },
     [logIn.fulfilled](state, action) {
       state.user = action.payload.user;
-      // console.log('action.payload', action.payload);
-      // state.accessToken = action.payload.accessToken;
       state.accessToken = action.payload.accessToken;
 
       state.isLoggedIn = true;

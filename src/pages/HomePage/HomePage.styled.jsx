@@ -18,8 +18,6 @@ import WaveT2x from 'images/hero/waves/WaveT@2x.webp';
 
 import WaveD1 from 'images/hero/waves/WaveD1.webp';
 import Wavve2x from 'images/hero/waves/Wavve@2x.webp';
-// import { theme } from 'globalStyles/theme';
-// import wave_lg2x from "images/hero/waves/wave_lg@2x.webp";
 
 export const Main = styled.main`
   min-height: calc(100vh - 100px);

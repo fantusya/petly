@@ -3,12 +3,6 @@ import { theme } from 'globalStyles/theme';
 import { ReactComponent as KameraIcon } from 'images/svg/kamera.svg';
 import { ReactComponent as CheckIcon } from 'images/svg/check.svg';
 
-// export const AvatarWrapper = styled.div`
-//   @media (min-width: ${theme.breakpoints[2]}) {
-//     width: 382px;
-//     margin-left: auto;
-//   }
-// `;
 export const AvatarWrapper = styled.form`
   @media (min-width: ${theme.breakpoints[2]}) {
     width: 382px;

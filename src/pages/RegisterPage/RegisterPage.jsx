@@ -72,8 +72,6 @@ export const RegisterPage = () => {
       signup({ email, password, name, city, phone })
     );
 
-    console.log('resultSignup', resultSignup);
-
     if (resultSignup.type === 'auth/signup/fulfilled') {
       await dispatch(logIn({ email, password }));
     }

@@ -8,7 +8,6 @@ const LoadingWindow = () => {
       width="100vw"
       height="100vh"
       background="linear-gradient(90deg, #FF634E 0%, #FFDF48 105.44%)"
-      // backgroundColor={theme.colors.transparent}
       display="flex"
       alignItems="center"
       justifyContent="center"

@@ -24,7 +24,7 @@ import {
   InputContTextArea,
 } from '../AddNoticeModal.styled';
 
-import { AddPhotoIcon } from 'components/PetForm/PetForm.styled';
+import { AddPhotoIcon } from 'components/ModalAddsPet/Steps/Steps.styled.jsx';
 
 const StepTwo = props => {
   const { t } = useTranslation();
